@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sulawesi corridor · Captive Power Platform</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap navrow">
+    <a class="brand" href="index.html">
+      <span class="mark">⚡</span>
+      <span><b>Captive Power Decarbonization</b><span data-i18n="brand_sub">Indonesia · Power Transformation Lab</span></span>
+    </a>
+    <nav class="main">
+      <a href="index.html" data-i18n="nav_explore">Explore map</a>
+      <a href="region.html" class="active" data-i18n="nav_region">Regions</a>
+      <a href="about.html" data-i18n="nav_about">About</a>
+    </nav>
+    <div class="lang"><button data-lang="en" class="on">EN</button><button data-lang="id">ID</button></div>
+  </div>
+</header>
+
+<main class="wrap section">
+  <div class="kick" data-i18n="reg_kick">Regional aggregation</div>
+  <h1 style="font-size:24px" data-i18n="reg_h">Sulawesi corridor</h1>
+  <p class="sub" data-i18n="reg_sub">System-wide implications and transmission upgrades if captive parks connect to PLN’s grid</p>
+
+  <div class="stats">
+    <div class="stat"><b>9.0 GW</b><small data-i18n="rs1">captive coal in region</small></div>
+    <div class="stat"><b>6</b><small data-i18n="rs2">major parks</small></div>
+    <div class="stat"><b>3.4 GW</b><small data-i18n="rs3">connectable if lines built</small></div>
+    <div class="stat"><b>$2.1B</b><small data-i18n="rs4">transmission capex</small></div>
+  </div>
+
+  <!-- TRANSMISSION MAP: headline feature -->
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
+      <div>
+        <h2 data-i18n="reg_map">Transmission map</h2>
+        <p class="sub" style="margin:0" data-i18n="reg_mapp">Parks, grid hubs and the corridors that would connect them</p>
+      </div>
+      <button class="chip on" id="txToggle"><span data-i18n="reg_toggle">Proposed upgrades shown</span></button>
+    </div>
+    <div class="split" style="margin-top:12px">
+      <div id="txmap" style="border:1px solid var(--line);border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#f7fafc,#eef3f6)"></div>
+      <div>
+        <div style="font-size:12px;color:var(--mut);line-height:2">
+          <div><span style="display:inline-block;width:11px;height:11px;border-radius:50%;background:#1d9e75;margin-right:6px"></span>Captive park (color = readiness)</div>
+          <div><span style="display:inline-block;width:11px;height:11px;background:#378add;margin-right:6px"></span>PLN grid hub</div>
+          <div><span style="display:inline-block;width:18px;border-top:2px dashed #fc4d50;margin-right:6px;vertical-align:middle"></span>Proposed corridor</div>
+          <div><span style="display:inline-block;width:18px;border-top:2px solid #888780;margin-right:6px;vertical-align:middle"></span>Existing line</div>
+        </div>
+        <p class="sub" style="margin-top:10px">Click a park to open its facility analysis. Line thickness ≈ transfer capacity.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid2" style="margin-top:16px">
+    <div class="card">
+      <h2 data-i18n="reg_cap">Park capacity &amp; readiness</h2>
+      <div style="position:relative;height:220px;margin-top:6px"><canvas id="regChart" role="img" aria-label="Horizontal bar chart of Sulawesi park capacities colored by readiness"></canvas></div>
+    </div>
+    <div class="card">
+      <h2 data-i18n="reg_tx">Transmission upgrades needed</h2>
+      <table class="dt" style="margin-top:6px">
+        <thead><tr><th data-i18n="th_corr">Corridor</th><th style="text-align:right">MW</th><th style="text-align:right">$</th></tr></thead>
+        <tbody>
+          <tr><td>Morowali ↔ Palu 275 kV</td><td style="text-align:right">1,400</td><td style="text-align:right">$0.8B</td></tr>
+          <tr><td>Konawe ↔ Kendari 150 kV</td><td style="text-align:right">900</td><td style="text-align:right">$0.5B</td></tr>
+          <tr><td>Bantaeng ↔ Makassar 150 kV</td><td style="text-align:right">600</td><td style="text-align:right">$0.4B</td></tr>
+          <tr><td>Bunta ↔ Gorontalo 150 kV</td><td style="text-align:right">500</td><td style="text-align:right">$0.4B</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<footer class="site"><div class="wrap">
+  <span data-i18n="foot_rights">© 2026 Power Transformation Lab · UC San Diego · CC-BY open data</span>
+  <span><a href="about.html" data-i18n="foot_req">Request analysis</a> · <a href="about.html" data-i18n="foot_work">Workshops</a></span>
+</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/region.js"></script>
+<script>window.initLang();</script>
+</body>
+</html>
