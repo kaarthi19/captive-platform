@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facility analysis · Captive Power Platform</title>
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap navrow">
+    <a class="brand" href="index.html">
+      <span class="mark">⚡</span>
+      <span><b>Captive Power Decarbonization</b><span data-i18n="brand_sub">Indonesia · Power Transformation Lab</span></span>
+    </a>
+    <nav class="main">
+      <a href="index.html" data-i18n="nav_explore">Explore map</a>
+      <a href="region.html" data-i18n="nav_region">Regions</a>
+      <a href="about.html" data-i18n="nav_about">About</a>
+    </nav>
+    <div class="lang"><button data-lang="en" class="on">EN</button><button data-lang="id">ID</button></div>
+  </div>
+</header>
+
+<main class="wrap section">
+  <a class="back" href="index.html">← <span data-i18n="back_map">Back to map</span></a>
+  <div class="kick" style="margin-top:8px" data-i18n="fac_kick">Facility analysis</div>
+  <h1 id="facName" style="font-size:24px">IMIP — Morowali</h1>
+  <p class="sub" id="facMeta">Central Sulawesi · Nickel smelting park</p>
+
+  <div class="split">
+    <div class="card">
+      <h2 data-i18n="fac_path">Pathway comparison</h2>
+      <p class="sub" data-i18n="fac_pathp">Levelized cost of electricity at current assumptions</p>
+      <div id="pathlist"></div>
+    </div>
+    <div class="card">
+      <h2 data-i18n="fac_mix">Current energy mix</h2>
+      <div style="position:relative;height:150px;margin-top:6px"><canvas id="mixChart" role="img" aria-label="Current energy mix doughnut chart"></canvas></div>
+      <div id="mixNote" style="font-size:12px;color:var(--mut);text-align:center;margin-top:6px"></div>
+    </div>
+  </div>
+
+  <!-- SENSITIVITY: headline interactive feature -->
+  <div class="card" style="margin-top:16px">
+    <h2 data-i18n="fac_sens">Coal-price &amp; grid-tariff sensitivity</h2>
+    <p class="sub" data-i18n="fac_sensp">Drag the sliders — the cheapest pathway updates live</p>
+    <div class="split">
+      <div class="sliders">
+        <div class="slider">
+          <label><span data-i18n="sl_coal">Coal price</span><b id="slCoalOut">$90/t</b></label>
+          <input type="range" id="slCoal" min="40" max="160" step="5" value="90">
+        </div>
+        <div class="slider">
+          <label><span data-i18n="sl_tariff">Grid tariff</span><b id="slTariffOut">$70/MWh</b></label>
+          <input type="range" id="slTariff" min="40" max="120" step="5" value="70">
+        </div>
+        <div class="slider">
+          <label><span data-i18n="sl_solar">Solar + storage capex</span><b id="slSolarOut">100%</b></label>
+          <input type="range" id="slSolar" min="0.6" max="1.4" step="0.05" value="1.0">
+        </div>
+        <div class="insight" id="insight"></div>
+      </div>
+      <div style="position:relative;height:200px"><canvas id="sensChart" role="img" aria-label="Levelized cost of electricity per pathway, updating with the sliders"></canvas></div>
+    </div>
+  </div>
+
+  <div class="grid2" style="margin-top:16px">
+    <div class="card">
+      <h2 data-i18n="fac_cost">Cost breakdown — hybrid pathway</h2>
+      <div style="position:relative;height:170px;margin-top:6px"><canvas id="costChart" role="img" aria-label="Hybrid pathway cost breakdown bar chart"></canvas></div>
+    </div>
+    <div class="card">
+      <h2 data-i18n="fac_inv">Investment by stakeholder</h2>
+      <table class="dt" style="margin-top:6px">
+        <thead><tr><th data-i18n="th_stake">Stakeholder</th><th data-i18n="th_act">Action</th><th style="text-align:right">USD</th></tr></thead>
+        <tbody id="invBody"></tbody>
+      </table>
+    </div>
+  </div>
+</main>
+
+<footer class="site"><div class="wrap">
+  <span data-i18n="foot_rights">© 2026 Power Transformation Lab · UC San Diego · CC-BY open data</span>
+  <span><a href="about.html" data-i18n="foot_req">Request analysis</a> · <a href="about.html" data-i18n="foot_work">Workshops</a></span>
+</div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/facility.js"></script>
+<script>window.initLang();</script>
+</body>
+</html>
