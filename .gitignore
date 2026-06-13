@@ -1,0 +1,10 @@
+# Claude Code local tooling
+.claude/settings.local.json
+
+# OS / editor
+.DS_Store
+*.swp
+.vscode/
+
+# Logs
+*.log
