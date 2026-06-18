@@ -102,15 +102,17 @@
         scales: { y: { title: { display: true, text: '$/MWh' }, ticks: { font: { size: 11 } } }, x: { ticks: { font: { size: 11 } } } } }
     });
 
-    /* hybrid cost breakdown, scaled by facility transition cost */
+    /* hybrid cost breakdown, scaled by facility transition cost.
+       Grid connection (facility interconnection) is kept separate from bulk/shared
+       transmission upgrades, since they map to different payers. */
     var c = fac.cost;
     new Chart(document.getElementById('costChart'), {
       type: 'bar',
-      data: { labels: ['Solar PV', 'Storage', 'Grid line', 'O&M', 'Other'],
-        datasets: [{ data: [c*0.33, c*0.21, c*0.26, c*0.12, c*0.08].map(function (x) { return Number(x.toFixed(1)); }),
-          backgroundColor: ['#1d9e75', '#5dcaa5', '#378add', '#ef9f27', '#b4b2a9'] }] },
+      data: { labels: ['Solar PV', 'Battery storage', 'Grid connection', 'Bulk transmission', 'O&M'],
+        datasets: [{ data: [c*0.30, c*0.20, c*0.16, c*0.22, c*0.12].map(function (x) { return Number(x.toFixed(1)); }),
+          backgroundColor: ['#1d9e75', '#5dcaa5', '#378add', '#185fa5', '#b4b2a9'] }] },
       options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
-        scales: { y: { ticks: { font: { size: 11 }, callback: function (v) { return '$' + v + 'B'; } } }, x: { ticks: { font: { size: 11 } } } } }
+        scales: { y: { ticks: { font: { size: 11 }, callback: function (v) { return '$' + v + 'B'; } } }, x: { ticks: { font: { size: 10 } } } } }
     });
 
     recompute();
@@ -119,10 +121,11 @@
   /* investment table, scaled by facility transition cost */
   var c = fac.cost;
   var inv = [
-    ['Park owner', 'On-site solar + storage', c * 0.43],
-    ['PLN', '275 kV line + substation', c * 0.26],
-    ['Financiers / DFIs', 'Green bonds, blended debt', c * 0.21],
-    ['Provincial gov', 'Permitting, RUED alignment', c * 0.10]
+    ['Park owner', 'On-site solar + storage', c * 0.40],
+    ['PLN (local)', 'Facility grid interconnection', c * 0.16],
+    ['PLN / system · JETP', 'Bulk transmission upgrades', c * 0.22],
+    ['Financiers / DFIs', 'Green bonds, blended debt', c * 0.14],
+    ['Provincial gov', 'Permitting, RUED alignment', c * 0.08]
   ];
   document.getElementById('invBody').innerHTML = inv.map(function (r) {
     return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td><td style="text-align:right;font-weight:600">$' + r[2].toFixed(1) + 'B</td></tr>';

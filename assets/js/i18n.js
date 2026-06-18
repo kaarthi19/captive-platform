@@ -3,7 +3,12 @@
 
 window.I18N = {
   en: {
-    nav_explore:'Explore map', nav_region:'Regions', nav_about:'About',
+    nav_explore:'Explore map', nav_region:'Regions', nav_method:'Methodology', nav_about:'About',
+    m_h1:'How the analysis works',
+    m_lead:'Each pathway, cost and readiness rating on this platform comes from a generation & transmission capacity-expansion model that co-optimizes industrial facility investments alongside the PLN grid. This page summarizes that method, drawn from the November 2025 report.',
+    m_obj:'Research objective', m_approach:'Co-optimization approach', m_path:'Decarbonization pathways',
+    m_model:'The optimization model', m_data:'Data sources', m_re:'Renewable resource assessment',
+    m_assume:'Key assumptions & sensitivities', m_ready:'Defining transition readiness',
     brand_sub:'Indonesia · Power Transformation Lab',
     foot_rights:'© 2026 Power Transformation Lab · UC San Diego · CC-BY open data',
     foot_req:'Request analysis', foot_work:'Workshops',
@@ -17,6 +22,7 @@ window.I18N = {
     f_ind:'Industry', f_all:'All', f_alu:'Aluminum', f_pulp:'Pulp & paper',
     f_region:'Region', f_ready:'Readiness',
     leg_t:'Transition readiness', leg_h:'High', leg_m:'Medium', leg_l:'Low', leg_s:'size = capacity',
+    leg_def:'How we define this →',
     hint:'Click a marker to open its facility card · 12 sample parks shown of 130+',
     pop_cap:'Capacity', pop_ei:'Emissions intensity', pop_cost:'Est. transition cost',
     pop_mix:'Energy mix today', pop_coal:'coal', pop_clean:'clean', pop_view:'View full analysis',
@@ -45,7 +51,12 @@ window.I18N = {
     ab_partp:'Engaged through workshops and bilateral outreach in Jakarta, Bandung & Sulawesi'
   },
   id: {
-    nav_explore:'Jelajahi peta', nav_region:'Wilayah', nav_about:'Tentang',
+    nav_explore:'Jelajahi peta', nav_region:'Wilayah', nav_method:'Metodologi', nav_about:'Tentang',
+    m_h1:'Cara kerja analisis',
+    m_lead:'Setiap jalur, biaya, dan peringkat kesiapan di platform ini berasal dari model ekspansi kapasitas pembangkitan & transmisi yang meng-ko-optimisasi investasi fasilitas industri bersama jaringan PLN. Halaman ini merangkum metode tersebut, berdasarkan laporan November 2025.',
+    m_obj:'Tujuan penelitian', m_approach:'Pendekatan ko-optimisasi', m_path:'Jalur dekarbonisasi',
+    m_model:'Model optimisasi', m_data:'Sumber data', m_re:'Penilaian sumber daya terbarukan',
+    m_assume:'Asumsi utama & sensitivitas', m_ready:'Mendefinisikan kesiapan transisi',
     brand_sub:'Indonesia · Power Transformation Lab',
     foot_rights:'© 2026 Power Transformation Lab · UC San Diego · data terbuka CC-BY',
     foot_req:'Minta analisis', foot_work:'Lokakarya',
@@ -58,6 +69,7 @@ window.I18N = {
     f_ind:'Industri', f_all:'Semua', f_alu:'Aluminium', f_pulp:'Pulp & kertas',
     f_region:'Wilayah', f_ready:'Kesiapan',
     leg_t:'Kesiapan transisi', leg_h:'Tinggi', leg_m:'Sedang', leg_l:'Rendah', leg_s:'ukuran = kapasitas',
+    leg_def:'Cara kami mendefinisikan ini →',
     hint:'Klik penanda untuk membuka kartu fasilitas · 12 dari 130+ ditampilkan',
     pop_cap:'Kapasitas', pop_ei:'Intensitas emisi', pop_cost:'Perk. biaya transisi',
     pop_mix:'Bauran energi saat ini', pop_coal:'batu bara', pop_clean:'bersih', pop_view:'Lihat analisis lengkap',
