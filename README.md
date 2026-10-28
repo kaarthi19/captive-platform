@@ -1,6 +1,6 @@
 # Indonesia Captive Power Decarbonization Platform — design prototype
 
-An open-access, bilingual (English / Bahasa Indonesia) web prototype that provides
+An open-access, multilingual (English / Bahasa Indonesia / 简体中文) web prototype that provides
 **facility-level decarbonization analysis** for Indonesia's captive coal fleet: 86 sites
 (27 industrial parks and 59 standalone captive plants) with captive coal that is operating,
 under construction or planned. Built for the Power Transformation Lab (UC San Diego), styled in
@@ -25,8 +25,10 @@ expansion model (Julia/JuMP), are loaded.
 | `region.html` | Sulawesi corridor — **interactive transmission map** (sites, grid hubs, proposed vs existing corridors), capacity-by-site chart, upgrades table |
 | `about.html` | Project, team, data sources, partners |
 
-The **EN / ID toggle** (top-right) switches the interface language; the choice persists in
-`localStorage`.
+The **EN / ID / 中文 toggle** (top-right) switches the interface language; the choice persists in
+`localStorage`. Strings live in `assets/js/i18n.js`: `data-i18n` swaps an element's text,
+`data-i18n-html` swaps long passages with markup (the page's own HTML is the English), and any
+key missing from a language falls back to English.
 
 ## Run it
 

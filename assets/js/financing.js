@@ -6,7 +6,7 @@
   var esc = window.esc;
   var KIND = { commercial: 'lt_commercial', policy: 'lt_policy', mdb: 'lt_mdb', dfi: 'lt_dfi' };
 
-  function t(k) { return (window.I18N[window.CP_LANG || 'en'] || window.I18N.en)[k]; }
+  var t = window.tr;
   function count(list) {  /* [[value, n], ...] by n desc */
     var c = {};
     list.forEach(function (v) { if (v) c[v] = (c[v] || 0) + 1; });

@@ -6,7 +6,7 @@
   var svg = d3.select('#map').append('svg')
     .attr('viewBox', '0 0 ' + W + ' ' + H).attr('width', '100%').style('display', 'block');
 
-  function t(k) { return (window.I18N[window.CP_LANG || 'en'] || window.I18N.en)[k]; }
+  var t = window.tr;
   function mw(v) { return Math.round(v).toLocaleString() + ' MW'; }
   var esc = window.esc;
 

@@ -7,7 +7,7 @@
   var LIVE = { 'Operating': 1, 'Construction': 1, 'Pre-Construction': 1, 'Announced': 1 };
   var OWNERSHIP = { POE: 'own_poe', SOE: 'own_soe', Mixed: 'own_mixed', Public: 'own_public' };
 
-  function t(k) { return (window.I18N[window.CP_LANG || 'en'] || window.I18N.en)[k]; }
+  var t = window.tr;
   function uniq(list) { return list.filter(function (v, i) { return v && list.indexOf(v) === i; }); }
   function splitList(v) { return String(v || '').split(';').map(function (x) { return x.trim(); }).filter(Boolean); }
 

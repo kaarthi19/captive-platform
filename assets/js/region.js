@@ -15,7 +15,7 @@
   var proposed = corridors.filter(function (c) { return c.status === 'proposed'; });
   var showProposed = true;
 
-  function t(k) { return (window.I18N[window.CP_LANG || 'en'] || window.I18N.en)[k]; }
+  var t = window.tr;
   var esc = window.esc;
 
   /* region picker: every region with sites, largest operating capacity first */

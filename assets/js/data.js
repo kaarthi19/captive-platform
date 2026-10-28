@@ -11,18 +11,18 @@ window.READY = { high: '#1d9e75', medium: '#ef9f27', low: '#fc4d50' };
 /* Eight sectors (filters, tags). Map markers use only three colors — nickel, aluminium and a
    neutral for everything else — because more hues on a map can't be told apart reliably. */
 window.SECTORS = {
-  nickel:    { en: 'Nickel',                   id: 'Nikel' },
-  aluminium: { en: 'Aluminium & alumina',      id: 'Aluminium & alumina' },
-  pulp:      { en: 'Pulp & paper',             id: 'Pulp & kertas' },
-  cement:    { en: 'Cement & building',        id: 'Semen & bahan bangunan' },
-  chem:      { en: 'Chemicals & petrochem',    id: 'Kimia & petrokimia' },
-  agro:      { en: 'Agro-processing & food',   id: 'Agroindustri & pangan' },
-  metals:    { en: 'Mining & metals',          id: 'Pertambangan & logam' },
-  mixed:     { en: 'Multi-sector & other',     id: 'Multisektor & lainnya' }
+  nickel:    { en: 'Nickel',                   id: 'Nikel', zh: '镍' },
+  aluminium: { en: 'Aluminium & alumina',      id: 'Aluminium & alumina', zh: '铝和氧化铝' },
+  pulp:      { en: 'Pulp & paper',             id: 'Pulp & kertas', zh: '纸浆和造纸' },
+  cement:    { en: 'Cement & building',        id: 'Semen & bahan bangunan', zh: '水泥和建材' },
+  chem:      { en: 'Chemicals & petrochem',    id: 'Kimia & petrokimia', zh: '化工和石化' },
+  agro:      { en: 'Agro-processing & food',   id: 'Agroindustri & pangan', zh: '农产品加工和食品' },
+  metals:    { en: 'Mining & metals',          id: 'Pertambangan & logam', zh: '采矿和金属' },
+  mixed:     { en: 'Multi-sector & other',     id: 'Multisektor & lainnya', zh: '多行业及其他' }
 };
 window.SECTOR_COLOR = { nickel: '#2a78d6', aluminium: '#eb6834', other: '#8a9197' };
 window.sectorColor = function (s) { return window.SECTOR_COLOR[s] || window.SECTOR_COLOR.other; };
-window.sectorName = function (s) { return window.SECTORS[s][window.CP_LANG === 'id' ? 'id' : 'en']; };
+window.sectorName = function (s) { return window.SECTORS[s][window.CP_LANG] || window.SECTORS[s].en; };
 
 /* Total live captive coal (operating + construction + planned), MW. */
 window.siteMW = function (f) { return f.op + f.con + f.plan; };
@@ -39,20 +39,20 @@ window.FAC = window.PARKS;
 /* Regions for the region page: platform region key, display names, and the province names used
    by the Indonesia basemap (datamaps topology; Kalimantan Utara is still part of Kalimantan Timur). */
 window.REGIONS = [
-  { key: 'Sulawesi', en: 'Sulawesi', id: 'Sulawesi',
+  { key: 'Sulawesi', en: 'Sulawesi', id: 'Sulawesi', zh: '苏拉威西',
     provinces: ['Sulawesi Utara', 'Gorontalo', 'Sulawesi Tengah', 'Sulawesi Barat', 'Sulawesi Selatan', 'Sulawesi Tenggara'] },
-  { key: 'Maluku', en: 'North Maluku', id: 'Maluku Utara', provinces: ['Maluku Utara', 'Maluku'] },
-  { key: 'Kalimantan', en: 'Kalimantan', id: 'Kalimantan',
+  { key: 'Maluku', en: 'North Maluku', id: 'Maluku Utara', zh: '北马鲁古', provinces: ['Maluku Utara', 'Maluku'] },
+  { key: 'Kalimantan', en: 'Kalimantan', id: 'Kalimantan', zh: '加里曼丹',
     provinces: ['Kalimantan Barat', 'Kalimantan Tengah', 'Kalimantan Selatan', 'Kalimantan Timur'] },
-  { key: 'Sumatra', en: 'Sumatra', id: 'Sumatra',
+  { key: 'Sumatra', en: 'Sumatra', id: 'Sumatra', zh: '苏门答腊',
     provinces: ['Aceh', 'Sumatera Utara', 'Sumatera Barat', 'Riau', 'Kepulauan Riau', 'Jambi', 'Bengkulu',
                 'Sumatera Selatan', 'Bangka-Belitung', 'Lampung'] },
-  { key: 'Java', en: 'Java and Bali', id: 'Jawa dan Bali',
+  { key: 'Java', en: 'Java and Bali', id: 'Jawa dan Bali', zh: '爪哇和巴厘',
     provinces: ['Banten', 'Jakarta Raya', 'Jawa Barat', 'Jawa Tengah', 'Yogyakarta', 'Jawa Timur', 'Bali'] },
-  { key: 'Nusa Tenggara', en: 'Nusa Tenggara', id: 'Nusa Tenggara', provinces: ['Nusa Tenggara Barat', 'Nusa Tenggara Timur'] },
-  { key: 'Papua', en: 'Papua', id: 'Papua', provinces: ['Irian Jaya Barat', 'Papua'] }
+  { key: 'Nusa Tenggara', en: 'Nusa Tenggara', id: 'Nusa Tenggara', zh: '努沙登加拉', provinces: ['Nusa Tenggara Barat', 'Nusa Tenggara Timur'] },
+  { key: 'Papua', en: 'Papua', id: 'Papua', zh: '巴布亚', provinces: ['Irian Jaya Barat', 'Papua'] }
 ];
-window.regionName = function (r) { return r[window.CP_LANG === 'id' ? 'id' : 'en']; };
+window.regionName = function (r) { return r[window.CP_LANG] || r.en; };
 
 /* Grid hubs and proposed/existing transmission corridors for the Sulawesi region view
    (illustrative until GARUDA's transmission results are loaded). */

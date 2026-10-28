@@ -7,7 +7,7 @@
   var params = new URLSearchParams(location.search);
   var fac = window.getFac(params.get('id'));
 
-  function t(k) { return (window.I18N[window.CP_LANG || 'en'] || window.I18N.en)[k]; }
+  var t = window.tr;
 
   var res = window.placeholderResults(fac);
   var det = (window.SITE_DETAILS || {})[fac.id];
