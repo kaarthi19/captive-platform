@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Financing · Captive Power Platform</title>
+<link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap navrow">
+    <a class="brand" href="index.html">
+      <img class="mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+      <span><b>Captive Power Decarbonization</b><span data-i18n="brand_sub">Indonesia · Power Transformation Lab</span></span>
+    </a>
+    <nav class="main">
+      <a href="index.html" data-i18n="nav_explore">Explore map</a>
+      <a href="region.html" data-i18n="nav_region">Regions</a>
+      <a href="methodology.html" data-i18n="nav_method">Methodology</a>
+      <a href="about.html" data-i18n="nav_about">About</a>
+      <a href="contact.html" data-i18n="nav_contact">Contact</a>
+    </nav>
+    <div class="lang"><button data-lang="en" class="on">EN</button><button data-lang="id">ID</button></div>
+  </div>
+</header>
+
+<main class="wrap section">
+  <a class="back" id="backFac" href="facility.html">← <span data-i18n="own_back">Back to facility analysis</span></a>
+  <div class="kick" style="margin-top:8px" data-i18n="fin_kick">Financing</div>
+  <h1 id="finName" style="font-size:24px">—</h1>
+  <p class="sub" id="finMeta"></p>
+
+  <div class="card">
+    <h2 data-i18n="fin_sum_h">Disclosed debt financing</h2>
+    <p class="sub" data-i18n="fac_finp">Disclosed loans of three years or longer linked to this site's power units (project finance or capex loans).</p>
+    <div class="stats" id="finStats" style="margin:4px 0 14px"></div>
+    <dl class="facts" id="finFacts"></dl>
+  </div>
+
+  <div class="card" id="lenderCard" style="margin-top:16px">
+    <h2 data-i18n="fin_lenders_h">Lenders</h2>
+    <p class="sub" data-i18n="fin_lenders_p">Each bank or fund that took part, and in how many of this site's loans.</p>
+    <div class="tscroll"><table class="dt">
+      <thead><tr><th data-i18n="th_lender">Lender</th><th data-i18n="own_country">Country</th><th style="text-align:right" data-i18n="th_loans">Loans</th><th data-i18n="th_years">Years</th></tr></thead>
+      <tbody id="lenderBody"></tbody>
+    </table></div>
+  </div>
+
+  <div class="card" id="loanCard" style="margin-top:16px">
+    <h2 data-i18n="fin_list_h">Loans</h2>
+    <p class="sub" data-i18n="fin_list_p">Amounts are for the whole facility; a syndicated loan is not split between its lenders.</p>
+    <div class="tscroll"><table class="dt">
+      <thead><tr><th style="text-align:right" data-i18n="th_year">Year</th><th data-i18n="th_financiers">Financier(s)</th><th style="text-align:right" data-i18n="th_amount">USD m</th><th data-i18n="th_type">Type</th><th data-i18n="th_borrower">Borrower</th><th data-i18n="th_ref">Source</th></tr></thead>
+      <tbody id="loanBody"></tbody>
+    </table></div>
+  </div>
+
+  <p class="sub" style="margin-top:12px" data-i18n="fin_src">Source: Earthwise Institute, Indonesian Captive Coal Relevant Project Financing Database (2026).</p>
+</main>
+
+<footer class="site"><div class="wrap">
+  <span data-i18n="foot_rights">© 2026 Power Transformation Lab · UC San Diego · CC-BY open data</span>
+  <span><a href="contact.html#request" data-i18n="foot_req">Request analysis</a> · <a href="contact.html#workshops" data-i18n="foot_work">Workshops</a></span>
+</div></footer>
+
+<script src="assets/js/parks.js"></script>
+<script src="assets/js/site-details.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/financing.js"></script>
+<script>window.initLang();</script>
+</body>
+</html>

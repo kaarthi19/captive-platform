@@ -51,6 +51,11 @@
       ['k_commod', esc(fac.commodities.join(', '))],
       ['k_ownership', det.ownership.map(function (o) { return t(OWNERSHIP[o]) || esc(o); }).join(', ') + (det.jv ? ' · ' + t('k_jv') : '')],
       ['k_owners', owners + '<br><a href="ownership.html?id=' + encodeURIComponent(fac.id) + '">' + t('k_owndetail') + ' →</a>'],
+      ['k_fin', (det.finance.length
+        ? det.finance.length + ' ' + t('own_loans') + ' · $' +
+          Math.round(det.finance.reduce(function (s, f) { return s + (f.usd || 0); }, 0)).toLocaleString() + 'm'
+        : t('fin_none_short')) +
+        '<br><a href="financing.html?id=' + encodeURIComponent(fac.id) + '">' + t('k_findetail') + ' →</a>'],
       ['k_other', esc(det.otherPower || '—')],
       ['k_aka', det.aliases.length ? esc(det.aliases.slice(0, 6).join(' · ')) + (det.aliases.length > 6 ? ' …' : '') : '—']
     ];
@@ -84,16 +89,6 @@
       return '<tr><td>' + esc(p.name) + (p.phase ? ' <span class="mut">· ' + esc(p.phase) + '</span>' : '') + '</td>' +
         '<td>' + esc(p.product || '—') + '</td><td style="text-align:right">' + esc(p.capacity || '—') + '</td>' +
         '<td>' + esc(p.status || '—') + '</td><td style="text-align:right">' + esc(p.start || '—') + '</td></tr>';
-    }).join('');
-
-    /* financing */
-    document.getElementById('finCard').style.display = det.finance.length ? '' : 'none';
-    document.getElementById('finBody').innerHTML = det.finance.map(function (f) {
-      return '<tr><td style="text-align:right">' + (f.year || '—') + '</td>' +
-        '<td>' + esc(f.financiers) + (f.hq.length ? ' <span class="mut">· ' + esc(f.hq.join(', ')) + '</span>' : '') + '</td>' +
-        '<td style="text-align:right;font-weight:600">' + (f.usd ? f.usd.toLocaleString(undefined, { maximumFractionDigits: 0 }) : '—') + '</td>' +
-        '<td>' + esc(f.type) + (f.captive ? '' : ' <span class="mut">· ' + t('fin_indirect') + '</span>') + '</td>' +
-        '<td>' + f.refs.map(function (r, i) { return '<a href="' + esc(r) + '" target="_blank" rel="noopener">[' + (i + 1) + ']</a>'; }).join(' ') + '</td></tr>';
     }).join('');
 
     /* sources */

@@ -228,6 +228,18 @@ def read_owners():
     return {r['earthwise_name']: r for r in csv.DictReader(open(path, encoding='utf-8'))}
 
 
+def read_lenders():
+    """data/lenders.csv: Earthwise lender spelling -> one institution and its HQ country.
+    Only spellings that are unmistakably the same institution are merged."""
+    path = os.path.join(ROOT, 'data', 'lenders.csv')
+    if not os.path.exists(path):
+        return {}
+    return {r['earthwise_name']: r for r in csv.DictReader(open(path, encoding='utf-8'))}
+
+
+COUNTRY = {'China Taiwan': 'Taiwan'}  # one spelling per country across owners and lenders
+
+
 def build_details(units, sites, financing, extended):
     """Per-site detail for the facility page: every unit (including cancelled / shelved / retired
     ones at the same site), ownership, financing transactions and the industrial projects the
@@ -300,9 +312,22 @@ def build_details(units, sites, financing, extended):
         d['owners'] = sorted(({**o, 'mw': round(o['mw']), 'share': round(o['mw'] / live * 100, 1)}
                               for o in owner_mw[sid].values()), key=lambda o: -o['mw'])
 
+    lender_alias = read_lenders()
     for t in financing:
         ids = {unit_site[p] for p in split_list(t['Project ID']) if p in unit_site}
         refs = [t[k] for k in ('Ref1', 'Ref2', 'Ref3', 'Ref4') if t.get(k) and str(t[k]).startswith('http')]
+        # Financier and Bank HQ are listed in the same order; pair them only when the counts agree
+        names, hqs = split_list(t['Financier / Issuer']), split_list(t['Bank HQ'])
+        lenders = []
+        for i, n in enumerate(names):
+            alias = lender_alias.get(n)
+            name = alias['lender'] if alias else n
+            hq = (alias['country'] or None) if alias else (hqs[i] if len(hqs) == len(names) else None)
+            if name not in [x[0] for x in lenders]:
+                lenders.append([name, COUNTRY.get(hq, hq)])
+        kinds = [k for k, col in (('commercial', 'Commercial Bank Participation'), ('policy', 'Policy Bank Participation'),
+                                  ('mdb', 'Multilateral Fund / MDB Participation'), ('dfi', 'DFI Participation'))
+                 if t.get(col) == 'T']
         for sid in ids:
             det[sid]['finance'].append({
                 'id': t['Transaction ID'], 'year': year(t['Financing Close Year']),
@@ -312,6 +337,9 @@ def build_details(units, sites, financing, extended):
                 'term': year(t['Financing Term (Years)']),
                 'recipient': t['Financing Recepient'], 'phase': t['Financed Phase'],
                 'captive': t['Financing specified for captive coal'] == 'T', 'refs': refs,
+                'lenders': lenders, 'kinds': kinds,
+                'sponsor': t['Financing Recepient Parent / Sponcor / Guarantor (Abbreviation)'],
+                'currency': t['Original Loan Currency'] if t['Original Loan Currency'] not in (None, 'NA') else None,
             })
     for d in det.values():
         d['finance'].sort(key=lambda f: f['year'] or 0)

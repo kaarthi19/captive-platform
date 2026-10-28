@@ -21,6 +21,7 @@ expansion model (Julia/JuMP), are loaded.
 | `index.html` | National map — a marker per site, filters (sector / region / status), facility popups |
 | `facility.html` | Per-facility analysis — pathway comparison, energy mix, **live coal-price / grid-tariff sensitivity sliders**, cost breakdown, investment by stakeholder. Takes `?id=<facility>` |
 | `ownership.html` | Per-site ownership — ultimate owners weighted by share of capacity (linked to checked company websites), ownership profile, operator → owner → parent → ultimate-owner chain per plant. Takes `?id=<site>` |
+| `financing.html` | Per-site financing — disclosed loans (amounts, lenders and their countries, lender types, structure, currency, borrower, sources), lenders across the site's loans. Takes `?id=<site>` |
 | `region.html` | Sulawesi corridor — **interactive transmission map** (sites, grid hubs, proposed vs existing corridors), capacity-by-site chart, upgrades table |
 | `about.html` | Project, team, data sources, partners |
 
@@ -74,6 +75,9 @@ Needs `openpyxl`. By default it reads GARUDA's industrial-park nodes from a sibl
 - `data/owners.csv` maps each Earthwise ultimate-owner spelling to one company group, with its
   headquarters country and official website. Only URLs that were opened and confirmed as the
   company's own site are linked; leave `url` blank rather than guess.
+- `data/lenders.csv` merges lender spellings that are unmistakably the same institution (OCBC /
+  OCBC Bank / Overseas Chinese Banking Corp) and sets each one's HQ country. Subsidiaries such as
+  OCBC NISP or CIMB Niaga stay separate.
 - `data/model_crosswalk.csv` links each GARUDA node (`island:index`) to a site. Matches are by
   nearest site within 15 km; `data/crosswalk_overrides.csv` pins the ones that need judgement,
   with the reason. Model outputs will join to sites through this file.

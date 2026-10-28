@@ -56,7 +56,7 @@
       ['k_china', china.length ? esc(china.join(', ')) : '—'],
       ['k_epc', det.epc.length ? det.epc.map(esc).join('<br>') : '—'],
       ['own_fin', det.finance.length
-        ? det.finance.length + ' ' + t('own_loans') + ' · <a href="facility.html?id=' + encodeURIComponent(fac.id) + '#finCard">' + t('own_seefin') + ' →</a>'
+        ? det.finance.length + ' ' + t('own_loans') + ' · <a href="financing.html?id=' + encodeURIComponent(fac.id) + '">' + t('own_seefin') + ' →</a>'
         : '—']
     ];
     document.getElementById('ownFacts').innerHTML = facts.map(function (f) {
