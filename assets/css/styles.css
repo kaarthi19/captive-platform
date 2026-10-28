@@ -174,7 +174,7 @@ footer.site .wrap { display: flex; justify-content: space-between; flex-wrap: wr
 .home .brand b, .home h1, .home .section-heading, .home .stakeholder-grid h3 { font-family: "Syne", sans-serif; }
 .home .kick, .home .stake-num { font-family: "JetBrains Mono", monospace; }
 .home-hero { min-height: 560px; display: flex; align-items: center; background: #29363c; color: #e5ece9; position: relative; border-bottom: 1px solid #39474d; }
-.home-hero-inner { padding-top: 84px; padding-bottom: 92px; position: relative; z-index: 1; }
+.home-hero-inner { width: 100%; min-width: 0; padding-top: 84px; padding-bottom: 92px; position: relative; z-index: 1; }
 .home-hero .kick { color: #9bbfb2; }
 .home-hero h1 { color: #e5ece9; font-size: clamp(46px, 6vw, 72px); max-width: 930px; line-height: 1.01; letter-spacing: -.04em; margin: 22px 0 26px; }
 .home-hero .lead { color: #b2bfba; font-size: 17px; max-width: 720px; }
@@ -218,7 +218,7 @@ footer.site .wrap { display: flex; justify-content: space-between; flex-wrap: wr
   nav.main { order: 3; width: 100%; overflow-x: auto; }
   .home-hero { min-height: 520px; }
   .home-hero-inner { padding-top: 72px; padding-bottom: 76px; }
-  .home-hero h1 { font-size: 46px; }
+  .home-hero h1 { font-size: clamp(30px, 9vw, 46px); overflow-wrap: break-word; }
   .home-explorer { padding-top: 64px; }
   .stakeholder-grid { grid-template-columns: 1fr; }
   .stakeholder-grid article { border-right: 0; border-bottom: 1px solid var(--line); margin-right: 0; padding-right: 0; }
