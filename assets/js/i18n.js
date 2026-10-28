@@ -3,7 +3,7 @@
 
 window.I18N = {
   en: {
-    nav_explore:'Explore map', nav_region:'Regions', nav_method:'Methodology', nav_about:'About',
+    nav_explore:'Explore map', nav_region:'Regions', nav_method:'Methodology', nav_about:'About', nav_contact:'Contact',
     m_h1:'How the analysis works',
     m_lead:'Each pathway, cost and readiness rating on this platform comes from GARUDA, a generation & transmission capacity-expansion model that co-optimizes industrial facility investments alongside the PLN grid. This page summarizes that method, drawn from the November 2025 report.',
     m_obj:'Research objective', m_approach:'Co-optimization approach', m_path:'Decarbonization pathways',
@@ -81,13 +81,42 @@ window.I18N = {
     reg_tx:'Transmission upgrades needed', th_corr:'Corridor',
 
     /* about */
-    ab_kick:'About the platform', ab_h:'Bridging modeling and real-world decisions',
-    ab_p:'An open-access decision-support tool from the Power Transformation Lab at UC San Diego, translating sector-wide transition studies into facility-specific, investment-ready guidance for park owners, PLN, provincial governments, and financiers.',
-    ab_team:'Team', ab_data:'Data & methodology', ab_part:'Partners & stakeholders',
-    ab_partp:'Engaged through workshops and bilateral outreach in Jakarta, Bandung & Sulawesi'
+    ab_kick:'About', ab_lab_h:'The Power Transformation Lab',
+    ab_lab_p:'The Power Transformation Lab at UC San Diego studies the engineering and institutional requirements of deploying low-carbon energy at scale. Working across many geographies with academic, government, civil-society and industry partners, the lab builds research, open models and data for climate and environmental challenges.',
+    ab_p:'This platform is an open-access decision-support tool from the lab, translating sector-wide transition studies into facility-specific, investment-ready guidance for park owners, PLN, provincial governments, and financiers.',
+    ab_visit:'Visit pwrlab.org', ab_team:'Contributors',
+    ab_r_pi:'Principal investigator', ab_r_lead:'Lead researcher · GARUDA and platform',
+    ab_r_ra:'Research assistant · facility analysis and data', ab_r_co:'Former lab member · co-author, 2025 technical report',
+    ab_b_md:"Associate professor in UC San Diego's School of Global Policy and Strategy and Department of Mechanical and Aerospace Engineering. His research examines the engineering implications, institutional conflicts and global value chains of deploying low-carbon energy at scale.",
+    ab_b_kg:'Ph.D. student in Mechanical and Aerospace Engineering at UC San Diego, applying engineering tools to political-economy questions. His research looks at how industrial power decarbonization, power market reform and cross-border electricity trade shape national clean energy transitions.',
+    ab_b_sz:"Data Science undergraduate at UC San Diego. At the lab she works on Southeast Asia's energy systems, electricity consumption and regional power-sector trends, collecting, cleaning and analyzing large energy and economic datasets.",
+    ab_b_lc:"Co-authored the lab's 2025 report on decarbonizing industrial captive generation in Indonesia, the analysis this platform builds on.",
+    ab_more:"Bios adapted from the lab's team page.", ab_teamlink:'Meet the full team',
+    ab_data:'Data & methodology',
+    ab_data_p:"Results come from GARUDA (Grid And Renewable Utilization & Deployment Analysis), the lab's generation and transmission capacity-expansion model, which co-optimizes industrial-facility and grid investments using PLN, MEMR and JETP planning data. Site, ownership and financing data come from the Earthwise Institute Indonesian Power Summary Database.",
+    ab_method:'Read the full methodology', ab_report:'2025 technical report', ab_zenodo:'Report and data on Zenodo',
+    ab_cta:'Want facility-specific analysis or a workshop?', ab_cta_link:'Contact the team',
+    ab_part:'Partners & stakeholders',
+    ab_partp:'Engaged through workshops and bilateral outreach in Jakarta, Bandung & Sulawesi',
+
+    /* contact */
+    ct_kick:'Contact', ct_h:'Request analysis or get in touch',
+    ct_p:'Park owners, PLN, provincial governments, financiers and researchers can ask the team for deeper analysis, a workshop, or help using the platform.',
+    ct_req_h:'Request facility analysis',
+    ct_req_p:'Facility-specific GARUDA runs: decarbonization pathways, grid-connection and transmission options, and costs by stakeholder for a park or plant you care about.',
+    ct_req_btn:'Request analysis',
+    ct_ws_h:'Workshops and briefings',
+    ct_ws_p:'A walkthrough of the platform and its results for your organization, or a workshop on captive power transition options.',
+    ct_ws_btn:'Ask about a workshop',
+    ct_data_h:'Data questions and corrections',
+    ct_data_p:"Spotted a wrong location, owner or capacity? Tell us which site and what's wrong. Site data comes from the Earthwise Institute database, and we pass corrections on.",
+    ct_data_btn:'Report a data issue',
+    ct_lab_h:'Power Transformation Lab',
+    ct_lab_p:'UC San Diego · School of Global Policy and Strategy and Department of Mechanical and Aerospace Engineering.',
+    ct_lab_link:'Lab contact page'
   },
   id: {
-    nav_explore:'Jelajahi peta', nav_region:'Wilayah', nav_method:'Metodologi', nav_about:'Tentang',
+    nav_explore:'Jelajahi peta', nav_region:'Wilayah', nav_method:'Metodologi', nav_about:'Tentang', nav_contact:'Kontak',
     m_h1:'Cara kerja analisis',
     m_lead:'Setiap jalur, biaya, dan peringkat kesiapan di platform ini berasal dari GARUDA, model ekspansi kapasitas pembangkitan & transmisi yang meng-ko-optimisasi investasi fasilitas industri bersama jaringan PLN. Halaman ini merangkum metode tersebut, berdasarkan laporan November 2025.',
     m_obj:'Tujuan penelitian', m_approach:'Pendekatan ko-optimisasi', m_path:'Jalur dekarbonisasi',
@@ -161,10 +190,38 @@ window.I18N = {
     reg_toggle:'Tampilkan peningkatan yang diusulkan', reg_cap:'Kapasitas operasi per lokasi', reg_leg_site:'Lokasi captive (biru = nikel, abu-abu = lainnya)',
     reg_tx:'Peningkatan transmisi yang dibutuhkan', th_corr:'Koridor',
 
-    ab_kick:'Tentang platform', ab_h:'Menjembatani pemodelan dan keputusan nyata',
-    ab_p:'Alat pendukung keputusan akses terbuka dari Power Transformation Lab di UC San Diego, menerjemahkan studi transisi sektoral menjadi panduan siap-investasi tingkat fasilitas bagi pemilik kawasan, PLN, pemerintah provinsi, dan pemodal.',
-    ab_team:'Tim', ab_data:'Data & metodologi', ab_part:'Mitra & pemangku kepentingan',
-    ab_partp:'Terlibat melalui lokakarya dan pertemuan bilateral di Jakarta, Bandung & Sulawesi'
+    ab_kick:'Tentang', ab_lab_h:'Power Transformation Lab',
+    ab_lab_p:'Power Transformation Lab di UC San Diego mempelajari kebutuhan teknis dan kelembagaan untuk menerapkan energi rendah karbon dalam skala besar. Bekerja di berbagai wilayah bersama mitra akademik, pemerintah, masyarakat sipil, dan industri, lab ini menghasilkan riset, model terbuka, dan data untuk tantangan iklim dan lingkungan.',
+    ab_p:'Platform ini adalah alat pendukung keputusan akses terbuka dari lab tersebut, menerjemahkan studi transisi sektoral menjadi panduan siap-investasi tingkat fasilitas bagi pemilik kawasan, PLN, pemerintah provinsi, dan pemodal.',
+    ab_visit:'Kunjungi pwrlab.org', ab_team:'Kontributor',
+    ab_r_pi:'Peneliti utama', ab_r_lead:'Peneliti pemimpin · GARUDA dan platform',
+    ab_r_ra:'Asisten peneliti · analisis fasilitas dan data', ab_r_co:'Mantan anggota lab · penulis pendamping, laporan teknis 2025',
+    ab_b_md:'Profesor madya di School of Global Policy and Strategy dan Departemen Teknik Mesin dan Dirgantara UC San Diego. Risetnya mengkaji implikasi teknis, konflik kelembagaan, dan rantai nilai global dalam penerapan energi rendah karbon dalam skala besar.',
+    ab_b_kg:'Mahasiswa doktoral Teknik Mesin dan Dirgantara di UC San Diego yang menerapkan alat rekayasa pada pertanyaan ekonomi politik. Risetnya melihat bagaimana dekarbonisasi listrik industri, reformasi pasar listrik, dan perdagangan listrik lintas batas membentuk transisi energi bersih nasional.',
+    ab_b_sz:'Mahasiswa sarjana Ilmu Data di UC San Diego. Di lab, ia meneliti sistem energi Asia Tenggara, konsumsi listrik, dan tren sektor ketenagalistrikan regional, dengan mengumpulkan, membersihkan, dan menganalisis data energi dan ekonomi berskala besar.',
+    ab_b_lc:'Penulis pendamping laporan lab tahun 2025 tentang dekarbonisasi pembangkit captive industri di Indonesia, analisis yang menjadi dasar platform ini.',
+    ab_more:'Biografi diadaptasi dari halaman tim lab.', ab_teamlink:'Lihat seluruh tim',
+    ab_data:'Data & metodologi',
+    ab_data_p:'Hasil berasal dari GARUDA (Grid And Renewable Utilization & Deployment Analysis), model ekspansi kapasitas pembangkitan dan transmisi milik lab yang meng-ko-optimisasi investasi fasilitas industri dan jaringan dengan data perencanaan PLN, KESDM, dan JETP. Data lokasi, kepemilikan, dan pembiayaan berasal dari Earthwise Institute Indonesian Power Summary Database.',
+    ab_method:'Baca metodologi lengkap', ab_report:'Laporan teknis 2025', ab_zenodo:'Laporan dan data di Zenodo',
+    ab_cta:'Butuh analisis khusus fasilitas atau lokakarya?', ab_cta_link:'Hubungi tim',
+    ab_part:'Mitra & pemangku kepentingan',
+    ab_partp:'Terlibat melalui lokakarya dan pertemuan bilateral di Jakarta, Bandung & Sulawesi',
+
+    ct_kick:'Kontak', ct_h:'Minta analisis atau hubungi kami',
+    ct_p:'Pemilik kawasan, PLN, pemerintah provinsi, pemodal, dan peneliti dapat meminta analisis lebih mendalam, lokakarya, atau bantuan menggunakan platform kepada tim.',
+    ct_req_h:'Minta analisis fasilitas',
+    ct_req_p:'Simulasi GARUDA khusus fasilitas: jalur dekarbonisasi, opsi koneksi jaringan dan transmisi, serta biaya per pemangku kepentingan untuk kawasan atau pembangkit yang Anda minati.',
+    ct_req_btn:'Minta analisis',
+    ct_ws_h:'Lokakarya dan pemaparan',
+    ct_ws_p:'Pemaparan platform dan hasilnya untuk organisasi Anda, atau lokakarya tentang opsi transisi listrik captive.',
+    ct_ws_btn:'Tanya soal lokakarya',
+    ct_data_h:'Pertanyaan dan koreksi data',
+    ct_data_p:'Menemukan lokasi, pemilik, atau kapasitas yang keliru? Beri tahu kami lokasi mana dan apa yang salah. Data lokasi berasal dari basis data Earthwise Institute, dan kami meneruskan koreksinya.',
+    ct_data_btn:'Laporkan masalah data',
+    ct_lab_h:'Power Transformation Lab',
+    ct_lab_p:'UC San Diego · School of Global Policy and Strategy dan Departemen Teknik Mesin dan Dirgantara.',
+    ct_lab_link:'Halaman kontak lab'
   }
 };
 

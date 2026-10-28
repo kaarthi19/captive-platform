@@ -161,6 +161,17 @@ table.dt tr.off td { color: var(--mut); }
 .st-plan { background: #fff; color: var(--ink); }
 .st-off { background: #fff; color: var(--mut); border-style: dashed; }
 
+/* ---- about / contact ---- */
+.people { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 14px; }
+.person { display: flex; gap: 16px; align-items: flex-start; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: #fff; }
+.person img, .person .initials { width: 88px; height: 88px; border-radius: 50%; object-fit: cover; flex: none; background: var(--soft); }
+.person .initials { display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 22px; color: var(--mut); border: 1px solid var(--line); }
+.person h3 { font-size: 16px; font-weight: 600; margin: 2px 0 2px; }
+.person .role { font-size: 12px; font-weight: 600; color: var(--clean); margin: 0 0 8px; }
+.person p { font-size: 13.5px; line-height: 1.6; color: #3b3a47; margin: 0; }
+.grid3.contact .card { display: flex; flex-direction: column; align-items: flex-start; }
+.grid3.contact .card .sub { flex: 1; }
+
 /* ---- footer ---- */
 footer.site { border-top: 1px solid var(--line); background: #fff; margin-top: 44px; }
 footer.site .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding-top: 18px; padding-bottom: 18px; font-size: 12px; color: var(--mut); }
@@ -200,7 +211,9 @@ footer.site .wrap { display: flex; justify-content: space-between; flex-wrap: wr
 
 @media (max-width: 760px) {
   .stats { grid-template-columns: 1fr 1fr; }
-  .grid2, .split, .partners { grid-template-columns: 1fr; }
+  .grid2, .grid3, .split, .partners { grid-template-columns: 1fr; }
+  .people { grid-template-columns: 1fr; }
+  .person img, .person .initials { width: 64px; height: 64px; }
   dl.facts { grid-template-columns: 1fr; gap: 1px; }
   .tblhead input { min-width: 0; width: 100%; }
   .card .stat { padding: 14px 12px; }
