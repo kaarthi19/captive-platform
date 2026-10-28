@@ -14,13 +14,27 @@
   .mblock p, .mblock li { font-size:14px; color:#3b3a47; }
   .mblock ul { padding-left:18px; margin:8px 0; }
   .mblock li { margin:5px 0; }
-  .flow { display:grid; grid-template-columns:repeat(4,1fr) 0.5fr; gap:8px; align-items:stretch; margin:14px 0; }
-  .flow .step { background:var(--soft); border-radius:9px; padding:10px; font-size:11.5px; }
-  .flow .step .h { font-size:10px; text-transform:uppercase; letter-spacing:.4px; color:var(--mut); font-weight:600; margin-bottom:4px; }
-  .flow .opt { background:var(--coal); color:#fff; border-radius:9px; padding:10px; font-size:11.5px; display:flex; align-items:center; }
-  .flow .lane { grid-column:1 / -1; font-size:11px; font-weight:600; color:var(--coral); margin-top:6px; }
-  .note { font-size:12.5px; background:#fff7f1; border:1px solid #f3d9c8; color:#8a3c1c; border-radius:8px; padding:10px 12px; margin-top:10px; }
-  @media(max-width:760px){ .flow{ grid-template-columns:1fr 1fr; } .flow .opt{ grid-column:1 / -1; } }
+  .cof { display:grid; grid-template-columns:1fr 28px 210px; align-items:stretch; margin:16px 0 4px; }
+  .cof-lanes { display:grid; gap:10px; }
+  .cof-lane { border:1px solid var(--line); border-radius:var(--radius); padding:10px 12px 12px; background:#fff; }
+  .cof-lh { display:inline-block; font-size:11px; font-weight:600; letter-spacing:.3px; padding:2px 9px; border-radius:20px; margin-bottom:8px; }
+  .cof-lane.grid .cof-lh { background:#e6eff5; color:#2d5f7d; }
+  .cof-lane.ind .cof-lh { background:#e4f1ec; color:#22664f; }
+  .cof-steps { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(3,1fr); gap:18px; counter-reset:s; }
+  .cof-steps li { position:relative; font-size:12.5px; line-height:1.45; color:var(--ink); }
+  .cof-steps li + li::before { content:""; position:absolute; left:-13px; top:50%; width:7px; height:7px; border-top:1.5px solid #9aa7ae; border-right:1.5px solid #9aa7ae; transform:translateY(-50%) rotate(45deg); }
+  .cof-sh { display:block; font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:.4px; color:var(--mut); margin-bottom:2px; }
+  .cof-join { position:relative; margin:22px 0; border:1.5px solid #9aa7ae; border-left:0; border-radius:0 8px 8px 0; width:12px; }
+  .cof-join::after { content:""; position:absolute; left:12px; top:50%; width:14px; border-top:1.5px solid #9aa7ae; }
+  .cof-core { background:var(--coal); color:#fff; border-radius:var(--radius); padding:16px; display:flex; flex-direction:column; justify-content:center; gap:6px; font-size:12.5px; line-height:1.5; }
+  .cof-core b { font-size:15px; letter-spacing:.5px; }
+  @media(max-width:760px){
+    .cof { grid-template-columns:1fr; }
+    .cof-steps { grid-template-columns:1fr; gap:10px; }
+    .cof-steps li + li::before { display:none; }
+    .cof-join { margin:0 auto; width:0; height:22px; border:0; border-left:1.5px solid #9aa7ae; border-radius:0; }
+    .cof-join::after { display:none; }
+  }
 </style>
 </head>
 <body>
@@ -69,19 +83,28 @@
     <h2 data-i18n="m_approach">Co-optimization approach</h2>
     <div data-i18n-html="m_approach_b">
     <p>Each industrial facility is modeled as an islanded system that can also import power through a grid connection. The main PLN grid is optimized at the same time, so industrial and grid investments are solved together under a single objective that minimizes total system cost. Two parallel tracks — grid and industry — feed a shared least-cost expansion model:</p>
-    <div class="flow">
-      <div class="lane">Grid track</div>
-      <div class="step"><div class="h">Inputs</div>Official documents from government, PLN &amp; CSOs</div>
-      <div class="step"><div class="h">Resource assessment</div>National Energy Plan (RUEN)</div>
-      <div class="step"><div class="h">Technical constraints</div>Demand balance, transmission, min/max power, ramp</div>
-      <div class="step"><div class="h">→</div>Feeds GARUDA</div>
-      <div class="opt" style="grid-row:span 2"><div><b>GARUDA optimization</b><br>Least-cost generation &amp; transmission expansion, co-optimized for grid + industry</div></div>
-      <div class="lane">Industry track</div>
-      <div class="step"><div class="h">Inputs</div>Captive power database (Sunrise Project)</div>
-      <div class="step"><div class="h">Resource assessment</div>Captive renewable site ID (ERA5 + land-use)</div>
-      <div class="step"><div class="h">Technical constraints</div>Electricity &amp; heat demand balance, min/max power, ramp</div>
-      <div class="step"><div class="h">→</div>Feeds GARUDA</div>
     </div>
+    <div class="cof" role="img" aria-label="Diagram: the grid track and the industry track each go from inputs to resource assessment to technical constraints, and both feed the GARUDA optimization">
+      <div class="cof-lanes">
+        <div class="cof-lane grid">
+          <div class="cof-lh" data-i18n="fl_grid">Grid track</div>
+          <ol class="cof-steps">
+            <li><span class="cof-sh" data-i18n="fl_in">Inputs</span><span data-i18n="fl_g1">Official documents from government, PLN &amp; CSOs</span></li>
+            <li><span class="cof-sh" data-i18n="fl_res">Resource assessment</span><span data-i18n="fl_g2">National Energy Plan (RUEN)</span></li>
+            <li><span class="cof-sh" data-i18n="fl_con">Technical constraints</span><span data-i18n="fl_g3">Demand balance, transmission, min/max power, ramp</span></li>
+          </ol>
+        </div>
+        <div class="cof-lane ind">
+          <div class="cof-lh" data-i18n="fl_ind">Industry track</div>
+          <ol class="cof-steps">
+            <li><span class="cof-sh" data-i18n="fl_in">Inputs</span><span data-i18n="fl_i1">Captive power database (Sunrise Project)</span></li>
+            <li><span class="cof-sh" data-i18n="fl_res">Resource assessment</span><span data-i18n="fl_i2">Captive renewable site ID (ERA5 + land-use)</span></li>
+            <li><span class="cof-sh" data-i18n="fl_con">Technical constraints</span><span data-i18n="fl_i3">Electricity &amp; heat demand balance, min/max power, ramp</span></li>
+          </ol>
+        </div>
+      </div>
+      <div class="cof-join" aria-hidden="true"></div>
+      <div class="cof-core"><b>GARUDA</b><span data-i18n="fl_core">Least-cost generation &amp; transmission expansion, co-optimized for grid + industry</span></div>
     </div>
   </section>
 
