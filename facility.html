@@ -43,43 +43,16 @@
       </div>
       <div>
         <h3 class="h3" data-i18n="fac_facts">Key facts</h3>
+        <div class="locmap" id="locMap" role="img" aria-label="Locator map of the site"></div>
+        <p class="sub" id="locCaption" style="margin:6px 0 12px"></p>
         <dl class="facts" id="facFacts"></dl>
       </div>
     </div>
     <p class="sub" id="facModel" style="margin:12px 0 0"></p>
   </div>
 
-  <div class="card" style="margin-top:16px">
-    <h2 data-i18n="fac_units">Coal units</h2>
-    <p class="sub" data-i18n="fac_unitsp">Every captive coal unit recorded at this site, including cancelled, shelved and retired ones.</p>
-    <div class="tscroll"><table class="dt">
-      <thead><tr><th data-i18n="th_unit">Unit</th><th style="text-align:right">MW</th><th data-i18n="th_status">Status</th><th style="text-align:right" data-i18n="th_start">Since</th><th data-i18n="th_owner_direct">Owner</th><th data-i18n="th_project">Supports</th></tr></thead>
-      <tbody id="unitBody"></tbody>
-    </table></div>
-    <button class="btn ghost" id="unitMore" style="margin-top:10px;display:none"></button>
-  </div>
-
-  <div class="card" id="projCard" style="margin-top:16px;display:none">
-    <h2 data-i18n="fac_projects">Industrial projects powered from this site</h2>
-    <p class="sub" data-i18n="fac_projectsp">Smelters, refineries and downstream plants linked to this site in the Earthwise extended database.</p>
-    <div class="tscroll"><table class="dt">
-      <thead><tr><th data-i18n="th_projname">Project</th><th data-i18n="th_product">Product</th><th style="text-align:right" data-i18n="th_cap">Capacity</th><th data-i18n="th_status">Status</th><th style="text-align:right" data-i18n="th_start">Since</th></tr></thead>
-      <tbody id="projBody"></tbody>
-    </table></div>
-  </div>
-
-  <div class="card" id="finCard" style="margin-top:16px;display:none">
-    <h2 data-i18n="fac_fin">Financing</h2>
-    <p class="sub" data-i18n="fac_finp">Disclosed loans of three years or longer linked to this site's power units (project finance or capex loans).</p>
-    <div class="tscroll"><table class="dt">
-      <thead><tr><th style="text-align:right" data-i18n="th_year">Year</th><th data-i18n="th_financiers">Financier(s)</th><th style="text-align:right" data-i18n="th_amount">USD m</th><th data-i18n="th_type">Type</th><th data-i18n="th_ref">Source</th></tr></thead>
-      <tbody id="finBody"></tbody>
-    </table></div>
-  </div>
-
-  <p class="sub" id="facSources" style="margin-top:12px"></p>
-
-  <div class="insight" style="margin:16px 0" data-i18n="fac_illus">Pathway, cost and energy-mix figures below are illustrative. GARUDA results for each site are not loaded yet.</div>
+  <h2 class="sechead" data-i18n="fac_sec_decarb">Decarbonization pathways</h2>
+  <div class="insight" style="margin:0 0 16px" data-i18n="fac_illus">Pathway, cost and energy-mix figures below are illustrative. GARUDA results for each site are not loaded yet.</div>
 
   <div class="split">
     <div class="card">
@@ -131,6 +104,37 @@
       </table>
     </div>
   </div>
+
+  <h2 class="sechead" data-i18n="fac_sec_site">Site details</h2>
+  <div class="card" style="margin-top:16px">
+    <h2 data-i18n="fac_units">Coal units</h2>
+    <p class="sub" data-i18n="fac_unitsp">Every captive coal unit recorded at this site, including cancelled, shelved and retired ones.</p>
+    <div class="tscroll"><table class="dt">
+      <thead><tr><th data-i18n="th_unit">Unit</th><th style="text-align:right">MW</th><th data-i18n="th_status">Status</th><th style="text-align:right" data-i18n="th_start">Since</th><th data-i18n="th_owner_direct">Owner</th><th data-i18n="th_project">Supports</th></tr></thead>
+      <tbody id="unitBody"></tbody>
+    </table></div>
+    <button class="btn ghost" id="unitMore" style="margin-top:10px;display:none"></button>
+  </div>
+
+  <div class="card" id="projCard" style="margin-top:16px;display:none">
+    <h2 data-i18n="fac_projects">Industrial projects powered from this site</h2>
+    <p class="sub" data-i18n="fac_projectsp">Smelters, refineries and downstream plants linked to this site in the Earthwise extended database.</p>
+    <div class="tscroll"><table class="dt">
+      <thead><tr><th data-i18n="th_projname">Project</th><th data-i18n="th_product">Product</th><th style="text-align:right" data-i18n="th_cap">Capacity</th><th data-i18n="th_status">Status</th><th style="text-align:right" data-i18n="th_start">Since</th></tr></thead>
+      <tbody id="projBody"></tbody>
+    </table></div>
+  </div>
+
+  <div class="card" id="finCard" style="margin-top:16px;display:none">
+    <h2 data-i18n="fac_fin">Financing</h2>
+    <p class="sub" data-i18n="fac_finp">Disclosed loans of three years or longer linked to this site's power units (project finance or capex loans).</p>
+    <div class="tscroll"><table class="dt">
+      <thead><tr><th style="text-align:right" data-i18n="th_year">Year</th><th data-i18n="th_financiers">Financier(s)</th><th style="text-align:right" data-i18n="th_amount">USD m</th><th data-i18n="th_type">Type</th><th data-i18n="th_ref">Source</th></tr></thead>
+      <tbody id="finBody"></tbody>
+    </table></div>
+  </div>
+
+  <p class="sub" id="facSources" style="margin-top:12px"></p>
 </main>
 
 <footer class="site"><div class="wrap">
@@ -138,6 +142,8 @@
   <span><a href="contact.html#request" data-i18n="foot_req">Request analysis</a> · <a href="contact.html#workshops" data-i18n="foot_work">Workshops</a></span>
 </div></footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <script src="assets/js/parks.js"></script>
 <script src="assets/js/site-details.js"></script>

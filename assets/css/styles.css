@@ -147,8 +147,13 @@ table.dt td a { color: var(--ink); font-weight: 600; }
 table.dt .tag { white-space: nowrap; }
 
 /* ---- facility detail ---- */
+.sechead { font-size: 20px; margin: 34px 0 12px; }
 .h3 { font-size: 13px; font-weight: 600; margin: 0 0 8px; color: var(--ink); }
 .mut { color: var(--mut); }
+.sharebar { display: inline-block; vertical-align: middle; width: 90px; height: 8px; border-radius: 4px; background: var(--soft); border: 1px solid var(--line); overflow: hidden; }
+.sharebar i { display: block; height: 100%; background: #2a78d6; border-radius: 4px; }
+.sharepct { display: inline-block; min-width: 42px; margin-left: 8px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.locmap { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: #f4f7f7; }
 dl.facts { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; margin: 0; font-size: 12.5px; }
 dl.facts dt { color: var(--mut); }
 dl.facts dd { margin: 0; color: var(--ink); overflow-wrap: anywhere; }

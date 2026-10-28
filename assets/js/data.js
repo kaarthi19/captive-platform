@@ -52,6 +52,22 @@ window.CORRIDORS = [
   { from:'pcc',                        hub:'makassar', mw:150,  cost:0.1, kv:150, status:'proposed' }
 ];
 
+window.esc = function (v) {
+  return String(v == null ? '' : v).replace(/[&<>"]/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+  });
+};
+
+/* Owner name, linked to the company's own website when data/owners.csv has a checked URL. */
+window.ownerLink = function (o) {
+  return o.url
+    ? '<a href="' + window.esc(o.url) + '" target="_blank" rel="noopener">' + window.esc(o.name) + ' ↗</a>'
+    : window.esc(o.name);
+};
+
+/* Indonesia province basemap, shared by the map views. */
+window.BASEMAP_URL = 'https://cdn.jsdelivr.net/npm/datamaps@0.5.10/src/js/data/idn.topo.json';
+
 window.getFac = function (id) {
   return window.FAC.find(function (f) { return f.id === id; }) || window.FAC[0];
 };

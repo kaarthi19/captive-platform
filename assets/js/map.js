@@ -8,9 +8,7 @@
 
   function t(k) { return (window.I18N[window.CP_LANG || 'en'] || window.I18N.en)[k]; }
   function mw(v) { return Math.round(v).toLocaleString() + ' MW'; }
-  function esc(v) {
-    return String(v == null ? '' : v).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
-  }
+  var esc = window.esc;
 
   /* headline stats */
   var opMW = d3.sum(window.FAC, function (f) { return f.op; });

@@ -1,7 +1,7 @@
 /* Facility detail page.
    Headline feature: a live coal-price / grid-tariff / solar-capex SENSITIVITY model that
    recomputes the levelized cost of each decarbonization pathway and flags the cheapest one.
-   The cost model is intentionally simple and parametric — illustrative of how the Julia/JuMP
+   The cost model is intentionally simple and parametric — illustrative of how GARUDA's
    capacity-expansion outputs would drive the page, not a substitute for them. */
 (function () {
   var params = new URLSearchParams(location.search);
@@ -12,9 +12,7 @@
   var res = window.placeholderResults(fac);
   var det = (window.SITE_DETAILS || {})[fac.id];
   function mw(v) { return v ? Math.round(v).toLocaleString() + ' MW' : '—'; }
-  function esc(v) {
-    return String(v == null ? '' : v).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
-  }
+  var esc = window.esc;
 
   /* Earthwise status -> op / con / plan, or 'off' for cancelled, shelved, retired, closed, unknown */
   var BUCKET = { 'Operating': 'op', 'Construction': 'con', 'Pre-Construction': 'plan', 'Announced': 'plan' };
@@ -41,16 +39,18 @@
 
     /* key facts */
     var place = [det.village, det.district, fac.regency, fac.prov].filter(Boolean).join(', ');
+    document.getElementById('locCaption').textContent = place + ' · ' + fac.lat.toFixed(3) + ', ' + fac.lng.toFixed(3) +
+      ' (' + t(fac.loc === 'exact' ? 'k_exact' : 'k_approx') + ')';
+    var top = det.owners[0], more = det.owners.length - 1;
+    var owners = top
+      ? window.ownerLink(top) + ' <span class="mut">· ' + esc(top.country || '—') + ' · ' + Math.round(top.share) + '%</span>' +
+        (more > 0 ? ' <span class="mut">+ ' + more + ' ' + t('k_more') + '</span>' : '')
+      : '—';
     var facts = [
-      ['k_location', esc(place)],
       ['k_island', esc(det.island || '—') + (det.smallIsland ? ' · ' + t('k_small') : '')],
-      ['k_coords', fac.lat.toFixed(3) + ', ' + fac.lng.toFixed(3) + ' · ' + t(fac.loc === 'exact' ? 'k_exact' : 'k_approx')],
       ['k_commod', esc(fac.commodities.join(', '))],
       ['k_ownership', det.ownership.map(function (o) { return t(OWNERSHIP[o]) || esc(o); }).join(', ') + (det.jv ? ' · ' + t('k_jv') : '')],
-      ['k_owners', det.ultimate.map(esc).join('<br>')],
-      ['k_countries', esc(det.countries.join(', '))],
-      ['k_epc', det.epc.length ? det.epc.map(esc).join('<br>') : '—'],
-      ['k_china', det.chinaRole.length ? esc(det.chinaRole.join(', ')) : '—'],
+      ['k_owners', owners + '<br><a href="ownership.html?id=' + encodeURIComponent(fac.id) + '">' + t('k_owndetail') + ' →</a>'],
       ['k_other', esc(det.otherPower || '—')],
       ['k_aka', det.aliases.length ? esc(det.aliases.slice(0, 6).join(' · ')) + (det.aliases.length > 6 ? ' …' : '') : '—']
     ];
@@ -102,6 +102,56 @@
         return '<a href="' + esc(u) + '" target="_blank" rel="noopener">' + (i + 1) + '</a>';
       }).join(', ') : '');
   }
+  /* locator map: the site and its neighbours, with an inset of Indonesia for context */
+  function drawLocator() {
+    var W = 360, H = 210, el = document.getElementById('locMap');
+    var svg = d3.select(el).append('svg').attr('viewBox', '0 0 ' + W + ' ' + H).attr('width', '100%').style('display', 'block');
+    d3.json(window.BASEMAP_URL).then(function (topo) {
+      var land = topojson.feature(topo, topo.objects.idn);
+      var dLat = 2.0, dLng = dLat * W / H;
+      var view = { type: 'MultiPoint', coordinates: [[fac.lng - dLng, fac.lat - dLat], [fac.lng + dLng, fac.lat + dLat]] };
+      var proj = d3.geoMercator().fitSize([W, H], view), path = d3.geoPath(proj);
+      svg.append('g').selectAll('path').data(land.features).join('path')
+        .attr('d', path).attr('fill', '#dfe7ea').attr('stroke', '#fff').attr('stroke-width', 0.8);
+
+      var near = window.FAC.filter(function (f) {
+        return f.id !== fac.id && Math.abs(f.lat - fac.lat) < dLat && Math.abs(f.lng - fac.lng) < dLng;
+      });
+      svg.append('g').selectAll('a').data(near).join('a')
+        .attr('href', function (f) { return 'facility.html?id=' + encodeURIComponent(f.id); })
+        .append('circle')
+        .attr('cx', function (f) { return proj([f.lng, f.lat])[0]; })
+        .attr('cy', function (f) { return proj([f.lng, f.lat])[1]; })
+        .attr('r', 3.5).attr('fill', '#8a9197').attr('stroke', '#fff').attr('stroke-width', 1)
+        .append('title').text(function (f) { return f.name; });
+
+      var p = proj([fac.lng, fac.lat]), col = window.sectorColor(fac.sector);
+      if (fac.loc !== 'exact') {
+        svg.append('circle').attr('cx', p[0]).attr('cy', p[1]).attr('r', 20)
+          .attr('fill', 'none').attr('stroke', col).attr('stroke-dasharray', '3 3').attr('opacity', 0.7);
+      }
+      svg.append('circle').attr('cx', p[0]).attr('cy', p[1]).attr('r', 13).attr('fill', col).attr('opacity', 0.18);
+      svg.append('circle').attr('cx', p[0]).attr('cy', p[1]).attr('r', 6.5)
+        .attr('fill', col).attr('stroke', '#fff').attr('stroke-width', 2)
+        .append('title').text(fac.name);
+
+      /* inset: all of Indonesia, with the zoomed area outlined */
+      var iw = 96, ih = 40, ix = W - iw - 6, iy = H - ih - 6;
+      var inset = svg.append('g').attr('transform', 'translate(' + ix + ',' + iy + ')');
+      inset.append('rect').attr('width', iw).attr('height', ih).attr('rx', 3)
+        .attr('fill', '#fff').attr('stroke', 'var(--line)').attr('opacity', 0.95);
+      var iproj = d3.geoMercator().fitExtent([[3, 3], [iw - 3, ih - 3]], land);
+      inset.append('path').attr('d', d3.geoPath(iproj)(land)).attr('fill', '#c3ccd1');
+      var a = iproj([fac.lng - dLng, fac.lat + dLat]), b = iproj([fac.lng + dLng, fac.lat - dLat]);
+      inset.append('rect').attr('x', a[0]).attr('y', a[1])
+        .attr('width', Math.max(3, b[0] - a[0])).attr('height', Math.max(3, b[1] - a[1]))
+        .attr('fill', 'none').attr('stroke', col).attr('stroke-width', 1.2);
+    }).catch(function () {
+      el.innerHTML = '<div class="sub" style="padding:40px 10px;text-align:center">Map unavailable offline.</div>';
+    });
+  }
+  drawLocator();
+
   document.getElementById('unitMore').addEventListener('click', function () {
     showAllUnits = !showAllUnits; renderProfile();
   });

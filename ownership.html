@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ownership · Captive Power Platform</title>
+<link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap navrow">
+    <a class="brand" href="index.html">
+      <img class="mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+      <span><b>Captive Power Decarbonization</b><span data-i18n="brand_sub">Indonesia · Power Transformation Lab</span></span>
+    </a>
+    <nav class="main">
+      <a href="index.html" data-i18n="nav_explore">Explore map</a>
+      <a href="region.html" data-i18n="nav_region">Regions</a>
+      <a href="methodology.html" data-i18n="nav_method">Methodology</a>
+      <a href="about.html" data-i18n="nav_about">About</a>
+      <a href="contact.html" data-i18n="nav_contact">Contact</a>
+    </nav>
+    <div class="lang"><button data-lang="en" class="on">EN</button><button data-lang="id">ID</button></div>
+  </div>
+</header>
+
+<main class="wrap section">
+  <a class="back" id="backFac" href="facility.html">← <span data-i18n="own_back">Back to facility analysis</span></a>
+  <div class="kick" style="margin-top:8px" data-i18n="own_kick">Ownership</div>
+  <h1 id="ownName" style="font-size:24px">—</h1>
+  <p class="sub" id="ownMeta"></p>
+
+  <div class="card">
+    <h2 data-i18n="own_who">Who owns this site</h2>
+    <p class="sub" data-i18n="own_whop">Ultimate owners, weighted by their share of the site's operating, under-construction and planned coal capacity.</p>
+    <div class="tscroll"><table class="dt">
+      <thead><tr><th data-i18n="own_owner">Ultimate owner</th><th data-i18n="own_country">Country</th><th data-i18n="own_share">Share of capacity</th><th style="text-align:right">MW</th><th data-i18n="own_plants">Plants</th></tr></thead>
+      <tbody id="ownBody"></tbody>
+    </table></div>
+    <p class="sub" style="margin:10px 0 0" data-i18n="own_note">Unit-level ownership percentages come from Earthwise; where none are given, a unit is split equally among its listed owners. Links go to company websites we have checked.</p>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h2 data-i18n="own_profile">Ownership profile</h2>
+    <dl class="facts" id="ownFacts" style="margin-top:10px"></dl>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h2 data-i18n="own_chain">Ownership chain by plant</h2>
+    <p class="sub" data-i18n="own_chainp">From the operator up to the ultimate owners, for each group of units with the same ownership.</p>
+    <div class="tscroll"><table class="dt">
+      <thead><tr><th data-i18n="own_plant">Plant · units</th><th data-i18n="own_operator">Operator</th><th data-i18n="own_direct">Direct owner</th><th data-i18n="own_parent">Owner parent</th><th data-i18n="own_owner">Ultimate owner</th></tr></thead>
+      <tbody id="chainBody"></tbody>
+    </table></div>
+  </div>
+</main>
+
+<footer class="site"><div class="wrap">
+  <span data-i18n="foot_rights">© 2026 Power Transformation Lab · UC San Diego · CC-BY open data</span>
+  <span><a href="contact.html#request" data-i18n="foot_req">Request analysis</a> · <a href="contact.html#workshops" data-i18n="foot_work">Workshops</a></span>
+</div></footer>
+
+<script src="assets/js/parks.js"></script>
+<script src="assets/js/site-details.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/ownership.js"></script>
+<script>window.initLang();</script>
+</body>
+</html>

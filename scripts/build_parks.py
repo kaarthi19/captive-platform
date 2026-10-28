@@ -209,14 +209,35 @@ def split_list(v, sep=';'):
     return [x.strip() for x in str(v or '').split(sep) if x.strip() and x.strip() not in ('NA', 'None', 'F')]
 
 
+def parse_shares(v):
+    """'Lygend Resources (54.9%); Harita Group (45.1%)' -> [('Lygend Resources', 54.9), ('Harita Group', 45.1)].
+    Shares are None when not given; '0,40%' style decimals are accepted."""
+    out = []
+    for part in split_list(v):
+        m = re.match(r'^(.*?)\s*\((\d+(?:[.,]\d+)?)\s*%\)$', part)
+        out.append((m.group(1).strip(), float(m.group(2).replace(',', '.'))) if m else (part, None))
+    return out
+
+
+def read_owners():
+    """data/owners.csv: Earthwise ultimate-owner spelling -> company group, country and website.
+    Only URLs marked 'confirmed' (opened and checked to be the company's own site) are linked."""
+    path = os.path.join(ROOT, 'data', 'owners.csv')
+    if not os.path.exists(path):
+        return {}
+    return {r['earthwise_name']: r for r in csv.DictReader(open(path, encoding='utf-8'))}
+
+
 def build_details(units, sites, financing, extended):
     """Per-site detail for the facility page: every unit (including cancelled / shelved / retired
     ones at the same site), ownership, financing transactions and the industrial projects the
     site's power supports."""
     by_key = {s['_key']: s for s in sites}
-    det, unit_site, plant_site = {}, {}, {}
+    owners = read_owners()
+    det, unit_site, plant_site, owner_mw = {}, {}, {}, {}
     for s in sites:
-        det[s['id']] = {'units': [], 'ultimate': [], 'countries': [], 'ownership': [], 'jv': False,
+        owner_mw[s['id']] = OrderedDict()
+        det[s['id']] = {'units': [], 'owners': [], 'countries': [], 'ownership': [], 'jv': False,
                         'epc': [], 'chinaRole': [], 'aliases': [], 'district': None, 'village': None,
                         'island': None, 'smallIsland': False, 'sources': [], 'finance': [], 'projects': [],
                         'otherPower': None}
@@ -233,14 +254,31 @@ def build_details(units, sites, financing, extended):
         d = det[s['id']]
         unit_site[u['EW Project ID']] = s['id']
         plant_site[u['Project Name English']] = s['id']
+        shares = parse_shares(u['Ultimate Owner (All)'])
+        ultimate = []
+        for name, pct in shares:
+            o = owners.get(name, {})
+            group = o.get('group') or name
+            ultimate.append([group, pct])
+            if STATUS.get(u['Status']):  # capacity-weighted ownership over live units only
+                w = pct / 100 if pct is not None else 1 / len(shares)
+                url = o.get('url') if o.get('confidence') == 'confirmed' else None
+                a = owner_mw[s['id']].setdefault(group, {'name': group, 'mw': 0.0, 'url': url or None,
+                                                         'country': o.get('country') or None, 'plants': []})
+                a['mw'] += num(u['Capacity (MW)']) * w
+                if not a['country'] and name == u['Majority or Whole Ultimate Owner']:
+                    a['country'] = u['Majority or Whole Ultimate Owner Country']
+                add(a['plants'], plant_short(u['Project Name English']))
         d['units'].append({
             'plant': plant_short(u['Project Name English']), 'phase': u['Phase / Unit'],
             'mw': num(u['Capacity (MW)']), 'status': u['Status'],
             'start': year(u['(Expected) Start year']), 'retire': year(u['(Expected) Retire Year']),
-            'owner': u['Owner'], 'epc': u['EPC'], 'project': u['Supported Project'],
+            'owner': u['Owner'], 'parent': u['Owner Parent'], 'operator': u['Operator'],
+            'ultimate': ultimate, 'type': u['Ownership Type'], 'jv': u['Solely Owned / JV'] == 'JV',
+            'china': u['Role of Chinese Entities'] if u['Role of Chinese Entities'] not in ('NA', 'None', 'F') else None,
+            'epc': u['EPC'], 'project': u['Supported Project'],
             'fuel': u['Alternate Fuel'] if u['Alternate Fuel'] not in ('NA', 'None') else None,
         })
-        add(d['ultimate'], u['Ultimate Owner (All)'])
         add(d['countries'], *split_list(u['Ultimate Owner Country (All)'], ','))
         add(d['ownership'], u['Ownership Type'])
         d['jv'] = d['jv'] or u['Solely Owned / JV'] == 'JV'
@@ -256,8 +294,11 @@ def build_details(units, sites, financing, extended):
         if link and str(link).startswith('http'):
             add(d['sources'], link)
 
-    for d in det.values():
+    for sid, d in det.items():
         d['units'].sort(key=lambda x: (x['plant'], x['start'] or 9999, str(x['phase'])))
+        live = sum(o['mw'] for o in owner_mw[sid].values()) or 1
+        d['owners'] = sorted(({**o, 'mw': round(o['mw']), 'share': round(o['mw'] / live * 100, 1)}
+                              for o in owner_mw[sid].values()), key=lambda o: -o['mw'])
 
     for t in financing:
         ids = {unit_site[p] for p in split_list(t['Project ID']) if p in unit_site}
