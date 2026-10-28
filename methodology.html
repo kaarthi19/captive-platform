@@ -60,11 +60,14 @@
 
   <section class="mblock" id="obj">
     <h2 data-i18n="m_obj">Research objective</h2>
+    <div data-i18n-html="m_obj_b">
     <p>The analysis investigates how Indonesian industries with captive coal generators can decarbonize their electricity supply in line with national clean-energy objectives, focusing on near- to mid-term solutions through <b>2035</b> for power systems that operate independently of the PLN grid. It compares two main families of decarbonization options — <b>on-site renewables</b> (solar, wind, geothermal, battery storage) and <b>grid connection</b> — to identify the optimal, cost-effective mix for each facility.</p>
+    </div>
   </section>
 
   <section class="mblock" id="approach">
     <h2 data-i18n="m_approach">Co-optimization approach</h2>
+    <div data-i18n-html="m_approach_b">
     <p>Each industrial facility is modeled as an islanded system that can also import power through a grid connection. The main PLN grid is optimized at the same time, so industrial and grid investments are solved together under a single objective that minimizes total system cost. Two parallel tracks — grid and industry — feed a shared least-cost expansion model:</p>
     <div class="flow">
       <div class="lane">Grid track</div>
@@ -79,10 +82,12 @@
       <div class="step"><div class="h">Technical constraints</div>Electricity &amp; heat demand balance, min/max power, ramp</div>
       <div class="step"><div class="h">→</div>Feeds GARUDA</div>
     </div>
+    </div>
   </section>
 
   <section class="mblock" id="path">
     <h2 data-i18n="m_path">Decarbonization pathways</h2>
+    <div data-i18n-html="m_path_b">
     <p>Results combine two factors: the <b>decarbonization option</b> available to a facility, and the <b>clean-energy target</b> applied. The pathways shown on facility pages map to the report's modeled scenarios:</p>
     <ul>
       <li><b>Business as usual</b> — facility stays off-grid and continues operating its coal generators.</li>
@@ -91,10 +96,12 @@
       <li><b>Hybrid (GridCaptive)</b> — facility connects to the grid <i>and</i> builds new captive renewables, while keeping existing captive coal. This is the report's lowest-cost decarbonization scenario.</li>
     </ul>
     <p>Clean-energy targets layered on top: <b>JETP</b> targets cap grid CO₂ and set a minimum grid renewable share; <b>PerPres 112/2022 (35%R)</b> applies a 35% emissions-reduction requirement to the captive facilities themselves.</p>
+    </div>
   </section>
 
   <section class="mblock" id="model">
     <h2 data-i18n="m_model">The optimization model</h2>
+    <div data-i18n-html="m_model_b">
     <p><b>GARUDA</b> (Grid And Renewable Utilization &amp; Deployment Analysis) is a generation- and transmission-capacity-expansion <b>mixed-integer linear program (MILP)</b> built in Julia/JuMP, solved with Gurobi on the San Diego Supercomputer Center's Triton cluster.</p>
     <ul>
       <li><b>Decision variables:</b> new-build and retired capacity for generators, storage and transmission lines; plus operations — unit commitment of thermal plants, dispatch, storage charging, non-served energy, line flows, and grid imports.</li>
@@ -103,30 +110,36 @@
       <li><b>Zonal aggregation:</b> each island system modeled separately (Sumatera 9 zones, Jawa-Bali 7, Kalimantan 5, Sulawesi 6; North Maluku, Maluku, Papua and Nusa Tenggara as single zones).</li>
       <li><b>Time sampling:</b> eight representative weeks of hourly operation selected by k-means clustering, including a peak week for resource adequacy.</li>
     </ul>
+    </div>
   </section>
 
   <section class="mblock" id="data">
     <h2 data-i18n="m_data">Data sources</h2>
+    <div data-i18n-html="m_data_b">
     <ul>
       <li><b>Power sector:</b> official documents from PLN, the Ministry of Energy &amp; Mineral Resources (MEMR) and the JETP Secretariat. Current/planned generators, transmission and load projections from <b>PLN RUPTL 2021–2030</b>; fuel costs and new-plant projects from the <b>JETP CIPP</b>; demand profile based on the Malaysia Grid System Operator 2023 load profile; supplemented with OpenStreetMap.</li>
       <li><b>Industrial facilities:</b> generator data from the <b>Sunrise Project</b> International Indonesian captive power database; synthetic load profiles built per commodity from process literature, with production scaled on historical trends (3–5% growth).</li>
       <li><b>Coal generators</b> are categorized as grid, captive, or mine-mouth captive, each with its own coal-price estimate.</li>
       <li><b>Sites on this platform:</b> the map and facility profiles (names, locations, sectors, owners and captive coal units by status) come from the <b>Earthwise Institute Indonesian Power Summary Database</b> (Captive Coal Database, v2.0, content as of 31 Dec 2025). Units that are cancelled, shelved, retired or closed are excluded. Each site is linked to GARUDA's industrial-park nodes; sites added since the last model run are marked as not yet modeled. Citation: Earthwise Institute. <i>Indonesian Power Summary Database.</i> Earthwise Institute, 2026.</li>
     </ul>
+    </div>
   </section>
 
   <section class="mblock" id="re">
     <h2 data-i18n="m_re">Renewable resource assessment</h2>
+    <div data-i18n-html="m_re_b">
     <p>Grid renewable potential uses MEMR's assessment based on the National Energy Plan (RUEN). For captive renewables, candidate sites are assessed within a <b>10 km buffer</b> of each industrial facility:</p>
     <ul>
       <li><b>Solar &amp; wind:</b> capacity factors from ERA5 reanalysis data (geodata package).</li>
       <li><b>Geothermal:</b> Global Heat Flow Database (IHFC), ordinary-kriging interpolation on a 500 m grid, retaining areas with heat flow ≥ 80 mW/m².</li>
       <li><b>Land-use exclusions:</b> forest and residential areas from the Ministry of Environment &amp; Forestry (KLHK); slope constraints from USGS EarthExplorer.</li>
     </ul>
+    </div>
   </section>
 
   <section class="mblock" id="assume">
     <h2 data-i18n="m_assume">Key assumptions &amp; sensitivities</h2>
+    <div data-i18n-html="m_assume_b">
     <ul>
       <li><b>Horizon:</b> investment and operations optimized to 2035.</li>
       <li><b>Coal price:</b> a low-price sensitivity at <b>$70/ton</b> reflects the Domestic Market Obligation (DMO) cap.</li>
@@ -134,20 +147,23 @@
       <li><b>Industrial production growth:</b> 3–5% annually.</li>
     </ul>
     <p>Results are highly sensitive to grid electricity tariffs and coal prices — both shift the share of renewables in the optimal mix. The sliders on each facility page let you explore this directly.</p>
+    </div>
   </section>
 
   <section class="mblock" id="ready">
     <h2 data-i18n="m_ready">Defining transition readiness</h2>
-    <p>The High / Medium / Low readiness rating on the map summarizes how favorable a facility's conditions are for a near-term shift away from captive coal. <span style="color:var(--coral);font-weight:600">[Working definition — criteria to be finalized]</span> Candidate factors, drawn from GARUDA's inputs:</p>
+    <div data-i18n-html="m_ready_b">
+    <p>The High / Medium / Low readiness rating will summarize how favorable a facility's conditions are for a near-term shift away from captive coal; it will appear on the map once the criteria are set. <span style="color:var(--coral);font-weight:600">[Working definition — criteria to be finalized]</span> Candidate factors, drawn from GARUDA's inputs:</p>
     <ul>
       <li>Quality and sufficiency of local renewable resources within the 10 km buffer (solar, wind, geothermal).</li>
       <li>Feasibility and cost of grid connection (distance to the PLN network and required upgrades).</li>
       <li>Scale of the facility's load and remaining life of existing captive coal units.</li>
       <li>Cost gap between the lowest-cost clean pathway and business-as-usual at current coal/tariff assumptions.</li>
     </ul>
+    </div>
   </section>
 
-  <p class="sub" style="margin-top:24px">Full detail, figures and the technical appendix are in the
+  <p class="sub" style="margin-top:24px" data-i18n-html="m_foot_b">Full detail, figures and the technical appendix are in the
     <a href="https://zenodo.org/records/17345968">November 2025 report</a>; model code is published on GitHub.</p>
 </main>
 

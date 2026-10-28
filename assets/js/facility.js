@@ -189,6 +189,9 @@
      validated chart palette (on-site renewables, grid, hybrid). */
   var PATH_COLOR = { bau: '#5b6670', solar: '#1baf7a', grid: '#2a78d6', hybrid: '#eb6834' };
 
+  var COST_KEYS = ['cost_pv', 'cost_batt', 'cost_conn', 'cost_bulk', 'cost_om'];
+  var mixChart, costChart;
+
   /* ---- sensitivity state ---- */
   var state = { cp: 90, gt: 70, sx: 1.0 };
 
@@ -200,10 +203,10 @@
     var grid  = 18 + 0.85 * state.gt;          /* tariff + transmission charge */
     var hybrid = 0.45 * solar + 0.40 * grid + 0.15 * bau;
     return [
-      { key:'bau',    name:'Business as usual', val: bau,    em: 0,  color: PATH_COLOR.bau },
-      { key:'solar',  name:'On-site solar + storage', val: solar, em: 45, color: PATH_COLOR.solar },
-      { key:'grid',   name:'Grid connection (PLN)',   val: grid,  em: 55, color: PATH_COLOR.grid },
-      { key:'hybrid', name:'Hybrid', val: hybrid, em: 68, color: PATH_COLOR.hybrid }
+      { key:'bau',    name: t('path_bau'),    short: t('path_bau_s'),  val: bau,    em: 0,  color: PATH_COLOR.bau },
+      { key:'solar',  name: t('path_solar'),  short: t('path_solar'),  val: solar,  em: 45, color: PATH_COLOR.solar },
+      { key:'grid',   name: t('path_grid'),   short: t('path_grid_s'), val: grid,   em: 55, color: PATH_COLOR.grid },
+      { key:'hybrid', name: t('path_hybrid'), short: t('path_hybrid'), val: hybrid, em: 68, color: PATH_COLOR.hybrid }
     ];
   }
 
@@ -217,7 +220,7 @@
     document.getElementById('pathlist').innerHTML = rows.map(function (r) {
       var win = r.key === cheapest.key ? ' win' : '';
       return '<div class="pth' + win + '">' +
-        '<div class="top"><b>' + r.name + '</b>' +
+        '<div class="top"><b>' + r.name + (win ? ' <span class="rec">· ' + t('recommended') + '</span>' : '') + '</b>' +
         '<span style="color:#6b6a78">$' + r.val.toFixed(0) + '/MWh · −' + r.em + '% CO₂</span></div>' +
         '<div class="track"><div class="bar" style="width:' + Math.round(r.val / max * 100) + '%;background:' + r.color + '"></div></div>' +
       '</div>';
@@ -228,9 +231,9 @@
     var crossover = Math.round((cleanMin - 30) / 0.55);
     var ins = document.getElementById('insight');
     if (state.cp >= crossover) {
-      ins.innerHTML = 'At <b>$' + state.cp + '/t</b>, coal is already more expensive than the cheapest clean pathway — a transition lowers cost today.';
+      ins.innerHTML = t('ins_now').replace('{p}', state.cp);
     } else {
-      ins.innerHTML = 'Clean pathways undercut coal once the coal price rises above <b>$' + crossover + '/t</b> (currently $' + state.cp + '/t).';
+      ins.innerHTML = t('ins_later').replace('{x}', crossover).replace('{p}', state.cp);
     }
 
     /* chart */
@@ -259,6 +262,11 @@
       tlChart.data.datasets.forEach(function (d) { d.label = t(d.key); });
       tlChart.update();
     }
+    renderInv();
+    if (mixChart) { mixChart.data.labels = [t('mix_coal'), t('mix_other'), t('mix_clean')]; mixChart.update(); }
+    if (costChart) { costChart.data.labels = COST_KEYS.map(t); costChart.update(); }
+    if (chart) { chart.data.labels = lcoe(state).map(function (r) { return r.short; }); chart.update(); }
+    if (res) document.getElementById('mixNote').textContent = t('mix_note').replace('{c}', res.coal).replace('{e}', res.ei);
   };
 
   /* ---- charts (init after libs ready) ---- */
@@ -266,20 +274,20 @@
     buildTimeline();
     /* energy mix */
     var other = Math.max(0, 100 - res.coal - res.clean);
-    new Chart(document.getElementById('mixChart'), {
+    mixChart = new Chart(document.getElementById('mixChart'), {
       type: 'doughnut',
-      data: { labels: ['Coal', 'Other fossil', 'Clean'],
+      data: { labels: [t('mix_coal'), t('mix_other'), t('mix_clean')],
         datasets: [{ data: [res.coal, other, res.clean], backgroundColor: [PATH_COLOR.bau, '#b7c1c5', PATH_COLOR.solar], borderWidth: 2, borderColor: '#fff' }] },
       options: { responsive: true, maintainAspectRatio: false, cutout: '60%',
         plugins: { legend: { position: 'right', labels: { boxWidth: 10, font: { size: 11 }, padding: 8 } } } }
     });
-    document.getElementById('mixNote').textContent = res.coal + '% coal today · ' + res.ei + ' tCO₂/MWh';
+    document.getElementById('mixNote').textContent = t('mix_note').replace('{c}', res.coal).replace('{e}', res.ei);
 
     /* sensitivity chart */
     var rows = lcoe(state);
     chart = new Chart(document.getElementById('sensChart'), {
       type: 'bar',
-      data: { labels: rows.map(function (r) { return r.name.replace(' (PLN)', '').replace('Business as usual', 'BAU (coal)'); }),
+      data: { labels: rows.map(function (r) { return r.short; }),
         datasets: [{ label: 'LCOE ($/MWh)', data: rows.map(function (r) { return Number(r.val.toFixed(0)); }), borderRadius: 3,
           backgroundColor: rows.map(function (r) { return r.color; }) }] },
       options: { responsive: true, maintainAspectRatio: false,
@@ -291,9 +299,9 @@
        Grid connection (facility interconnection) is kept separate from bulk/shared
        transmission upgrades, since they map to different payers. */
     var c = res.cost;
-    new Chart(document.getElementById('costChart'), {
+    costChart = new Chart(document.getElementById('costChart'), {
       type: 'bar',
-      data: { labels: ['Solar PV', 'Battery storage', 'Grid connection', 'Bulk transmission', 'O&M'],
+      data: { labels: COST_KEYS.map(t),
         datasets: [{ data: [c*0.30, c*0.20, c*0.16, c*0.22, c*0.12].map(function (x) { return Number(x.toFixed(1)); }),
           backgroundColor: [PATH_COLOR.solar, '#5dcaa5', PATH_COLOR.grid, '#184f95', '#9aa3a9'], borderRadius: 3 }] },
       options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
@@ -304,18 +312,15 @@
   });
 
   /* investment table, scaled by facility transition cost */
-  var c = res.cost;
-  var inv = [
-    ['Park owner', 'On-site solar + storage', c * 0.40],
-    ['PLN (local)', 'Facility grid interconnection', c * 0.16],
-    ['PLN / system · JETP', 'Bulk transmission upgrades', c * 0.22],
-    ['Financiers / DFIs', 'Green bonds, blended debt', c * 0.14],
-    ['Provincial gov', 'Permitting, RUED alignment', c * 0.08]
-  ];
-  document.getElementById('invBody').innerHTML = inv.map(function (r) {
-    return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td><td style="text-align:right;font-weight:600">$' + r[2].toFixed(1) + 'B</td></tr>';
-  }).join('');
+  function renderInv() {
+    var c = res.cost;
+    var inv = [['inv_owner', 0.40], ['inv_pln', 0.16], ['inv_sys', 0.22], ['inv_fin', 0.14], ['inv_prov', 0.08]];
+    document.getElementById('invBody').innerHTML = inv.map(function (r) {
+      return '<tr><td>' + t(r[0]) + '</td><td>' + t(r[0] + '_a') + '</td><td style="text-align:right;font-weight:600">$' + (c * r[1]).toFixed(1) + 'B</td></tr>';
+    }).join('');
+  }
 
+  renderInv();
   renderProfile();
   recompute();
 })();
