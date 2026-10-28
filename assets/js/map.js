@@ -74,8 +74,10 @@
     });
     document.getElementById('tblCount').textContent = rows.length + ' / ' + window.FAC.length + ' ' + t('tbl_count');
     document.getElementById('siteBody').innerHTML = rows.map(function (d) {
-      return '<tr><td><a href="facility.html?id=' + d.id + '">' + esc(d.name) + '</a><br><span class="mut" style="font-size:11.5px">' +
-          t(d.kind === 'park' ? 'kind_park' : 'kind_plant') + '</span></td>' +
+      var q = encodeURIComponent(d.id);
+      return '<tr><td><a href="facility.html?id=' + q + '">' + esc(d.name) + '</a><br><span class="mut" style="font-size:11.5px">' +
+          t(d.kind === 'park' ? 'kind_park' : 'kind_plant') + ' · <a class="sublink" href="ownership.html?id=' + q + '">' + t('k_ownership') +
+          '</a> · <a class="sublink" href="financing.html?id=' + q + '">' + t('k_fin') + '</a></span></td>' +
         '<td><span class="tag"><i class="dot" style="background:' + window.sectorColor(d.sector) + '"></i>' + window.sectorName(d.sector) + '</span></td>' +
         '<td>' + esc(d.prov) + '</td>' +
         '<td style="text-align:right;font-weight:600">' + (d.op ? d.op.toLocaleString() : '—') + '</td>' +
@@ -140,7 +142,9 @@
         '<div class="metarow"><span>' + t('pop_units') + '</span><b>' + d.units + (d.firstYear ? ' · ' + t('pop_since') + ' ' + d.firstYear : '') + '</b></div>' +
       '</div>' +
       '<div style="font-size:11px;color:#6b6a78;margin-top:9px">' + t(d.model.length ? 'pop_modeled' : 'pop_unmodeled') + '</div>' +
-      '<a class="btn block" style="margin-top:11px" href="facility.html?id=' + d.id + '">' + t('pop_view') + ' →</a>';
+      '<a class="btn block" style="margin-top:11px" href="facility.html?id=' + encodeURIComponent(d.id) + '">' + t('pop_view') + ' →</a>' +
+      '<div class="poplinks"><a href="ownership.html?id=' + encodeURIComponent(d.id) + '">' + t('k_owndetail') + '</a>' +
+      '<a href="financing.html?id=' + encodeURIComponent(d.id) + '">' + t('k_findetail') + '</a></div>';
     var pop = document.getElementById('pop');
     pop.innerHTML = html;
     pop.classList.add('on');

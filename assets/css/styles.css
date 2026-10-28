@@ -148,6 +148,9 @@ table.sortable th.asc::after { content: " ↑"; }
 table.sortable th.desc::after { content: " ↓"; }
 table.dt td a { color: var(--ink); font-weight: 600; }
 table.dt .tag { white-space: nowrap; }
+table.dt td a.sublink { font-weight: 400; color: var(--mut); text-decoration: underline; text-underline-offset: 2px; }
+table.dt td a.sublink:hover { color: var(--ink); }
+.poplinks { display: flex; justify-content: space-between; gap: 8px; margin-top: 9px; font-size: 12px; }
 
 /* ---- facility detail ---- */
 .sechead { font-size: 20px; margin: 34px 0 12px; }
