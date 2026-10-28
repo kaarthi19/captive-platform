@@ -14,6 +14,7 @@
   var hubs = window.HUBS.filter(function (h) { return corridors.some(function (c) { return c.hub === h.id; }); });
   var proposed = corridors.filter(function (c) { return c.status === 'proposed'; });
   var showProposed = true;
+  var card = window.siteCard(document.getElementById('pop'));
 
   var t = window.tr;
   var esc = window.esc;
@@ -103,15 +104,15 @@
       .text(function (h) { return h.name; }).attr('font-size', 11).attr('fill', '#316d91');
 
     var rS = d3.scaleSqrt().domain([0, d3.max(window.FAC, window.siteMW)]).range([3.5, 18]);
-    svg.append('g').selectAll('a').data(sites.slice().sort(function (a, b) { return window.siteMW(b) - window.siteMW(a); })).join('a')
-      .attr('href', function (d) { return 'facility.html?id=' + encodeURIComponent(d.id); })
-      .append('circle')
+    svg.append('g').selectAll('circle').data(sites.slice().sort(function (a, b) { return window.siteMW(b) - window.siteMW(a); })).join('circle')
+      .attr('class', 'mk')
       .attr('cx', function (d) { return p(d)[0]; }).attr('cy', function (d) { return p(d)[1]; })
       .attr('r', function (d) { return rS(window.siteMW(d)); })
       .attr('fill', function (d) { return d.op > 0 ? window.sectorColor(d.sector) : '#fff'; })
       .attr('stroke', function (d) { return d.op > 0 ? '#fff' : window.sectorColor(d.sector); })
       .attr('stroke-width', function (d) { return d.op > 0 ? 1.3 : 2; })
-      .append('title').text(function (d) { return d.name + ' — ' + window.siteMW(d).toLocaleString() + ' MW'; });
+      .call(card.bind);
+    svg.on('click', function () { card.hide(); });
 
     document.getElementById('txToggle').addEventListener('click', function () {
       showProposed = !showProposed;
@@ -146,6 +147,7 @@
 
   window.onLangChange = function () {
     render();
+    card.refresh();
     if (chart) { chart.data.datasets[0].label = t('pop_op'); chart.update(); }
   };
   render();

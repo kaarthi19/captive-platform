@@ -94,6 +94,9 @@ select.f { font-size: 12.5px; padding: 6px 9px; border-radius: 7px; border: 1px 
 .legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
 .pop { position: absolute; top: 14px; right: 14px; width: 270px; background: #fff; border: 1px solid var(--line); border-radius: 5px; padding: 17px; display: none; box-shadow: 0 12px 32px rgba(32,43,51,.14); }
 .pop.on { display: block; }
+.maphold { position: relative; }
+.maphold .pop { top: 10px; right: 10px; width: 250px; z-index: 2; }
+.mk:focus { outline: none; stroke: var(--coal) !important; stroke-width: 2 !important; }
 .pop .x { position: absolute; top: 10px; right: 12px; cursor: pointer; color: var(--mut); font-size: 17px; line-height: 1; background: none; border: none; }
 
 /* ---- tags / pills ---- */

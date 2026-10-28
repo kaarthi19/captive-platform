@@ -83,6 +83,71 @@ window.ownerLink = function (o) {
     : window.esc(o.name);
 };
 
+/* Site card for the maps. Hover (or keyboard focus) opens it; it stays open while the pointer is
+   on the card so its links can be used, and closes shortly after the pointer leaves. Clicking a
+   marker pins it (this is also how touch devices open it) until the close button or the map
+   background is clicked. */
+window.siteCardHtml = function (d) {
+  var t = window.tr, esc = window.esc, q = encodeURIComponent(d.id);
+  var mw = function (v) { return Math.round(v).toLocaleString() + ' MW'; };
+  var place = d.prov + (d.regency ? ' · ' + d.regency : '');
+  return '<button class="x" aria-label="Close">&times;</button>' +
+    '<div style="font-weight:600;font-size:14px;margin-bottom:1px;padding-right:16px">' + esc(d.name) + '</div>' +
+    '<div style="font-size:11.5px;color:#6b6a78;margin-bottom:8px">' + esc(place) + '</div>' +
+    '<span class="tag"><i class="dot" style="background:' + window.sectorColor(d.sector) + '"></i>' + window.sectorName(d.sector) + '</span> ' +
+    '<span class="tag">' + t(d.kind === 'park' ? 'kind_park' : 'kind_plant') + '</span>' +
+    '<div style="margin-top:10px">' +
+      '<div class="metarow"><span>' + t('pop_op') + '</span><b>' + mw(d.op) + '</b></div>' +
+      (d.con ? '<div class="metarow"><span>' + t('pop_con') + '</span><b>' + mw(d.con) + '</b></div>' : '') +
+      (d.plan ? '<div class="metarow"><span>' + t('pop_plan') + '</span><b>' + mw(d.plan) + '</b></div>' : '') +
+      '<div class="metarow"><span>' + t('pop_owner') + '</span><b>' + esc(d.owner) + ' (' + esc(d.ownerCountry) + ')</b></div>' +
+      '<div class="metarow"><span>' + t('pop_units') + '</span><b>' + d.units + (d.firstYear ? ' · ' + t('pop_since') + ' ' + d.firstYear : '') + '</b></div>' +
+    '</div>' +
+    '<div style="font-size:11px;color:#6b6a78;margin-top:9px">' + t(d.model.length ? 'pop_modeled' : 'pop_unmodeled') + '</div>' +
+    '<a class="btn block" style="margin-top:11px" href="facility.html?id=' + q + '">' + t('pop_view') + ' →</a>' +
+    '<div class="poplinks"><a href="ownership.html?id=' + q + '">' + t('k_owndetail') + '</a>' +
+    '<a href="financing.html?id=' + q + '">' + t('k_findetail') + '</a></div>';
+};
+
+window.siteCard = function (pop) {
+  var current = null, pinned = false, timer = null;
+  function render() {
+    pop.innerHTML = window.siteCardHtml(current);
+    pop.querySelector('.x').addEventListener('click', function () { hide(true); });
+  }
+  function show(d, pin) {
+    clearTimeout(timer);
+    if (pinned && !pin) return;            /* a pinned card isn't replaced by hovering elsewhere */
+    current = d; pinned = !!pin;
+    render();
+    pop.classList.add('on');
+  }
+  function hide(force) {
+    if (pinned && !force) return;
+    pinned = false; current = null;
+    pop.classList.remove('on');
+  }
+  function leave() { if (!pinned) { clearTimeout(timer); timer = setTimeout(function () { hide(false); }, 250); } }
+  pop.addEventListener('mouseenter', function () { clearTimeout(timer); });
+  pop.addEventListener('mouseleave', leave);
+  return {
+    hover: function (d) { show(d, false); },
+    leave: leave,
+    pin: function (d) { show(d, true); },
+    hide: function () { hide(true); },
+    refresh: function () { if (current) render(); },
+    /* wire a d3 selection of markers */
+    bind: function (sel) {
+      sel.attr('tabindex', 0).attr('role', 'button')
+        .attr('aria-label', function (d) { return d.name; })
+        .on('mouseenter focus', function (e, d) { show(d, false); })
+        .on('mouseleave blur', leave)
+        .on('click', function (e, d) { e.stopPropagation(); show(d, true); })
+        .on('keydown', function (e, d) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(d, true); } });
+    }
+  };
+};
+
 /* Indonesia province basemap, shared by the map views. */
 window.BASEMAP_URL = 'https://cdn.jsdelivr.net/npm/datamaps@0.5.10/src/js/data/idn.topo.json';
 
