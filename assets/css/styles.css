@@ -40,11 +40,7 @@ header.site {
 }
 .navrow { display: flex; align-items: center; gap: 16px; height: 68px; }
 .brand { display: flex; align-items: center; gap: 10px; margin-right: auto; }
-.brand .mark {
-  width: 34px; height: 34px; border-radius: 3px; background: var(--coal); color: #fff;
-  display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 10px;
-  letter-spacing: .08em;
-}
+.brand .mark { width: 34px; height: 34px; display: block; flex: none; }
 .brand b { font-size: 14px; font-weight: 650; letter-spacing: -.1px; display: block; line-height: 1.15; }
 .brand span { font-size: 11px; color: var(--mut); }
 nav.main { display: flex; gap: 2px; }
