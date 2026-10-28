@@ -10,9 +10,9 @@ evolved with a coal-vs-clean energy palette.
 Site data (names, locations, sectors, owners, captive coal units by status) is real and comes
 from the [Earthwise Institute](https://earthwise.institute) Indonesian Power Summary Database.
 Readiness, pathway costs, energy mix and transmission corridors are still **illustrative
-placeholders** until the co-optimized generation & transmission expansion model
-([captive-indonesia-2025](https://github.com/Power-Lab/captive-indonesia-2025), Julia/JuMP)
-results are loaded.
+placeholders** until results from [GARUDA](https://github.com/Power-Lab/garuda) (Grid And
+Renewable Utilization & Deployment Analysis), the lab's co-optimized generation & transmission
+expansion model (Julia/JuMP), are loaded.
 
 ## Pages
 
@@ -44,7 +44,7 @@ assets/
   css/styles.css      design system
   js/parks.js         GENERATED site summaries (scripts/build_parks.py)
   js/site-details.js  GENERATED per-site units, ownership, financing, projects
-  js/data.js          sectors, placeholder model results, corridor data
+  js/data.js          sectors, placeholder GARUDA results, corridor data
   js/i18n.js          EN/ID string table + toggle
   js/map.js           national map
   js/facility.js      facility page + sensitivity model
@@ -55,7 +55,7 @@ assets/
 
 `assets/js/parks.js`, `assets/js/site-details.js`, `data/parks.csv` and
 `data/model_crosswalk.csv` are generated from the Earthwise unit-level workbook (plus the
-optional extended-dimensions workbook, which adds the industrial projects each site powers). Rebuild them after an Earthwise update or a change to the model's
+optional extended-dimensions workbook, which adds the industrial projects each site powers). Rebuild them after an Earthwise update or a change to GARUDA's
 industrial-park inputs:
 
 ```bash
@@ -63,8 +63,8 @@ python3 scripts/build_parks.py path/to/Earthwise-Institute_*_Indonesia-Captive-C
   --extended path/to/Earthwise-Institute_*_Captive-Coal-Extended-Dims_*.xlsx
 ```
 
-Needs `openpyxl`. By default it reads model nodes from a sibling checkout of
-`captive-indonesia-2025` (`--model-data` to point elsewhere).
+Needs `openpyxl`. By default it reads GARUDA's industrial-park nodes from a sibling checkout of
+`garuda` (`data_indonesia/captive/2030`; `--model-data` to point elsewhere).
 
 - Units are grouped into one site per named industrial park / complex, plus one per standalone
   plant. Cancelled, shelved, retired, closed and status-unknown units are dropped.

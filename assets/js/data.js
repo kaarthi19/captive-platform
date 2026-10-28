@@ -3,7 +3,7 @@
    coal database by scripts/build_parks.py: names, locations, sectors, owners and captive coal
    capacity are real. Readiness, transition cost, emissions intensity and energy mix are NOT yet
    available per site — they will come from the co-optimized generation & transmission expansion
-   model (Julia/JuMP), joined through data/model_crosswalk.csv. Until then the facility page
+   model, GARUDA (Julia/JuMP), joined through data/model_crosswalk.csv. Until then the facility page
    derives ILLUSTRATIVE values from capacity via placeholderResults() below. */
 
 window.READY = { high: '#1d9e75', medium: '#ef9f27', low: '#fc4d50' };
@@ -27,8 +27,8 @@ window.sectorName = function (s) { return window.SECTORS[s][window.CP_LANG === '
 /* Total live captive coal (operating + construction + planned), MW. */
 window.siteMW = function (f) { return f.op + f.con + f.plan; };
 
-/* Stand-in for model results, scaled from capacity so the facility page has something to draw.
-   Replace with per-site model outputs once they are joined in. */
+/* Stand-in for GARUDA results, scaled from capacity so the facility page has something to draw.
+   Replace with per-site GARUDA outputs once they are joined in. */
 window.placeholderResults = function (f) {
   var gw = window.siteMW(f) / 1000;
   return { cost: Math.max(0.1, Math.round(gw * 11) / 10), ei: 1.1, coal: 92, clean: 8 };
@@ -37,7 +37,7 @@ window.placeholderResults = function (f) {
 window.FAC = window.PARKS;
 
 /* Grid hubs and proposed/existing transmission corridors for the Sulawesi region view
-   (illustrative until the model's transmission results are loaded). */
+   (illustrative until GARUDA's transmission results are loaded). */
 window.HUBS = [
   { id:'palu',      name:'Palu',      lng:119.87, lat:-0.90 },
   { id:'gorontalo', name:'Gorontalo', lng:123.06, lat:0.54 },

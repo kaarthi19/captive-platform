@@ -9,7 +9,7 @@
   var facById = {}; window.FAC.forEach(function (f) { facById[f.id] = f; });
   var showProposed = true;
 
-  /* headline stats + upgrades table (corridors are illustrative until model results load) */
+  /* headline stats + upgrades table (corridors are illustrative until GARUDA results load) */
   var proposed = window.CORRIDORS.filter(function (c) { return c.status === 'proposed' && facById[c.from]; });
   document.getElementById('rsGW').textContent = (d3.sum(sulFac, function (f) { return f.op; }) / 1000).toFixed(1) + ' GW';
   document.getElementById('rsSites').textContent = sulFac.length;

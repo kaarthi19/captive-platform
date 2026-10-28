@@ -44,7 +44,7 @@
 <main class="wrap section">
   <div class="kick" data-i18n="nav_method">Methodology</div>
   <h1 style="font-size:26px" data-i18n="m_h1">How the analysis works</h1>
-  <p class="lead" data-i18n="m_lead">Each pathway, cost and readiness rating on this platform comes from a generation &amp; transmission capacity-expansion model that co-optimizes industrial facility investments alongside the PLN grid. This page summarizes that method, drawn from the November 2025 report.</p>
+  <p class="lead" data-i18n="m_lead">Each pathway, cost and readiness rating on this platform comes from GARUDA, a generation &amp; transmission capacity-expansion model that co-optimizes industrial facility investments alongside the PLN grid. This page summarizes that method, drawn from the November 2025 report.</p>
 
   <div class="toc">
     <a href="#obj" data-i18n="m_obj">Research objective</a>
@@ -70,13 +70,13 @@
       <div class="step"><div class="h">Inputs</div>Official documents from government, PLN &amp; CSOs</div>
       <div class="step"><div class="h">Resource assessment</div>National Energy Plan (RUEN)</div>
       <div class="step"><div class="h">Technical constraints</div>Demand balance, transmission, min/max power, ramp</div>
-      <div class="step"><div class="h">→</div>Feeds the model</div>
-      <div class="opt" style="grid-row:span 2"><div><b>Optimization model</b><br>Least-cost generation &amp; transmission expansion, co-optimized for grid + industry</div></div>
+      <div class="step"><div class="h">→</div>Feeds GARUDA</div>
+      <div class="opt" style="grid-row:span 2"><div><b>GARUDA optimization</b><br>Least-cost generation &amp; transmission expansion, co-optimized for grid + industry</div></div>
       <div class="lane">Industry track</div>
       <div class="step"><div class="h">Inputs</div>Captive power database (Sunrise Project)</div>
       <div class="step"><div class="h">Resource assessment</div>Captive renewable site ID (ERA5 + land-use)</div>
       <div class="step"><div class="h">Technical constraints</div>Electricity &amp; heat demand balance, min/max power, ramp</div>
-      <div class="step"><div class="h">→</div>Feeds the model</div>
+      <div class="step"><div class="h">→</div>Feeds GARUDA</div>
     </div>
   </section>
 
@@ -94,7 +94,7 @@
 
   <section class="mblock" id="model">
     <h2 data-i18n="m_model">The optimization model</h2>
-    <p>A generation- and transmission-capacity-expansion <b>mixed-integer linear program (MILP)</b> built in Julia/JuMP, solved with Gurobi on the San Diego Supercomputer Center's Triton cluster.</p>
+    <p><b>GARUDA</b> (Grid And Renewable Utilization &amp; Deployment Analysis) is a generation- and transmission-capacity-expansion <b>mixed-integer linear program (MILP)</b> built in Julia/JuMP, solved with Gurobi on the San Diego Supercomputer Center's Triton cluster.</p>
     <ul>
       <li><b>Decision variables:</b> new-build and retired capacity for generators, storage and transmission lines; plus operations — unit commitment of thermal plants, dispatch, storage charging, non-served energy, line flows, and grid imports.</li>
       <li><b>Constraints:</b> zonal demand balance, transmission-expansion requirements, dispatch min/max limits, time-coupling across periods, storage and thermal unit-commitment rules (min up/down time), and clean-energy constraints from PerPres 112/22 and JETP.</li>
@@ -110,7 +110,7 @@
       <li><b>Power sector:</b> official documents from PLN, the Ministry of Energy &amp; Mineral Resources (MEMR) and the JETP Secretariat. Current/planned generators, transmission and load projections from <b>PLN RUPTL 2021–2030</b>; fuel costs and new-plant projects from the <b>JETP CIPP</b>; demand profile based on the Malaysia Grid System Operator 2023 load profile; supplemented with OpenStreetMap.</li>
       <li><b>Industrial facilities:</b> generator data from the <b>Sunrise Project</b> International Indonesian captive power database; synthetic load profiles built per commodity from process literature, with production scaled on historical trends (3–5% growth).</li>
       <li><b>Coal generators</b> are categorized as grid, captive, or mine-mouth captive, each with its own coal-price estimate.</li>
-      <li><b>Sites on this platform:</b> the map and facility profiles (names, locations, sectors, owners and captive coal units by status) come from the <b>Earthwise Institute Indonesian Power Summary Database</b> (Captive Coal Database, v2.0, content as of 31 Dec 2025). Units that are cancelled, shelved, retired or closed are excluded. Each site is linked to the model's industrial-park nodes; sites added since the last model run are marked as not yet modeled. Citation: Earthwise Institute. <i>Indonesian Power Summary Database.</i> Earthwise Institute, 2026.</li>
+      <li><b>Sites on this platform:</b> the map and facility profiles (names, locations, sectors, owners and captive coal units by status) come from the <b>Earthwise Institute Indonesian Power Summary Database</b> (Captive Coal Database, v2.0, content as of 31 Dec 2025). Units that are cancelled, shelved, retired or closed are excluded. Each site is linked to GARUDA's industrial-park nodes; sites added since the last model run are marked as not yet modeled. Citation: Earthwise Institute. <i>Indonesian Power Summary Database.</i> Earthwise Institute, 2026.</li>
     </ul>
   </section>
 
@@ -137,7 +137,7 @@
 
   <section class="mblock" id="ready">
     <h2 data-i18n="m_ready">Defining transition readiness</h2>
-    <p>The High / Medium / Low readiness rating on the map summarizes how favorable a facility's conditions are for a near-term shift away from captive coal. <span style="color:var(--coral);font-weight:600">[Working definition — criteria to be finalized]</span> Candidate factors, drawn from the model inputs:</p>
+    <p>The High / Medium / Low readiness rating on the map summarizes how favorable a facility's conditions are for a near-term shift away from captive coal. <span style="color:var(--coral);font-weight:600">[Working definition — criteria to be finalized]</span> Candidate factors, drawn from GARUDA's inputs:</p>
     <ul>
       <li>Quality and sufficiency of local renewable resources within the 10 km buffer (solar, wind, geothermal).</li>
       <li>Feasibility and cost of grid connection (distance to the PLN network and required upgrades).</li>
