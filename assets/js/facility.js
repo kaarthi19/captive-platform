@@ -262,7 +262,6 @@
       tlChart.data.datasets.forEach(function (d) { d.label = t(d.key); });
       tlChart.update();
     }
-    renderInv();
     if (mixChart) { mixChart.data.labels = [t('mix_coal'), t('mix_other'), t('mix_clean')]; mixChart.update(); }
     if (costChart) { costChart.data.labels = COST_KEYS.map(t); costChart.update(); }
     if (chart) { chart.data.labels = lcoe(state).map(function (r) { return r.short; }); chart.update(); }
@@ -311,16 +310,6 @@
     recompute();
   });
 
-  /* investment table, scaled by facility transition cost */
-  function renderInv() {
-    var c = res.cost;
-    var inv = [['inv_owner', 0.40], ['inv_pln', 0.16], ['inv_sys', 0.22], ['inv_fin', 0.14], ['inv_prov', 0.08]];
-    document.getElementById('invBody').innerHTML = inv.map(function (r) {
-      return '<tr><td>' + t(r[0]) + '</td><td>' + t(r[0] + '_a') + '</td><td style="text-align:right;font-weight:600">$' + (c * r[1]).toFixed(1) + 'B</td></tr>';
-    }).join('');
-  }
-
-  renderInv();
   renderProfile();
   recompute();
 })();

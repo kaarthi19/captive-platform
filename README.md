@@ -19,7 +19,7 @@ expansion model (Julia/JuMP), are loaded.
 | File | Screen |
 |------|--------|
 | `index.html` | National map — a marker per site, filters (sector / region / status), facility popups |
-| `facility.html` | Per-facility analysis — pathway comparison, energy mix, **live coal-price / grid-tariff sensitivity sliders**, cost breakdown, investment by stakeholder. Takes `?id=<facility>` |
+| `facility.html` | Per-facility analysis — pathway comparison, energy mix, **live coal-price / grid-tariff sensitivity sliders**, cost breakdown by component. Takes `?id=<facility>` |
 | `ownership.html` | Per-site ownership — ultimate owners weighted by share of capacity (linked to checked company websites), ownership profile, operator → owner → parent → ultimate-owner chain per plant. Takes `?id=<site>` |
 | `financing.html` | Per-site financing — disclosed loans (amounts, lenders and their countries, lender types, structure, currency, borrower, sources), lenders across the site's loans. Takes `?id=<site>` |
 | `region.html` | Sulawesi corridor — **interactive transmission map** (sites, grid hubs, proposed vs existing corridors), capacity-by-site chart, upgrades table |
