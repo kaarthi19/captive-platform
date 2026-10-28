@@ -185,6 +185,10 @@
     });
   }
 
+  /* Pathway colours: neutral grey for the coal baseline, then aqua / blue / orange from the
+     validated chart palette (on-site renewables, grid, hybrid). */
+  var PATH_COLOR = { bau: '#5b6670', solar: '#1baf7a', grid: '#2a78d6', hybrid: '#eb6834' };
+
   /* ---- sensitivity state ---- */
   var state = { cp: 90, gt: 70, sx: 1.0 };
 
@@ -196,10 +200,10 @@
     var grid  = 18 + 0.85 * state.gt;          /* tariff + transmission charge */
     var hybrid = 0.45 * solar + 0.40 * grid + 0.15 * bau;
     return [
-      { key:'bau',    name:'Business as usual', val: bau,    em: 0,  color:'#272636' },
-      { key:'solar',  name:'On-site solar + storage', val: solar, em: 45, color:'#1d9e75' },
-      { key:'grid',   name:'Grid connection (PLN)',   val: grid,  em: 55, color:'#378add' },
-      { key:'hybrid', name:'Hybrid', val: hybrid, em: 68, color:'#fc4d50' }
+      { key:'bau',    name:'Business as usual', val: bau,    em: 0,  color: PATH_COLOR.bau },
+      { key:'solar',  name:'On-site solar + storage', val: solar, em: 45, color: PATH_COLOR.solar },
+      { key:'grid',   name:'Grid connection (PLN)',   val: grid,  em: 55, color: PATH_COLOR.grid },
+      { key:'hybrid', name:'Hybrid', val: hybrid, em: 68, color: PATH_COLOR.hybrid }
     ];
   }
 
@@ -232,7 +236,7 @@
     /* chart */
     if (chart) {
       chart.data.datasets[0].data = rows.map(function (r) { return Number(r.val.toFixed(0)); });
-      chart.data.datasets[0].backgroundColor = rows.map(function (r) { return r.key === cheapest.key ? '#fc4d50' : '#c9c8d0'; });
+      chart.data.datasets[0].backgroundColor = rows.map(function (r) { return r.key === cheapest.key ? r.color : r.color + '59'; });
       chart.update();
     }
   }
@@ -265,7 +269,7 @@
     new Chart(document.getElementById('mixChart'), {
       type: 'doughnut',
       data: { labels: ['Coal', 'Other fossil', 'Clean'],
-        datasets: [{ data: [res.coal, other, res.clean], backgroundColor: ['#272636', '#888780', '#1d9e75'], borderWidth: 2, borderColor: '#fff' }] },
+        datasets: [{ data: [res.coal, other, res.clean], backgroundColor: [PATH_COLOR.bau, '#b7c1c5', PATH_COLOR.solar], borderWidth: 2, borderColor: '#fff' }] },
       options: { responsive: true, maintainAspectRatio: false, cutout: '60%',
         plugins: { legend: { position: 'right', labels: { boxWidth: 10, font: { size: 11 }, padding: 8 } } } }
     });
@@ -276,7 +280,8 @@
     chart = new Chart(document.getElementById('sensChart'), {
       type: 'bar',
       data: { labels: rows.map(function (r) { return r.name.replace(' (PLN)', '').replace('Business as usual', 'BAU (coal)'); }),
-        datasets: [{ label: 'LCOE ($/MWh)', data: rows.map(function (r) { return Number(r.val.toFixed(0)); }), backgroundColor: '#c9c8d0' }] },
+        datasets: [{ label: 'LCOE ($/MWh)', data: rows.map(function (r) { return Number(r.val.toFixed(0)); }), borderRadius: 3,
+          backgroundColor: rows.map(function (r) { return r.color; }) }] },
       options: { responsive: true, maintainAspectRatio: false,
         plugins: { legend: { display: false } },
         scales: { y: { title: { display: true, text: '$/MWh' }, ticks: { font: { size: 11 } } }, x: { ticks: { font: { size: 11 } } } } }
@@ -290,7 +295,7 @@
       type: 'bar',
       data: { labels: ['Solar PV', 'Battery storage', 'Grid connection', 'Bulk transmission', 'O&M'],
         datasets: [{ data: [c*0.30, c*0.20, c*0.16, c*0.22, c*0.12].map(function (x) { return Number(x.toFixed(1)); }),
-          backgroundColor: ['#1d9e75', '#5dcaa5', '#378add', '#185fa5', '#b4b2a9'] }] },
+          backgroundColor: [PATH_COLOR.solar, '#5dcaa5', PATH_COLOR.grid, '#184f95', '#9aa3a9'], borderRadius: 3 }] },
       options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
         scales: { y: { ticks: { font: { size: 11 }, callback: function (v) { return '$' + v + 'B'; } } }, x: { ticks: { font: { size: 10 } } } } }
     });
