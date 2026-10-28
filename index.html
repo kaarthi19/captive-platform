@@ -5,14 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Indonesia Captive Power Decarbonization Platform</title>
 <meta name="description" content="Open-access, bilingual facility-level decarbonization analysis for Indonesia's 130+ captive coal industrial parks.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Syne:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body>
+<body class="home">
 
 <header class="site">
   <div class="wrap navrow">
     <a class="brand" href="index.html">
-      <span class="mark">⚡</span>
+      <span class="mark" aria-hidden="true">CP</span>
       <span><b>Captive Power Decarbonization</b><span data-i18n="brand_sub">Indonesia · Power Transformation Lab</span></span>
     </a>
     <nav class="main">
@@ -25,17 +28,31 @@
   </div>
 </header>
 
-<main class="wrap section">
-  <div class="kick" data-i18n="hero_kick">Open-access · bilingual · facility-level</div>
-  <h1 data-i18n="hero_h1">Decarbonization pathways for Indonesia's captive coal fleet</h1>
-  <p class="lead" data-i18n="hero_p">Click any of the 130+ industrial parks to see its energy mix, clean-energy alternatives, grid-connection options, and what each stakeholder must invest. Built on a co-optimized generation &amp; transmission expansion model.</p>
+<section class="home-hero" data-reveal>
+  <div class="wrap home-hero-inner">
+    <div class="kick" data-i18n="hero_kick">Open-access · bilingual · facility-level</div>
+    <h1 data-i18n="hero_h1">Decarbonization pathways for Indonesia's captive coal fleet</h1>
+    <p class="lead" data-i18n="hero_p">Click any of the 130+ industrial parks to see its energy mix, clean-energy alternatives, grid-connection options, and what each stakeholder must invest. Built on a co-optimized generation &amp; transmission expansion model.</p>
+    <div class="hero-actions">
+      <a class="btn hero-primary" href="#explore" data-i18n="hero_cta">Explore facility evidence</a>
+      <a class="hero-link" href="methodology.html" data-i18n="hero_method">Review the methodology →</a>
+    </div>
+  </div>
+</section>
 
-  <div class="stats">
+<section class="home-stats" aria-label="Platform coverage" data-reveal>
+  <div class="wrap stats">
     <div class="stat"><b>130+</b><small data-i18n="s1">industrial parks mapped</small></div>
     <div class="stat"><b>~26 GW</b><small data-i18n="s2">captive coal capacity</small></div>
     <div class="stat"><b>35%</b><small data-i18n="s3">PerPres 112/2022 cut, 10 yrs</small></div>
     <div class="stat"><b>60%</b><small data-i18n="s4">capacity in Sulawesi &amp; N. Maluku</small></div>
   </div>
+</section>
+
+<main class="wrap section home-explorer" id="explore" data-reveal>
+  <div class="kick" data-i18n="explore_kick">Facility explorer</div>
+  <h2 class="section-heading" data-i18n="explore_h">Move from national ambition to facility-level decisions.</h2>
+  <p class="lead explore-lead" data-i18n="explore_p">Filter the fleet, compare transition readiness, and open a facility to examine pathways, costs, and stakeholder investment needs.</p>
 
   <div class="filters">
     <span class="fl" data-i18n="f_ind">Industry</span>
@@ -67,6 +84,16 @@
     <div class="pop" id="pop"></div>
   </div>
   <p class="sub" style="margin-top:10px;text-align:center" data-i18n="hint">Click a marker to open its facility card · 12 sample parks shown of 130+</p>
+
+  <section class="stakeholder-section" aria-labelledby="stakeholder-heading" data-reveal>
+    <div class="kick" data-i18n="stake_kick">Built for decisions</div>
+    <h2 class="section-heading" id="stakeholder-heading" data-i18n="stake_h">One evidence base, three stakeholder perspectives.</h2>
+    <div class="stakeholder-grid">
+      <article><span class="stake-num">01</span><h3 data-i18n="stake_ind_h">Industrial parks</h3><p data-i18n="stake_ind_p">Compare on-site clean energy, grid connection, and hybrid pathways against operating cost and emissions.</p></article>
+      <article><span class="stake-num">02</span><h3 data-i18n="stake_pln_h">PLN &amp; public planners</h3><p data-i18n="stake_pln_p">See where transmission investment can unlock credible coal-reduction pathways across industrial corridors.</p></article>
+      <article><span class="stake-num">03</span><h3 data-i18n="stake_fin_h">Finance &amp; development partners</h3><p data-i18n="stake_fin_p">Identify investment requirements, readiness constraints, and facilities where further diligence can begin.</p></article>
+    </div>
+  </section>
 </main>
 
 <footer class="site"><div class="wrap">
@@ -79,6 +106,7 @@
 <script src="assets/js/data.js"></script>
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/map.js"></script>
+<script src="assets/js/home.js"></script>
 <script>window.initLang();</script>
 </body>
 </html>
