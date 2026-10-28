@@ -36,6 +36,24 @@ window.placeholderResults = function (f) {
 
 window.FAC = window.PARKS;
 
+/* Regions for the region page: platform region key, display names, and the province names used
+   by the Indonesia basemap (datamaps topology; Kalimantan Utara is still part of Kalimantan Timur). */
+window.REGIONS = [
+  { key: 'Sulawesi', en: 'Sulawesi', id: 'Sulawesi',
+    provinces: ['Sulawesi Utara', 'Gorontalo', 'Sulawesi Tengah', 'Sulawesi Barat', 'Sulawesi Selatan', 'Sulawesi Tenggara'] },
+  { key: 'Maluku', en: 'North Maluku', id: 'Maluku Utara', provinces: ['Maluku Utara', 'Maluku'] },
+  { key: 'Kalimantan', en: 'Kalimantan', id: 'Kalimantan',
+    provinces: ['Kalimantan Barat', 'Kalimantan Tengah', 'Kalimantan Selatan', 'Kalimantan Timur'] },
+  { key: 'Sumatra', en: 'Sumatra', id: 'Sumatra',
+    provinces: ['Aceh', 'Sumatera Utara', 'Sumatera Barat', 'Riau', 'Kepulauan Riau', 'Jambi', 'Bengkulu',
+                'Sumatera Selatan', 'Bangka-Belitung', 'Lampung'] },
+  { key: 'Java', en: 'Java and Bali', id: 'Jawa dan Bali',
+    provinces: ['Banten', 'Jakarta Raya', 'Jawa Barat', 'Jawa Tengah', 'Yogyakarta', 'Jawa Timur', 'Bali'] },
+  { key: 'Nusa Tenggara', en: 'Nusa Tenggara', id: 'Nusa Tenggara', provinces: ['Nusa Tenggara Barat', 'Nusa Tenggara Timur'] },
+  { key: 'Papua', en: 'Papua', id: 'Papua', provinces: ['Irian Jaya Barat', 'Papua'] }
+];
+window.regionName = function (r) { return r[window.CP_LANG === 'id' ? 'id' : 'en']; };
+
 /* Grid hubs and proposed/existing transmission corridors for the Sulawesi region view
    (illustrative until GARUDA's transmission results are loaded). */
 window.HUBS = [

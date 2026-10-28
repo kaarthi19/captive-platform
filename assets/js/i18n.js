@@ -95,11 +95,15 @@ window.I18N = {
     st_Cancelled:'Cancelled', st_Shelved:'Shelved', st_Retired:'Retired', st_Closed:'Closed', st_NA:'Unknown',
 
     /* region */
-    reg_kick:'Regional aggregation', reg_h:'Sulawesi corridor',
+    reg_kick:'Regional aggregation',
     reg_sub:'System-wide implications and transmission upgrades if captive parks connect to PLN’s grid',
     rs1:'captive coal operating in region', rs2:'captive coal sites', rs3:'connectable if lines built', rs4:'transmission capex',
     reg_map:'Transmission map', reg_mapp:'Parks, grid hubs and the corridors that would connect them',
-    reg_toggle:'Show proposed upgrades', reg_cap:'Operating capacity by site', reg_leg_site:'Captive site (blue = nickel, grey = other)',
+    reg_toggle:'Show proposed upgrades', reg_toggle_on:'Proposed upgrades shown', reg_cap:'Operating capacity by site', reg_leg_site:'Captive site (blue = nickel, grey = other)',
+    reg_leg_hub:'PLN grid hub', reg_leg_prop:'Proposed corridor (illustrative)', reg_leg_exist:'Existing line',
+    reg_click:'Click a site to open its facility analysis. Line thickness ≈ transfer capacity.',
+    reg_tx_none:'Grid hubs and transmission corridors for this region will come from GARUDA results. Only Sulawesi has illustrative corridors so far.',
+    reg_tx_none_short:'Pending GARUDA transmission results.', reg_top:'Largest {n} of {m} operating sites',
     reg_tx:'Transmission upgrades needed', th_corr:'Corridor',
 
     /* about */
@@ -227,11 +231,15 @@ window.I18N = {
     st_Operating:'Beroperasi', st_Construction:'Konstruksi', st_PreConstruction:'Pra-konstruksi', st_Announced:'Diumumkan',
     st_Cancelled:'Dibatalkan', st_Shelved:'Ditunda', st_Retired:'Dipensiunkan', st_Closed:'Ditutup', st_NA:'Tidak diketahui',
 
-    reg_kick:'Agregasi wilayah', reg_h:'Koridor Sulawesi',
+    reg_kick:'Agregasi wilayah',
     reg_sub:'Implikasi sistem dan peningkatan transmisi jika kawasan captive terhubung ke jaringan PLN',
     rs1:'batu bara captive beroperasi di wilayah', rs2:'lokasi batu bara captive', rs3:'dapat terhubung bila jalur dibangun', rs4:'capex transmisi',
     reg_map:'Peta transmisi', reg_mapp:'Kawasan, simpul jaringan, dan koridor penghubungnya',
-    reg_toggle:'Tampilkan peningkatan yang diusulkan', reg_cap:'Kapasitas operasi per lokasi', reg_leg_site:'Lokasi captive (biru = nikel, abu-abu = lainnya)',
+    reg_toggle:'Tampilkan peningkatan yang diusulkan', reg_toggle_on:'Peningkatan yang diusulkan ditampilkan', reg_cap:'Kapasitas operasi per lokasi', reg_leg_site:'Lokasi captive (biru = nikel, abu-abu = lainnya)',
+    reg_leg_hub:'Gardu induk PLN', reg_leg_prop:'Koridor yang diusulkan (ilustratif)', reg_leg_exist:'Jalur yang ada',
+    reg_click:'Klik lokasi untuk membuka analisis fasilitasnya. Ketebalan garis ≈ kapasitas transfer.',
+    reg_tx_none:'Gardu induk dan koridor transmisi untuk wilayah ini akan berasal dari hasil GARUDA. Sejauh ini hanya Sulawesi yang memiliki koridor ilustratif.',
+    reg_tx_none_short:'Menunggu hasil transmisi GARUDA.', reg_top:'{n} lokasi beroperasi terbesar dari {m}',
     reg_tx:'Peningkatan transmisi yang dibutuhkan', th_corr:'Koridor',
 
     ab_kick:'Tentang', ab_lab_h:'Power Transformation Lab',
