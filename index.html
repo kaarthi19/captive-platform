@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Indonesia Captive Power Decarbonization Platform</title>
-<meta name="description" content="Open-access, bilingual facility-level decarbonization analysis for Indonesia's 130+ captive coal industrial parks.">
+<meta name="description" content="Open-access, bilingual facility-level decarbonization analysis for Indonesia's captive coal industrial parks and plants.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Syne:wght@600;700&display=swap" rel="stylesheet">
@@ -32,7 +32,7 @@
   <div class="wrap home-hero-inner">
     <div class="kick" data-i18n="hero_kick">Open-access · bilingual · facility-level</div>
     <h1 data-i18n="hero_h1">Decarbonization pathways for Indonesia's captive coal fleet</h1>
-    <p class="lead" data-i18n="hero_p">Click any of the 130+ industrial parks to see its energy mix, clean-energy alternatives, grid-connection options, and what each stakeholder must invest. Built on a co-optimized generation &amp; transmission expansion model.</p>
+    <p class="lead" data-i18n="hero_p">Click any captive coal site — an industrial park or a standalone plant — to see its energy mix, clean-energy alternatives, grid-connection options, and what each stakeholder must invest. Built on a co-optimized generation &amp; transmission expansion model.</p>
     <div class="hero-actions">
       <a class="btn hero-primary" href="#explore" data-i18n="hero_cta">Explore facility evidence</a>
       <a class="hero-link" href="methodology.html" data-i18n="hero_method">Review the methodology →</a>
@@ -42,10 +42,10 @@
 
 <section class="home-stats" aria-label="Platform coverage" data-reveal>
   <div class="wrap stats">
-    <div class="stat"><b>130+</b><small data-i18n="s1">industrial parks mapped</small></div>
-    <div class="stat"><b>~26 GW</b><small data-i18n="s2">captive coal capacity</small></div>
+    <div class="stat"><b id="statSites">—</b><small data-i18n="s1">captive coal sites mapped</small></div>
+    <div class="stat"><b id="statGW">—</b><small data-i18n="s2">captive coal operating</small></div>
     <div class="stat"><b>35%</b><small data-i18n="s3">PerPres 112/2022 cut, 10 yrs</small></div>
-    <div class="stat"><b>60%</b><small data-i18n="s4">capacity in Sulawesi &amp; N. Maluku</small></div>
+    <div class="stat"><b id="statSM">—</b><small data-i18n="s4">of operating capacity in Sulawesi &amp; N. Maluku</small></div>
   </div>
 </section>
 
@@ -57,33 +57,51 @@
   <div class="filters">
     <span class="fl" data-i18n="f_ind">Industry</span>
     <button class="chip on" data-ind="all" data-i18n="f_all">All</button>
-    <button class="chip" data-ind="nickel">Nickel</button>
-    <button class="chip" data-ind="aluminum" data-i18n="f_alu">Aluminum</button>
-    <button class="chip" data-ind="pulp" data-i18n="f_pulp">Pulp &amp; paper</button>
+    <span id="sectorChips" style="display:contents"></span>
     <span class="fl" style="margin-left:6px" data-i18n="f_region">Region</span>
     <select class="f" id="fRegion">
-      <option value="all">All regions</option>
-      <option>Sulawesi</option><option>Maluku</option><option>Sumatra</option><option>Kalimantan</option>
+      <option value="all" data-i18n="f_allreg">All regions</option>
+      <option>Sulawesi</option><option value="Maluku">North Maluku</option><option>Kalimantan</option><option>Sumatra</option><option>Java</option><option>Nusa Tenggara</option><option>Papua</option>
     </select>
-    <span class="fl" data-i18n="f_ready">Readiness</span>
-    <select class="f" id="fReady">
-      <option value="all">Any</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option>
+    <span class="fl" data-i18n="f_status">Status</span>
+    <select class="f" id="fStatus">
+      <option value="all" data-i18n="f_any">Any</option><option value="op" data-i18n="f_op">Has operating units</option><option value="pipe" data-i18n="f_pipe">Has units in the pipeline</option><option value="model" data-i18n="f_model">Covered by the model</option>
     </select>
   </div>
 
   <div class="mapwrap">
     <div id="map"></div>
     <div class="legend">
-      <div style="font-weight:600;color:var(--ink);margin-bottom:4px" data-i18n="leg_t">Transition readiness</div>
-      <div class="row"><i style="background:#1d9e75"></i><span data-i18n="leg_h">High</span></div>
-      <div class="row"><i style="background:#ef9f27"></i><span data-i18n="leg_m">Medium</span></div>
-      <div class="row"><i style="background:#fc4d50"></i><span data-i18n="leg_l">Low</span></div>
-      <div class="row" style="margin-top:4px"><i style="background:#b4b2a9;width:14px;height:14px"></i><span data-i18n="leg_s">size = capacity</span></div>
-      <a href="methodology.html#ready" style="font-size:10.5px;display:inline-block;margin-top:5px" data-i18n="leg_def">How we define this →</a>
+      <div style="font-weight:600;color:var(--ink);margin-bottom:4px" data-i18n="leg_t">Sector</div>
+      <div class="row"><i style="background:#2a78d6"></i><span data-i18n="leg_ni">Nickel</span></div>
+      <div class="row"><i style="background:#eb6834"></i><span data-i18n="leg_al">Aluminium &amp; alumina</span></div>
+      <div class="row"><i style="background:#8a9197"></i><span data-i18n="leg_ot">Other sectors</span></div>
+      <div class="row" style="margin-top:4px"><i style="background:#fff;border:2px solid #8a9197;width:10px;height:10px;box-sizing:border-box"></i><span data-i18n="leg_pipe">pipeline only, not yet operating</span></div>
+      <div class="row"><i style="background:#b4b2a9;width:14px;height:14px"></i><span data-i18n="leg_s">size = capacity</span></div>
+      <div style="margin-top:5px;font-size:10.5px"><span data-i18n="leg_ready">Transition readiness: pending model results</span> · <a href="methodology.html#ready" data-i18n="leg_def">How we define this →</a></div>
     </div>
     <div class="pop" id="pop"></div>
   </div>
-  <p class="sub" style="margin-top:10px;text-align:center" data-i18n="hint">Click a marker to open its facility card · 12 sample parks shown of 130+</p>
+  <p class="sub" style="margin-top:10px;text-align:center" data-i18n="hint">Click a marker to open its facility card. Site data: Earthwise Institute, Indonesian Power Summary Database (2026).</p>
+
+  <div class="card" style="margin-top:28px">
+    <div class="tblhead">
+      <div><h2 data-i18n="tbl_h">All sites</h2><p class="sub" style="margin:0" id="tblCount"></p></div>
+      <input class="f" type="search" id="fSearch" data-i18n-ph="tbl_search" placeholder="Search site, owner or province" aria-label="Search sites">
+    </div>
+    <div class="tscroll"><table class="dt sortable">
+      <thead><tr>
+        <th data-sort="name" data-i18n="th_site">Site</th>
+        <th data-sort="sector" data-i18n="f_ind">Industry</th>
+        <th data-sort="prov" data-i18n="th_prov">Province</th>
+        <th data-sort="op" style="text-align:right" data-i18n="pop_op">Operating</th>
+        <th data-sort="pipe" style="text-align:right" data-i18n="th_pipe2">Pipeline</th>
+        <th data-sort="owner" data-i18n="pop_owner">Main owner</th>
+        <th data-sort="model" data-i18n="th_model">Model</th>
+      </tr></thead>
+      <tbody id="siteBody"></tbody>
+    </table></div>
+  </div>
 
   <section class="stakeholder-section" aria-labelledby="stakeholder-heading" data-reveal>
     <div class="kick" data-i18n="stake_kick">Built for decisions</div>
@@ -103,6 +121,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script src="assets/js/parks.js"></script>
 <script src="assets/js/data.js"></script>
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/map.js"></script>

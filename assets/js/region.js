@@ -1,13 +1,25 @@
 /* Region page (Sulawesi).
    Headline feature: a TRANSMISSION MAP — Sulawesi basemap with captive parks, PLN grid hubs,
    and the corridors that would connect them, with a toggle for proposed vs existing lines.
-   Plus a per-park capacity/readiness chart and the upgrades table. */
+   Plus a per-site operating-capacity chart (colored by sector) and the upgrades table. */
 (function () {
   var W = 560, H = 460;
   var sulFac = window.FAC.filter(function (f) { return f.region === 'Sulawesi'; });
   var hubById = {}; window.HUBS.forEach(function (h) { hubById[h.id] = h; });
   var facById = {}; window.FAC.forEach(function (f) { facById[f.id] = f; });
   var showProposed = true;
+
+  /* headline stats + upgrades table (corridors are illustrative until model results load) */
+  var proposed = window.CORRIDORS.filter(function (c) { return c.status === 'proposed' && facById[c.from]; });
+  document.getElementById('rsGW').textContent = (d3.sum(sulFac, function (f) { return f.op; }) / 1000).toFixed(1) + ' GW';
+  document.getElementById('rsSites').textContent = sulFac.length;
+  document.getElementById('rsConn').textContent = (d3.sum(proposed, function (c) { return c.mw; }) / 1000).toFixed(1) + ' GW';
+  document.getElementById('rsCapex').textContent = '$' + d3.sum(proposed, function (c) { return c.cost; }).toFixed(1) + 'B';
+  document.getElementById('txBody').innerHTML = proposed.map(function (c) {
+    return '<tr><td>' + facById[c.from].short + ' ↔ ' + hubById[c.hub].name + ' ' + c.kv + ' kV</td>' +
+      '<td style="text-align:right">' + c.mw.toLocaleString() + '</td>' +
+      '<td style="text-align:right">$' + c.cost.toFixed(1) + 'B</td></tr>';
+  }).join('');
 
   var svg = d3.select('#txmap').append('svg')
     .attr('viewBox', '0 0 ' + W + ' ' + H).attr('width', '100%').style('display', 'block');
@@ -27,7 +39,7 @@
     /* corridors */
     var lines = svg.append('g').attr('class', 'corridors');
     function drawLines() {
-      var data = window.CORRIDORS.filter(function (c) { return facById[c.from].region === 'Sulawesi'; })
+      var data = window.CORRIDORS.filter(function (c) { return facById[c.from] && facById[c.from].region === 'Sulawesi'; })
         .filter(function (c) { return showProposed || c.status === 'existing'; });
       var sel = lines.selectAll('line').data(data, function (c) { return c.from + c.hub; });
       sel.exit().remove();
@@ -54,15 +66,15 @@
       .text(function (h) { return h.name; }).attr('font-size', 11).attr('fill', '#185fa5');
 
     /* parks (circles) */
-    var rS = d3.scaleSqrt().domain([0, 3700]).range([5, 16]);
-    svg.append('g').selectAll('circle').data(sulFac).join('circle')
+    var rS = d3.scaleSqrt().domain([0, d3.max(sulFac, window.siteMW)]).range([4, 16]);
+    svg.append('g').selectAll('circle').data(sulFac.slice().sort(function (a, b) { return window.siteMW(b) - window.siteMW(a); })).join('circle')
       .attr('cx', function (d) { return proj([d.lng, d.lat])[0]; })
       .attr('cy', function (d) { return proj([d.lng, d.lat])[1]; })
-      .attr('r', function (d) { return rS(d.cap); })
-      .attr('fill', function (d) { return window.READY[d.ready]; })
+      .attr('r', function (d) { return rS(window.siteMW(d)); })
+      .attr('fill', function (d) { return window.sectorColor(d.sector); })
       .attr('stroke', '#fff').attr('stroke-width', 1.3).style('cursor', 'pointer')
       .on('click', function (e, d) { location.href = 'facility.html?id=' + d.id; })
-      .append('title').text(function (d) { return d.name + ' — ' + d.cap + ' MW'; });
+      .append('title').text(function (d) { return d.name + ' — ' + window.siteMW(d).toLocaleString() + ' MW'; });
 
     document.getElementById('txToggle').addEventListener('click', function () {
       showProposed = !showProposed;
@@ -78,12 +90,12 @@
 
   /* capacity / readiness chart */
   window.addEventListener('load', function () {
-    var sorted = sulFac.slice().sort(function (a, b) { return b.cap - a.cap; });
+    var sorted = sulFac.filter(function (f) { return f.op > 0; }).sort(function (a, b) { return b.op - a.op; });
     new Chart(document.getElementById('regChart'), {
       type: 'bar',
-      data: { labels: sorted.map(function (f) { return f.name.split('—')[0].trim(); }),
-        datasets: [{ data: sorted.map(function (f) { return f.cap; }),
-          backgroundColor: sorted.map(function (f) { return window.READY[f.ready]; }) }] },
+      data: { labels: sorted.map(function (f) { return f.short; }),
+        datasets: [{ label: 'Operating', data: sorted.map(function (f) { return f.op; }),
+          backgroundColor: sorted.map(function (f) { return window.sectorColor(f.sector); }) }] },
       options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false,
         plugins: { legend: { display: false } },
         scales: { x: { ticks: { font: { size: 11 }, callback: function (v) { return v + ' MW'; } } }, y: { ticks: { font: { size: 11 } } } } }

@@ -1,0 +1,70 @@
+island,ip,model_province,model_park,model_plants,model_mw,site_id,method,nearest_site,nearest_km,note
+jawa_bali,1,banten,,_agc_cilegon_coalfired_power_plant,453,kiec,nearest,kiec,0.1,
+jawa_bali,2,banten,,cemindo_gemilang_bayah_pltu,60,cemindo-gemilang,nearest,cemindo-gemilang,0.1,
+jawa_bali,3,banten,,,40,cilegon-ptip,nearest,cilegon-ptip,0.0,
+jawa_bali,4,banten,,,175,indah-kiat-serang,nearest,indah-kiat-serang,0.0,
+jawa_bali,5,banten,karakatau_industrial_park,pltu_indocoke_industry,15,,override,cilegon-ptip,1.8,Indocoke Industry power station (KIEC) is Closed in Earthwise; no live site
+jawa_bali,6,banten,karakatau_industrial_park,power_plant_pt_permata_dunia_sukses_utama,21,kiec,override,sentra-usahatama-jaya,0.9,"PT Permata Dunia Sukses Utama, inside KIEC per Earthwise"
+jawa_bali,7,banten,,,22,sentra-usahatama-jaya,nearest,sentra-usahatama-jaya,0.0,
+jawa_bali,8,banten,bojonegara_industrial_park,,15,bip,nearest,bip,0.0,
+jawa_bali,9,banten,,,18,berkah-manis-makmur,nearest,berkah-manis-makmur,0.0,
+jawa_bali,10,banten,,,21,kiec,override,kiec,1.7,"Thai-owned petrochemical plant in Cilegon; nearest live site, plant-level match uncertain"
+jawa_bali,11,banten,,,19,pt-dian-swastatika-sentosa-tangerang,nearest,pt-dian-swastatika-sentosa-tangerang,0.0,
+jawa_bali,12,west_java,,,30,bandung-indosyntec,nearest,bandung-indosyntec,0.1,
+jawa_bali,13,west_java,jababeka_industrial_estate,,64,jie,nearest,jie,0.4,
+jawa_bali,14,west_java,,,37,indo-bharat-rayon,nearest,indo-bharat-rayon,0.4,
+jawa_bali,15,west_java,karawang_jabar_industrial_estate_kjie,pt_dss_cogen_power_plant;pt_kgj__pd1,140,pindo-deli-ii-2,nearest,pindo-deli-ii-2,7.6,
+jawa_bali,16,west_java,,,60,purwakarta-indorama,nearest,purwakarta-indorama,0.0,
+jawa_bali,17,west_java,,,46,south-pasific-viscose-power-plant-2,nearest,south-pasific-viscose-power-plant-2,0.0,
+jawa_bali,18,west_java,,power_plant_aspex_kumbong,33,aspek-kumbong,nearest,aspek-kumbong,0.0,
+jawa_bali,19,central_java,,pt_pura_barutama_2x75mw_thermal_power_plant,15,,override,pt-rayon-utama-makmur,100.1,PT Pura Barutama (Kudus) is Closed in Earthwise; no live site
+jawa_bali,20,central_java,,,30,pt-rayon-utama-makmur,nearest,pt-rayon-utama-makmur,0.0,
+jawa_bali,21,east_java,,,230,tkfc,override,phoenix-tarakan-chip-mill,717.7,"Tjiwi Kimia, East Java; the model's latitude has the wrong sign (+7.44)"
+kalimantan,1,west_kalimantan,,,270,ktie,nearest,ktie,14.8,
+kalimantan,2,west_kalimantan,,,75,pt-borneo-alumina-indonesia-antam-group,nearest,pt-borneo-alumina-indonesia-antam-group,0.7,
+kalimantan,3,south_kalimantan,,plant_pltu_3x18mw_pt_conch_south_kalimantan_cement,54,pt-conch-south-kalimantan-cement,nearest,pt-conch-south-kalimantan-cement,1.3,
+kalimantan,4,east_kalimantan,,pltu_indominco_2x7mw,14,indominco-mandiri,override,indominco-mandiri,24.9,PLTU Indominco 2x7 MW; model coordinates are 25 km off
+kalimantan,5,east_kalimantan,,pltu_teluk_aru,50,kutai-refinery-nusantara,nearest,kutai-refinery-nusantara,0.5,
+kalimantan,6,east_kalimantan,,,64,kpcm,nearest,kpcm,0.0,
+kalimantan,7,north_kalimantan,kalimantan_industrial_park_indonesia_kipi_,,2160,kipi,nearest,kipi,6.0,
+north_maluku,1,north_maluku,obi_island_industrial_area_oiia,wprka,150,oiia,nearest,oiia,0.7,
+north_maluku,2,north_maluku,obi_island_industrial_area_oiia,,114,oiia,nearest,oiia,3.9,
+north_maluku,3,north_maluku,obi_island_industrial_area_oiia,,2240,oiia,nearest,oiia,0.5,
+north_maluku,4,north_maluku,indonesian_weda_bay_industrial_park_iwip,,4540,iwip,override,iwip,2.1,IWIP operating + construction units
+nusa_tenggara,1,west_nusa_tenggara,,,124,batu-hijau,nearest,batu-hijau,0.1,
+papua,1,papua,,freeport_pltu,195,amamapare-port,nearest,amamapare-port,0.4,
+papua,2,west_papua,,,84,,override,pt-conch-west-papua-cement,188.7,Tangguh LNG (West Papua) captive plant is not in Earthwise
+sulawesi,1,central_sulawesi,stardust_estate_investment_industrial_park_sei_,pltu_gni;pltu_nni,2295,sei,nearest,sei,1.3,
+sulawesi,2,central_sulawesi,indonesia_huabao_industrial_park_ihip,,350,ihip,nearest,ihip,3.3,
+sulawesi,3,central_sulawesi,hengshun_zhongsheng_indonesia_industrial_park,,130,qicip,nearest,qicip,0.3,
+sulawesi,4,central_sulawesi,indonesian_morowali_industrial_park_imip,,3360,imip,nearest,imip,0.6,
+sulawesi,5,central_sulawesi,indonesian_morowali_industrial_park_imip,,2080,imip,nearest,imip,5.3,
+sulawesi,6,central_sulawesi,indonesia_wanxiang_new_energy_industrial_park,,130,iwne,override,iwne,0.0,Wanxiang Nickel Indonesia power station (2x65 MW)
+sulawesi,7,central_sulawesi,indonesian_weda_bay_industrial_park_iwip,,700,iwne,override,iwip,2.1,"Yongyu 2x350 MW; the model labels this node IWIP and uses IWIP's coordinates, but Earthwise places it in IWNE, Central Sulawesi"
+sulawesi,8,central_sulawesi,indonesia_huabao_industrial_park_ihip,,750,ihip,nearest,ihip,3.3,
+sulawesi,9,central_sulawesi,indonesia_huabao_industrial_park_ihip,,750,ihip,nearest,ihip,3.3,
+sulawesi,10,south_sulawesi,delong_nickel_industrial_area,,530,vdnip,nearest,vdnip,10.1,
+sulawesi,11,south_sulawesi,,janeponto2_pltu;janeponto_pltu,520,,override,pcc,89.3,Jeneponto PLTU is not in Earthwise as captive coal
+sulawesi,12,south_sulawesi,,,120,pcc,nearest,pcc,0.0,
+sulawesi,13,southeast_sulawesi,delong_nickel_industrial_area,,1840,vdnip,nearest,vdnip,0.6,
+sulawesi,14,southeast_sulawesi,,pltu_antam_pomalaa_2x30mw,60,pomalaa-nickel,nearest,pomalaa-nickel,0.1,
+sulawesi,15,southeast_sulawesi,,,27,pt-prima-alam-gemilang,override,pomalaa-nickel,31.6,"27 MW sugar plant, Southeast Sulawesi; model coordinates are 32 km off"
+sumatera,1,aceh,,,33,andalas-cement,nearest,andalas-cement,0.0,
+sumatera,2,north_sumatra,medan_industrial_estates,,60,medan-steel-mill,nearest,medan-steel-mill,0.3,
+sumatera,3,north_sumatra,,_,54,,override,perawang-mill,82.4,54 MW palm-oil plant: tagged North Sumatra with Riau coordinates; no matching Earthwise plant
+sumatera,4,north_sumatra,,,12,sintong-abadi,nearest,sintong-abadi,0.1,
+sumatera,5,north_sumatra,,,82,toba-pulp-lestari,nearest,toba-pulp-lestari,0.2,
+sumatera,6,riau,bintan_nanshan_industrial_park,,180,bnip,nearest,bnip,0.0,
+sumatera,7,riau,,,755,perawang-mill,nearest,perawang-mill,0.3,
+sumatera,8,riau,xinyi_group_industrial_area,,2500,rempang-eco-city,nearest,rempang-eco-city,0.0,
+sumatera,9,riau,,,70,kilang-pertamina-indonesia,nearest,kilang-pertamina-indonesia,1.3,
+sumatera,10,riau,,pltu_pt_pulau_sambu_kuala_enok,7,pt-pulau-sambu-kuala-enok,nearest,pt-pulau-sambu-kuala-enok,0.2,
+sumatera,11,riau,,power_plant_pt_sds_2_dumai;power_plant_pt_sds_dumai,94,sari-dumai-sejati,nearest,sari-dumai-sejati,0.0,
+sumatera,12,riau,,,204,pt-tianshan-alumina,nearest,pt-tianshan-alumina,5.5,
+sumatera,13,jambi,,jambi_lontar_power_station,211,sinar-mas-jambi-lontar,nearest,sinar-mas-jambi-lontar,0.0,
+sumatera,14,south_sumatra,,,15,indonesia-fibreboard-industry,nearest,indonesia-fibreboard-industry,0.4,
+sumatera,15,south_sumatra,,,12,laju-perdana-indah,nearest,laju-perdana-indah,3.6,
+sumatera,16,south_sumatra,,palembang_pusri_power_station,23,palembang-pusri,nearest,palembang-pusri,0.4,
+sumatera,17,south_sumatra,,,72,tanjungenim-lestari-pulp-paper,nearest,tanjungenim-lestari-pulp-paper,0.1,
+sumatera,18,south_sumatra,,pltu_bukit_asam_pt_bukit_energi_servis_terpadu,36,bukit-asam-tanjung-enim,nearest,bukit-asam-tanjung-enim,0.0,
+sumatera,19,lampung,,pltu_bukit_asam,16,bukit-asam-tarahan-port,nearest,bukit-asam-tarahan-port,0.0,
