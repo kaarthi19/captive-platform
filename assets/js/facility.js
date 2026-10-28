@@ -9,9 +9,136 @@
 
   function t(k) { return (window.I18N[window.CP_LANG || 'en'] || window.I18N.en)[k]; }
 
-  /* header */
-  document.getElementById('facName').textContent = fac.name;
-  document.getElementById('facMeta').textContent = fac.prov + ' · ' + window.IND_NAME[fac.ind] + ' park';
+  var res = window.placeholderResults(fac);
+  var det = (window.SITE_DETAILS || {})[fac.id];
+  function mw(v) { return v ? Math.round(v).toLocaleString() + ' MW' : '—'; }
+  function esc(v) {
+    return String(v == null ? '' : v).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
+  }
+
+  /* Earthwise status -> op / con / plan, or 'off' for cancelled, shelved, retired, closed, unknown */
+  var BUCKET = { 'Operating': 'op', 'Construction': 'con', 'Pre-Construction': 'plan', 'Announced': 'plan' };
+  function bucket(st) { return BUCKET[st] || 'off'; }
+  function statusLabel(st) { return t('st_' + String(st).replace(/[^A-Za-z]/g, '')) || st; }
+  function pill(st) { return '<span class="st st-' + bucket(st) + '">' + esc(statusLabel(st)) + '</span>'; }
+  var OWNERSHIP = { POE: 'own_poe', SOE: 'own_soe', Mixed: 'own_mixed', Public: 'own_public' };
+
+  /* header + site profile (real data) */
+  var showAllUnits = false;
+  function renderProfile() {
+    document.getElementById('facName').textContent = fac.name;
+    document.title = fac.short + ' · Captive Power Platform';
+    document.getElementById('facMeta').textContent = [fac.prov, fac.regency, window.sectorName(fac.sector),
+      t(fac.kind === 'park' ? 'kind_park' : 'kind_plant')].filter(Boolean).join(' · ');
+    document.getElementById('facStats').innerHTML = [
+      [mw(fac.op), t('pop_op')], [mw(fac.con), t('pop_con')], [mw(fac.plan), t('pop_plan')],
+      [esc(fac.owner), t('pop_owner') + ' · ' + esc(fac.ownerCountry)]
+    ].map(function (s) { return '<div class="stat"><b>' + s[0] + '</b><small>' + s[1] + '</small></div>'; }).join('');
+    document.getElementById('facModel').textContent = fac.model.length
+      ? t('fac_modeled') + ' (' + fac.model.length + ' ' + t('fac_nodes') + ': ' + fac.model.join(', ') + ').'
+      : t('fac_unmodeled');
+    if (!det) return;
+
+    /* key facts */
+    var place = [det.village, det.district, fac.regency, fac.prov].filter(Boolean).join(', ');
+    var facts = [
+      ['k_location', esc(place)],
+      ['k_island', esc(det.island || '—') + (det.smallIsland ? ' · ' + t('k_small') : '')],
+      ['k_coords', fac.lat.toFixed(3) + ', ' + fac.lng.toFixed(3) + ' · ' + t(fac.loc === 'exact' ? 'k_exact' : 'k_approx')],
+      ['k_commod', esc(fac.commodities.join(', '))],
+      ['k_ownership', det.ownership.map(function (o) { return t(OWNERSHIP[o]) || esc(o); }).join(', ') + (det.jv ? ' · ' + t('k_jv') : '')],
+      ['k_owners', det.ultimate.map(esc).join('<br>')],
+      ['k_countries', esc(det.countries.join(', '))],
+      ['k_epc', det.epc.length ? det.epc.map(esc).join('<br>') : '—'],
+      ['k_china', det.chinaRole.length ? esc(det.chinaRole.join(', ')) : '—'],
+      ['k_other', esc(det.otherPower || '—')],
+      ['k_aka', det.aliases.length ? esc(det.aliases.slice(0, 6).join(' · ')) + (det.aliases.length > 6 ? ' …' : '') : '—']
+    ];
+    document.getElementById('facFacts').innerHTML = facts.map(function (f) {
+      return '<dt>' + t(f[0]) + '</dt><dd>' + f[1] + '</dd>';
+    }).join('');
+
+    /* units, grouped by plant; live units first */
+    var units = det.units.slice().sort(function (a, b) {
+      return (bucket(a.status) === 'off') - (bucket(b.status) === 'off');
+    });
+    var LIMIT = 12, shown = showAllUnits ? units : units.slice(0, LIMIT), lastPlant = null;
+    document.getElementById('unitBody').innerHTML = shown.map(function (u) {
+      var head = u.plant !== lastPlant ? '<tr class="grp"><td colspan="6">' + esc(u.plant) + '</td></tr>' : '';
+      lastPlant = u.plant;
+      return head + '<tr' + (bucket(u.status) === 'off' ? ' class="off"' : '') + '>' +
+        '<td>' + esc(u.phase || '—') + (u.fuel ? ' <span class="mut">· ' + esc(u.fuel) + '</span>' : '') + '</td>' +
+        '<td style="text-align:right;font-weight:600">' + Math.round(u.mw).toLocaleString() + '</td>' +
+        '<td>' + pill(u.status) + '</td>' +
+        '<td style="text-align:right">' + (u.start || '—') + '</td>' +
+        '<td>' + esc(u.owner || '—') + '</td>' +
+        '<td>' + esc(u.project || '—') + '</td></tr>';
+    }).join('');
+    var more = document.getElementById('unitMore');
+    more.style.display = units.length > LIMIT ? '' : 'none';
+    more.textContent = showAllUnits ? t('show_less') : t('show_all') + ' (' + units.length + ')';
+
+    /* linked industrial projects */
+    document.getElementById('projCard').style.display = det.projects.length ? '' : 'none';
+    document.getElementById('projBody').innerHTML = det.projects.map(function (p) {
+      return '<tr><td>' + esc(p.name) + (p.phase ? ' <span class="mut">· ' + esc(p.phase) + '</span>' : '') + '</td>' +
+        '<td>' + esc(p.product || '—') + '</td><td style="text-align:right">' + esc(p.capacity || '—') + '</td>' +
+        '<td>' + esc(p.status || '—') + '</td><td style="text-align:right">' + esc(p.start || '—') + '</td></tr>';
+    }).join('');
+
+    /* financing */
+    document.getElementById('finCard').style.display = det.finance.length ? '' : 'none';
+    document.getElementById('finBody').innerHTML = det.finance.map(function (f) {
+      return '<tr><td style="text-align:right">' + (f.year || '—') + '</td>' +
+        '<td>' + esc(f.financiers) + (f.hq.length ? ' <span class="mut">· ' + esc(f.hq.join(', ')) + '</span>' : '') + '</td>' +
+        '<td style="text-align:right;font-weight:600">' + (f.usd ? f.usd.toLocaleString(undefined, { maximumFractionDigits: 0 }) : '—') + '</td>' +
+        '<td>' + esc(f.type) + (f.captive ? '' : ' <span class="mut">· ' + t('fin_indirect') + '</span>') + '</td>' +
+        '<td>' + f.refs.map(function (r, i) { return '<a href="' + esc(r) + '" target="_blank" rel="noopener">[' + (i + 1) + ']</a>'; }).join(' ') + '</td></tr>';
+    }).join('');
+
+    /* sources */
+    document.getElementById('facSources').innerHTML = t('fac_srcs') + ' ' + fac.ew.length + ' Earthwise ' + t('records') +
+      (det.sources.length ? ' · GEM Wiki: ' + det.sources.map(function (u, i) {
+        return '<a href="' + esc(u) + '" target="_blank" rel="noopener">' + (i + 1) + '</a>';
+      }).join(', ') : '');
+  }
+  document.getElementById('unitMore').addEventListener('click', function () {
+    showAllUnits = !showAllUnits; renderProfile();
+  });
+
+  /* capacity by start year, stacked by status (live units only) */
+  var tlChart;
+  function buildTimeline() {
+    if (!det) return;
+    var live = det.units.filter(function (u) { return bucket(u.status) !== 'off'; });
+    var years = live.map(function (u) { return u.start; }).filter(Boolean);
+    if (!years.length) return;
+    var lo = Math.min.apply(null, years), hi = Math.max.apply(null, years), labels = [];
+    for (var y = lo; y <= hi; y++) labels.push(String(y));
+    var unknown = live.some(function (u) { return !u.start; });
+    if (unknown) labels.push('?');
+    function series(b) {
+      var out = labels.map(function () { return 0; });
+      live.forEach(function (u) {
+        if (bucket(u.status) !== b) return;
+        out[u.start ? u.start - lo : labels.length - 1] += u.mw;
+      });
+      return out;
+    }
+    var spec = [['op', 'pop_op', '#2a78d6'], ['con', 'pop_con', '#86b6ef'], ['plan', 'pop_plan', '#c3ccd1']];
+    tlChart = new Chart(document.getElementById('tlChart'), {
+      type: 'bar',
+      data: { labels: labels, datasets: spec.map(function (s) {
+        return { label: t(s[1]), key: s[1], data: series(s[0]), backgroundColor: s[2], borderRadius: 3, borderColor: '#fff', borderWidth: 1 };
+      }).filter(function (d) { return d.data.some(Boolean); }) },
+      options: { responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 11 } } },
+          tooltip: { callbacks: { label: function (c) { return c.dataset.label + ': ' + Math.round(c.raw).toLocaleString() + ' MW'; } } } },
+        scales: { x: { stacked: true, grid: { display: false }, ticks: { font: { size: 10 } } },
+          y: { stacked: true, ticks: { font: { size: 11 }, callback: function (v) { return v.toLocaleString(); } },
+            title: { display: true, text: 'MW' } } } }
+    });
+  }
 
   /* ---- sensitivity state ---- */
   var state = { cp: 90, gt: 70, sx: 1.0 };
@@ -76,20 +203,28 @@
   bind('slTariff', 'gt', function (v) { return '$' + v + '/MWh'; });
   bind('slSolar', 'sx', function (v) { return Math.round(v * 100) + '%'; });
 
-  window.onLangChange = recompute; /* re-render labels on language switch */
+  window.onLangChange = function () { /* re-render labels on language switch */
+    renderProfile();
+    recompute();
+    if (tlChart) {
+      tlChart.data.datasets.forEach(function (d) { d.label = t(d.key); });
+      tlChart.update();
+    }
+  };
 
   /* ---- charts (init after libs ready) ---- */
   window.addEventListener('load', function () {
+    buildTimeline();
     /* energy mix */
-    var other = Math.max(0, 100 - fac.coal - fac.clean);
+    var other = Math.max(0, 100 - res.coal - res.clean);
     new Chart(document.getElementById('mixChart'), {
       type: 'doughnut',
       data: { labels: ['Coal', 'Other fossil', 'Clean'],
-        datasets: [{ data: [fac.coal, other, fac.clean], backgroundColor: ['#272636', '#888780', '#1d9e75'], borderWidth: 2, borderColor: '#fff' }] },
+        datasets: [{ data: [res.coal, other, res.clean], backgroundColor: ['#272636', '#888780', '#1d9e75'], borderWidth: 2, borderColor: '#fff' }] },
       options: { responsive: true, maintainAspectRatio: false, cutout: '60%',
         plugins: { legend: { position: 'right', labels: { boxWidth: 10, font: { size: 11 }, padding: 8 } } } }
     });
-    document.getElementById('mixNote').textContent = fac.coal + '% coal today · ' + fac.ei + ' tCO₂/MWh';
+    document.getElementById('mixNote').textContent = res.coal + '% coal today · ' + res.ei + ' tCO₂/MWh';
 
     /* sensitivity chart */
     var rows = lcoe(state);
@@ -105,7 +240,7 @@
     /* hybrid cost breakdown, scaled by facility transition cost.
        Grid connection (facility interconnection) is kept separate from bulk/shared
        transmission upgrades, since they map to different payers. */
-    var c = fac.cost;
+    var c = res.cost;
     new Chart(document.getElementById('costChart'), {
       type: 'bar',
       data: { labels: ['Solar PV', 'Battery storage', 'Grid connection', 'Bulk transmission', 'O&M'],
@@ -119,7 +254,7 @@
   });
 
   /* investment table, scaled by facility transition cost */
-  var c = fac.cost;
+  var c = res.cost;
   var inv = [
     ['Park owner', 'On-site solar + storage', c * 0.40],
     ['PLN (local)', 'Facility grid interconnection', c * 0.16],
@@ -131,5 +266,6 @@
     return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td><td style="text-align:right;font-weight:600">$' + r[2].toFixed(1) + 'B</td></tr>';
   }).join('');
 
+  renderProfile();
   recompute();
 })();

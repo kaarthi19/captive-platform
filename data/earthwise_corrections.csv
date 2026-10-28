@@ -1,0 +1,7 @@
+ew_id,field,value,note
+EWPROJINDCC131,Latitude,-2.730952,"Yongyu units are in IWNE (Central Sulawesi) but carry IWIP's Halmahera coordinates; moved to the IWNE Wanxiang plant site"
+EWPROJINDCC131,Longitude,122.030621,
+EWPROJINDCC131,Location Accuracy,Approximate,
+EWPROJINDCC132,Latitude,-2.730952,"Same as EWPROJINDCC131"
+EWPROJINDCC132,Longitude,122.030621,
+EWPROJINDCC132,Location Accuracy,Approximate,

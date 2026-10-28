@@ -1,0 +1,87 @@
+id,name,kind,sector,prov,region,regency,lat,lng,loc,op,con,plan,units,owner,ownerCountry,firstYear,model
+imip,IMIP — Indonesia Morowali Industrial Park,park,nickel,Central Sulawesi,Sulawesi,Morowali Regency,-2.86791,122.17709,approximate,5520,760,380,22,Tsingshan,China,2015,sulawesi:4;sulawesi:5
+iwip,IWIP — Indonesia Weda Bay Industrial Park,park,nickel,North Maluku,Maluku,Central Halmahera Regency,0.48035,127.98995,approximate,4540,700,0,15,Tsingshan,China,2020,north_maluku:4
+sei,SEI — Stardust Estate Investment industrial park,park,nickel,Central Sulawesi,Sulawesi,North Morowali Regency,-2.01402,121.43093,exact,1605,1350,0,14,Delong Nickel,China,2021,sulawesi:1
+oiia,OIIA — Obi Island Industrial Area,park,nickel,North Maluku,Maluku,South Halmahera Regency,-1.56592,127.42193,exact,1894,760,0,18,Harita,Indonesia,2016,north_maluku:1;north_maluku:2;north_maluku:3
+rempang-eco-city,Rempang Eco City,park,mixed,Riau Islands,Sumatra,Batam City,0.86008,104.1801,approximate,0,0,2500,1,Xinyi Glass,China,,sumatera:8
+vdnip,VDNIP — Delong Virtue Dragon Nickel Industry Park,park,nickel,Southeast Sulawesi,Sulawesi,Konawe Regency,-3.82749,122.46275,exact,2370,0,0,18,Xiamen Xiangyu,China,2018,sulawesi:10;sulawesi:13
+kipi,KIPI — Kalimantan Industrial Park Indonesia,park,aluminium,North Kalimantan,Kalimantan,Bulungan Regency,2.49468,117.9002,exact,0,1210,1100,6,Adaro,Indonesia,2025,kalimantan:7
+batamindo-industrial-park,Batamindo Industrial Park,park,mixed,Riau Islands,Sumatra,Batam City,0.9439,104.06275,approximate,0,1050,1200,5,Salim,Indonesia,,
+kitb,KITB — Kawasan Industri Terpadu Batang,park,mixed,West Java,Java,Batang Regency,-6.23691,107.88755,approximate,0,0,2000,1,Hongshi,China,2026,
+galang-batang-sez,Galang Batang SEZ,park,aluminium,Riau Islands,Sumatra,Bintan Regency,0.91164,104.65054,approximate,0,600,1050,7,Nanshan Aluminium,China,2027,
+sinar-mas-oki-paper-mill,Sinar Mas OKI Paper Mill,standalone,pulp,South Sumatra,Sumatra,Ogan Komering Ilir Regency,-2.75465,105.27485,exact,500,555,185,8,APP / Sinar Mas,Indonesia,2016,
+iwne,IWNE — Indonesia Wanxiang New Energy Industrial Park,park,nickel,Central Sulawesi,Sulawesi,Morowali Regency,-2.73095,122.03062,approximate,830,400,0,6,Chengtun,China,2022,sulawesi:6;sulawesi:7
+ihip,IHIP — Indonesia Huabao Industrial Park,park,nickel,Central Sulawesi,Sulawesi,Morowali Regency,-2.25785,121.76902,exact,750,0,250,4,Zhenshi,China,2024,sulawesi:2;sulawesi:8;sulawesi:9
+fht,FHT — Feni Haltim Industrial Park,park,nickel,North Maluku,Maluku,East Halmahera Regency,0.84587,128.25013,exact,0,0,980,2,CUAN,Indonesia,2026,
+perawang-mill,Perawang Mill,standalone,pulp,Riau,Sumatra,Siak Regency,0.69205,101.61911,exact,940,0,0,8,APP / Sinar Mas,Indonesia,2000,sumatera:7
+tanjung-sauh-sez,Tanjung Sauh SEZ,park,mixed,Riau Islands,Sumatra,Batam City,1.04335,104.17255,approximate,0,300,600,3,Panbil,Indonesia,2026,
+ipip,IPIP — Indonesia Pomalaa Industrial Park,park,nickel,Southeast Sulawesi,Sulawesi,Kolaka Regency,-4.29127,121.55807,approximate,0,500,0,2,Huayou Cobalt,China,,
+kiec,KIEC — Krakatau Industrial Estate Cilegon,park,chem,Banten,Java,Cilegon City,-6.02534,105.94277,exact,444,0,0,4,AGC,Japan,2005,jawa_bali:1;jawa_bali:6;jawa_bali:10
+pt-indah-kiat-pulp-paper-karawang-ikk,PT Indah Kiat Pulp & Paper Karawang (IKK),standalone,pulp,West Java,Java,Karawang Regency,-6.4288,107.344,exact,0,340,0,1,APP / Sinar Mas,Indonesia,,
+ktie,KTIE — Ketapang Industrial Estate,park,aluminium,West Kalimantan,Kalimantan,Ketapang Regency,-2.24201,110.11005,approximate,328,0,0,10,Shandong Weiqiao,China,2016,kalimantan:1
+phoenix-tarakan-chip-mill,Phoenix Tarakan Chip Mill,standalone,pulp,North Kalimantan,Kalimantan,Tarakan City,3.38734,117.51902,exact,300,0,0,1,RGE,Malaysia,2025,
+cikarang-babelan,Cikarang Babelan,standalone,mixed,West Java,Java,Bekasi Regency,-6.11607,107.05197,exact,280,0,0,2,UW,Indonesia,2017,
+tkfc,TKFC — Tjiwi Kimia Factory Complex,park,pulp,East Java,Java,Sidoarjo Regency,-7.43684,112.4688,exact,230,0,0,4,APP / Sinar Mas,Indonesia,1992,jawa_bali:21
+sinar-mas-jambi-lontar,Sinar Mas Jambi Lontar,standalone,pulp,Jambi,Sumatra,West Tanjung Jabung Regency,-1.0069,103.0821,exact,211,0,0,4,APP / Sinar Mas,Indonesia,1994,sumatera:13
+ptkp,PTKP — Krakatau Posco Integrated Steel Mill Area,park,chem,Banten,Java,Cilegon City,-6.00603,105.97153,exact,200,0,0,1,POSCO,South Korea,2014,
+amamapare-port,Amamapare Port,standalone,metals,Papua,Papua,Mimika Regency,-4.82749,136.8431,exact,195,0,0,3,Freeport,US,1998,papua:1
+indah-kiat-serang,Indah Kiat Serang,standalone,pulp,Banten,Java,Serang Regency,-6.12544,106.2892,exact,175,0,0,4,APP / Sinar Mas,Indonesia,1998,jawa_bali:4
+pt-tianshan-alumina,PT Tianshan Alumina,standalone,aluminium,Riau Islands,Sumatra,Lingga Regency,-0.57171,104.48418,approximate,0,0,160,1,Tianshan Aluminum,China,,sumatera:12
+bnip,BNIP — Bintan Nanshan Industrial Park,park,aluminium,Riau Islands,Sumatra,Bintan Regency,0.91714,104.65547,exact,150,0,0,6,Nanshan Aluminium,China,2021,sumatera:6
+qicip,QICIP — Qingdao-Indonesia Comprehensive Industrial Park,park,nickel,Central Sulawesi,Sulawesi,Morowali Regency,-3.03957,122.26382,exact,130,0,0,2,Qingdao City Construction,China,2022,sulawesi:3
+pcc,PCC — Pangkep Cement Complex,park,cement,South Sulawesi,Sulawesi,Pangkajene and Islands Regency,-4.81671,119.50168,exact,120,0,0,4,SIG,Indonesia,2012,sulawesi:12
+merak,Merak,standalone,chem,Banten,Java,Serang Regency,-5.88403,106.06422,exact,120,0,0,2,Sulfindo,Indonesia,2014,
+pt-laman-mining-alumina,PT Laman Mining Alumina,standalone,aluminium,West Kalimantan,Kalimantan,Ketapang Regency,-1.45129,110.17969,approximate,0,0,120,1,Laman Mining,Indonesia,,
+cemindo-gemilang,Cemindo Gemilang,standalone,cement,Banten,Java,Lebak Regency,-6.95057,106.24956,exact,120,0,0,1,WH,Singapore,2016,jawa_bali:2
+batu-hijau,Batu Hijau,standalone,metals,West Nusa Tenggara,Nusa Tenggara,West Sumbawa Regency,-8.90117,116.73821,exact,112,0,0,4,Salim,Indonesia,1999,nusa_tenggara:1
+pt-kalimantan-alumina-nusantara-kan,PT Kalimantan Alumina Nusantara (KAN),standalone,aluminium,West Kalimantan,Kalimantan,Sanggau Regency,-0.11771,109.96868,exact,0,110,0,1,Press Metal,Malaysia,2027,
+sari-dumai-sejati,Sari Dumai Sejati,standalone,agro,Riau,Sumatra,Dumai City,1.75664,101.36432,approximate,92,0,0,2,RGE,Indonesia,2014,sumatera:11
+pindo-deli-ii-2,Pindo-Deli-Ii 2,standalone,pulp,West Java,Java,Karawang Regency,-6.38547,107.34362,exact,90,0,0,1,APP / Sinar Mas,Indonesia,,jawa_bali:15
+gebe-island-smelter,Gebe island Smelter,standalone,nickel,North Maluku,Maluku,Central Halmahera Regency,-0.06966,129.39216,approximate,90,0,0,1,Zhenshi,China,2015,
+toba-pulp-lestari,Toba Pulp Lestari,standalone,pulp,North Sumatra,Sumatra,Toba Regency,2.46381,99.19683,exact,80,0,0,1,RGE,Indonesia,,sumatera:5
+pt-borneo-alumina-indonesia-antam-group,PT Borneo Alumina Indonesia (Antam Group),standalone,aluminium,West Kalimantan,Kalimantan,Mempawah Regency,0.51731,108.95484,exact,75,0,0,1,MIND ID,Indonesia,2025,kalimantan:2
+tanjungenim-lestari-pulp-paper,Tanjungenim Lestari Pulp & Paper,standalone,pulp,South Sumatra,Sumatra,Muara Enim Regency,-3.43044,104.03192,exact,75,0,0,1,Marubeni,Japan,,sumatera:17
+pt-conch-barru-cement-indonesia,PT Conch Barru Cement Indonesia,standalone,cement,South Sulawesi,Sulawesi,Barru Regency,-4.39591,119.61834,exact,70,0,0,1,Conch Cement,China,2019,
+purwakarta-indorama,Purwakarta Indorama,standalone,mixed,West Java,Java,Purwakarta Regency,-6.5536,107.41348,exact,70,0,0,2,PLN,Indonesia,2006,jawa_bali:16
+kilang-pertamina-indonesia,Kilang Pertamina Indonesia,standalone,chem,Riau,Sumatra,Dumai City,1.67448,101.47527,exact,70,0,0,1,Pertamina,Indonesia,,sumatera:9
+tanjung-bara,Tanjung Bara,standalone,metals,East Kalimantan,Kalimantan,East Kutai Regency,0.53927,117.63424,exact,64,0,0,2,Salim-Bakrie,Indonesia,2017,
+pomalaa-nickel,Pomalaa Nickel,standalone,nickel,Southeast Sulawesi,Sulawesi,Kolaka Regency,-4.17987,121.59293,exact,60,0,0,2,MIND ID,Indonesia,2016,sulawesi:14
+pt-conch-west-papua-cement,PT Conch West Papua Cement,standalone,cement,West Papua,Papua,Manokwari Regency,-0.99626,134.02351,exact,60,0,0,1,Conch Cement,China,2016,
+medan-steel-mill,Medan Steel Mill,standalone,metals,North Sumatra,Sumatra,Medan City,3.66465,98.66606,approximate,60,0,0,2,Nanjing Iron; Gunung Steel,"Indonesia, China",2017,sumatera:2
+tabalong-wisesa,Tabalong Wisesa,standalone,metals,South Kalimantan,Kalimantan,Tabalong Regency,-2.15859,115.44593,exact,60,0,0,2,Adaro,Indonesia,2013,
+jie,JIE — Jababeca Industrial Estate,park,pulp,West Java,Java,Bekasi Regency,-6.27499,107.1217,exact,55,0,0,1,Siam,Thailand,2017,jawa_bali:13
+pt-conch-south-kalimantan-cement,PT Conch South Kalimantan Cement,standalone,cement,South Kalimantan,Kalimantan,Tabalong Regency,-2.05145,115.57004,exact,54,0,0,1,Conch Cement,China,2014,kalimantan:3
+kutai-refinery-nusantara,Kutai Refinery Nusantara,standalone,agro,East Kalimantan,Kalimantan,Balikpapan City,-1.17457,116.79445,exact,50,0,0,1,RGE,Indonesia,,kalimantan:5
+kpcm,KPCM — Kaltim Prima Coal Mining Complex,park,metals,East Kalimantan,Kalimantan,East Kutai Regency,0.5494,117.50988,approximate,44,0,0,1,BUMI,Indonesia,,kalimantan:6
+pt-conch-north-sulawesi-cement,PT Conch North Sulawesi Cement,standalone,cement,North Sulawesi,Sulawesi,Bolaang Mongondow Regency,0.90188,124.08102,exact,40,0,0,1,Conch Cement,China,2018,
+cilegon-ptip,Cilegon PTIP,standalone,chem,Banten,Java,Cilegon City,-6.02389,105.95013,exact,40,0,0,1,Indorama,Thailand,2017,jawa_bali:3
+indo-bharat-rayon,Indo Bharat Rayon,standalone,mixed,West Java,Java,Purwakarta Regency,-6.48705,107.3886,exact,36,0,0,1,Aditya Birla,India,2008,jawa_bali:14
+aspek-kumbong,Aspek Kumbong,standalone,pulp,West Java,Java,Bogor Regency,-6.42763,106.9548,exact,33,0,0,1,KORINDO,South Korea,,jawa_bali:18
+solusi-bangun-andalas-lhoknga,Solusi Bangun Andalas Lhoknga,standalone,cement,Aceh,Sumatra,Aceh Besar Regency,5.45384,95.24645,exact,32,0,0,1,SIG,Indonesia,2021,
+bukit-asam-tanjung-enim,Bukit Asam Tanjung Enim,standalone,metals,South Sumatra,Sumatra,Muara Enim Regency,-3.73097,103.79749,exact,30,0,0,1,MIND ID,Indonesia,2013,sumatera:18
+south-pasific-viscose-power-plant-2,South Pasific Viscose Power Plant 2,standalone,mixed,West Java,Java,Purwakarta Regency,-6.49813,107.39954,exact,30,0,0,1,B&C,Austria,2009,jawa_bali:17
+bandung-indosyntec,Bandung Indosyntec,standalone,mixed,West Java,Java,Bandung Regency,-6.9699,107.60627,exact,30,0,0,1,Panasia,Indonesia,2004,jawa_bali:12
+pt-rayon-utama-makmur,PT Rayon Utama Makmur,standalone,chem,Central Java,Java,Sukoharjo Regency,-7.72713,110.89977,exact,30,0,0,1,SRITEX / SRIL,Indonesia,,jawa_bali:20
+andalas-cement,Andalas Cement,standalone,cement,Aceh,Sumatra,Aceh Besar regency,5.45346,95.24653,exact,29,0,0,1,SIG,Indonesia,2007,sumatera:1
+pt-prima-alam-gemilang,PT Prima Alam Gemilang,standalone,agro,Southeast Sulawesi,Sulawesi,Bombana Regency,-4.57882,121.88233,exact,27,0,0,1,PAG,Indonesia,2020,sulawesi:15
+kim,KIM — Kawasan Industri Medan,park,agro,North Sumatra,Sumatra,Deli Serdang Regency,3.6719,98.68656,exact,26,0,0,2,Musim Mas,Indonesia,2008,
+tayan-cga,Tayan CGA,standalone,aluminium,West Kalimantan,Kalimantan,Sanggau Regency,0.05585,109.9714,exact,24,0,0,1,MIND ID,Indonesia,2015,
+pt-musim-mas,PT Musim Mas,standalone,agro,North Sumatra,Sumatra,Medan City,3.77857,98.70129,approximate,24,0,0,1,MUSIM MAS,Indonesia,,
+palembang-pusri,Palembang Pusri,standalone,chem,South Sumatra,Sumatra,Palembang City,-2.97825,104.80743,exact,23,0,0,1,Pupuk,Indonesia,2016,sumatera:16
+sentra-usahatama-jaya,Sentra Usahatama Jaya,standalone,agro,Banten,Java,Cilegon City,-6.02128,105.96786,exact,22,0,0,1,Samora,Indonesia,,jawa_bali:7
+pt-smart-tbk,PT SMART Tbk,standalone,agro,South Kalimantan,Kalimantan,Kotabaru Regency,-3.27108,116.1205,exact,20,0,0,1,Golden Agri,Indonesia,2015,
+south-pasific-viscose-power-plant-1,South Pasific Viscose Power Plant 1,standalone,mixed,West Java,Java,Purwakarta Regency,-6.49909,107.39946,exact,20,0,0,1,B&C,Austria,2005,
+pt-dian-swastatika-sentosa-tangerang,PT Dian Swastatika Sentosa Tangerang,standalone,pulp,Banten,Java,South Tangerang City,-6.24823,106.64722,exact,19,0,0,1,APP / Sinar Mas,Indonesia,,jawa_bali:11
+berkah-manis-makmur,Berkah Manis Makmur,standalone,agro,Banten,Java,Serang Regency,-6.20979,106.3727,exact,18,0,0,1,MSCL,Thailand,,jawa_bali:9
+bukit-asam-tarahan-port,Bukit Asam Tarahan Port,standalone,metals,Lampung,Sumatra,Bandar Lampung City,-5.51123,105.34247,exact,16,0,0,1,MIND ID,Indonesia,2014,sumatera:19
+bip,BIP — Bojonegara Industrial Park,park,agro,Banten,Java,Serang Regency,-5.96665,106.10309,exact,15,0,0,1,PAS,Indonesia,,jawa_bali:8
+indonesia-fibreboard-industry,Indonesia Fibreboard Industry,standalone,pulp,South Sumatra,Sumatra,Musi Banyuasin Regency,-2.07019,103.73594,exact,15,0,0,1,ADR,Indonesia,,sumatera:14
+pt-corii-smelter-captive,PT CORII smelter captive,standalone,nickel,Central Sulawesi,Sulawesi,North Morowali Regency,-1.93794,121.32119,exact,15,0,0,1,Macrolink,China,,
+indominco-mandiri,Indominco Mandiri,standalone,metals,East Kalimantan,Kalimantan,Bontang City,0.01975,117.47642,exact,14,0,0,1,ITMG,Thailand,,kalimantan:4
+mcie,MCIE — Marunda Centre Industrial Estate,park,agro,West Java,Java,Bekasi Regency,-6.09052,106.98108,exact,12,0,0,1,Samora,Indonesia,,
+laju-perdana-indah,Laju Perdana Indah,standalone,agro,South Sumatra,Sumatra,East Ogan Komering Ulu Regency,-3.85894,104.74944,exact,12,0,0,1,ISM,Indonesia,,sumatera:15
+sintong-abadi,Sintong Abadi,standalone,agro,North Sumatra,Sumatra,Asahan Regency,2.92563,99.70748,exact,12,0,0,1,Sintong,Indonesia,,sumatera:4
+pt-pulau-sambu-kuala-enok,PT Pulau Sambu (Kuala Enok),standalone,agro,Riau,Sumatra,Indragiri Hilir Regency,-0.50331,103.38479,exact,7,0,0,1,PS,Indonesia,1967,sumatera:10
+pt-pulau-sambu-usaha-guntung,PT Pulau Sambu (Usaha Guntung),standalone,agro,Riau,Sumatra,Indragiri Hilir Regency,0.30747,103.60587,exact,7,0,0,1,PS,Indonesia,1983,
+pt-riau-sakti-united-plantation,PT Riau Sakti United Plantation,standalone,agro,Riau,Sumatra,Indragiri Hilir Regency,0.42012,103.54957,exact,7,0,0,1,PS,Indonesia,,
+sari-dumai-oleo,Sari Dumai Oleo,standalone,agro,Riau,Sumatra,Dumai City,1.7838,101.35425,exact,2,0,0,1,RGE,Indonesia,,
