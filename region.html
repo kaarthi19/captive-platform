@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Sulawesi corridor · Captive Power Platform</title>
+<title>Regions · Captive Power Platform</title>
+<link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -11,23 +12,25 @@
 <header class="site">
   <div class="wrap navrow">
     <a class="brand" href="index.html">
-      <span class="mark" aria-hidden="true">CP</span>
-      <span><b>Captive Power Decarbonization</b><span data-i18n="brand_sub">Indonesia · Power Transformation Lab</span></span>
+      <img class="mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+      <span><b data-i18n="brand">Captive Power Decarbonization</b><span data-i18n="brand_sub">Indonesia · Power Transformation Lab</span></span>
     </a>
     <nav class="main">
       <a href="index.html" data-i18n="nav_explore">Explore map</a>
       <a href="region.html" class="active" data-i18n="nav_region">Regions</a>
       <a href="methodology.html" data-i18n="nav_method">Methodology</a>
       <a href="about.html" data-i18n="nav_about">About</a>
+      <a href="contact.html" data-i18n="nav_contact">Contact</a>
     </nav>
-    <div class="lang"><button data-lang="en" class="on">EN</button><button data-lang="id">ID</button></div>
+    <div class="lang"><button data-lang="en" class="on">EN</button><button data-lang="id">ID</button><button data-lang="zh" lang="zh-Hans">中文</button></div>
   </div>
 </header>
 
 <main class="wrap section">
   <div class="kick" data-i18n="reg_kick">Regional aggregation</div>
-  <h1 style="font-size:24px" data-i18n="reg_h">Sulawesi corridor</h1>
+  <h1 style="font-size:24px" id="regName">—</h1>
   <p class="sub" data-i18n="reg_sub">System-wide implications and transmission upgrades if captive parks connect to PLN’s grid</p>
+  <div class="filters" id="regPick" role="tablist" aria-label="Region"></div>
 
   <div class="stats">
     <div class="stat"><b id="rsGW">—</b><small data-i18n="rs1">captive coal operating in region</small></div>
@@ -36,47 +39,49 @@
     <div class="stat"><b id="rsCapex">—</b><small data-i18n="rs4">transmission capex</small></div>
   </div>
 
-  <!-- TRANSMISSION MAP: headline feature -->
   <div class="card">
     <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap">
       <div>
         <h2 data-i18n="reg_map">Transmission map</h2>
         <p class="sub" style="margin:0" data-i18n="reg_mapp">Parks, grid hubs and the corridors that would connect them</p>
       </div>
-      <button class="chip on" id="txToggle"><span data-i18n="reg_toggle">Proposed upgrades shown</span></button>
+      <button class="chip on" id="txToggle"><span data-i18n="reg_toggle_on">Proposed upgrades shown</span></button>
     </div>
     <div class="split" style="margin-top:12px">
-      <div id="txmap" style="border:1px solid var(--line);border-radius:10px;overflow:hidden;background:linear-gradient(180deg,#f7fafc,#eef3f6)"></div>
+      <div class="maphold"><div id="txmap" class="locmap"></div><div class="pop" id="pop"></div></div>
       <div>
         <div style="font-size:12px;color:var(--mut);line-height:2">
           <div><span style="display:inline-block;width:11px;height:11px;border-radius:50%;background:#2a78d6;margin-right:6px"></span><span data-i18n="reg_leg_site">Captive site (blue = nickel, grey = other)</span></div>
-          <div><span style="display:inline-block;width:11px;height:11px;background:#378add;margin-right:6px"></span>PLN grid hub</div>
-          <div><span style="display:inline-block;width:18px;border-top:2px dashed #fc4d50;margin-right:6px;vertical-align:middle"></span>Proposed corridor</div>
-          <div><span style="display:inline-block;width:18px;border-top:2px solid #888780;margin-right:6px;vertical-align:middle"></span>Existing line</div>
+          <div class="txleg"><span style="display:inline-block;width:11px;height:11px;background:#316d91;margin-right:6px"></span><span data-i18n="reg_leg_hub">PLN grid hub</span></div>
+          <div class="txleg"><span style="display:inline-block;width:18px;border-top:2px dashed #c75c45;margin-right:6px;vertical-align:middle"></span><span data-i18n="reg_leg_prop">Proposed corridor (illustrative)</span></div>
+          <div class="txleg"><span style="display:inline-block;width:18px;border-top:2px solid #888780;margin-right:6px;vertical-align:middle"></span><span data-i18n="reg_leg_exist">Existing line</span></div>
         </div>
-        <p class="sub" style="margin-top:10px">Click a park to open its facility analysis. Line thickness ≈ transfer capacity.</p>
+        <p class="sub" style="margin-top:10px" data-i18n="reg_click">Hover over a site for its details; click to keep the card open. Line thickness ≈ transfer capacity.</p>
+        <p class="sub insight" id="txNone" style="display:none" data-i18n="reg_tx_none">Grid hubs and transmission corridors for this region will come from GARUDA results. Only Sulawesi has illustrative corridors so far.</p>
       </div>
     </div>
   </div>
 
   <div class="grid2" style="margin-top:16px">
     <div class="card">
-      <h2 data-i18n="reg_cap">Park capacity &amp; readiness</h2>
-      <div style="position:relative;height:320px;margin-top:6px"><canvas id="regChart" role="img" aria-label="Horizontal bar chart of operating captive coal capacity at each Sulawesi site, colored by sector"></canvas></div>
+      <h2 data-i18n="reg_cap">Operating capacity by site</h2>
+      <p class="sub" id="regChartNote" style="margin:0"></p>
+      <div id="regChartBox" style="position:relative;height:320px;margin-top:6px"><canvas id="regChart" role="img" aria-label="Horizontal bar chart of operating captive coal capacity at each site in the region, colored by sector"></canvas></div>
     </div>
     <div class="card">
       <h2 data-i18n="reg_tx">Transmission upgrades needed</h2>
-      <table class="dt" style="margin-top:6px">
+      <table class="dt" style="margin-top:6px" id="txTable">
         <thead><tr><th data-i18n="th_corr">Corridor</th><th style="text-align:right">MW</th><th style="text-align:right">$</th></tr></thead>
         <tbody id="txBody"></tbody>
       </table>
+      <p class="sub" id="txTableNone" style="display:none;margin-top:8px" data-i18n="reg_tx_none_short">Pending GARUDA transmission results.</p>
     </div>
   </div>
 </main>
 
 <footer class="site"><div class="wrap">
   <span data-i18n="foot_rights">© 2026 Power Transformation Lab · UC San Diego · CC-BY open data</span>
-  <span><a href="about.html" data-i18n="foot_req">Request analysis</a> · <a href="about.html" data-i18n="foot_work">Workshops</a></span>
+  <span><a href="contact.html#request" data-i18n="foot_req">Request analysis</a> · <a href="contact.html#workshops" data-i18n="foot_work">Workshops</a></span>
 </div></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>

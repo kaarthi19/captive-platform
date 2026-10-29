@@ -4,10 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Indonesia Captive Power Decarbonization Platform</title>
-<meta name="description" content="Open-access, bilingual facility-level decarbonization analysis for Indonesia's captive coal industrial parks and plants.">
+<meta name="description" content="Open-access, multilingual facility-level decarbonization analysis for Indonesia's captive coal industrial parks and plants.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Syne:wght@600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body class="home">
@@ -15,24 +16,25 @@
 <header class="site">
   <div class="wrap navrow">
     <a class="brand" href="index.html">
-      <span class="mark" aria-hidden="true">CP</span>
-      <span><b>Captive Power Decarbonization</b><span data-i18n="brand_sub">Indonesia · Power Transformation Lab</span></span>
+      <img class="mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+      <span><b data-i18n="brand">Captive Power Decarbonization</b><span data-i18n="brand_sub">Indonesia · Power Transformation Lab</span></span>
     </a>
     <nav class="main">
       <a href="index.html" class="active" data-i18n="nav_explore">Explore map</a>
       <a href="region.html" data-i18n="nav_region">Regions</a>
       <a href="methodology.html" data-i18n="nav_method">Methodology</a>
       <a href="about.html" data-i18n="nav_about">About</a>
+      <a href="contact.html" data-i18n="nav_contact">Contact</a>
     </nav>
-    <div class="lang"><button data-lang="en" class="on">EN</button><button data-lang="id">ID</button></div>
+    <div class="lang"><button data-lang="en" class="on">EN</button><button data-lang="id">ID</button><button data-lang="zh" lang="zh-Hans">中文</button></div>
   </div>
 </header>
 
 <section class="home-hero" data-reveal>
   <div class="wrap home-hero-inner">
-    <div class="kick" data-i18n="hero_kick">Open-access · bilingual · facility-level</div>
+    <div class="kick" data-i18n="hero_kick">Open-access · multilingual · facility-level</div>
     <h1 data-i18n="hero_h1">Decarbonization pathways for Indonesia's captive coal fleet</h1>
-    <p class="lead" data-i18n="hero_p">Click any captive coal site — an industrial park or a standalone plant — to see its energy mix, clean-energy alternatives, grid-connection options, and what each stakeholder must invest. Built on a co-optimized generation &amp; transmission expansion model.</p>
+    <p class="lead" data-i18n="hero_p">Click any captive coal site — an industrial park or a standalone plant — to see its energy mix, clean-energy alternatives, grid-connection options, and what the transition would cost. Built on a co-optimized generation &amp; transmission expansion model.</p>
     <div class="hero-actions">
       <a class="btn hero-primary" href="#explore" data-i18n="hero_cta">Explore facility evidence</a>
       <a class="hero-link" href="methodology.html" data-i18n="hero_method">Review the methodology →</a>
@@ -44,7 +46,6 @@
   <div class="wrap stats">
     <div class="stat"><b id="statSites">—</b><small data-i18n="s1">captive coal sites mapped</small></div>
     <div class="stat"><b id="statGW">—</b><small data-i18n="s2">captive coal operating</small></div>
-    <div class="stat"><b>35%</b><small data-i18n="s3">PerPres 112/2022 cut, 10 yrs</small></div>
     <div class="stat"><b id="statSM">—</b><small data-i18n="s4">of operating capacity in Sulawesi &amp; N. Maluku</small></div>
   </div>
 </section>
@@ -52,7 +53,7 @@
 <main class="wrap section home-explorer" id="explore" data-reveal>
   <div class="kick" data-i18n="explore_kick">Facility explorer</div>
   <h2 class="section-heading" data-i18n="explore_h">Move from national ambition to facility-level decisions.</h2>
-  <p class="lead explore-lead" data-i18n="explore_p">Filter the fleet, compare transition readiness, and open a facility to examine pathways, costs, and stakeholder investment needs.</p>
+  <p class="lead explore-lead" data-i18n="explore_p">Filter the fleet, compare transition readiness, and open a facility to examine pathways, costs, ownership and financing.</p>
 
   <div class="filters">
     <span class="fl" data-i18n="f_ind">Industry</span>
@@ -61,11 +62,11 @@
     <span class="fl" style="margin-left:6px" data-i18n="f_region">Region</span>
     <select class="f" id="fRegion">
       <option value="all" data-i18n="f_allreg">All regions</option>
-      <option>Sulawesi</option><option value="Maluku">North Maluku</option><option>Kalimantan</option><option>Sumatra</option><option>Java</option><option>Nusa Tenggara</option><option>Papua</option>
+      <option value="Sulawesi" data-i18n="rg_Sulawesi">Sulawesi</option><option value="Maluku" data-i18n="rg_Maluku">North Maluku</option><option value="Kalimantan" data-i18n="rg_Kalimantan">Kalimantan</option><option value="Sumatra" data-i18n="rg_Sumatra">Sumatra</option><option value="Java" data-i18n="rg_Java">Java</option><option value="Nusa Tenggara" data-i18n="rg_NusaTenggara">Nusa Tenggara</option><option value="Papua" data-i18n="rg_Papua">Papua</option>
     </select>
     <span class="fl" data-i18n="f_status">Status</span>
     <select class="f" id="fStatus">
-      <option value="all" data-i18n="f_any">Any</option><option value="op" data-i18n="f_op">Has operating units</option><option value="pipe" data-i18n="f_pipe">Has units in the pipeline</option><option value="model" data-i18n="f_model">Covered by the model</option>
+      <option value="all" data-i18n="f_any">Any</option><option value="op" data-i18n="f_op">Has operating units</option><option value="pipe" data-i18n="f_pipe">Has units in the pipeline</option><option value="model" data-i18n="f_model">Modeled in GARUDA</option>
     </select>
   </div>
 
@@ -78,11 +79,11 @@
       <div class="row"><i style="background:#8a9197"></i><span data-i18n="leg_ot">Other sectors</span></div>
       <div class="row" style="margin-top:4px"><i style="background:#fff;border:2px solid #8a9197;width:10px;height:10px;box-sizing:border-box"></i><span data-i18n="leg_pipe">pipeline only, not yet operating</span></div>
       <div class="row"><i style="background:#b4b2a9;width:14px;height:14px"></i><span data-i18n="leg_s">size = capacity</span></div>
-      <div style="margin-top:5px;font-size:10.5px"><span data-i18n="leg_ready">Transition readiness: pending model results</span> · <a href="methodology.html#ready" data-i18n="leg_def">How we define this →</a></div>
+      <div style="margin-top:5px;font-size:10.5px"><span data-i18n="leg_ready">Transition readiness: pending GARUDA results</span> · <a href="methodology.html#ready" data-i18n="leg_def">How we define this →</a></div>
     </div>
     <div class="pop" id="pop"></div>
   </div>
-  <p class="sub" style="margin-top:10px;text-align:center" data-i18n="hint">Click a marker to open its facility card. Site data: Earthwise Institute, Indonesian Power Summary Database (2026).</p>
+  <p class="sub" style="margin-top:10px;text-align:center" data-i18n="hint">Hover over a marker for its card; click to keep it open. Site data: Earthwise Institute, Indonesian Power Summary Database (2026).</p>
 
   <div class="card" style="margin-top:28px">
     <div class="tblhead">
@@ -116,7 +117,7 @@
 
 <footer class="site"><div class="wrap">
   <span data-i18n="foot_rights">© 2026 Power Transformation Lab · UC San Diego · CC-BY open data</span>
-  <span><a href="about.html" data-i18n="foot_req">Request analysis</a> · <a href="about.html" data-i18n="foot_work">Workshops</a></span>
+  <span><a href="contact.html#request" data-i18n="foot_req">Request analysis</a> · <a href="contact.html#workshops" data-i18n="foot_work">Workshops</a></span>
 </div></footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>

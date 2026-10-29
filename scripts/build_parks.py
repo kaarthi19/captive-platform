@@ -6,18 +6,18 @@ named industrial park / complex, plus one per standalone captive plant), and wri
   assets/js/parks.js        window.PARKS for the static site (map, filters, popups)
   assets/js/site-details.js window.SITE_DETAILS, per-site detail for the facility page
   data/parks.csv            the same sites as a flat table
-  data/model_crosswalk.csv  each capacity-expansion model node -> platform site
+  data/model_crosswalk.csv  each GARUDA industrial-park node -> platform site
 
-The crosswalk is how model outputs get joined to sites. Model nodes are matched to the
+The crosswalk is how GARUDA outputs get joined to sites. GARUDA nodes are matched to the
 nearest site automatically; data/crosswalk_overrides.csv pins the matches that need a human
-call (wrong node coordinates, parks the model split or duplicated, etc.).
+call (wrong node coordinates, parks GARUDA splits or duplicates, etc.).
 
 Usage:
   python3 scripts/build_parks.py EARTHWISE_XLSX [--extended EXT_XLSX] [--model-data DIR]
 
   EARTHWISE_XLSX   Earthwise-Institute_*_Indonesia-Captive-Coal-Database_*.xlsx
   --extended       Earthwise-Institute_*_Captive-Coal-Extended-Dims_*.xlsx (optional)
-  --model-data     captive-indonesia-2025/data_indonesia/2030 (default: sibling checkout)
+  --model-data     garuda/data_indonesia/captive/2030 (default: sibling checkout)
 """
 import argparse
 import csv
@@ -209,14 +209,47 @@ def split_list(v, sep=';'):
     return [x.strip() for x in str(v or '').split(sep) if x.strip() and x.strip() not in ('NA', 'None', 'F')]
 
 
+def parse_shares(v):
+    """'Lygend Resources (54.9%); Harita Group (45.1%)' -> [('Lygend Resources', 54.9), ('Harita Group', 45.1)].
+    Shares are None when not given; '0,40%' style decimals are accepted."""
+    out = []
+    for part in split_list(v):
+        m = re.match(r'^(.*?)\s*\((\d+(?:[.,]\d+)?)\s*%\)$', part)
+        out.append((m.group(1).strip(), float(m.group(2).replace(',', '.'))) if m else (part, None))
+    return out
+
+
+def read_owners():
+    """data/owners.csv: Earthwise ultimate-owner spelling -> company group, country and website.
+    Only URLs marked 'confirmed' (opened and checked to be the company's own site) are linked."""
+    path = os.path.join(ROOT, 'data', 'owners.csv')
+    if not os.path.exists(path):
+        return {}
+    return {r['earthwise_name']: r for r in csv.DictReader(open(path, encoding='utf-8'))}
+
+
+def read_lenders():
+    """data/lenders.csv: Earthwise lender spelling -> one institution and its HQ country.
+    Only spellings that are unmistakably the same institution are merged."""
+    path = os.path.join(ROOT, 'data', 'lenders.csv')
+    if not os.path.exists(path):
+        return {}
+    return {r['earthwise_name']: r for r in csv.DictReader(open(path, encoding='utf-8'))}
+
+
+COUNTRY = {'China Taiwan': 'Taiwan'}  # one spelling per country across owners and lenders
+
+
 def build_details(units, sites, financing, extended):
     """Per-site detail for the facility page: every unit (including cancelled / shelved / retired
     ones at the same site), ownership, financing transactions and the industrial projects the
     site's power supports."""
     by_key = {s['_key']: s for s in sites}
-    det, unit_site, plant_site = {}, {}, {}
+    owners = read_owners()
+    det, unit_site, plant_site, owner_mw = {}, {}, {}, {}
     for s in sites:
-        det[s['id']] = {'units': [], 'ultimate': [], 'countries': [], 'ownership': [], 'jv': False,
+        owner_mw[s['id']] = OrderedDict()
+        det[s['id']] = {'units': [], 'owners': [], 'countries': [], 'ownership': [], 'jv': False,
                         'epc': [], 'chinaRole': [], 'aliases': [], 'district': None, 'village': None,
                         'island': None, 'smallIsland': False, 'sources': [], 'finance': [], 'projects': [],
                         'otherPower': None}
@@ -233,14 +266,31 @@ def build_details(units, sites, financing, extended):
         d = det[s['id']]
         unit_site[u['EW Project ID']] = s['id']
         plant_site[u['Project Name English']] = s['id']
+        shares = parse_shares(u['Ultimate Owner (All)'])
+        ultimate = []
+        for name, pct in shares:
+            o = owners.get(name, {})
+            group = o.get('group') or name
+            ultimate.append([group, pct])
+            if STATUS.get(u['Status']):  # capacity-weighted ownership over live units only
+                w = pct / 100 if pct is not None else 1 / len(shares)
+                url = o.get('url') if o.get('confidence') == 'confirmed' else None
+                a = owner_mw[s['id']].setdefault(group, {'name': group, 'mw': 0.0, 'url': url or None,
+                                                         'country': o.get('country') or None, 'plants': []})
+                a['mw'] += num(u['Capacity (MW)']) * w
+                if not a['country'] and name == u['Majority or Whole Ultimate Owner']:
+                    a['country'] = u['Majority or Whole Ultimate Owner Country']
+                add(a['plants'], plant_short(u['Project Name English']))
         d['units'].append({
             'plant': plant_short(u['Project Name English']), 'phase': u['Phase / Unit'],
             'mw': num(u['Capacity (MW)']), 'status': u['Status'],
             'start': year(u['(Expected) Start year']), 'retire': year(u['(Expected) Retire Year']),
-            'owner': u['Owner'], 'epc': u['EPC'], 'project': u['Supported Project'],
+            'owner': u['Owner'], 'parent': u['Owner Parent'], 'operator': u['Operator'],
+            'ultimate': ultimate, 'type': u['Ownership Type'], 'jv': u['Solely Owned / JV'] == 'JV',
+            'china': u['Role of Chinese Entities'] if u['Role of Chinese Entities'] not in ('NA', 'None', 'F') else None,
+            'epc': u['EPC'], 'project': u['Supported Project'],
             'fuel': u['Alternate Fuel'] if u['Alternate Fuel'] not in ('NA', 'None') else None,
         })
-        add(d['ultimate'], u['Ultimate Owner (All)'])
         add(d['countries'], *split_list(u['Ultimate Owner Country (All)'], ','))
         add(d['ownership'], u['Ownership Type'])
         d['jv'] = d['jv'] or u['Solely Owned / JV'] == 'JV'
@@ -256,12 +306,28 @@ def build_details(units, sites, financing, extended):
         if link and str(link).startswith('http'):
             add(d['sources'], link)
 
-    for d in det.values():
+    for sid, d in det.items():
         d['units'].sort(key=lambda x: (x['plant'], x['start'] or 9999, str(x['phase'])))
+        live = sum(o['mw'] for o in owner_mw[sid].values()) or 1
+        d['owners'] = sorted(({**o, 'mw': round(o['mw']), 'share': round(o['mw'] / live * 100, 1)}
+                              for o in owner_mw[sid].values()), key=lambda o: -o['mw'])
 
+    lender_alias = read_lenders()
     for t in financing:
         ids = {unit_site[p] for p in split_list(t['Project ID']) if p in unit_site}
         refs = [t[k] for k in ('Ref1', 'Ref2', 'Ref3', 'Ref4') if t.get(k) and str(t[k]).startswith('http')]
+        # Financier and Bank HQ are listed in the same order; pair them only when the counts agree
+        names, hqs = split_list(t['Financier / Issuer']), split_list(t['Bank HQ'])
+        lenders = []
+        for i, n in enumerate(names):
+            alias = lender_alias.get(n)
+            name = alias['lender'] if alias else n
+            hq = (alias['country'] or None) if alias else (hqs[i] if len(hqs) == len(names) else None)
+            if name not in [x[0] for x in lenders]:
+                lenders.append([name, COUNTRY.get(hq, hq)])
+        kinds = [k for k, col in (('commercial', 'Commercial Bank Participation'), ('policy', 'Policy Bank Participation'),
+                                  ('mdb', 'Multilateral Fund / MDB Participation'), ('dfi', 'DFI Participation'))
+                 if t.get(col) == 'T']
         for sid in ids:
             det[sid]['finance'].append({
                 'id': t['Transaction ID'], 'year': year(t['Financing Close Year']),
@@ -271,6 +337,9 @@ def build_details(units, sites, financing, extended):
                 'term': year(t['Financing Term (Years)']),
                 'recipient': t['Financing Recepient'], 'phase': t['Financed Phase'],
                 'captive': t['Financing specified for captive coal'] == 'T', 'refs': refs,
+                'lenders': lenders, 'kinds': kinds,
+                'sponsor': t['Financing Recepient Parent / Sponcor / Guarantor (Abbreviation)'],
+                'currency': t['Original Loan Currency'] if t['Original Loan Currency'] not in (None, 'NA') else None,
             })
     for d in det.values():
         d['finance'].sort(key=lambda f: f['year'] or 0)
@@ -383,7 +452,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('earthwise')
     ap.add_argument('--extended', help='Earthwise "Captive Coal, Extended Dimensions" workbook (industrial projects)')
-    ap.add_argument('--model-data', default=os.path.join(ROOT, '..', 'captive-indonesia-2025', 'data_indonesia', '2030'))
+    ap.add_argument('--model-data', default=os.path.join(ROOT, '..', 'garuda', 'data_indonesia', 'captive', '2030'))
     a = ap.parse_args()
 
     wb = openpyxl.load_workbook(a.earthwise, read_only=True, data_only=True)
@@ -399,7 +468,7 @@ def main():
     js = ('/* GENERATED by scripts/build_parks.py from the Earthwise Institute Indonesian captive coal\n'
           '   database (%s). Do not edit by hand. Capacity is MW of captive coal by status:\n'
           '   op = operating, con = under construction, plan = announced / pre-construction.\n'
-          '   model = capacity-expansion model nodes ("island:index") mapped to this site. */\n'
+          '   model = GARUDA industrial-park nodes ("island:index") mapped to this site. */\n'
           'window.PARKS = [\n%s\n];\n') % (os.path.basename(a.earthwise),
                                           ',\n'.join(json.dumps(s, ensure_ascii=False) for s in sites))
     with open(os.path.join(ROOT, 'assets', 'js', 'parks.js'), 'w', encoding='utf-8') as f:
@@ -424,7 +493,7 @@ def main():
     print('%d sites (%d parks, %d standalone) · operating %d MW · construction %d MW · planned %d MW'
           % (len(sites), sum(s['kind'] == 'park' for s in sites), sum(s['kind'] == 'standalone' for s in sites),
              tot['op'], tot['con'], tot['plan']))
-    print('model nodes: %d · %s · sites with model results: %d'
+    print('GARUDA nodes: %d · %s · sites with GARUDA results: %d'
           % (len(xw), dict(Counter(r['method'] for r in xw)), sum(bool(s['model']) for s in sites)))
 
 

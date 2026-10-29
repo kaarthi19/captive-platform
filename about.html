@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>About · Captive Power Platform</title>
+<link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
@@ -11,42 +12,72 @@
 <header class="site">
   <div class="wrap navrow">
     <a class="brand" href="index.html">
-      <span class="mark" aria-hidden="true">CP</span>
-      <span><b>Captive Power Decarbonization</b><span data-i18n="brand_sub">Indonesia · Power Transformation Lab</span></span>
+      <img class="mark" src="assets/img/logo.svg" alt="" width="34" height="34">
+      <span><b data-i18n="brand">Captive Power Decarbonization</b><span data-i18n="brand_sub">Indonesia · Power Transformation Lab</span></span>
     </a>
     <nav class="main">
       <a href="index.html" data-i18n="nav_explore">Explore map</a>
       <a href="region.html" data-i18n="nav_region">Regions</a>
       <a href="methodology.html" data-i18n="nav_method">Methodology</a>
       <a href="about.html" class="active" data-i18n="nav_about">About</a>
+      <a href="contact.html" data-i18n="nav_contact">Contact</a>
     </nav>
-    <div class="lang"><button data-lang="en" class="on">EN</button><button data-lang="id">ID</button></div>
+    <div class="lang"><button data-lang="en" class="on">EN</button><button data-lang="id">ID</button><button data-lang="zh" lang="zh-Hans">中文</button></div>
   </div>
 </header>
 
 <main class="wrap section">
-  <div class="kick" data-i18n="ab_kick">About the platform</div>
-  <h1 style="font-size:26px" data-i18n="ab_h">Bridging modeling and real-world decisions</h1>
-  <p class="lead" data-i18n="ab_p">An open-access decision-support tool from the Power Transformation Lab at UC San Diego, translating sector-wide transition studies into facility-specific, investment-ready guidance for park owners, PLN, provincial governments, and financiers.</p>
+  <div class="kick" data-i18n="ab_kick">About</div>
+  <h1 style="font-size:26px" data-i18n="ab_lab_h">The Power Transformation Lab</h1>
+  <p class="lead" data-i18n="ab_lab_p">The Power Transformation Lab at UC San Diego studies the engineering and institutional requirements of deploying low-carbon energy at scale. Working across many geographies with academic, government, civil-society and industry partners, the lab builds research, open models and data for climate and environmental challenges.</p>
+  <p class="lead" style="margin-top:12px" data-i18n="ab_p">This platform is an open-access decision-support tool from the lab, translating sector-wide transition studies into facility-specific, investment-ready guidance for park owners, PLN, provincial governments, and financiers.</p>
+  <p style="margin-top:12px;font-size:14px"><a href="https://pwrlab.org" target="_blank" rel="noopener"><span data-i18n="ab_visit">Visit pwrlab.org</span> ↗</a></p>
 
-  <div class="grid2" style="margin-top:18px">
-    <div class="card">
-      <h2 data-i18n="ab_team">Team</h2>
-      <table class="dt" style="margin-top:6px"><tbody>
-        <tr><td style="font-weight:600">Michael Davidson</td><td style="color:var(--mut)">Principal Investigator, UC San Diego</td></tr>
-        <tr><td style="font-weight:600">Kaarthi A Gnapathy</td><td style="color:var(--mut)">Lead Researcher · model &amp; platform</td></tr>
-        <tr><td style="font-weight:600">Research Assistant</td><td style="color:var(--mut)">Facility analysis &amp; data</td></tr>
-        <tr><td style="font-weight:600">Web Developer</td><td style="color:var(--mut)">Front-end implementation</td></tr>
-        <tr><td style="font-weight:600">Local Consultant</td><td style="color:var(--mut)">In-country engagement (TBD)</td></tr>
-      </tbody></table>
-    </div>
-    <div class="card">
-      <h2 data-i18n="ab_data">Data &amp; methodology</h2>
-      <p class="sub" style="margin-top:6px">The platform is built on a generation &amp; transmission capacity-expansion model (Julia/JuMP) that co-optimizes industrial-facility and grid investments, drawing on PLN, MEMR, JETP and the Sunrise Project captive-power database.</p>
-      <p style="font-size:14px">See the full <a href="methodology.html">methodology &rarr;</a></p>
-      <p class="sub" style="margin-top:10px">Open model code &amp; documentation published on GitHub for replication. See the
-        <a href="https://zenodo.org/records/17345968">November 2025 foundational report</a>.</p>
-    </div>
+  <h2 style="margin-top:34px" data-i18n="ab_team">Contributors</h2>
+  <div class="people">
+    <article class="person">
+      <img src="assets/img/team/michael-davidson.jpg" alt="Portrait of Michael Davidson" loading="lazy" width="88" height="88">
+      <div>
+        <h3>Michael Davidson</h3>
+        <p class="role" data-i18n="ab_r_pi">Principal investigator</p>
+        <p data-i18n="ab_b_md">Associate professor in UC San Diego's School of Global Policy and Strategy and Department of Mechanical and Aerospace Engineering. His research examines the engineering implications, institutional conflicts and global value chains of deploying low-carbon energy at scale.</p>
+      </div>
+    </article>
+    <article class="person">
+      <img src="assets/img/team/kaarthi-gnapathy.jpg" alt="Portrait of Kaarthi Gnapathy" loading="lazy" width="88" height="88">
+      <div>
+        <h3>Kaarthi A Gnapathy</h3>
+        <p class="role" data-i18n="ab_r_lead">Lead researcher · GARUDA and platform</p>
+        <p data-i18n="ab_b_kg">Ph.D. student in Mechanical and Aerospace Engineering at UC San Diego, applying engineering tools to political-economy questions. His research looks at how industrial power decarbonization, power market reform and cross-border electricity trade shape national clean energy transitions.</p>
+      </div>
+    </article>
+    <article class="person">
+      <img src="assets/img/team/selina-zhang.jpg" alt="Portrait of Selina Zhang" loading="lazy" width="88" height="88">
+      <div>
+        <h3>Selina Zhang</h3>
+        <p class="role" data-i18n="ab_r_ra">Research assistant · facility analysis and data</p>
+        <p data-i18n="ab_b_sz">Data Science undergraduate at UC San Diego. At the lab she works on Southeast Asia's energy systems, electricity consumption and regional power-sector trends, collecting, cleaning and analyzing large energy and economic datasets.</p>
+      </div>
+    </article>
+    <article class="person">
+      <span class="initials" aria-hidden="true">LC</span>
+      <div>
+        <h3>Lucien Chen</h3>
+        <p class="role" data-i18n="ab_r_co">Former lab member · co-author, 2025 technical report</p>
+        <p data-i18n="ab_b_lc">Co-authored the lab's 2025 report on decarbonizing industrial captive generation in Indonesia, the analysis this platform builds on.</p>
+      </div>
+    </article>
+  </div>
+  <p class="sub" style="margin-top:12px"><span data-i18n="ab_more">Bios adapted from the lab's team page.</span> <a href="https://pwrlab.org/team.html" target="_blank" rel="noopener"><span data-i18n="ab_teamlink">Meet the full team</span> ↗</a></p>
+
+  <div class="card" style="margin-top:28px">
+    <h2 data-i18n="ab_data">Data &amp; methodology</h2>
+    <p class="sub" style="margin-top:6px" data-i18n="ab_data_p">Results come from GARUDA (Grid And Renewable Utilization &amp; Deployment Analysis), the lab's generation and transmission capacity-expansion model, which co-optimizes industrial-facility and grid investments using PLN, MEMR and JETP planning data. Site, ownership and financing data come from the Earthwise Institute Indonesian Power Summary Database.</p>
+    <p style="font-size:14px;margin:10px 0 0">
+      <a href="methodology.html"><span data-i18n="ab_method">Read the full methodology</span> →</a> ·
+      <a href="https://pwrlab.org/2025/09/30/indonesia-industry-captive-generation.html" target="_blank" rel="noopener"><span data-i18n="ab_report">2025 technical report</span> ↗</a> ·
+      <a href="https://zenodo.org/records/17345968" target="_blank" rel="noopener"><span data-i18n="ab_zenodo">Report and data on Zenodo</span> ↗</a>
+    </p>
   </div>
 
   <!-- Partners & stakeholders — commented out pending PI confirmation of the final list (feedback item #3)
@@ -62,18 +93,12 @@
   </div>
   -->
 
-  <div class="card" style="margin-top:22px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap">
-    <div>
-      <h2 style="margin:0" data-i18n="foot_req">Request analysis</h2>
-      <p class="sub" style="margin:4px 0 0">Stakeholders can request deeper facility-specific analysis or a workshop.</p>
-    </div>
-    <a class="btn" href="mailto:info@pwrlab.org">Get in touch →</a>
-  </div>
+  <p class="sub" style="margin-top:22px"><span data-i18n="ab_cta">Want facility-specific analysis or a workshop?</span> <a href="contact.html"><span data-i18n="ab_cta_link">Contact the team</span> →</a></p>
 </main>
 
 <footer class="site"><div class="wrap">
   <span data-i18n="foot_rights">© 2026 Power Transformation Lab · UC San Diego · CC-BY open data</span>
-  <span><a href="index.html" data-i18n="nav_explore">Explore map</a></span>
+  <span><a href="contact.html#request" data-i18n="foot_req">Request analysis</a> · <a href="contact.html#workshops" data-i18n="foot_work">Workshops</a></span>
 </div></footer>
 
 <script src="assets/js/data.js"></script>

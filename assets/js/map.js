@@ -6,11 +6,9 @@
   var svg = d3.select('#map').append('svg')
     .attr('viewBox', '0 0 ' + W + ' ' + H).attr('width', '100%').style('display', 'block');
 
-  function t(k) { return (window.I18N[window.CP_LANG || 'en'] || window.I18N.en)[k]; }
+  var t = window.tr;
   function mw(v) { return Math.round(v).toLocaleString() + ' MW'; }
-  function esc(v) {
-    return String(v == null ? '' : v).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
-  }
+  var esc = window.esc;
 
   /* headline stats */
   var opMW = d3.sum(window.FAC, function (f) { return f.op; });
@@ -76,8 +74,10 @@
     });
     document.getElementById('tblCount').textContent = rows.length + ' / ' + window.FAC.length + ' ' + t('tbl_count');
     document.getElementById('siteBody').innerHTML = rows.map(function (d) {
-      return '<tr><td><a href="facility.html?id=' + d.id + '">' + esc(d.name) + '</a><br><span class="mut" style="font-size:11.5px">' +
-          t(d.kind === 'park' ? 'kind_park' : 'kind_plant') + '</span></td>' +
+      var q = encodeURIComponent(d.id);
+      return '<tr><td><a href="facility.html?id=' + q + '">' + esc(d.name) + '</a><br><span class="mut" style="font-size:11.5px">' +
+          t(d.kind === 'park' ? 'kind_park' : 'kind_plant') + ' · <a class="sublink" href="ownership.html?id=' + q + '">' + t('k_ownership') +
+          '</a> · <a class="sublink" href="financing.html?id=' + q + '">' + t('k_fin') + '</a></span></td>' +
         '<td><span class="tag"><i class="dot" style="background:' + window.sectorColor(d.sector) + '"></i>' + window.sectorName(d.sector) + '</span></td>' +
         '<td>' + esc(d.prov) + '</td>' +
         '<td style="text-align:right;font-weight:600">' + (d.op ? d.op.toLocaleString() : '—') + '</td>' +
@@ -100,7 +100,8 @@
   });
   renderTable(); /* don't wait for the basemap */
 
-  window.onLangChange = function () { renderChips(); renderTable(); };
+  var card = window.siteCard(document.getElementById('pop'));
+  window.onLangChange = function () { renderChips(); renderTable(); card.refresh(); };
 
   d3.json('https://cdn.jsdelivr.net/npm/datamaps@0.5.10/src/js/data/idn.topo.json').then(function (topo) {
     var feat = topojson.feature(topo, topo.objects.idn);
@@ -118,34 +119,13 @@
       .attr('stroke', function (d) { return d.op > 0 ? '#fff' : window.sectorColor(d.sector); })
       .attr('stroke-width', function (d) { return d.op > 0 ? 1.2 : 2; })
       .attr('opacity', 0.9)
-      .on('click', function (e, d) { openPop(d); })
-      .append('title').text(function (d) { return d.name + ' — ' + mw(window.siteMW(d)); });
+      .call(card.bind);
+    svg.on('click', function () { card.hide(); });
     applyFilter();
   }).catch(function () {
     document.getElementById('map').innerHTML =
       '<div style="padding:60px;text-align:center;color:#6b6a78;font-size:13px">Map topology unavailable offline — connect to load the basemap.</div>';
   });
 
-  function openPop(d) {
-    var place = d.prov + (d.regency ? ' · ' + d.regency : '');
-    var html =
-      '<button class="x" aria-label="Close" id="popx">&times;</button>' +
-      '<div style="font-weight:600;font-size:14px;margin-bottom:1px;padding-right:16px">' + esc(d.name) + '</div>' +
-      '<div style="font-size:11.5px;color:#6b6a78;margin-bottom:8px">' + esc(place) + '</div>' +
-      '<span class="tag"><i class="dot" style="background:' + window.sectorColor(d.sector) + '"></i>' + window.sectorName(d.sector) + '</span> ' +
-      '<span class="tag">' + t(d.kind === 'park' ? 'kind_park' : 'kind_plant') + '</span>' +
-      '<div style="margin-top:10px">' +
-        '<div class="metarow"><span>' + t('pop_op') + '</span><b>' + mw(d.op) + '</b></div>' +
-        (d.con ? '<div class="metarow"><span>' + t('pop_con') + '</span><b>' + mw(d.con) + '</b></div>' : '') +
-        (d.plan ? '<div class="metarow"><span>' + t('pop_plan') + '</span><b>' + mw(d.plan) + '</b></div>' : '') +
-        '<div class="metarow"><span>' + t('pop_owner') + '</span><b>' + esc(d.owner) + ' (' + esc(d.ownerCountry) + ')</b></div>' +
-        '<div class="metarow"><span>' + t('pop_units') + '</span><b>' + d.units + (d.firstYear ? ' · ' + t('pop_since') + ' ' + d.firstYear : '') + '</b></div>' +
-      '</div>' +
-      '<div style="font-size:11px;color:#6b6a78;margin-top:9px">' + t(d.model.length ? 'pop_modeled' : 'pop_unmodeled') + '</div>' +
-      '<a class="btn block" style="margin-top:11px" href="facility.html?id=' + d.id + '">' + t('pop_view') + ' →</a>';
-    var pop = document.getElementById('pop');
-    pop.innerHTML = html;
-    pop.classList.add('on');
-    document.getElementById('popx').addEventListener('click', function () { pop.classList.remove('on'); });
-  }
+
 })();

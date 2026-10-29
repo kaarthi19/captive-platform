@@ -1,20 +1,18 @@
 /* Facility detail page.
    Headline feature: a live coal-price / grid-tariff / solar-capex SENSITIVITY model that
    recomputes the levelized cost of each decarbonization pathway and flags the cheapest one.
-   The cost model is intentionally simple and parametric — illustrative of how the Julia/JuMP
+   The cost model is intentionally simple and parametric — illustrative of how GARUDA's
    capacity-expansion outputs would drive the page, not a substitute for them. */
 (function () {
   var params = new URLSearchParams(location.search);
   var fac = window.getFac(params.get('id'));
 
-  function t(k) { return (window.I18N[window.CP_LANG || 'en'] || window.I18N.en)[k]; }
+  var t = window.tr;
 
   var res = window.placeholderResults(fac);
   var det = (window.SITE_DETAILS || {})[fac.id];
   function mw(v) { return v ? Math.round(v).toLocaleString() + ' MW' : '—'; }
-  function esc(v) {
-    return String(v == null ? '' : v).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; });
-  }
+  var esc = window.esc;
 
   /* Earthwise status -> op / con / plan, or 'off' for cancelled, shelved, retired, closed, unknown */
   var BUCKET = { 'Operating': 'op', 'Construction': 'con', 'Pre-Construction': 'plan', 'Announced': 'plan' };
@@ -41,16 +39,23 @@
 
     /* key facts */
     var place = [det.village, det.district, fac.regency, fac.prov].filter(Boolean).join(', ');
+    document.getElementById('locCaption').textContent = place + ' · ' + fac.lat.toFixed(3) + ', ' + fac.lng.toFixed(3) +
+      ' (' + t(fac.loc === 'exact' ? 'k_exact' : 'k_approx') + ')';
+    var top = det.owners[0], more = det.owners.length - 1;
+    var owners = top
+      ? window.ownerLink(top) + ' <span class="mut">· ' + esc(top.country || '—') + ' · ' + Math.round(top.share) + '%</span>' +
+        (more > 0 ? ' <span class="mut">+ ' + more + ' ' + t('k_more') + '</span>' : '')
+      : '—';
     var facts = [
-      ['k_location', esc(place)],
       ['k_island', esc(det.island || '—') + (det.smallIsland ? ' · ' + t('k_small') : '')],
-      ['k_coords', fac.lat.toFixed(3) + ', ' + fac.lng.toFixed(3) + ' · ' + t(fac.loc === 'exact' ? 'k_exact' : 'k_approx')],
       ['k_commod', esc(fac.commodities.join(', '))],
       ['k_ownership', det.ownership.map(function (o) { return t(OWNERSHIP[o]) || esc(o); }).join(', ') + (det.jv ? ' · ' + t('k_jv') : '')],
-      ['k_owners', det.ultimate.map(esc).join('<br>')],
-      ['k_countries', esc(det.countries.join(', '))],
-      ['k_epc', det.epc.length ? det.epc.map(esc).join('<br>') : '—'],
-      ['k_china', det.chinaRole.length ? esc(det.chinaRole.join(', ')) : '—'],
+      ['k_owners', owners + '<br><a href="ownership.html?id=' + encodeURIComponent(fac.id) + '">' + t('k_owndetail') + ' →</a>'],
+      ['k_fin', (det.finance.length
+        ? det.finance.length + ' ' + t('own_loans') + ' · $' +
+          Math.round(det.finance.reduce(function (s, f) { return s + (f.usd || 0); }, 0)).toLocaleString() + 'm'
+        : t('fin_none_short')) +
+        '<br><a href="financing.html?id=' + encodeURIComponent(fac.id) + '">' + t('k_findetail') + ' →</a>'],
       ['k_other', esc(det.otherPower || '—')],
       ['k_aka', det.aliases.length ? esc(det.aliases.slice(0, 6).join(' · ')) + (det.aliases.length > 6 ? ' …' : '') : '—']
     ];
@@ -86,22 +91,62 @@
         '<td>' + esc(p.status || '—') + '</td><td style="text-align:right">' + esc(p.start || '—') + '</td></tr>';
     }).join('');
 
-    /* financing */
-    document.getElementById('finCard').style.display = det.finance.length ? '' : 'none';
-    document.getElementById('finBody').innerHTML = det.finance.map(function (f) {
-      return '<tr><td style="text-align:right">' + (f.year || '—') + '</td>' +
-        '<td>' + esc(f.financiers) + (f.hq.length ? ' <span class="mut">· ' + esc(f.hq.join(', ')) + '</span>' : '') + '</td>' +
-        '<td style="text-align:right;font-weight:600">' + (f.usd ? f.usd.toLocaleString(undefined, { maximumFractionDigits: 0 }) : '—') + '</td>' +
-        '<td>' + esc(f.type) + (f.captive ? '' : ' <span class="mut">· ' + t('fin_indirect') + '</span>') + '</td>' +
-        '<td>' + f.refs.map(function (r, i) { return '<a href="' + esc(r) + '" target="_blank" rel="noopener">[' + (i + 1) + ']</a>'; }).join(' ') + '</td></tr>';
-    }).join('');
-
     /* sources */
     document.getElementById('facSources').innerHTML = t('fac_srcs') + ' ' + fac.ew.length + ' Earthwise ' + t('records') +
       (det.sources.length ? ' · GEM Wiki: ' + det.sources.map(function (u, i) {
         return '<a href="' + esc(u) + '" target="_blank" rel="noopener">' + (i + 1) + '</a>';
       }).join(', ') : '');
   }
+  /* locator map: the site and its neighbours, with an inset of Indonesia for context */
+  function drawLocator() {
+    var W = 360, H = 210, el = document.getElementById('locMap');
+    var svg = d3.select(el).append('svg').attr('viewBox', '0 0 ' + W + ' ' + H).attr('width', '100%').style('display', 'block');
+    d3.json(window.BASEMAP_URL).then(function (topo) {
+      var land = topojson.feature(topo, topo.objects.idn);
+      var dLat = 2.0, dLng = dLat * W / H;
+      var view = { type: 'MultiPoint', coordinates: [[fac.lng - dLng, fac.lat - dLat], [fac.lng + dLng, fac.lat + dLat]] };
+      var proj = d3.geoMercator().fitSize([W, H], view), path = d3.geoPath(proj);
+      svg.append('g').selectAll('path').data(land.features).join('path')
+        .attr('d', path).attr('fill', '#dfe7ea').attr('stroke', '#fff').attr('stroke-width', 0.8);
+
+      var near = window.FAC.filter(function (f) {
+        return f.id !== fac.id && Math.abs(f.lat - fac.lat) < dLat && Math.abs(f.lng - fac.lng) < dLng;
+      });
+      svg.append('g').selectAll('a').data(near).join('a')
+        .attr('href', function (f) { return 'facility.html?id=' + encodeURIComponent(f.id); })
+        .append('circle')
+        .attr('cx', function (f) { return proj([f.lng, f.lat])[0]; })
+        .attr('cy', function (f) { return proj([f.lng, f.lat])[1]; })
+        .attr('r', 3.5).attr('fill', '#8a9197').attr('stroke', '#fff').attr('stroke-width', 1)
+        .append('title').text(function (f) { return f.name; });
+
+      var p = proj([fac.lng, fac.lat]), col = window.sectorColor(fac.sector);
+      if (fac.loc !== 'exact') {
+        svg.append('circle').attr('cx', p[0]).attr('cy', p[1]).attr('r', 20)
+          .attr('fill', 'none').attr('stroke', col).attr('stroke-dasharray', '3 3').attr('opacity', 0.7);
+      }
+      svg.append('circle').attr('cx', p[0]).attr('cy', p[1]).attr('r', 13).attr('fill', col).attr('opacity', 0.18);
+      svg.append('circle').attr('cx', p[0]).attr('cy', p[1]).attr('r', 6.5)
+        .attr('fill', col).attr('stroke', '#fff').attr('stroke-width', 2)
+        .append('title').text(fac.name);
+
+      /* inset: all of Indonesia, with the zoomed area outlined */
+      var iw = 96, ih = 40, ix = W - iw - 6, iy = H - ih - 6;
+      var inset = svg.append('g').attr('transform', 'translate(' + ix + ',' + iy + ')');
+      inset.append('rect').attr('width', iw).attr('height', ih).attr('rx', 3)
+        .attr('fill', '#fff').attr('stroke', 'var(--line)').attr('opacity', 0.95);
+      var iproj = d3.geoMercator().fitExtent([[3, 3], [iw - 3, ih - 3]], land);
+      inset.append('path').attr('d', d3.geoPath(iproj)(land)).attr('fill', '#c3ccd1');
+      var a = iproj([fac.lng - dLng, fac.lat + dLat]), b = iproj([fac.lng + dLng, fac.lat - dLat]);
+      inset.append('rect').attr('x', a[0]).attr('y', a[1])
+        .attr('width', Math.max(3, b[0] - a[0])).attr('height', Math.max(3, b[1] - a[1]))
+        .attr('fill', 'none').attr('stroke', col).attr('stroke-width', 1.2);
+    }).catch(function () {
+      el.innerHTML = '<div class="sub" style="padding:40px 10px;text-align:center">Map unavailable offline.</div>';
+    });
+  }
+  drawLocator();
+
   document.getElementById('unitMore').addEventListener('click', function () {
     showAllUnits = !showAllUnits; renderProfile();
   });
@@ -140,6 +185,13 @@
     });
   }
 
+  /* Pathway colours: neutral grey for the coal baseline, then aqua / blue / orange from the
+     validated chart palette (on-site renewables, grid, hybrid). */
+  var PATH_COLOR = { bau: '#5b6670', solar: '#1baf7a', grid: '#2a78d6', hybrid: '#eb6834' };
+
+  var COST_KEYS = ['cost_pv', 'cost_batt', 'cost_conn', 'cost_bulk', 'cost_om'];
+  var mixChart, costChart;
+
   /* ---- sensitivity state ---- */
   var state = { cp: 90, gt: 70, sx: 1.0 };
 
@@ -151,10 +203,10 @@
     var grid  = 18 + 0.85 * state.gt;          /* tariff + transmission charge */
     var hybrid = 0.45 * solar + 0.40 * grid + 0.15 * bau;
     return [
-      { key:'bau',    name:'Business as usual', val: bau,    em: 0,  color:'#272636' },
-      { key:'solar',  name:'On-site solar + storage', val: solar, em: 45, color:'#1d9e75' },
-      { key:'grid',   name:'Grid connection (PLN)',   val: grid,  em: 55, color:'#378add' },
-      { key:'hybrid', name:'Hybrid', val: hybrid, em: 68, color:'#fc4d50' }
+      { key:'bau',    name: t('path_bau'),    short: t('path_bau_s'),  val: bau,    em: 0,  color: PATH_COLOR.bau },
+      { key:'solar',  name: t('path_solar'),  short: t('path_solar'),  val: solar,  em: 45, color: PATH_COLOR.solar },
+      { key:'grid',   name: t('path_grid'),   short: t('path_grid_s'), val: grid,   em: 55, color: PATH_COLOR.grid },
+      { key:'hybrid', name: t('path_hybrid'), short: t('path_hybrid'), val: hybrid, em: 68, color: PATH_COLOR.hybrid }
     ];
   }
 
@@ -168,7 +220,7 @@
     document.getElementById('pathlist').innerHTML = rows.map(function (r) {
       var win = r.key === cheapest.key ? ' win' : '';
       return '<div class="pth' + win + '">' +
-        '<div class="top"><b>' + r.name + '</b>' +
+        '<div class="top"><b>' + r.name + (win ? ' <span class="rec">· ' + t('recommended') + '</span>' : '') + '</b>' +
         '<span style="color:#6b6a78">$' + r.val.toFixed(0) + '/MWh · −' + r.em + '% CO₂</span></div>' +
         '<div class="track"><div class="bar" style="width:' + Math.round(r.val / max * 100) + '%;background:' + r.color + '"></div></div>' +
       '</div>';
@@ -179,15 +231,15 @@
     var crossover = Math.round((cleanMin - 30) / 0.55);
     var ins = document.getElementById('insight');
     if (state.cp >= crossover) {
-      ins.innerHTML = 'At <b>$' + state.cp + '/t</b>, coal is already more expensive than the cheapest clean pathway — a transition lowers cost today.';
+      ins.innerHTML = t('ins_now').replace('{p}', state.cp);
     } else {
-      ins.innerHTML = 'Clean pathways undercut coal once the coal price rises above <b>$' + crossover + '/t</b> (currently $' + state.cp + '/t).';
+      ins.innerHTML = t('ins_later').replace('{x}', crossover).replace('{p}', state.cp);
     }
 
     /* chart */
     if (chart) {
       chart.data.datasets[0].data = rows.map(function (r) { return Number(r.val.toFixed(0)); });
-      chart.data.datasets[0].backgroundColor = rows.map(function (r) { return r.key === cheapest.key ? '#fc4d50' : '#c9c8d0'; });
+      chart.data.datasets[0].backgroundColor = rows.map(function (r) { return r.key === cheapest.key ? r.color : r.color + '59'; });
       chart.update();
     }
   }
@@ -210,6 +262,10 @@
       tlChart.data.datasets.forEach(function (d) { d.label = t(d.key); });
       tlChart.update();
     }
+    if (mixChart) { mixChart.data.labels = [t('mix_coal'), t('mix_other'), t('mix_clean')]; mixChart.update(); }
+    if (costChart) { costChart.data.labels = COST_KEYS.map(t); costChart.update(); }
+    if (chart) { chart.data.labels = lcoe(state).map(function (r) { return r.short; }); chart.update(); }
+    if (res) document.getElementById('mixNote').textContent = t('mix_note').replace('{c}', res.coal).replace('{e}', res.ei);
   };
 
   /* ---- charts (init after libs ready) ---- */
@@ -217,21 +273,22 @@
     buildTimeline();
     /* energy mix */
     var other = Math.max(0, 100 - res.coal - res.clean);
-    new Chart(document.getElementById('mixChart'), {
+    mixChart = new Chart(document.getElementById('mixChart'), {
       type: 'doughnut',
-      data: { labels: ['Coal', 'Other fossil', 'Clean'],
-        datasets: [{ data: [res.coal, other, res.clean], backgroundColor: ['#272636', '#888780', '#1d9e75'], borderWidth: 2, borderColor: '#fff' }] },
+      data: { labels: [t('mix_coal'), t('mix_other'), t('mix_clean')],
+        datasets: [{ data: [res.coal, other, res.clean], backgroundColor: [PATH_COLOR.bau, '#b7c1c5', PATH_COLOR.solar], borderWidth: 2, borderColor: '#fff' }] },
       options: { responsive: true, maintainAspectRatio: false, cutout: '60%',
         plugins: { legend: { position: 'right', labels: { boxWidth: 10, font: { size: 11 }, padding: 8 } } } }
     });
-    document.getElementById('mixNote').textContent = res.coal + '% coal today · ' + res.ei + ' tCO₂/MWh';
+    document.getElementById('mixNote').textContent = t('mix_note').replace('{c}', res.coal).replace('{e}', res.ei);
 
     /* sensitivity chart */
     var rows = lcoe(state);
     chart = new Chart(document.getElementById('sensChart'), {
       type: 'bar',
-      data: { labels: rows.map(function (r) { return r.name.replace(' (PLN)', '').replace('Business as usual', 'BAU (coal)'); }),
-        datasets: [{ label: 'LCOE ($/MWh)', data: rows.map(function (r) { return Number(r.val.toFixed(0)); }), backgroundColor: '#c9c8d0' }] },
+      data: { labels: rows.map(function (r) { return r.short; }),
+        datasets: [{ label: 'LCOE ($/MWh)', data: rows.map(function (r) { return Number(r.val.toFixed(0)); }), borderRadius: 3,
+          backgroundColor: rows.map(function (r) { return r.color; }) }] },
       options: { responsive: true, maintainAspectRatio: false,
         plugins: { legend: { display: false } },
         scales: { y: { title: { display: true, text: '$/MWh' }, ticks: { font: { size: 11 } } }, x: { ticks: { font: { size: 11 } } } } }
@@ -241,30 +298,17 @@
        Grid connection (facility interconnection) is kept separate from bulk/shared
        transmission upgrades, since they map to different payers. */
     var c = res.cost;
-    new Chart(document.getElementById('costChart'), {
+    costChart = new Chart(document.getElementById('costChart'), {
       type: 'bar',
-      data: { labels: ['Solar PV', 'Battery storage', 'Grid connection', 'Bulk transmission', 'O&M'],
+      data: { labels: COST_KEYS.map(t),
         datasets: [{ data: [c*0.30, c*0.20, c*0.16, c*0.22, c*0.12].map(function (x) { return Number(x.toFixed(1)); }),
-          backgroundColor: ['#1d9e75', '#5dcaa5', '#378add', '#185fa5', '#b4b2a9'] }] },
+          backgroundColor: [PATH_COLOR.solar, '#5dcaa5', PATH_COLOR.grid, '#184f95', '#9aa3a9'], borderRadius: 3 }] },
       options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
         scales: { y: { ticks: { font: { size: 11 }, callback: function (v) { return '$' + v + 'B'; } } }, x: { ticks: { font: { size: 10 } } } } }
     });
 
     recompute();
   });
-
-  /* investment table, scaled by facility transition cost */
-  var c = res.cost;
-  var inv = [
-    ['Park owner', 'On-site solar + storage', c * 0.40],
-    ['PLN (local)', 'Facility grid interconnection', c * 0.16],
-    ['PLN / system · JETP', 'Bulk transmission upgrades', c * 0.22],
-    ['Financiers / DFIs', 'Green bonds, blended debt', c * 0.14],
-    ['Provincial gov', 'Permitting, RUED alignment', c * 0.08]
-  ];
-  document.getElementById('invBody').innerHTML = inv.map(function (r) {
-    return '<tr><td>' + r[0] + '</td><td>' + r[1] + '</td><td style="text-align:right;font-weight:600">$' + r[2].toFixed(1) + 'B</td></tr>';
-  }).join('');
 
   renderProfile();
   recompute();
