@@ -169,6 +169,126 @@ window.GARUDA = {
     "coal": 4.199,
     "tariff": 59.0
    }
+  },
+  "north_maluku": {
+   "region": "Maluku",
+   "runs": {},
+   "missing": {
+    "base/reference": "pending",
+    "base/clean": "pending",
+    "grid/reference": "pending",
+    "grid/clean": "pending",
+    "captive/reference": "pending",
+    "captive/clean": "pending",
+    "gridcaptive/reference": "pending",
+    "gridcaptive/clean": "pending",
+    "highimportprice/reference": "pending",
+    "highimportprice/clean": "pending"
+   },
+   "prices": {
+    "coal": 4.199,
+    "tariff": 59.0
+   }
+  },
+  "kalimantan": {
+   "region": "Kalimantan",
+   "runs": {},
+   "missing": {
+    "base/reference": "pending",
+    "base/clean": "pending",
+    "grid/reference": "pending",
+    "grid/clean": "pending",
+    "captive/reference": "pending",
+    "captive/clean": "pending",
+    "gridcaptive/reference": "pending",
+    "gridcaptive/clean": "pending",
+    "highimportprice/reference": "pending",
+    "highimportprice/clean": "pending"
+   },
+   "prices": {
+    "coal": 4.199,
+    "tariff": 59.0
+   }
+  },
+  "sumatera": {
+   "region": "Sumatra",
+   "runs": {},
+   "missing": {
+    "base/reference": "pending",
+    "base/clean": "pending",
+    "grid/reference": "pending",
+    "grid/clean": "pending",
+    "captive/reference": "pending",
+    "captive/clean": "pending",
+    "gridcaptive/reference": "pending",
+    "gridcaptive/clean": "pending",
+    "highimportprice/reference": "pending",
+    "highimportprice/clean": "pending"
+   },
+   "prices": {
+    "coal": 4.199,
+    "tariff": 59.0
+   }
+  },
+  "jawa_bali": {
+   "region": "Java",
+   "runs": {},
+   "missing": {
+    "base/reference": "pending",
+    "base/clean": "pending",
+    "grid/reference": "pending",
+    "grid/clean": "pending",
+    "captive/reference": "pending",
+    "captive/clean": "pending",
+    "gridcaptive/reference": "pending",
+    "gridcaptive/clean": "pending",
+    "highimportprice/reference": "pending",
+    "highimportprice/clean": "pending"
+   },
+   "prices": {
+    "coal": 4.199,
+    "tariff": 59.0
+   }
+  },
+  "nusa_tenggara": {
+   "region": "Nusa Tenggara",
+   "runs": {},
+   "missing": {
+    "base/reference": "pending",
+    "base/clean": "pending",
+    "grid/reference": "pending",
+    "grid/clean": "pending",
+    "captive/reference": "pending",
+    "captive/clean": "pending",
+    "gridcaptive/reference": "pending",
+    "gridcaptive/clean": "pending",
+    "highimportprice/reference": "pending",
+    "highimportprice/clean": "pending"
+   },
+   "prices": {
+    "coal": 4.199,
+    "tariff": 59.0
+   }
+  },
+  "papua": {
+   "region": "Papua",
+   "runs": {},
+   "missing": {
+    "base/reference": "pending",
+    "base/clean": "pending",
+    "grid/reference": "pending",
+    "grid/clean": "pending",
+    "captive/reference": "pending",
+    "captive/clean": "pending",
+    "gridcaptive/reference": "pending",
+    "gridcaptive/clean": "pending",
+    "highimportprice/reference": "pending",
+    "highimportprice/clean": "pending"
+   },
+   "prices": {
+    "coal": 4.199,
+    "tariff": 59.0
+   }
   }
  },
  "corridors": {
@@ -251,36 +371,54 @@ window.GARUDA = {
     "a": "Kalimantan Timur",
     "b": "Kalimantan Utara",
     "mw": 1559,
-    "used": {},
+    "used": {
+     "grid": 41,
+     "gridcaptive": 41
+    },
     "add": {}
    },
    {
     "a": "Kalimantan Selatan",
     "b": "Kalimantan Tengah",
     "mw": 342,
-    "used": {},
+    "used": {
+     "grid": 0,
+     "gridcaptive": 0
+    },
     "add": {}
    },
    {
     "a": "Kalimantan Selatan",
     "b": "Kalimantan Timur",
     "mw": 249,
-    "used": {},
+    "used": {
+     "grid": 33,
+     "gridcaptive": 34
+    },
     "add": {}
    },
    {
     "a": "Kalimantan Barat",
     "b": "Kalimantan Tengah",
     "mw": 105,
-    "used": {},
+    "used": {
+     "grid": 0,
+     "gridcaptive": 0
+    },
     "add": {}
    },
    {
     "a": "Kalimantan Tengah",
     "b": "Kalimantan Timur",
     "mw": 95,
-    "used": {},
-    "add": {}
+    "used": {
+     "grid": 137,
+     "gridcaptive": 136
+    },
+    "add": {
+     "grid": 42,
+     "gridcaptive": 41
+    }
    }
   ],
   "sumatera": [
@@ -288,77 +426,110 @@ window.GARUDA = {
     "a": "Jambi",
     "b": "Sumatera Selatan",
     "mw": 2447,
-    "used": {},
+    "used": {
+     "grid": 0,
+     "gridcaptive": 0
+    },
     "add": {}
    },
    {
     "a": "Jambi",
     "b": "Riau",
     "mw": 1340,
-    "used": {},
+    "used": {
+     "grid": 8,
+     "gridcaptive": 7
+    },
     "add": {}
    },
    {
     "a": "Riau",
     "b": "Sumatera Utara",
     "mw": 1084,
-    "used": {},
+    "used": {
+     "grid": 10,
+     "gridcaptive": 10
+    },
     "add": {}
    },
    {
     "a": "Lampung",
     "b": "Sumatera Selatan",
     "mw": 975,
-    "used": {},
+    "used": {
+     "grid": 743,
+     "gridcaptive": 743
+    },
     "add": {}
    },
    {
     "a": "Riau",
     "b": "Sumatera Barat",
     "mw": 932,
-    "used": {},
+    "used": {
+     "grid": 0,
+     "gridcaptive": 0
+    },
     "add": {}
    },
    {
     "a": "Aceh",
     "b": "Sumatera Utara",
     "mw": 611,
-    "used": {},
+    "used": {
+     "grid": 117,
+     "gridcaptive": 116
+    },
     "add": {}
    },
    {
     "a": "Jambi",
     "b": "Sumatera Barat",
     "mw": 490,
-    "used": {},
+    "used": {
+     "grid": 21,
+     "gridcaptive": 20
+    },
     "add": {}
    },
    {
     "a": "Sumatera Barat",
     "b": "Sumatera Utara",
     "mw": 379,
-    "used": {},
+    "used": {
+     "grid": 165,
+     "gridcaptive": 165
+    },
     "add": {}
    },
    {
     "a": "Bengkulu",
     "b": "Sumatera Selatan",
     "mw": 312,
-    "used": {},
+    "used": {
+     "grid": 3,
+     "gridcaptive": 3
+    },
     "add": {}
    },
    {
     "a": "Bangka-Belitung",
     "b": "Sumatera Selatan",
     "mw": 279,
-    "used": {},
+    "used": {
+     "grid": 39,
+     "gridcaptive": 39
+    },
     "add": {}
    },
    {
     "a": "Bengkulu",
     "b": "Sumatera Barat",
     "mw": 85,
-    "used": {},
+    "used": {
+     "grid": 0,
+     "gridcaptive": 0
+    },
     "add": {}
    }
   ],
@@ -367,49 +538,70 @@ window.GARUDA = {
     "a": "Banten",
     "b": "Jawa Barat",
     "mw": 14477,
-    "used": {},
+    "used": {
+     "grid": 4770,
+     "gridcaptive": 4763
+    },
     "add": {}
    },
    {
     "a": "Jawa Tengah",
     "b": "Jawa Timur",
     "mw": 8012,
-    "used": {},
+    "used": {
+     "grid": 3096,
+     "gridcaptive": 3096
+    },
     "add": {}
    },
    {
     "a": "Jawa Barat",
     "b": "Jawa Tengah",
     "mw": 7582,
-    "used": {},
+    "used": {
+     "grid": 53,
+     "gridcaptive": 54
+    },
     "add": {}
    },
    {
     "a": "Jakarta Raya",
     "b": "Jawa Barat",
     "mw": 7060,
-    "used": {},
+    "used": {
+     "grid": 0,
+     "gridcaptive": 0
+    },
     "add": {}
    },
    {
     "a": "Banten",
     "b": "Jakarta Raya",
     "mw": 3359,
-    "used": {},
+    "used": {
+     "grid": 0,
+     "gridcaptive": 0
+    },
     "add": {}
    },
    {
     "a": "Bali",
     "b": "Jawa Timur",
     "mw": 2985,
-    "used": {},
+    "used": {
+     "grid": 1239,
+     "gridcaptive": 1241
+    },
     "add": {}
    },
    {
     "a": "Jawa Tengah",
     "b": "Yogyakarta",
     "mw": 1693,
-    "used": {},
+    "used": {
+     "grid": 676,
+     "gridcaptive": 675
+    },
     "add": {}
    }
   ]
@@ -3550,6 +3742,6221 @@ window.GARUDA = {
      "coal": 1076261,
      "imp": 1206,
      "re": 104970
+    }
+   }
+  },
+  "oiia": {
+   "island": "north_maluku",
+   "nodes": [
+    1,
+    2,
+    3
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 53.46,
+       "served": 0.988,
+       "mwh": 9759138,
+       "cost": 521689840,
+       "co2": 9193097,
+       "coal": 87553302,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.981,
+        "unserved": 0.019
+       }
+      }
+     ],
+     "lcoe": 53.46,
+     "served": 0.988,
+     "mwh": 9759138,
+     "cost": 521689840,
+     "co2": 9193097,
+     "coal": 87553302,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.981,
+      "unserved": 0.019
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 53.45,
+       "served": 0.999,
+       "mwh": 9866028,
+       "cost": 527346665,
+       "co2": 9189801,
+       "coal": 87521918,
+       "imp": 108964,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.955,
+        "grid": 0.044,
+        "unserved": 0.001
+       }
+      }
+     ],
+     "lcoe": 53.45,
+     "served": 0.999,
+     "mwh": 9866028,
+     "cost": 527346665,
+     "co2": 9189801,
+     "coal": 87521918,
+     "imp": 108964,
+     "re": 0,
+     "mix": {
+      "coal": 0.955,
+      "grid": 0.044,
+      "unserved": 0.001
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 51.97,
+       "served": 1.0,
+       "mwh": 9878105,
+       "cost": 513398875,
+       "co2": 9327046,
+       "coal": 88829013,
+       "imp": 0,
+       "re": 18950582,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.99,
+        "solar": 0.01,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 51.97,
+     "served": 1.0,
+     "mwh": 9878105,
+     "cost": 513398875,
+     "co2": 9327046,
+     "coal": 88829013,
+     "imp": 0,
+     "re": 18950582,
+     "mix": {
+      "coal": 0.99,
+      "solar": 0.01,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 50.01,
+       "served": 1.0,
+       "mwh": 9877569,
+       "cost": 493962550,
+       "co2": 8908121,
+       "coal": 84839247,
+       "imp": 96532,
+       "re": 40815686,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.814,
+        "grid": 0.037,
+        "solar": 0.148,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 50.01,
+     "served": 1.0,
+     "mwh": 9877569,
+     "cost": 493962550,
+     "co2": 8908121,
+     "coal": 84839247,
+     "imp": 96532,
+     "re": 40815686,
+     "mix": {
+      "coal": 0.814,
+      "grid": 0.037,
+      "solar": 0.148,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "iwip": {
+   "island": "north_maluku",
+   "nodes": [
+    4
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 53.29,
+       "served": 0.988,
+       "mwh": 17707718,
+       "cost": 943667760,
+       "co2": 16680650,
+       "coal": 158863335,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.982,
+        "unserved": 0.018
+       }
+      }
+     ],
+     "lcoe": 53.29,
+     "served": 0.988,
+     "mwh": 17707718,
+     "cost": 943667760,
+     "co2": 16680650,
+     "coal": 158863335,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.982,
+      "unserved": 0.018
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 53.28,
+       "served": 0.999,
+       "mwh": 17896890,
+       "cost": 953610935,
+       "co2": 16676468,
+       "coal": 158823500,
+       "imp": 191036,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.956,
+        "grid": 0.043,
+        "unserved": 0.001
+       }
+      }
+     ],
+     "lcoe": 53.28,
+     "served": 0.999,
+     "mwh": 17896890,
+     "cost": 953610935,
+     "co2": 16676468,
+     "coal": 158823500,
+     "imp": 191036,
+     "re": 0,
+     "mix": {
+      "coal": 0.956,
+      "grid": 0.043,
+      "unserved": 0.001
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 54.64,
+       "served": 0.999,
+       "mwh": 17910305,
+       "cost": 978632447,
+       "co2": 15834627,
+       "coal": 150805971,
+       "imp": 0,
+       "re": 69093910,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.75,
+        "solar": 0.25,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 54.64,
+     "served": 0.999,
+     "mwh": 17910305,
+     "cost": 978632447,
+     "co2": 15834627,
+     "coal": 150805971,
+     "imp": 0,
+     "re": 69093910,
+     "mix": {
+      "coal": 0.75,
+      "solar": 0.25,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 49.35,
+       "served": 1.0,
+       "mwh": 17918739,
+       "cost": 884250697,
+       "co2": 16241188,
+       "coal": 154677978,
+       "imp": 205163,
+       "re": 38097682,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.844,
+        "solar": 0.111,
+        "grid": 0.044,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 49.35,
+     "served": 1.0,
+     "mwh": 17918739,
+     "cost": 884250697,
+     "co2": 16241188,
+     "coal": 154677978,
+     "imp": 205163,
+     "re": 38097682,
+     "mix": {
+      "coal": 0.844,
+      "solar": 0.111,
+      "grid": 0.044,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "ktie": {
+   "island": "kalimantan",
+   "nodes": [
+    1
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 43.05,
+       "served": 1.0,
+       "mwh": 1252680,
+       "cost": 53926909,
+       "co2": 1179736,
+       "coal": 11235580,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 43.05,
+     "served": 1.0,
+     "mwh": 1252680,
+     "cost": 53926909,
+     "co2": 1179736,
+     "coal": 11235580,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 42.92,
+       "served": 1.0,
+       "mwh": 1252680,
+       "cost": 53766827,
+       "co2": 1179926,
+       "coal": 11237393,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.92,
+     "served": 1.0,
+     "mwh": 1252680,
+     "cost": 53766827,
+     "co2": 1179926,
+     "coal": 11237393,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 42.8,
+       "served": 1.0,
+       "mwh": 1252680,
+       "cost": 53611181,
+       "co2": 1179860,
+       "coal": 11236760,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.8,
+     "served": 1.0,
+     "mwh": 1252680,
+     "cost": 53611181,
+     "co2": 1179860,
+     "coal": 11236760,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 42.8,
+       "served": 1.0,
+       "mwh": 1252680,
+       "cost": 53608706,
+       "co2": 1179798,
+       "coal": 11236173,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.8,
+     "served": 1.0,
+     "mwh": 1252680,
+     "cost": 53608706,
+     "co2": 1179798,
+     "coal": 11236173,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "pt-borneo-alumina-indonesia-antam-group": {
+   "island": "kalimantan",
+   "nodes": [
+    2
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 43.05,
+       "served": 1.0,
+       "mwh": 350400,
+       "cost": 15084450,
+       "co2": 329996,
+       "coal": 3142819,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 43.05,
+     "served": 1.0,
+     "mwh": 350400,
+     "cost": 15084450,
+     "co2": 329996,
+     "coal": 3142819,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 42.92,
+       "served": 1.0,
+       "mwh": 350400,
+       "cost": 15039672,
+       "co2": 330049,
+       "coal": 3143327,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.92,
+     "served": 1.0,
+     "mwh": 350400,
+     "cost": 15039672,
+     "co2": 330049,
+     "coal": 3143327,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 42.8,
+       "served": 1.0,
+       "mwh": 350400,
+       "cost": 14996135,
+       "co2": 330031,
+       "coal": 3143150,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.8,
+     "served": 1.0,
+     "mwh": 350400,
+     "cost": 14996135,
+     "co2": 330031,
+     "coal": 3143150,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 42.8,
+       "served": 1.0,
+       "mwh": 350400,
+       "cost": 14995442,
+       "co2": 330013,
+       "coal": 3142985,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.8,
+     "served": 1.0,
+     "mwh": 350400,
+     "cost": 14995442,
+     "co2": 330013,
+     "coal": 3142985,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "pt-conch-south-kalimantan-cement": {
+   "island": "kalimantan",
+   "nodes": [
+    3
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 45.8,
+       "served": 0.999,
+       "mwh": 234044,
+       "cost": 10718219,
+       "co2": 220416,
+       "coal": 2099197,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.999,
+        "unserved": 0.001
+       }
+      }
+     ],
+     "lcoe": 45.8,
+     "served": 0.999,
+     "mwh": 234044,
+     "cost": 10718219,
+     "co2": 220416,
+     "coal": 2099197,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.999,
+      "unserved": 0.001
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 44.11,
+       "served": 1.0,
+       "mwh": 234300,
+       "cost": 10334442,
+       "co2": 217905,
+       "coal": 2075282,
+       "imp": 3008,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.877,
+        "grid": 0.123,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.11,
+     "served": 1.0,
+     "mwh": 234300,
+     "cost": 10334442,
+     "co2": 217905,
+     "coal": 2075282,
+     "imp": 3008,
+     "re": 0,
+     "mix": {
+      "coal": 0.877,
+      "grid": 0.123,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 45.11,
+       "served": 1.0,
+       "mwh": 234330,
+       "cost": 10570609,
+       "co2": 221304,
+       "coal": 2107655,
+       "imp": 0,
+       "re": 411253,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 45.11,
+     "served": 1.0,
+     "mwh": 234330,
+     "cost": 10570609,
+     "co2": 221304,
+     "coal": 2107655,
+     "imp": 0,
+     "re": 411253,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 44.13,
+       "served": 1.0,
+       "mwh": 234330,
+       "cost": 10341202,
+       "co2": 219833,
+       "coal": 2093650,
+       "imp": 1398,
+       "re": 160710,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.946,
+        "grid": 0.054,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.13,
+     "served": 1.0,
+     "mwh": 234330,
+     "cost": 10341202,
+     "co2": 219833,
+     "coal": 2093650,
+     "imp": 1398,
+     "re": 160710,
+     "mix": {
+      "coal": 0.946,
+      "grid": 0.054,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "indominco-mandiri": {
+   "island": "kalimantan",
+   "nodes": [
+    4
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 50.25,
+       "served": 0.946,
+       "mwh": 51818,
+       "cost": 2603783,
+       "co2": 48801,
+       "coal": 464770,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.862,
+        "unserved": 0.138
+       }
+      }
+     ],
+     "lcoe": 50.25,
+     "served": 0.946,
+     "mwh": 51818,
+     "cost": 2603783,
+     "co2": 48801,
+     "coal": 464770,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.862,
+      "unserved": 0.138
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 50.43,
+       "served": 1.0,
+       "mwh": 54743,
+       "cost": 2760855,
+       "co2": 48727,
+       "coal": 464065,
+       "imp": 3060,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.771,
+        "grid": 0.229,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 50.43,
+     "served": 1.0,
+     "mwh": 54743,
+     "cost": 2760855,
+     "co2": 48727,
+     "coal": 464065,
+     "imp": 3060,
+     "re": 0,
+     "mix": {
+      "coal": 0.771,
+      "grid": 0.229,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 53.49,
+       "served": 1.0,
+       "mwh": 54749,
+       "cost": 2928563,
+       "co2": 49021,
+       "coal": 466865,
+       "imp": 0,
+       "re": 483906,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.739,
+        "solar": 0.261,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 53.49,
+     "served": 1.0,
+     "mwh": 54749,
+     "cost": 2928563,
+     "co2": 49021,
+     "coal": 466865,
+     "imp": 0,
+     "re": 483906,
+     "mix": {
+      "coal": 0.739,
+      "solar": 0.261,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 56.85,
+       "served": 1.0,
+       "mwh": 54750,
+       "cost": 3112769,
+       "co2": 49509,
+       "coal": 471511,
+       "imp": 2316,
+       "re": 589275,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.703,
+        "solar": 0.157,
+        "grid": 0.14,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 56.85,
+     "served": 1.0,
+     "mwh": 54750,
+     "cost": 3112769,
+     "co2": 49509,
+     "coal": 471511,
+     "imp": 2316,
+     "re": 589275,
+     "mix": {
+      "coal": 0.703,
+      "solar": 0.157,
+      "grid": 0.14,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "kutai-refinery-nusantara": {
+   "island": "kalimantan",
+   "nodes": [
+    5
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 47.76,
+       "served": 0.999,
+       "mwh": 209214,
+       "cost": 9991346,
+       "co2": 197032,
+       "coal": 1876492,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.998,
+        "unserved": 0.002
+       }
+      }
+     ],
+     "lcoe": 47.76,
+     "served": 0.999,
+     "mwh": 209214,
+     "cost": 9991346,
+     "co2": 197032,
+     "coal": 1876492,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.998,
+      "unserved": 0.002
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 44.96,
+       "served": 1.0,
+       "mwh": 209482,
+       "cost": 9418141,
+       "co2": 190372,
+       "coal": 1813068,
+       "imp": 7491,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.652,
+        "grid": 0.348,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.96,
+     "served": 1.0,
+     "mwh": 209482,
+     "cost": 9418141,
+     "co2": 190372,
+     "coal": 1813068,
+     "imp": 7491,
+     "re": 0,
+     "mix": {
+      "coal": 0.652,
+      "grid": 0.348,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 45.64,
+       "served": 1.0,
+       "mwh": 209510,
+       "cost": 9562873,
+       "co2": 196484,
+       "coal": 1871272,
+       "imp": 0,
+       "re": 488239,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.92,
+        "solar": 0.08,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 45.64,
+     "served": 1.0,
+     "mwh": 209510,
+     "cost": 9562873,
+     "co2": 196484,
+     "coal": 1871272,
+     "imp": 0,
+     "re": 488239,
+     "mix": {
+      "coal": 0.92,
+      "solar": 0.08,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 44.69,
+       "served": 1.0,
+       "mwh": 209510,
+       "cost": 9363564,
+       "co2": 195221,
+       "coal": 1859250,
+       "imp": 3066,
+       "re": 178405,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.868,
+        "grid": 0.132,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.69,
+     "served": 1.0,
+     "mwh": 209510,
+     "cost": 9363564,
+     "co2": 195221,
+     "coal": 1859250,
+     "imp": 3066,
+     "re": 178405,
+     "mix": {
+      "coal": 0.868,
+      "grid": 0.132,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "kpcm": {
+   "island": "kalimantan",
+   "nodes": [
+    6
+   ],
+   "runs": {},
+   "path": {}
+  },
+  "kipi": {
+   "island": "kalimantan",
+   "nodes": [
+    7
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 44.29,
+       "served": 1.0,
+       "mwh": 10021440,
+       "cost": 443899064,
+       "co2": 9437887,
+       "coal": 89884637,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.29,
+     "served": 1.0,
+     "mwh": 10021440,
+     "cost": 443899064,
+     "co2": 9437887,
+     "coal": 89884637,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 44.17,
+       "served": 1.0,
+       "mwh": 10021440,
+       "cost": 442618393,
+       "co2": 9439410,
+       "coal": 89899146,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.17,
+     "served": 1.0,
+     "mwh": 10021440,
+     "cost": 442618393,
+     "co2": 9439410,
+     "coal": 89899146,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 44.04,
+       "served": 1.0,
+       "mwh": 10021440,
+       "cost": 441373235,
+       "co2": 9438879,
+       "coal": 89894083,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.04,
+     "served": 1.0,
+     "mwh": 10021440,
+     "cost": 441373235,
+     "co2": 9438879,
+     "coal": 89894083,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 44.04,
+       "served": 1.0,
+       "mwh": 10021440,
+       "cost": 441353439,
+       "co2": 9438385,
+       "coal": 89889382,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.04,
+     "served": 1.0,
+     "mwh": 10021440,
+     "cost": 441353439,
+     "co2": 9438385,
+     "coal": 89889382,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "andalas-cement": {
+   "island": "sumatera",
+   "nodes": [
+    1
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 47.51,
+       "served": 0.999,
+       "mwh": 144363,
+       "cost": 6858766,
+       "co2": 135982,
+       "coal": 1295071,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.999,
+        "unserved": 0.001
+       }
+      }
+     ],
+     "lcoe": 47.51,
+     "served": 0.999,
+     "mwh": 144363,
+     "cost": 6858766,
+     "co2": 135982,
+     "coal": 1295071,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.999,
+      "unserved": 0.001
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 44.7,
+       "served": 1.0,
+       "mwh": 144522,
+       "cost": 6460467,
+       "co2": 134151,
+       "coal": 1277630,
+       "imp": 2075,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.865,
+        "grid": 0.135,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.7,
+     "served": 1.0,
+     "mwh": 144522,
+     "cost": 6460467,
+     "co2": 134151,
+     "coal": 1277630,
+     "imp": 2075,
+     "re": 0,
+     "mix": {
+      "coal": 0.865,
+      "grid": 0.135,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 44.8,
+       "served": 1.0,
+       "mwh": 144540,
+       "cost": 6475442,
+       "co2": 136453,
+       "coal": 1299552,
+       "imp": 0,
+       "re": 205490,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.8,
+     "served": 1.0,
+     "mwh": 144540,
+     "cost": 6475442,
+     "co2": 136453,
+     "coal": 1299552,
+     "imp": 0,
+     "re": 205490,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 44.1,
+       "served": 1.0,
+       "mwh": 144540,
+       "cost": 6374930,
+       "co2": 135494,
+       "coal": 1290419,
+       "imp": 934,
+       "re": 89278,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.941,
+        "grid": 0.059,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.1,
+     "served": 1.0,
+     "mwh": 144540,
+     "cost": 6374930,
+     "co2": 135494,
+     "coal": 1290419,
+     "imp": 934,
+     "re": 89278,
+     "mix": {
+      "coal": 0.941,
+      "grid": 0.059,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "medan-steel-mill": {
+   "island": "sumatera",
+   "nodes": [
+    2
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 51.91,
+       "served": 0.984,
+       "mwh": 228439,
+       "cost": 11859300,
+       "co2": 215179,
+       "coal": 2049321,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.983,
+        "unserved": 0.017
+       }
+      }
+     ],
+     "lcoe": 51.91,
+     "served": 0.984,
+     "mwh": 228439,
+     "cost": 11859300,
+     "co2": 215179,
+     "coal": 2049321,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.983,
+      "unserved": 0.017
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 46.78,
+       "served": 1.0,
+       "mwh": 232135,
+       "cost": 10859840,
+       "co2": 183100,
+       "coal": 1743812,
+       "imp": 37726,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.764,
+        "grid": 0.236,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 46.78,
+     "served": 1.0,
+     "mwh": 232135,
+     "cost": 10859840,
+     "co2": 183100,
+     "coal": 1743812,
+     "imp": 37726,
+     "re": 0,
+     "mix": {
+      "coal": 0.764,
+      "grid": 0.236,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 49.25,
+       "served": 1.0,
+       "mwh": 232140,
+       "cost": 11432884,
+       "co2": 217756,
+       "coal": 2073866,
+       "imp": 0,
+       "re": 1046548,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.976,
+        "solar": 0.024,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 49.25,
+     "served": 1.0,
+     "mwh": 232140,
+     "cost": 11432884,
+     "co2": 217756,
+     "coal": 2073866,
+     "imp": 0,
+     "re": 1046548,
+     "mix": {
+      "coal": 0.976,
+      "solar": 0.024,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 47.02,
+       "served": 1.0,
+       "mwh": 232139,
+       "cost": 10916246,
+       "co2": 200556,
+       "coal": 1910057,
+       "imp": 12093,
+       "re": 755030,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.873,
+        "solar": 0.053,
+        "grid": 0.074,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 47.02,
+     "served": 1.0,
+     "mwh": 232139,
+     "cost": 10916246,
+     "co2": 200556,
+     "coal": 1910057,
+     "imp": 12093,
+     "re": 755030,
+     "mix": {
+      "coal": 0.873,
+      "solar": 0.053,
+      "grid": 0.074,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "sintong-abadi": {
+   "island": "sumatera",
+   "nodes": [
+    4
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 50.69,
+       "served": 0.965,
+       "mwh": 50041,
+       "cost": 2536374,
+       "co2": 47137,
+       "coal": 448919,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.89,
+        "unserved": 0.11
+       }
+      }
+     ],
+     "lcoe": 50.69,
+     "served": 0.965,
+     "mwh": 50041,
+     "cost": 2536374,
+     "co2": 47137,
+     "coal": 448919,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.89,
+      "unserved": 0.11
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 49.7,
+       "served": 0.998,
+       "mwh": 51724,
+       "cost": 2570727,
+       "co2": 47008,
+       "coal": 447693,
+       "imp": 1810,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.725,
+        "grid": 0.275,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 49.7,
+     "served": 0.998,
+     "mwh": 51724,
+     "cost": 2570727,
+     "co2": 47008,
+     "coal": 447693,
+     "imp": 1810,
+     "re": 0,
+     "mix": {
+      "coal": 0.725,
+      "grid": 0.275,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 58.42,
+       "served": 1.0,
+       "mwh": 51830,
+       "cost": 3027765,
+       "co2": 50767,
+       "coal": 483493,
+       "imp": 0,
+       "re": 657105,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 58.42,
+     "served": 1.0,
+     "mwh": 51830,
+     "cost": 3027765,
+     "co2": 50767,
+     "coal": 483493,
+     "imp": 0,
+     "re": 657105,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 56.45,
+       "served": 1.0,
+       "mwh": 51823,
+       "cost": 2925194,
+       "co2": 50558,
+       "coal": 481508,
+       "imp": 758,
+       "re": 517635,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.919,
+        "grid": 0.081,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 56.45,
+     "served": 1.0,
+     "mwh": 51823,
+     "cost": 2925194,
+     "co2": 50558,
+     "coal": 481508,
+     "imp": 758,
+     "re": 517635,
+     "mix": {
+      "coal": 0.919,
+      "grid": 0.081,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "toba-pulp-lestari": {
+   "island": "sumatera",
+   "nodes": [
+    5
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 43.93,
+       "served": 1.0,
+       "mwh": 376680,
+       "cost": 16546919,
+       "co2": 354814,
+       "coal": 3379181,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 43.93,
+     "served": 1.0,
+     "mwh": 376680,
+     "cost": 16546919,
+     "co2": 354814,
+     "coal": 3379181,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 43.28,
+       "served": 1.0,
+       "mwh": 376680,
+       "cost": 16303009,
+       "co2": 354741,
+       "coal": 3378488,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 43.28,
+     "served": 1.0,
+     "mwh": 376680,
+     "cost": 16303009,
+     "co2": 354741,
+     "coal": 3378488,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 42.77,
+       "served": 1.0,
+       "mwh": 376680,
+       "cost": 16110719,
+       "co2": 354531,
+       "coal": 3376482,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.77,
+     "served": 1.0,
+     "mwh": 376680,
+     "cost": 16110719,
+     "co2": 354531,
+     "coal": 3376482,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 42.78,
+       "served": 1.0,
+       "mwh": 376680,
+       "cost": 16112744,
+       "co2": 354581,
+       "coal": 3376963,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.78,
+     "served": 1.0,
+     "mwh": 376680,
+     "cost": 16112744,
+     "co2": 354581,
+     "coal": 3376963,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "bnip": {
+   "island": "sumatera",
+   "nodes": [
+    6
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 43.93,
+       "served": 1.0,
+       "mwh": 840960,
+       "cost": 36941958,
+       "co2": 792143,
+       "coal": 7544219,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 43.93,
+     "served": 1.0,
+     "mwh": 840960,
+     "cost": 36941958,
+     "co2": 792143,
+     "coal": 7544219,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 43.28,
+       "served": 1.0,
+       "mwh": 840960,
+       "cost": 36397415,
+       "co2": 791980,
+       "coal": 7542670,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 43.28,
+     "served": 1.0,
+     "mwh": 840960,
+     "cost": 36397415,
+     "co2": 791980,
+     "coal": 7542670,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 42.77,
+       "served": 1.0,
+       "mwh": 840960,
+       "cost": 35968118,
+       "co2": 791510,
+       "coal": 7538193,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.77,
+     "served": 1.0,
+     "mwh": 840960,
+     "cost": 35968118,
+     "co2": 791510,
+     "coal": 7538193,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 42.78,
+       "served": 1.0,
+       "mwh": 840960,
+       "cost": 35972637,
+       "co2": 791623,
+       "coal": 7539266,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.78,
+     "served": 1.0,
+     "mwh": 840960,
+     "cost": 35972637,
+     "co2": 791623,
+     "coal": 7539266,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "perawang-mill": {
+   "island": "sumatera",
+   "nodes": [
+    7
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 43.48,
+       "served": 1.0,
+       "mwh": 3504000,
+       "cost": 152364827,
+       "co2": 3300596,
+       "coal": 31434246,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 43.48,
+     "served": 1.0,
+     "mwh": 3504000,
+     "cost": 152364827,
+     "co2": 3300596,
+     "coal": 31434246,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 42.84,
+       "served": 1.0,
+       "mwh": 3504000,
+       "cost": 150095895,
+       "co2": 3299918,
+       "coal": 31427791,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.84,
+     "served": 1.0,
+     "mwh": 3504000,
+     "cost": 150095895,
+     "co2": 3299918,
+     "coal": 31427791,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 42.33,
+       "served": 1.0,
+       "mwh": 3504000,
+       "cost": 148307158,
+       "co2": 3297959,
+       "coal": 31409138,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.33,
+     "served": 1.0,
+     "mwh": 3504000,
+     "cost": 148307158,
+     "co2": 3297959,
+     "coal": 31409138,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 42.33,
+       "served": 1.0,
+       "mwh": 3504000,
+       "cost": 148325987,
+       "co2": 3298429,
+       "coal": 31413607,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.33,
+     "served": 1.0,
+     "mwh": 3504000,
+     "cost": 148325987,
+     "co2": 3298429,
+     "coal": 31413607,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "rempang-eco-city": {
+   "island": "sumatera",
+   "nodes": [
+    8
+   ],
+   "runs": {},
+   "path": {}
+  },
+  "kilang-pertamina-indonesia": {
+   "island": "sumatera",
+   "nodes": [
+    9
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 51.57,
+       "served": 0.99,
+       "mwh": 273096,
+       "cost": 14084628,
+       "co2": 257243,
+       "coal": 2449933,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.985,
+        "unserved": 0.015
+       }
+      }
+     ],
+     "lcoe": 51.57,
+     "served": 0.99,
+     "mwh": 273096,
+     "cost": 14084628,
+     "co2": 257243,
+     "coal": 2449933,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.985,
+      "unserved": 0.015
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 46.17,
+       "served": 1.0,
+       "mwh": 275922,
+       "cost": 12739064,
+       "co2": 242210,
+       "coal": 2306758,
+       "imp": 18741,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.724,
+        "grid": 0.276,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 46.17,
+     "served": 1.0,
+     "mwh": 275922,
+     "cost": 12739064,
+     "co2": 242210,
+     "coal": 2306758,
+     "imp": 18741,
+     "re": 0,
+     "mix": {
+      "coal": 0.724,
+      "grid": 0.276,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 47.81,
+       "served": 1.0,
+       "mwh": 275940,
+       "cost": 13193137,
+       "co2": 254857,
+       "coal": 2427210,
+       "imp": 0,
+       "re": 1270094,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.886,
+        "solar": 0.114,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 47.81,
+     "served": 1.0,
+     "mwh": 275940,
+     "cost": 13193137,
+     "co2": 254857,
+     "coal": 2427210,
+     "imp": 0,
+     "re": 1270094,
+     "mix": {
+      "coal": 0.886,
+      "solar": 0.114,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 46.08,
+       "served": 1.0,
+       "mwh": 275940,
+       "cost": 12714789,
+       "co2": 248810,
+       "coal": 2369621,
+       "imp": 9204,
+       "re": 499582,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.806,
+        "solar": 0.063,
+        "grid": 0.13,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 46.08,
+     "served": 1.0,
+     "mwh": 275940,
+     "cost": 12714789,
+     "co2": 248810,
+     "coal": 2369621,
+     "imp": 9204,
+     "re": 499582,
+     "mix": {
+      "coal": 0.806,
+      "solar": 0.063,
+      "grid": 0.13,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "pt-pulau-sambu-kuala-enok": {
+   "island": "sumatera",
+   "nodes": [
+    10
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 43.93,
+       "served": 1.0,
+       "mwh": 26280,
+       "cost": 1154436,
+       "co2": 24754,
+       "coal": 235757,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {}
+      }
+     ],
+     "lcoe": 43.93,
+     "served": 1.0,
+     "mwh": 26280,
+     "cost": 1154436,
+     "co2": 24754,
+     "coal": 235757,
+     "imp": 0,
+     "re": 0,
+     "mix": {}
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 43.28,
+       "served": 1.0,
+       "mwh": 26280,
+       "cost": 1137419,
+       "co2": 24749,
+       "coal": 235708,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {}
+      }
+     ],
+     "lcoe": 43.28,
+     "served": 1.0,
+     "mwh": 26280,
+     "cost": 1137419,
+     "co2": 24749,
+     "coal": 235708,
+     "imp": 0,
+     "re": 0,
+     "mix": {}
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 42.77,
+       "served": 1.0,
+       "mwh": 26280,
+       "cost": 1124004,
+       "co2": 24735,
+       "coal": 235569,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {}
+      }
+     ],
+     "lcoe": 42.77,
+     "served": 1.0,
+     "mwh": 26280,
+     "cost": 1124004,
+     "co2": 24735,
+     "coal": 235569,
+     "imp": 0,
+     "re": 0,
+     "mix": {}
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 42.78,
+       "served": 1.0,
+       "mwh": 26280,
+       "cost": 1124145,
+       "co2": 24738,
+       "coal": 235602,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {}
+      }
+     ],
+     "lcoe": 42.78,
+     "served": 1.0,
+     "mwh": 26280,
+     "cost": 1124145,
+     "co2": 24738,
+     "coal": 235602,
+     "imp": 0,
+     "re": 0,
+     "mix": {}
+    }
+   }
+  },
+  "sari-dumai-sejati": {
+   "island": "sumatera",
+   "nodes": [
+    11
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 47.51,
+       "served": 1.0,
+       "mwh": 253963,
+       "cost": 12065696,
+       "co2": 239221,
+       "coal": 2278295,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 47.51,
+     "served": 1.0,
+     "mwh": 253963,
+     "cost": 12065696,
+     "co2": 239221,
+     "coal": 2278295,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 44.66,
+       "served": 1.0,
+       "mwh": 254002,
+       "cost": 11342582,
+       "co2": 234442,
+       "coal": 2232777,
+       "imp": 5063,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.807,
+        "grid": 0.193,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.66,
+     "served": 1.0,
+     "mwh": 254002,
+     "cost": 11342582,
+     "co2": 234442,
+     "coal": 2232777,
+     "imp": 5063,
+     "re": 0,
+     "mix": {
+      "coal": 0.807,
+      "grid": 0.193,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 44.62,
+       "served": 1.0,
+       "mwh": 254040,
+       "cost": 11334230,
+       "co2": 239841,
+       "coal": 2284202,
+       "imp": 0,
+       "re": 297564,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.62,
+     "served": 1.0,
+     "mwh": 254040,
+     "cost": 11334230,
+     "co2": 239841,
+     "coal": 2284202,
+     "imp": 0,
+     "re": 297564,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 44.06,
+       "served": 1.0,
+       "mwh": 254040,
+       "cost": 11193760,
+       "co2": 238476,
+       "coal": 2271204,
+       "imp": 1310,
+       "re": 136984,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.952,
+        "grid": 0.048,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.06,
+     "served": 1.0,
+     "mwh": 254040,
+     "cost": 11193760,
+     "co2": 238476,
+     "coal": 2271204,
+     "imp": 1310,
+     "re": 136984,
+     "mix": {
+      "coal": 0.952,
+      "grid": 0.048,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "pt-tianshan-alumina": {
+   "island": "sumatera",
+   "nodes": [
+    12
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 43.48,
+       "served": 1.0,
+       "mwh": 946080,
+       "cost": 41138503,
+       "co2": 891161,
+       "coal": 8487246,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 43.48,
+     "served": 1.0,
+     "mwh": 946080,
+     "cost": 41138503,
+     "co2": 891161,
+     "coal": 8487246,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 42.84,
+       "served": 1.0,
+       "mwh": 946080,
+       "cost": 40525892,
+       "co2": 890978,
+       "coal": 8485504,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.84,
+     "served": 1.0,
+     "mwh": 946080,
+     "cost": 40525892,
+     "co2": 890978,
+     "coal": 8485504,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 42.33,
+       "served": 1.0,
+       "mwh": 946080,
+       "cost": 40042933,
+       "co2": 890449,
+       "coal": 8480467,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.33,
+     "served": 1.0,
+     "mwh": 946080,
+     "cost": 40042933,
+     "co2": 890449,
+     "coal": 8480467,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 42.33,
+       "served": 1.0,
+       "mwh": 946080,
+       "cost": 40048016,
+       "co2": 890576,
+       "coal": 8481674,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.33,
+     "served": 1.0,
+     "mwh": 946080,
+     "cost": 40048016,
+     "co2": 890576,
+     "coal": 8481674,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "sinar-mas-jambi-lontar": {
+   "island": "sumatera",
+   "nodes": [
+    13
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 43.87,
+       "served": 1.0,
+       "mwh": 981120,
+       "cost": 43044345,
+       "co2": 924167,
+       "coal": 8801589,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 43.87,
+     "served": 1.0,
+     "mwh": 981120,
+     "cost": 43044345,
+     "co2": 924167,
+     "coal": 8801589,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 43.23,
+       "served": 1.0,
+       "mwh": 981120,
+       "cost": 42408980,
+       "co2": 923977,
+       "coal": 8799781,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 43.23,
+     "served": 1.0,
+     "mwh": 981120,
+     "cost": 42408980,
+     "co2": 923977,
+     "coal": 8799781,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 42.71,
+       "served": 1.0,
+       "mwh": 981120,
+       "cost": 41907946,
+       "co2": 923429,
+       "coal": 8794559,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.71,
+     "served": 1.0,
+     "mwh": 981120,
+     "cost": 41907946,
+     "co2": 923429,
+     "coal": 8794559,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 42.72,
+       "served": 1.0,
+       "mwh": 981120,
+       "cost": 41913263,
+       "co2": 923560,
+       "coal": 8795810,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.72,
+     "served": 1.0,
+     "mwh": 981120,
+     "cost": 41913263,
+     "co2": 923560,
+     "coal": 8795810,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "indonesia-fibreboard-industry": {
+   "island": "sumatera",
+   "nodes": [
+    14
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 55.14,
+       "served": 0.937,
+       "mwh": 46501,
+       "cost": 2563926,
+       "co2": 43802,
+       "coal": 417159,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.552,
+        "unserved": 0.448
+       }
+      }
+     ],
+     "lcoe": 55.14,
+     "served": 0.937,
+     "mwh": 46501,
+     "cost": 2563926,
+     "co2": 43802,
+     "coal": 417159,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.552,
+      "unserved": 0.448
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 53.59,
+       "served": 0.982,
+       "mwh": 48764,
+       "cost": 2613068,
+       "co2": 43793,
+       "coal": 417073,
+       "imp": 2264,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.38,
+        "grid": 0.62,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 53.59,
+     "served": 0.982,
+     "mwh": 48764,
+     "cost": 2613068,
+     "co2": 43793,
+     "coal": 417073,
+     "imp": 2264,
+     "re": 0,
+     "mix": {
+      "coal": 0.38,
+      "grid": 0.62,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 77.97,
+       "served": 1.0,
+       "mwh": 49640,
+       "cost": 3870249,
+       "co2": 52412,
+       "coal": 499161,
+       "imp": 0,
+       "re": 1153205,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.999,
+        "solar": 0.001,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 77.97,
+     "served": 1.0,
+     "mwh": 49640,
+     "cost": 3870249,
+     "co2": 52412,
+     "coal": 499161,
+     "imp": 0,
+     "re": 1153205,
+     "mix": {
+      "coal": 0.999,
+      "solar": 0.001,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 69.74,
+       "served": 1.0,
+       "mwh": 49640,
+       "cost": 3462058,
+       "co2": 53599,
+       "coal": 510471,
+       "imp": 653,
+       "re": 754485,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.944,
+        "grid": 0.056,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 69.74,
+     "served": 1.0,
+     "mwh": 49640,
+     "cost": 3462058,
+     "co2": 53599,
+     "coal": 510471,
+     "imp": 653,
+     "re": 754485,
+     "mix": {
+      "coal": 0.944,
+      "grid": 0.056,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "laju-perdana-indah": {
+   "island": "sumatera",
+   "nodes": [
+    15
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 50.07,
+       "served": 0.973,
+       "mwh": 52559,
+       "cost": 2631527,
+       "co2": 49508,
+       "coal": 471508,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.946,
+        "unserved": 0.054
+       }
+      }
+     ],
+     "lcoe": 50.07,
+     "served": 0.973,
+     "mwh": 52559,
+     "cost": 2631527,
+     "co2": 49508,
+     "coal": 471508,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.946,
+      "unserved": 0.054
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 46.88,
+       "served": 1.0,
+       "mwh": 54017,
+       "cost": 2532080,
+       "co2": 46658,
+       "coal": 444358,
+       "imp": 4476,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.694,
+        "grid": 0.306,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 46.88,
+     "served": 1.0,
+     "mwh": 54017,
+     "cost": 2532080,
+     "co2": 46658,
+     "coal": 444358,
+     "imp": 4476,
+     "re": 0,
+     "mix": {
+      "coal": 0.694,
+      "grid": 0.306,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 52.47,
+       "served": 1.0,
+       "mwh": 54020,
+       "cost": 2834175,
+       "co2": 52040,
+       "coal": 495621,
+       "imp": 0,
+       "re": 387188,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 52.47,
+     "served": 1.0,
+     "mwh": 54020,
+     "cost": 2834175,
+     "co2": 52040,
+     "coal": 495621,
+     "imp": 0,
+     "re": 387188,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 47.91,
+       "served": 1.0,
+       "mwh": 54020,
+       "cost": 2588317,
+       "co2": 48090,
+       "coal": 457997,
+       "imp": 3452,
+       "re": 90942,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.774,
+        "grid": 0.226,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 47.91,
+     "served": 1.0,
+     "mwh": 54020,
+     "cost": 2588317,
+     "co2": 48090,
+     "coal": 457997,
+     "imp": 3452,
+     "re": 90942,
+     "mix": {
+      "coal": 0.774,
+      "grid": 0.226,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "palembang-pusri": {
+   "island": "sumatera",
+   "nodes": [
+    16
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 50.87,
+       "served": 0.996,
+       "mwh": 94550,
+       "cost": 4809907,
+       "co2": 89062,
+       "coal": 848208,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.997,
+        "unserved": 0.003
+       }
+      }
+     ],
+     "lcoe": 50.87,
+     "served": 0.996,
+     "mwh": 94550,
+     "cost": 4809907,
+     "co2": 89062,
+     "coal": 848208,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.997,
+      "unserved": 0.003
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 45.47,
+       "served": 1.0,
+       "mwh": 94895,
+       "cost": 4315234,
+       "co2": 82810,
+       "coal": 788667,
+       "imp": 6966,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.702,
+        "grid": 0.298,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 45.47,
+     "served": 1.0,
+     "mwh": 94895,
+     "cost": 4315234,
+     "co2": 82810,
+     "coal": 788667,
+     "imp": 6966,
+     "re": 0,
+     "mix": {
+      "coal": 0.702,
+      "grid": 0.298,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 46.5,
+       "served": 1.0,
+       "mwh": 94900,
+       "cost": 4413254,
+       "co2": 90316,
+       "coal": 860149,
+       "imp": 0,
+       "re": 216686,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 46.5,
+     "served": 1.0,
+     "mwh": 94900,
+     "cost": 4413254,
+     "co2": 90316,
+     "coal": 860149,
+     "imp": 0,
+     "re": 216686,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 45.34,
+       "served": 1.0,
+       "mwh": 94900,
+       "cost": 4302639,
+       "co2": 85119,
+       "coal": 810654,
+       "imp": 4853,
+       "re": 58313,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.797,
+        "grid": 0.203,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 45.34,
+     "served": 1.0,
+     "mwh": 94900,
+     "cost": 4302639,
+     "co2": 85119,
+     "coal": 810654,
+     "imp": 4853,
+     "re": 58313,
+     "mix": {
+      "coal": 0.797,
+      "grid": 0.203,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "tanjungenim-lestari-pulp-paper": {
+   "island": "sumatera",
+   "nodes": [
+    17
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 43.93,
+       "served": 1.0,
+       "mwh": 332880,
+       "cost": 14622859,
+       "co2": 313557,
+       "coal": 2986253,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 43.93,
+     "served": 1.0,
+     "mwh": 332880,
+     "cost": 14622859,
+     "co2": 313557,
+     "coal": 2986253,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 43.28,
+       "served": 1.0,
+       "mwh": 332880,
+       "cost": 14407310,
+       "co2": 313492,
+       "coal": 2985640,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 43.28,
+     "served": 1.0,
+     "mwh": 332880,
+     "cost": 14407310,
+     "co2": 313492,
+     "coal": 2985640,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 42.77,
+       "served": 1.0,
+       "mwh": 332880,
+       "cost": 14237380,
+       "co2": 313306,
+       "coal": 2983868,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.77,
+     "served": 1.0,
+     "mwh": 332880,
+     "cost": 14237380,
+     "co2": 313306,
+     "coal": 2983868,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 42.78,
+       "served": 1.0,
+       "mwh": 332880,
+       "cost": 14239169,
+       "co2": 313351,
+       "coal": 2984293,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.78,
+     "served": 1.0,
+     "mwh": 332880,
+     "cost": 14239169,
+     "co2": 313351,
+     "coal": 2984293,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "bukit-asam-tanjung-enim": {
+   "island": "sumatera",
+   "nodes": [
+    18
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 51.51,
+       "served": 0.991,
+       "mwh": 141099,
+       "cost": 7268085,
+       "co2": 132909,
+       "coal": 1265797,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.987,
+        "unserved": 0.013
+       }
+      }
+     ],
+     "lcoe": 51.51,
+     "served": 0.991,
+     "mwh": 141099,
+     "cost": 7268085,
+     "co2": 132909,
+     "coal": 1265797,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.987,
+      "unserved": 0.013
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 45.84,
+       "served": 1.0,
+       "mwh": 142341,
+       "cost": 6524811,
+       "co2": 122806,
+       "coal": 1169577,
+       "imp": 11946,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.679,
+        "grid": 0.321,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 45.84,
+     "served": 1.0,
+     "mwh": 142341,
+     "cost": 6524811,
+     "co2": 122806,
+     "coal": 1169577,
+     "imp": 11946,
+     "re": 0,
+     "mix": {
+      "coal": 0.679,
+      "grid": 0.321,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 47.77,
+       "served": 1.0,
+       "mwh": 142350,
+       "cost": 6800290,
+       "co2": 134834,
+       "coal": 1284133,
+       "imp": 0,
+       "re": 505225,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.98,
+        "solar": 0.02,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 47.77,
+     "served": 1.0,
+     "mwh": 142350,
+     "cost": 6800290,
+     "co2": 134834,
+     "coal": 1284133,
+     "imp": 0,
+     "re": 505225,
+     "mix": {
+      "coal": 0.98,
+      "solar": 0.02,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 45.89,
+       "served": 1.0,
+       "mwh": 142350,
+       "cost": 6533152,
+       "co2": 127472,
+       "coal": 1214024,
+       "imp": 4854,
+       "re": 276800,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.796,
+        "solar": 0.078,
+        "grid": 0.126,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 45.89,
+     "served": 1.0,
+     "mwh": 142350,
+     "cost": 6533152,
+     "co2": 127472,
+     "coal": 1214024,
+     "imp": 4854,
+     "re": 276800,
+     "mix": {
+      "coal": 0.796,
+      "solar": 0.078,
+      "grid": 0.126,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "bukit-asam-tarahan-port": {
+   "island": "sumatera",
+   "nodes": [
+    19
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 51.91,
+       "served": 0.994,
+       "mwh": 60926,
+       "cost": 3162820,
+       "co2": 57389,
+       "coal": 546566,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.991,
+        "unserved": 0.009
+       }
+      }
+     ],
+     "lcoe": 51.91,
+     "served": 0.994,
+     "mwh": 60926,
+     "cost": 3162820,
+     "co2": 57389,
+     "coal": 546566,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.991,
+      "unserved": 0.009
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 45.78,
+       "served": 1.0,
+       "mwh": 61312,
+       "cost": 2806742,
+       "co2": 53732,
+       "coal": 511734,
+       "imp": 4259,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.722,
+        "grid": 0.278,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 45.78,
+     "served": 1.0,
+     "mwh": 61312,
+     "cost": 2806742,
+     "co2": 53732,
+     "coal": 511734,
+     "imp": 4259,
+     "re": 0,
+     "mix": {
+      "coal": 0.722,
+      "grid": 0.278,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 51.63,
+       "served": 1.0,
+       "mwh": 61320,
+       "cost": 3165871,
+       "co2": 57948,
+       "coal": 551885,
+       "imp": 0,
+       "re": 460494,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.935,
+        "solar": 0.065,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 51.63,
+     "served": 1.0,
+     "mwh": 61320,
+     "cost": 3165871,
+     "co2": 57948,
+     "coal": 551885,
+     "imp": 0,
+     "re": 460494,
+     "mix": {
+      "coal": 0.935,
+      "solar": 0.065,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 48.11,
+       "served": 1.0,
+       "mwh": 61320,
+       "cost": 2950360,
+       "co2": 54955,
+       "coal": 523381,
+       "imp": 3086,
+       "re": 197517,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.765,
+        "solar": 0.047,
+        "grid": 0.188,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 48.11,
+     "served": 1.0,
+     "mwh": 61320,
+     "cost": 2950360,
+     "co2": 54955,
+     "coal": 523381,
+     "imp": 3086,
+     "re": 197517,
+     "mix": {
+      "coal": 0.765,
+      "solar": 0.047,
+      "grid": 0.188,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "kiec": {
+   "island": "jawa_bali",
+   "nodes": [
+    1,
+    6,
+    10
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 51.29,
+       "served": 0.999,
+       "mwh": 2096385,
+       "cost": 107532607,
+       "co2": 1974055,
+       "coal": 18800520,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.998,
+        "unserved": 0.002
+       }
+      },
+      {
+       "lcoe": 68.24,
+       "served": 0.999,
+       "mwh": 2096385,
+       "cost": 143063107,
+       "co2": 1974567,
+       "coal": 18805401,
+       "imp": 0,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 0.998,
+        "unserved": 0.002
+       }
+      }
+     ],
+     "lcoe": 51.29,
+     "served": 0.999,
+     "mwh": 2096385,
+     "cost": 107532607,
+     "co2": 1974055,
+     "coal": 18800520,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.998,
+      "unserved": 0.002
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 44.77,
+       "served": 1.0,
+       "mwh": 2099465,
+       "cost": 93997432,
+       "co2": 1855528,
+       "coal": 17671693,
+       "imp": 129202,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.754,
+        "grid": 0.246,
+        "unserved": 0.0
+       }
+      },
+      {
+       "lcoe": 59.97,
+       "served": 1.0,
+       "mwh": 2099348,
+       "cost": 125907165,
+       "co2": 1853172,
+       "coal": 17649253,
+       "imp": 131701,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 0.75,
+        "grid": 0.25,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.77,
+     "served": 1.0,
+     "mwh": 2099465,
+     "cost": 93997432,
+     "co2": 1855528,
+     "coal": 17671693,
+     "imp": 129202,
+     "re": 0,
+     "mix": {
+      "coal": 0.754,
+      "grid": 0.246,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 45.38,
+       "served": 1.0,
+       "mwh": 2099480,
+       "cost": 95276345,
+       "co2": 1981672,
+       "coal": 18873069,
+       "imp": 0,
+       "re": 4835496,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.993,
+        "solar": 0.007,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 45.38,
+     "served": 1.0,
+     "mwh": 2099480,
+     "cost": 95276345,
+     "co2": 1981672,
+     "coal": 18873069,
+     "imp": 0,
+     "re": 4835496,
+     "mix": {
+      "coal": 0.993,
+      "solar": 0.007,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 44.07,
+       "served": 1.0,
+       "mwh": 2099480,
+       "cost": 92534421,
+       "co2": 1904429,
+       "coal": 18137423,
+       "imp": 76169,
+       "re": 950661,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.85,
+        "solar": 0.006,
+        "grid": 0.144,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.07,
+     "served": 1.0,
+     "mwh": 2099480,
+     "cost": 92534421,
+     "co2": 1904429,
+     "coal": 18137423,
+     "imp": 76169,
+     "re": 950661,
+     "mix": {
+      "coal": 0.85,
+      "solar": 0.006,
+      "grid": 0.144,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "cemindo-gemilang": {
+   "island": "jawa_bali",
+   "nodes": [
+    2
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 47.86,
+       "served": 0.999,
+       "mwh": 260295,
+       "cost": 12458839,
+       "co2": 245106,
+       "coal": 2334339,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.999,
+        "unserved": 0.001
+       }
+      },
+      {
+       "lcoe": 64.58,
+       "served": 0.999,
+       "mwh": 260295,
+       "cost": 16809119,
+       "co2": 245169,
+       "coal": 2334945,
+       "imp": 0,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 0.999,
+        "unserved": 0.001
+       }
+      }
+     ],
+     "lcoe": 47.86,
+     "served": 0.999,
+     "mwh": 260295,
+     "cost": 12458839,
+     "co2": 245106,
+     "coal": 2334339,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.999,
+      "unserved": 0.001
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 44.44,
+       "served": 1.0,
+       "mwh": 260577,
+       "cost": 11579260,
+       "co2": 242797,
+       "coal": 2312351,
+       "imp": 2803,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.893,
+        "grid": 0.107,
+        "unserved": 0.0
+       }
+      },
+      {
+       "lcoe": 60.17,
+       "served": 0.999,
+       "mwh": 260430,
+       "cost": 15669073,
+       "co2": 242066,
+       "coal": 2305391,
+       "imp": 3433,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 0.869,
+        "grid": 0.131,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.44,
+     "served": 1.0,
+     "mwh": 260577,
+     "cost": 11579260,
+     "co2": 242797,
+     "coal": 2312351,
+     "imp": 2803,
+     "re": 0,
+     "mix": {
+      "coal": 0.893,
+      "grid": 0.107,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 44.49,
+       "served": 1.0,
+       "mwh": 260610,
+       "cost": 11595838,
+       "co2": 245580,
+       "coal": 2338854,
+       "imp": 0,
+       "re": 331276,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.49,
+     "served": 1.0,
+     "mwh": 260610,
+     "cost": 11595838,
+     "co2": 245580,
+     "coal": 2338854,
+     "imp": 0,
+     "re": 331276,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 43.78,
+       "served": 1.0,
+       "mwh": 260610,
+       "cost": 11408647,
+       "co2": 244340,
+       "coal": 2327049,
+       "imp": 1298,
+       "re": 119488,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.951,
+        "grid": 0.049,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 43.78,
+     "served": 1.0,
+     "mwh": 260610,
+     "cost": 11408647,
+     "co2": 244340,
+     "coal": 2327049,
+     "imp": 1298,
+     "re": 119488,
+     "mix": {
+      "coal": 0.951,
+      "grid": 0.049,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "cilegon-ptip": {
+   "island": "jawa_bali",
+   "nodes": [
+    3
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 51.57,
+       "served": 0.999,
+       "mwh": 169153,
+       "cost": 8723400,
+       "co2": 159282,
+       "coal": 1516975,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.999,
+        "unserved": 0.001
+       }
+      },
+      {
+       "lcoe": 68.49,
+       "served": 0.999,
+       "mwh": 169153,
+       "cost": 11585023,
+       "co2": 159324,
+       "coal": 1517369,
+       "imp": 0,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 0.999,
+        "unserved": 0.001
+       }
+      }
+     ],
+     "lcoe": 51.57,
+     "served": 0.999,
+     "mwh": 169153,
+     "cost": 8723400,
+     "co2": 159282,
+     "coal": 1516975,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.999,
+      "unserved": 0.001
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 45.21,
+       "served": 1.0,
+       "mwh": 169350,
+       "cost": 7656951,
+       "co2": 149482,
+       "coal": 1423642,
+       "imp": 10624,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.739,
+        "grid": 0.261,
+        "unserved": 0.0
+       }
+      },
+      {
+       "lcoe": 60.4,
+       "served": 1.0,
+       "mwh": 169341,
+       "cost": 10227445,
+       "co2": 149387,
+       "coal": 1422733,
+       "imp": 10726,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 0.737,
+        "grid": 0.263,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 45.21,
+     "served": 1.0,
+     "mwh": 169350,
+     "cost": 7656951,
+     "co2": 149482,
+     "coal": 1423642,
+     "imp": 10624,
+     "re": 0,
+     "mix": {
+      "coal": 0.739,
+      "grid": 0.261,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 45.7,
+       "served": 1.0,
+       "mwh": 169360,
+       "cost": 7739514,
+       "co2": 160152,
+       "coal": 1525253,
+       "imp": 0,
+       "re": 356108,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 45.7,
+     "served": 1.0,
+     "mwh": 169360,
+     "cost": 7739514,
+     "co2": 160152,
+     "coal": 1525253,
+     "imp": 0,
+     "re": 356108,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 44.48,
+       "served": 1.0,
+       "mwh": 169360,
+       "cost": 7533700,
+       "co2": 153835,
+       "coal": 1465095,
+       "imp": 6160,
+       "re": 64342,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.85,
+        "grid": 0.15,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.48,
+     "served": 1.0,
+     "mwh": 169360,
+     "cost": 7533700,
+     "co2": 153835,
+     "coal": 1465095,
+     "imp": 6160,
+     "re": 64342,
+     "mix": {
+      "coal": 0.85,
+      "grid": 0.15,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "indah-kiat-serang": {
+   "island": "jawa_bali",
+   "nodes": [
+    4
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 44.76,
+       "served": 1.0,
+       "mwh": 814680,
+       "cost": 36467656,
+       "co2": 767141,
+       "coal": 7306103,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      },
+      {
+       "lcoe": 61.31,
+       "served": 1.0,
+       "mwh": 814680,
+       "cost": 49943975,
+       "co2": 767340,
+       "coal": 7308000,
+       "imp": 0,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.76,
+     "served": 1.0,
+     "mwh": 814680,
+     "cost": 36467656,
+     "co2": 767141,
+     "coal": 7306103,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 43.4,
+       "served": 1.0,
+       "mwh": 814680,
+       "cost": 35360740,
+       "co2": 767366,
+       "coal": 7308244,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      },
+      {
+       "lcoe": 59.59,
+       "served": 1.0,
+       "mwh": 814680,
+       "cost": 48548158,
+       "co2": 767365,
+       "coal": 7308234,
+       "imp": 0,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 43.4,
+     "served": 1.0,
+     "mwh": 814680,
+     "cost": 35360740,
+     "co2": 767366,
+     "coal": 7308244,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 42.73,
+       "served": 1.0,
+       "mwh": 814680,
+       "cost": 34809899,
+       "co2": 765923,
+       "coal": 7294502,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.73,
+     "served": 1.0,
+     "mwh": 814680,
+     "cost": 34809899,
+     "co2": 765923,
+     "coal": 7294502,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 42.76,
+       "served": 1.0,
+       "mwh": 814680,
+       "cost": 34835922,
+       "co2": 766571,
+       "coal": 7300680,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.76,
+     "served": 1.0,
+     "mwh": 814680,
+     "cost": 34835922,
+     "co2": 766571,
+     "coal": 7300680,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "sentra-usahatama-jaya": {
+   "island": "jawa_bali",
+   "nodes": [
+    7
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 52.04,
+       "served": 0.995,
+       "mwh": 94404,
+       "cost": 4912698,
+       "co2": 88896,
+       "coal": 846624,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.994,
+        "unserved": 0.006
+       }
+      },
+      {
+       "lcoe": 68.98,
+       "served": 0.995,
+       "mwh": 94404,
+       "cost": 6512205,
+       "co2": 88919,
+       "coal": 846844,
+       "imp": 0,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 0.994,
+        "unserved": 0.006
+       }
+      }
+     ],
+     "lcoe": 52.04,
+     "served": 0.995,
+     "mwh": 94404,
+     "cost": 4912698,
+     "co2": 88896,
+     "coal": 846624,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.994,
+      "unserved": 0.006
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 45.57,
+       "served": 1.0,
+       "mwh": 94895,
+       "cost": 4324033,
+       "co2": 82777,
+       "coal": 788348,
+       "imp": 6997,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.7,
+        "grid": 0.3,
+        "unserved": 0.0
+       }
+      },
+      {
+       "lcoe": 60.57,
+       "served": 1.0,
+       "mwh": 94890,
+       "cost": 5747716,
+       "co2": 82706,
+       "coal": 787675,
+       "imp": 7073,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 0.697,
+        "grid": 0.303,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 45.57,
+     "served": 1.0,
+     "mwh": 94895,
+     "cost": 4324033,
+     "co2": 82777,
+     "coal": 788348,
+     "imp": 6997,
+     "re": 0,
+     "mix": {
+      "coal": 0.7,
+      "grid": 0.3,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 46.72,
+       "served": 1.0,
+       "mwh": 94900,
+       "cost": 4433758,
+       "co2": 90215,
+       "coal": 859193,
+       "imp": 0,
+       "re": 241235,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 46.72,
+     "served": 1.0,
+     "mwh": 94900,
+     "cost": 4433758,
+     "co2": 90215,
+     "coal": 859193,
+     "imp": 0,
+     "re": 241235,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 45.17,
+       "served": 1.0,
+       "mwh": 94900,
+       "cost": 4286580,
+       "co2": 84266,
+       "coal": 802530,
+       "imp": 4819,
+       "re": 85786,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.762,
+        "solar": 0.033,
+        "grid": 0.205,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 45.17,
+     "served": 1.0,
+     "mwh": 94900,
+     "cost": 4286580,
+     "co2": 84266,
+     "coal": 802530,
+     "imp": 4819,
+     "re": 85786,
+     "mix": {
+      "coal": 0.762,
+      "solar": 0.033,
+      "grid": 0.205,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "bip": {
+   "island": "jawa_bali",
+   "nodes": [
+    8
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 52.2,
+       "served": 0.991,
+       "mwh": 63667,
+       "cost": 3323147,
+       "co2": 59952,
+       "coal": 570972,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.986,
+        "unserved": 0.014
+       }
+      },
+      {
+       "lcoe": 69.15,
+       "served": 0.991,
+       "mwh": 63667,
+       "cost": 4402421,
+       "co2": 59968,
+       "coal": 571120,
+       "imp": 0,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 0.987,
+        "unserved": 0.013
+       }
+      }
+     ],
+     "lcoe": 52.2,
+     "served": 0.991,
+     "mwh": 63667,
+     "cost": 3323147,
+     "co2": 59952,
+     "coal": 570972,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.986,
+      "unserved": 0.014
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 45.56,
+       "served": 1.0,
+       "mwh": 64240,
+       "cost": 2926555,
+       "co2": 56453,
+       "coal": 537644,
+       "imp": 4295,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.732,
+        "grid": 0.268,
+        "unserved": 0.0
+       }
+      },
+      {
+       "lcoe": 60.63,
+       "served": 1.0,
+       "mwh": 64233,
+       "cost": 3894361,
+       "co2": 56332,
+       "coal": 536498,
+       "imp": 4420,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 0.724,
+        "grid": 0.276,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 45.56,
+     "served": 1.0,
+     "mwh": 64240,
+     "cost": 2926555,
+     "co2": 56453,
+     "coal": 537644,
+     "imp": 4295,
+     "re": 0,
+     "mix": {
+      "coal": 0.732,
+      "grid": 0.268,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 57.29,
+       "served": 1.0,
+       "mwh": 64240,
+       "cost": 3680066,
+       "co2": 61886,
+       "coal": 589393,
+       "imp": 0,
+       "re": 816387,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 57.29,
+     "served": 1.0,
+     "mwh": 64240,
+     "cost": 3680066,
+     "co2": 61886,
+     "coal": 589393,
+     "imp": 0,
+     "re": 816387,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 49.93,
+       "served": 1.0,
+       "mwh": 64240,
+       "cost": 3207214,
+       "co2": 58648,
+       "coal": 558556,
+       "imp": 3022,
+       "re": 308131,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.823,
+        "grid": 0.177,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 49.93,
+     "served": 1.0,
+     "mwh": 64240,
+     "cost": 3207214,
+     "co2": 58648,
+     "coal": 558556,
+     "imp": 3022,
+     "re": 308131,
+     "mix": {
+      "coal": 0.823,
+      "grid": 0.177,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "berkah-manis-makmur": {
+   "island": "jawa_bali",
+   "nodes": [
+    9
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 48.51,
+       "served": 0.999,
+       "mwh": 74371,
+       "cost": 3608052,
+       "co2": 70031,
+       "coal": 666967,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.999,
+        "unserved": 0.001
+       }
+      },
+      {
+       "lcoe": 65.26,
+       "served": 0.999,
+       "mwh": 74371,
+       "cost": 4853678,
+       "co2": 70050,
+       "coal": 667140,
+       "imp": 0,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 0.999,
+        "unserved": 0.001
+       }
+      }
+     ],
+     "lcoe": 48.51,
+     "served": 0.999,
+     "mwh": 74371,
+     "cost": 3608052,
+     "co2": 70031,
+     "coal": 666967,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.999,
+      "unserved": 0.001
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 44.52,
+       "served": 1.0,
+       "mwh": 74460,
+       "cost": 3314911,
+       "co2": 67522,
+       "coal": 643070,
+       "imp": 2767,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.842,
+        "grid": 0.158,
+        "unserved": 0.0
+       }
+      },
+      {
+       "lcoe": 60.11,
+       "served": 1.0,
+       "mwh": 74460,
+       "cost": 4475752,
+       "co2": 67521,
+       "coal": 643056,
+       "imp": 2771,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 0.842,
+        "grid": 0.158,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.52,
+     "served": 1.0,
+     "mwh": 74460,
+     "cost": 3314911,
+     "co2": 67522,
+     "coal": 643070,
+     "imp": 2767,
+     "re": 0,
+     "mix": {
+      "coal": 0.842,
+      "grid": 0.158,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 44.78,
+       "served": 1.0,
+       "mwh": 74460,
+       "cost": 3334256,
+       "co2": 70261,
+       "coal": 669150,
+       "imp": 0,
+       "re": 114236,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.78,
+     "served": 1.0,
+     "mwh": 74460,
+     "cost": 3334256,
+     "co2": 70261,
+     "coal": 669150,
+     "imp": 0,
+     "re": 114236,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 43.81,
+       "served": 1.0,
+       "mwh": 74460,
+       "cost": 3261843,
+       "co2": 68763,
+       "coal": 654882,
+       "imp": 1450,
+       "re": 20104,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.917,
+        "grid": 0.083,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 43.81,
+     "served": 1.0,
+     "mwh": 74460,
+     "cost": 3261843,
+     "co2": 68763,
+     "coal": 654882,
+     "imp": 1450,
+     "re": 20104,
+     "mix": {
+      "coal": 0.917,
+      "grid": 0.083,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "pt-dian-swastatika-sentosa-tangerang": {
+   "island": "jawa_bali",
+   "nodes": [
+    11
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 44.76,
+       "served": 1.0,
+       "mwh": 87600,
+       "cost": 3921253,
+       "co2": 82488,
+       "coal": 785602,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      },
+      {
+       "lcoe": 61.31,
+       "served": 1.0,
+       "mwh": 87600,
+       "cost": 5370320,
+       "co2": 82510,
+       "coal": 785806,
+       "imp": 0,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.76,
+     "served": 1.0,
+     "mwh": 87600,
+     "cost": 3921253,
+     "co2": 82488,
+     "coal": 785602,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 43.4,
+       "served": 1.0,
+       "mwh": 87600,
+       "cost": 3802230,
+       "co2": 82512,
+       "coal": 785833,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      },
+      {
+       "lcoe": 59.59,
+       "served": 1.0,
+       "mwh": 87600,
+       "cost": 5220232,
+       "co2": 82512,
+       "coal": 785832,
+       "imp": 0,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 43.4,
+     "served": 1.0,
+     "mwh": 87600,
+     "cost": 3802230,
+     "co2": 82512,
+     "coal": 785833,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 42.73,
+       "served": 1.0,
+       "mwh": 87600,
+       "cost": 3743000,
+       "co2": 82357,
+       "coal": 784355,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.73,
+     "served": 1.0,
+     "mwh": 87600,
+     "cost": 3743000,
+     "co2": 82357,
+     "coal": 784355,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 42.76,
+       "served": 1.0,
+       "mwh": 87600,
+       "cost": 3745798,
+       "co2": 82427,
+       "coal": 785019,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.76,
+     "served": 1.0,
+     "mwh": 87600,
+     "cost": 3745798,
+     "co2": 82427,
+     "coal": 785019,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "bandung-indosyntec": {
+   "island": "jawa_bali",
+   "nodes": [
+    12
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 44.76,
+       "served": 0.246,
+       "mwh": 262800,
+       "cost": 11763760,
+       "co2": 247465,
+       "coal": 2356807,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.127,
+        "unserved": 0.873
+       }
+      },
+      {
+       "lcoe": 61.31,
+       "served": 0.246,
+       "mwh": 262800,
+       "cost": 16110960,
+       "co2": 247529,
+       "coal": 2357419,
+       "imp": 0,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 0.127,
+        "unserved": 0.873
+       }
+      }
+     ],
+     "lcoe": 44.76,
+     "served": 0.246,
+     "mwh": 262800,
+     "cost": 11763760,
+     "co2": 247465,
+     "coal": 2356807,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.127,
+      "unserved": 0.873
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 51.93,
+       "served": 0.549,
+       "mwh": 586917,
+       "cost": 30481286,
+       "co2": 247537,
+       "coal": 2357498,
+       "imp": 323298,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "grid": 1.0,
+        "unserved": 0.0
+       }
+      },
+      {
+       "lcoe": 59.21,
+       "served": 0.549,
+       "mwh": 586917,
+       "cost": 34753315,
+       "co2": 247537,
+       "coal": 2357495,
+       "imp": 323604,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "grid": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 51.93,
+     "served": 0.549,
+     "mwh": 586917,
+     "cost": 30481286,
+     "co2": 247537,
+     "coal": 2357498,
+     "imp": 323298,
+     "re": 0,
+     "mix": {
+      "grid": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 44.97,
+       "served": 0.549,
+       "mwh": 586920,
+       "cost": 26392944,
+       "co2": 247072,
+       "coal": 2353065,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "geo": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.97,
+     "served": 0.549,
+     "mwh": 586920,
+     "cost": 26392944,
+     "co2": 247072,
+     "coal": 2353065,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "geo": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 44.98,
+       "served": 0.549,
+       "mwh": 586920,
+       "cost": 26401399,
+       "co2": 247281,
+       "coal": 2355058,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "geo": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.98,
+     "served": 0.549,
+     "mwh": 586920,
+     "cost": 26401399,
+     "co2": 247281,
+     "coal": 2355058,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "geo": 1.0,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "jie": {
+   "island": "jawa_bali",
+   "nodes": [
+    13
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 44.76,
+       "served": 1.0,
+       "mwh": 70080,
+       "cost": 3137003,
+       "co2": 65991,
+       "coal": 628482,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      },
+      {
+       "lcoe": 61.31,
+       "served": 1.0,
+       "mwh": 70080,
+       "cost": 4296256,
+       "co2": 66008,
+       "coal": 628645,
+       "imp": 0,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.76,
+     "served": 1.0,
+     "mwh": 70080,
+     "cost": 3137003,
+     "co2": 65991,
+     "coal": 628482,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 43.4,
+       "served": 1.0,
+       "mwh": 70080,
+       "cost": 3041784,
+       "co2": 66010,
+       "coal": 628666,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      },
+      {
+       "lcoe": 59.59,
+       "served": 1.0,
+       "mwh": 70080,
+       "cost": 4176186,
+       "co2": 66010,
+       "coal": 628665,
+       "imp": 0,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 43.4,
+     "served": 1.0,
+     "mwh": 70080,
+     "cost": 3041784,
+     "co2": 66010,
+     "coal": 628666,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 42.73,
+       "served": 1.0,
+       "mwh": 70080,
+       "cost": 2994400,
+       "co2": 65886,
+       "coal": 627484,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.73,
+     "served": 1.0,
+     "mwh": 70080,
+     "cost": 2994400,
+     "co2": 65886,
+     "coal": 627484,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 42.76,
+       "served": 1.0,
+       "mwh": 70080,
+       "cost": 2996638,
+       "co2": 65942,
+       "coal": 628015,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.76,
+     "served": 1.0,
+     "mwh": 70080,
+     "cost": 2996638,
+     "co2": 65942,
+     "coal": 628015,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "indo-bharat-rayon": {
+   "island": "jawa_bali",
+   "nodes": [
+    14
+   ],
+   "runs": {},
+   "path": {}
+  },
+  "pindo-deli-ii-2": {
+   "island": "jawa_bali",
+   "nodes": [
+    15
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 59.22,
+       "served": 0.999,
+       "mwh": 111532,
+       "cost": 6604648,
+       "co2": 105024,
+       "coal": 1000229,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.999,
+        "unserved": 0.001
+       }
+      },
+      {
+       "lcoe": 76.56,
+       "served": 0.999,
+       "mwh": 111532,
+       "cost": 8538518,
+       "co2": 105051,
+       "coal": 1000489,
+       "imp": 0,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 0.999,
+        "unserved": 0.001
+       }
+      }
+     ],
+     "lcoe": 59.22,
+     "served": 0.999,
+     "mwh": 111532,
+     "cost": 6604648,
+     "co2": 105024,
+     "coal": 1000229,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.999,
+      "unserved": 0.001
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 47.82,
+       "served": 1.0,
+       "mwh": 111675,
+       "cost": 5340739,
+       "co2": 100786,
+       "coal": 959867,
+       "imp": 4662,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.779,
+        "grid": 0.221,
+        "unserved": 0.0
+       }
+      },
+      {
+       "lcoe": 63.36,
+       "served": 1.0,
+       "mwh": 111675,
+       "cost": 7076111,
+       "co2": 100773,
+       "coal": 959747,
+       "imp": 4680,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 0.779,
+        "grid": 0.221,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 47.82,
+     "served": 1.0,
+     "mwh": 111675,
+     "cost": 5340739,
+     "co2": 100786,
+     "coal": 959867,
+     "imp": 4662,
+     "re": 0,
+     "mix": {
+      "coal": 0.779,
+      "grid": 0.221,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 50.38,
+       "served": 1.0,
+       "mwh": 111679,
+       "cost": 5626268,
+       "co2": 101397,
+       "coal": 965686,
+       "imp": 0,
+       "re": 767342,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.753,
+        "solar": 0.247,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 50.38,
+     "served": 1.0,
+     "mwh": 111679,
+     "cost": 5626268,
+     "co2": 101397,
+     "coal": 965686,
+     "imp": 0,
+     "re": 767342,
+     "mix": {
+      "coal": 0.753,
+      "solar": 0.247,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 48.73,
+       "served": 1.0,
+       "mwh": 111676,
+       "cost": 5442485,
+       "co2": 101420,
+       "coal": 965900,
+       "imp": 1463,
+       "re": 557994,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.75,
+        "solar": 0.186,
+        "grid": 0.064,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 48.73,
+     "served": 1.0,
+     "mwh": 111676,
+     "cost": 5442485,
+     "co2": 101420,
+     "coal": 965900,
+     "imp": 1463,
+     "re": 557994,
+     "mix": {
+      "coal": 0.75,
+      "solar": 0.186,
+      "grid": 0.064,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "purwakarta-indorama": {
+   "island": "jawa_bali",
+   "nodes": [
+    16
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 44.76,
+       "served": 1.0,
+       "mwh": 297840,
+       "cost": 13332261,
+       "co2": 280460,
+       "coal": 2671048,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      },
+      {
+       "lcoe": 61.31,
+       "served": 1.0,
+       "mwh": 297840,
+       "cost": 18259088,
+       "co2": 280533,
+       "coal": 2671742,
+       "imp": 0,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.76,
+     "served": 1.0,
+     "mwh": 297840,
+     "cost": 13332261,
+     "co2": 280460,
+     "coal": 2671048,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 43.4,
+       "served": 1.0,
+       "mwh": 297840,
+       "cost": 12927582,
+       "co2": 280542,
+       "coal": 2671831,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      },
+      {
+       "lcoe": 59.59,
+       "served": 1.0,
+       "mwh": 297840,
+       "cost": 17748789,
+       "co2": 280542,
+       "coal": 2671827,
+       "imp": 0,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 43.4,
+     "served": 1.0,
+     "mwh": 297840,
+     "cost": 12927582,
+     "co2": 280542,
+     "coal": 2671831,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 42.73,
+       "served": 1.0,
+       "mwh": 297840,
+       "cost": 12726200,
+       "co2": 280015,
+       "coal": 2666807,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.73,
+     "served": 1.0,
+     "mwh": 297840,
+     "cost": 12726200,
+     "co2": 280015,
+     "coal": 2666807,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 42.76,
+       "served": 1.0,
+       "mwh": 297840,
+       "cost": 12735713,
+       "co2": 280252,
+       "coal": 2669066,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.76,
+     "served": 1.0,
+     "mwh": 297840,
+     "cost": 12735713,
+     "co2": 280252,
+     "coal": 2669066,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "south-pasific-viscose-power-plant-2": {
+   "island": "jawa_bali",
+   "nodes": [
+    17
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 58.77,
+       "served": 0.988,
+       "mwh": 134090,
+       "cost": 7880699,
+       "co2": 126265,
+       "coal": 1202528,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.977,
+        "unserved": 0.023
+       }
+      },
+      {
+       "lcoe": 76.09,
+       "served": 0.988,
+       "mwh": 134090,
+       "cost": 10202419,
+       "co2": 126299,
+       "coal": 1202843,
+       "imp": 0,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 0.978,
+        "unserved": 0.022
+       }
+      }
+     ],
+     "lcoe": 58.77,
+     "served": 0.988,
+     "mwh": 134090,
+     "cost": 7880699,
+     "co2": 126265,
+     "coal": 1202528,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.977,
+      "unserved": 0.023
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 51.15,
+       "served": 1.0,
+       "mwh": 135762,
+       "cost": 6943921,
+       "co2": 123226,
+       "coal": 1173583,
+       "imp": 4925,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.817,
+        "grid": 0.183,
+        "unserved": 0.0
+       }
+      },
+      {
+       "lcoe": 65.87,
+       "served": 0.999,
+       "mwh": 135621,
+       "cost": 8933384,
+       "co2": 122016,
+       "coal": 1162061,
+       "imp": 6071,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 0.775,
+        "grid": 0.225,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 51.15,
+     "served": 1.0,
+     "mwh": 135762,
+     "cost": 6943921,
+     "co2": 123226,
+     "coal": 1173583,
+     "imp": 4925,
+     "re": 0,
+     "mix": {
+      "coal": 0.817,
+      "grid": 0.183,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 58.34,
+       "served": 1.0,
+       "mwh": 135765,
+       "cost": 7920764,
+       "co2": 125403,
+       "coal": 1194315,
+       "imp": 0,
+       "re": 1859565,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.77,
+        "solar": 0.23,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 58.34,
+     "served": 1.0,
+     "mwh": 135765,
+     "cost": 7920764,
+     "co2": 125403,
+     "coal": 1194315,
+     "imp": 0,
+     "re": 1859565,
+     "mix": {
+      "coal": 0.77,
+      "solar": 0.23,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 54.47,
+       "served": 1.0,
+       "mwh": 135762,
+       "cost": 7395657,
+       "co2": 125329,
+       "coal": 1193610,
+       "imp": 2142,
+       "re": 1286930,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.754,
+        "solar": 0.179,
+        "grid": 0.066,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 54.47,
+     "served": 1.0,
+     "mwh": 135762,
+     "cost": 7395657,
+     "co2": 125329,
+     "coal": 1193610,
+     "imp": 2142,
+     "re": 1286930,
+     "mix": {
+      "coal": 0.754,
+      "solar": 0.179,
+      "grid": 0.066,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "aspek-kumbong": {
+   "island": "jawa_bali",
+   "nodes": [
+    18
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 44.76,
+       "served": 0.702,
+       "mwh": 289080,
+       "cost": 12940136,
+       "co2": 272211,
+       "coal": 2592488,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.158,
+        "unserved": 0.842
+       }
+      },
+      {
+       "lcoe": 61.31,
+       "served": 0.702,
+       "mwh": 289080,
+       "cost": 17722056,
+       "co2": 272282,
+       "coal": 2593161,
+       "imp": 0,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 0.255,
+        "unserved": 0.745
+       }
+      }
+     ],
+     "lcoe": 44.76,
+     "served": 0.702,
+     "mwh": 289080,
+     "cost": 12940136,
+     "co2": 272211,
+     "coal": 2592488,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.158,
+      "unserved": 0.842
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 48.01,
+       "served": 1.0,
+       "mwh": 411716,
+       "cost": 19764622,
+       "co2": 272291,
+       "coal": 2593248,
+       "imp": 122326,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "grid": 1.0,
+        "unserved": 0.0
+       }
+      },
+      {
+       "lcoe": 59.39,
+       "served": 1.0,
+       "mwh": 411716,
+       "cost": 24450848,
+       "co2": 272291,
+       "coal": 2593244,
+       "imp": 122442,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "grid": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 48.01,
+     "served": 1.0,
+     "mwh": 411716,
+     "cost": 19764622,
+     "co2": 272291,
+     "coal": 2593248,
+     "imp": 122326,
+     "re": 0,
+     "mix": {
+      "grid": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 43.94,
+       "served": 1.0,
+       "mwh": 411720,
+       "cost": 18089608,
+       "co2": 271779,
+       "coal": 2588372,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "geo": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 43.94,
+     "served": 1.0,
+     "mwh": 411720,
+     "cost": 18089608,
+     "co2": 271779,
+     "coal": 2588372,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "geo": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 43.96,
+       "served": 1.0,
+       "mwh": 411720,
+       "cost": 18098865,
+       "co2": 272009,
+       "coal": 2590564,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "geo": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 43.96,
+     "served": 1.0,
+     "mwh": 411720,
+     "cost": 18098865,
+     "co2": 272009,
+     "coal": 2590564,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "geo": 1.0,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "pt-rayon-utama-makmur": {
+   "island": "jawa_bali",
+   "nodes": [
+    20
+   ],
+   "runs": {},
+   "path": {}
+  },
+  "tkfc": {
+   "island": "jawa_bali",
+   "nodes": [
+    21
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 44.76,
+       "served": 1.0,
+       "mwh": 148920,
+       "cost": 6666131,
+       "co2": 140230,
+       "coal": 1335524,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      },
+      {
+       "lcoe": 61.31,
+       "served": 1.0,
+       "mwh": 148920,
+       "cost": 9129544,
+       "co2": 140266,
+       "coal": 1335871,
+       "imp": 0,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 44.76,
+     "served": 1.0,
+     "mwh": 148920,
+     "cost": 6666131,
+     "co2": 140230,
+     "coal": 1335524,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 43.42,
+       "served": 1.0,
+       "mwh": 148920,
+       "cost": 6466008,
+       "co2": 140172,
+       "coal": 1334972,
+       "imp": 105,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.998,
+        "grid": 0.002,
+        "unserved": 0.0
+       }
+      },
+      {
+       "lcoe": 59.6,
+       "served": 1.0,
+       "mwh": 148920,
+       "cost": 8875031,
+       "co2": 140150,
+       "coal": 1334766,
+       "imp": 128,
+       "re": 0,
+       "t": 100.0,
+       "mix": {
+        "coal": 0.997,
+        "grid": 0.003,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 43.42,
+     "served": 1.0,
+     "mwh": 148920,
+     "cost": 6466008,
+     "co2": 140172,
+     "coal": 1334972,
+     "imp": 105,
+     "re": 0,
+     "mix": {
+      "coal": 0.998,
+      "grid": 0.002,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 42.73,
+       "served": 1.0,
+       "mwh": 148920,
+       "cost": 6363100,
+       "co2": 140007,
+       "coal": 1333404,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 1.0,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.73,
+     "served": 1.0,
+     "mwh": 148920,
+     "cost": 6363100,
+     "co2": 140007,
+     "coal": 1333404,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 1.0,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 42.78,
+       "served": 1.0,
+       "mwh": 148920,
+       "cost": 6370128,
+       "co2": 140024,
+       "coal": 1333560,
+       "imp": 108,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.998,
+        "grid": 0.002,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 42.78,
+     "served": 1.0,
+     "mwh": 148920,
+     "cost": 6370128,
+     "co2": 140024,
+     "coal": 1333560,
+     "imp": 108,
+     "re": 0,
+     "mix": {
+      "coal": 0.998,
+      "grid": 0.002,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "batu-hijau": {
+   "island": "nusa_tenggara",
+   "nodes": [
+    1
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 57.36,
+       "served": 0.989,
+       "mwh": 471506,
+       "cost": 27043600,
+       "co2": 443692,
+       "coal": 4225642,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.983,
+        "unserved": 0.017
+       }
+      }
+     ],
+     "lcoe": 57.36,
+     "served": 0.989,
+     "mwh": 471506,
+     "cost": 27043600,
+     "co2": 443692,
+     "coal": 4225642,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.983,
+      "unserved": 0.017
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 49.45,
+       "served": 1.0,
+       "mwh": 476549,
+       "cost": 23564747,
+       "co2": 418766,
+       "coal": 3988246,
+       "imp": 32203,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.721,
+        "grid": 0.279,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 49.45,
+     "served": 1.0,
+     "mwh": 476549,
+     "cost": 23564747,
+     "co2": 418766,
+     "coal": 3988246,
+     "imp": 32203,
+     "re": 0,
+     "mix": {
+      "coal": 0.721,
+      "grid": 0.279,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 48.12,
+       "served": 1.0,
+       "mwh": 476612,
+       "cost": 22934200,
+       "co2": 410288,
+       "coal": 3907502,
+       "imp": 0,
+       "re": 3416629,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.671,
+        "solar": 0.329,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 48.12,
+     "served": 1.0,
+     "mwh": 476612,
+     "cost": 22934200,
+     "co2": 410288,
+     "coal": 3907502,
+     "imp": 0,
+     "re": 3416629,
+     "mix": {
+      "coal": 0.671,
+      "solar": 0.329,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 46.61,
+       "served": 1.0,
+       "mwh": 476636,
+       "cost": 22213894,
+       "co2": 414098,
+       "coal": 3943791,
+       "imp": 10169,
+       "re": 2208090,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.681,
+        "solar": 0.229,
+        "grid": 0.09,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 46.61,
+     "served": 1.0,
+     "mwh": 476636,
+     "cost": 22213894,
+     "co2": 414098,
+     "coal": 3943791,
+     "imp": 10169,
+     "re": 2208090,
+     "mix": {
+      "coal": 0.681,
+      "solar": 0.229,
+      "grid": 0.09,
+      "unserved": 0.0
+     }
+    }
+   }
+  },
+  "amamapare-port": {
+   "island": "papua",
+   "nodes": [
+    1
+   ],
+   "runs": {},
+   "path": {
+    "base": {
+     "anchors": [
+      {
+       "lcoe": 57.22,
+       "served": 0.987,
+       "mwh": 749955,
+       "cost": 42909372,
+       "co2": 706371,
+       "coal": 6727345,
+       "imp": 0,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.981,
+        "unserved": 0.019
+       }
+      }
+     ],
+     "lcoe": 57.22,
+     "served": 0.987,
+     "mwh": 749955,
+     "cost": 42909372,
+     "co2": 706371,
+     "coal": 6727345,
+     "imp": 0,
+     "re": 0,
+     "mix": {
+      "coal": 0.981,
+      "unserved": 0.019
+     }
+    },
+    "grid": {
+     "anchors": [
+      {
+       "lcoe": 49.76,
+       "served": 1.0,
+       "mwh": 759783,
+       "cost": 37807427,
+       "co2": 664917,
+       "coal": 6332546,
+       "imp": 53491,
+       "re": 0,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.72,
+        "grid": 0.28,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 49.76,
+     "served": 1.0,
+     "mwh": 759783,
+     "cost": 37807427,
+     "co2": 664917,
+     "coal": 6332546,
+     "imp": 53491,
+     "re": 0,
+     "mix": {
+      "coal": 0.72,
+      "grid": 0.28,
+      "unserved": 0.0
+     }
+    },
+    "captive": {
+     "anchors": [
+      {
+       "lcoe": 49.66,
+       "served": 1.0,
+       "mwh": 759914,
+       "cost": 37733925,
+       "co2": 687412,
+       "coal": 6546777,
+       "imp": 0,
+       "re": 5192254,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.821,
+        "solar": 0.179,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 49.66,
+     "served": 1.0,
+     "mwh": 759914,
+     "cost": 37733925,
+     "co2": 687412,
+     "coal": 6546777,
+     "imp": 0,
+     "re": 5192254,
+     "mix": {
+      "coal": 0.821,
+      "solar": 0.179,
+      "unserved": 0.0
+     }
+    },
+    "gridcaptive": {
+     "anchors": [
+      {
+       "lcoe": 47.54,
+       "served": 1.0,
+       "mwh": 759930,
+       "cost": 36124399,
+       "co2": 678777,
+       "coal": 6464541,
+       "imp": 26417,
+       "re": 2674689,
+       "t": 70.0,
+       "mix": {
+        "coal": 0.773,
+        "solar": 0.098,
+        "grid": 0.13,
+        "unserved": 0.0
+       }
+      }
+     ],
+     "lcoe": 47.54,
+     "served": 1.0,
+     "mwh": 759930,
+     "cost": 36124399,
+     "co2": 678777,
+     "coal": 6464541,
+     "imp": 26417,
+     "re": 2674689,
+     "mix": {
+      "coal": 0.773,
+      "solar": 0.098,
+      "grid": 0.13,
+      "unserved": 0.0
+     }
     }
    }
   }

@@ -130,13 +130,20 @@ def read_run(folder):
     return run
 
 
+def tech_of(row):
+    """A unit's technology. Some park batteries (North Maluku, Kalimantan) have a blank technology in
+    the inputs and results; the model knows them by STOR, and their names end in _battery."""
+    t = row.get('technology') or ''
+    return 'battery' if not t and row.get('Resource', '').endswith('_battery') else t
+
+
 def park_results(folder, dem_e, dem_h):
     """Per model park: capacity, new build, electricity supply shares, heat served."""
     cap = defaultdict(lambda: defaultdict(float))
     new = defaultdict(lambda: defaultdict(float))
     gen = defaultdict(lambda: defaultdict(float))
     for r in rows(os.path.join(folder, 'ip_generator_results.csv')):
-        p, t = int(r['Industrial_Park']), TECH.get(r['technology'], r['technology'])
+        p, t = int(r['Industrial_Park']), TECH.get(tech_of(r), tech_of(r))
         cap[p][t] += num(r['Total_MW'])
         new[p][t] += max(0.0, num(r['Change_in_MW']))
         if t != 'bat':  # battery output is coal/solar energy shifted in time, not a source
@@ -189,19 +196,19 @@ def park_costs(folder, isl_inputs, run, parks, ann_e, ann_h, import_price):
         # Their Start_MW / Change_in_MW are relative to a nominal size, not to existing capacity.
         p, mw = int(r['Industrial_Park']), num(r['Total_MW'])
         new = mw if num(u['New_Build']) == 1 else 0.0
-        if u['technology'] == 'battery':
+        if tech_of(u) == 'battery':
             bat_mw[p] += new
             bat_inv[p] += num(u['Inv_Cost_per_MWyr']) * new
         else:
             fixed[p] += num(u['Fixed_OM_Cost_per_MWyr']) * mw + num(u['Inv_Cost_per_MWyr']) * new
-            if u['technology'] == 'solar':
+            if tech_of(u) == 'solar':
                 solar_inv[p] += num(u['Inv_Cost_per_MWyr']) * new
         mwh = num(r['Electricity_GWh']) * 1000
         fuel = fuels.get(u.get('Fuel'), {})
         var[p] += (num(u['Var_OM_Cost_per_MWh']) + num(fuel.get('Cost_per_MMBtu')) * num(u['Heat_Rate_MMBTU_per_MWh'])) * mwh
         if u.get('Fuel') == 'coal_captive':
             mmbtu[p] += num(u['Heat_Rate_MMBTU_per_MWh']) * mwh
-        if u['technology'] == 'coal_captive':
+        if tech_of(u) == 'coal_captive':
             start_w[p] += mw
     for r in rows(os.path.join(folder, 'ip_heat_generator_results.csv')):
         u = units[int(r['ID'])]
@@ -426,22 +433,31 @@ def main():
                       % (isl, scen, tonne, tag, sum(c['cost'] for c in pc.values()) / 1e6, model,
                          sum(c['co2'] for c in pc.values()) / 1e6, run['co2Park']))
                 for sid, nodes in site_nodes.items():
-                    path = sites.get(sid, {}).get('path', {}).get(scen)
-                    if path and all(p in pc for p in nodes):
-                        mix = site_view([parks[p] for p in nodes if p in parks])['elec']
-                        path.setdefault('anchors', []).append(dict(site_path(pc, nodes), t=tonne, mix=mix))
+                    if not all(p in pc for p in nodes):
+                        continue
+                    # islands without full-UC reference runs get their sites' pathways from these runs alone
+                    s = sites.setdefault(sid, {'island': isl, 'nodes': sorted(nodes), 'runs': {}})
+                    path = s.setdefault('path', {}).setdefault(scen, {})
+                    mix = site_view([parks[p] for p in nodes if p in parks])['elec']
+                    path.setdefault('anchors', []).append(dict(site_path(pc, nodes), t=tonne, mix=mix))
         own = round(prices['coal'] * MMBTU_PER_T, 1)
         for sid in site_nodes:
-            for scen, path in sites.get(sid, {}).get('path', {}).items():
+            for scen, path in list(sites.get(sid, {}).get('path', {}).items()):
                 if not path.get('anchors'):
                     continue
                 fields = ('lcoe', 'served', 'mwh', 'cost', 'co2', 'coal', 'imp', 're', 'mix')
                 if not any(x['t'] == own for x in path['anchors']):
+                    if 'cost' not in path:  # no run at the baseline price yet: leave the pathway out
+                        del sites[sid]['path'][scen]
+                        continue
                     path['anchors'].append(dict({k: path.get(k) for k in fields}, t=own))
                 path['anchors'].sort(key=lambda x: x['t'])
                 path.update({k: v for k, v in next(x for x in path['anchors'] if x['t'] == own).items() if k in fields})
+                if not path.get('mwh'):  # a node with no demand or units in the model (Kalimantan park 6)
+                    print('  %s %s: no energy served in the model, pathway left out' % (sid, scen))
+                    del sites[sid]['path'][scen]
 
-        if runs:
+        if runs or any(sites[sid].get('path') for sid in site_nodes if sid in sites):
             islands[isl] = {'region': region, 'runs': runs, 'missing': missing, 'prices': prices}
 
     # Corridors between provinces for every island with more than one zone: existing capacity from
