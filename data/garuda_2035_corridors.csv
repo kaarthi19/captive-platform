@@ -1,0 +1,31 @@
+island,province_a,province_b,existing_mw,used_mw_grid,upgrade_mw_grid,used_mw_gridcaptive,upgrade_mw_gridcaptive
+sulawesi,Sulawesi Selatan,Sulawesi Tengah,879,527,0,442,0
+sulawesi,Sulawesi Barat,Sulawesi Selatan,402,0,0,0,0
+sulawesi,Sulawesi Tengah,Sulawesi Tenggara,311,20,0,21,0
+sulawesi,Gorontalo,Sulawesi Utara,301,246,0,92,0
+sulawesi,Gorontalo,Sulawesi Tengah,203,426,223,175,0
+sulawesi,Sulawesi Barat,Sulawesi Tengah,189,37,0,3,0
+sulawesi,Sulawesi Selatan,Sulawesi Tenggara,146,17,0,10,0
+kalimantan,Kalimantan Timur,Kalimantan Utara,1559,41,0,41,0
+kalimantan,Kalimantan Selatan,Kalimantan Tengah,342,0,0,0,0
+kalimantan,Kalimantan Selatan,Kalimantan Timur,249,33,0,34,0
+kalimantan,Kalimantan Barat,Kalimantan Tengah,105,0,0,0,0
+kalimantan,Kalimantan Tengah,Kalimantan Timur,95,137,42,136,41
+sumatera,Jambi,Sumatera Selatan,2447,0,0,0,0
+sumatera,Jambi,Riau,1340,8,0,7,0
+sumatera,Riau,Sumatera Utara,1084,10,0,10,0
+sumatera,Lampung,Sumatera Selatan,975,743,0,743,0
+sumatera,Riau,Sumatera Barat,932,0,0,0,0
+sumatera,Aceh,Sumatera Utara,611,117,0,116,0
+sumatera,Jambi,Sumatera Barat,490,21,0,20,0
+sumatera,Sumatera Barat,Sumatera Utara,379,165,0,165,0
+sumatera,Bengkulu,Sumatera Selatan,312,3,0,3,0
+sumatera,Bangka-Belitung,Sumatera Selatan,279,39,0,39,0
+sumatera,Bengkulu,Sumatera Barat,85,0,0,0,0
+jawa_bali,Banten,Jawa Barat,14477,4770,0,4763,0
+jawa_bali,Jawa Tengah,Jawa Timur,8012,3096,0,3096,0
+jawa_bali,Jawa Barat,Jawa Tengah,7582,53,0,54,0
+jawa_bali,Jakarta Raya,Jawa Barat,7060,0,0,0,0
+jawa_bali,Banten,Jakarta Raya,3359,0,0,0,0
+jawa_bali,Bali,Jawa Timur,2985,1239,0,1241,0
+jawa_bali,Jawa Tengah,Yogyakarta,1693,676,0,675,0

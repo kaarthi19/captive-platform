@@ -1,0 +1,19 @@
+CITRA — Captive Industry Transition Roadmap Atlas
+© 2026 Power Transformation Lab, University of California San Diego
+
+The platform's results, figures and data files (including everything in data/ and the generated
+assets/js/results.js, parks.js, site-details.js and substations.js) are licensed under the
+Creative Commons Attribution 4.0 International License (CC BY 4.0):
+https://creativecommons.org/licenses/by/4.0/
+
+You may copy, redistribute and adapt them for any purpose, including commercial use, as long as
+you credit the Power Transformation Lab and the platform. The citation is on the methodology page
+(methodology.html#cite).
+
+Third-party data keep their own terms:
+- PLN substation locations are © OpenStreetMap contributors, available under the Open Database
+  License (ODbL): https://opendatacommons.org/licenses/odbl/
+- Site, ownership and financing records come from the Earthwise Institute
+  (https://earthwise.institute) and should be credited to it.
+
+The data are provided as is, without any warranty of accuracy or completeness.
