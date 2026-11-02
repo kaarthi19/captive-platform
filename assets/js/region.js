@@ -34,7 +34,7 @@
   function render() {
     var name = window.regionName(region);
     document.getElementById('regName').textContent = name;
-    document.title = name + ' · ' + t('nav_region') + ' · Captive Power Platform';
+    document.title = name + ' · ' + t('nav_region') + ' · CITRA';
     document.getElementById('regPick').innerHTML = '<span class="fl">' + t('f_region') + '</span>' + regions.map(function (x) {
       var on = x.r.key === region.key;
       return '<a class="chip' + (on ? ' on' : '') + '" role="tab" aria-selected="' + on + '" href="region.html?r=' +

@@ -1,6 +1,6 @@
-# Indonesia Captive Power Decarbonization Platform — design prototype
+# CITRA — Captive Industry Transition Roadmap Atlas
 
-An open-access, multilingual (English / Bahasa Indonesia / 简体中文) web prototype that provides
+CITRA is an open-access, multilingual (English / Bahasa Indonesia / 简体中文) web prototype that provides
 **facility-level decarbonization analysis** for Indonesia's captive coal fleet: 86 sites
 (27 industrial parks and 59 standalone captive plants) with captive coal that is operating,
 under construction or planned. Built for the Power Transformation Lab (UC San Diego), styled in
@@ -9,10 +9,13 @@ evolved with a coal-vs-clean energy palette.
 
 Site data (names, locations, sectors, owners, captive coal units by status) is real and comes
 from the [Earthwise Institute](https://earthwise.institute) Indonesian Power Summary Database.
-Readiness, pathway costs, energy mix and transmission corridors are still **illustrative
-placeholders** until results from [GARUDA](https://github.com/Power-Lab/garuda) (Grid And
-Renewable Utilization & Deployment Analysis), the lab's co-optimized generation & transmission
-expansion model (Julia/JuMP), are loaded.
+Pathway costs, the electricity mix, the cost breakdown, the coal-price, tariff and capex sliders,
+and the corridors between provinces come from 2035 runs of [GARUDA](https://github.com/Power-Lab/garuda)
+(Grid And Renewable Utilization & Deployment Analysis), the lab's co-optimized generation &
+transmission expansion model (Julia/JuMP), for the 51 sites that are GARUDA nodes
+(`scripts/build_results.py`). The other sites show illustrative figures, and transition
+readiness on the home map is still a placeholder. Nearest PLN substations come from
+OpenStreetMap and PLN's planned connections from RUPTL 2025–2034 (`scripts/build_substations.py`).
 
 ## Pages
 
@@ -43,16 +46,20 @@ python3 -m http.server 8000
 ## Structure
 
 ```
-index.html  facility.html  region.html  about.html
+index.html  facility.html  region.html  ownership.html  financing.html
+methodology.html  about.html  contact.html
 assets/
   css/styles.css      design system
   js/parks.js         GENERATED site summaries (scripts/build_parks.py)
   js/site-details.js  GENERATED per-site units, ownership, financing, projects
-  js/data.js          sectors, placeholder GARUDA results, corridor data
-  js/i18n.js          EN/ID string table + toggle
+  js/results.js       GENERATED GARUDA pathways and corridors (scripts/build_results.py)
+  js/substations.js   GENERATED nearest PLN substations (scripts/build_substations.py)
+  js/data.js          sectors, regions, illustrative fallback figures
+  js/i18n.js          EN/ID/ZH string table + toggle
   js/map.js           national map
   js/facility.js      facility page + sensitivity model
-  js/region.js        regional transmission map
+  js/region.js        regional grid map
+  js/cite.js          "Cite this platform" (methodology page)
 ```
 
 ## Site data
