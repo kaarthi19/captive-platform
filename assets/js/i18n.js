@@ -797,6 +797,12 @@ window.applyLang = function (lang) {
   document.querySelectorAll('[data-i18n-ph]').forEach(function (el) {
     el.placeholder = pick(el, el.dataset.i18nPh, '_i18nPh', function () { return el.placeholder; });
   });
+  /* tab title of pages that don't set it from script: <html data-i18n-title="key"> */
+  var tk = document.documentElement.dataset.i18nTitle;
+  if (tk) {
+    var tv = (lang !== 'en' && d[tk] != null) ? d[tk] : en[tk];
+    document.title = tk === 'brand_sub' ? 'CITRA · ' + tv : tv + ' · CITRA';
+  }
   document.documentElement.lang = window.LANG_TAGS[lang];
   try { localStorage.setItem('cp-lang', lang); } catch (e) {}
   document.querySelectorAll('.lang button').forEach(function (b) {
