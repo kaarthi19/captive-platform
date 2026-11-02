@@ -52,17 +52,17 @@
   </div>
 
   <h2 class="sechead" data-i18n="fac_sec_decarb">Decarbonization pathways</h2>
-  <div class="insight" style="margin:0 0 16px" data-i18n="fac_illus">Pathway, cost and energy-mix figures below are illustrative. GARUDA results for each site are not loaded yet.</div>
+  <div class="insight" style="margin:0 0 16px" id="facIllus">Pathway, cost and energy-mix figures below are illustrative. GARUDA results for each site are not loaded yet.</div>
 
   <div class="split">
     <div class="card">
       <h2 data-i18n="fac_path">Pathway comparison</h2>
-      <p class="sub" data-i18n="fac_pathp">Levelized cost of electricity at current assumptions</p>
+      <p class="sub" id="facPathp">Levelized cost of electricity at current assumptions</p>
       <div id="pathlist"></div>
     </div>
     <div class="card">
-      <h2 data-i18n="fac_mix">Current energy mix</h2>
-      <div style="position:relative;height:150px;margin-top:6px"><canvas id="mixChart" role="img" aria-label="Current energy mix doughnut chart"></canvas></div>
+      <h2 id="facMix">Current energy mix</h2>
+      <div id="mixBox" style="position:relative;height:150px;margin-top:6px"><canvas id="mixChart" role="img" aria-label="Energy mix chart"></canvas></div>
       <div id="mixNote" style="font-size:12px;color:var(--mut);text-align:center;margin-top:6px"></div>
     </div>
   </div>
@@ -92,9 +92,9 @@
   </div>
 
   <div class="card" style="margin-top:16px">
-    <h2 data-i18n="fac_cost">Cost breakdown — hybrid pathway</h2>
-    <p class="sub" data-i18n="fac_payer">On-site solar, batteries and their O&amp;M are usually paid by the park owner; grid connection and bulk transmission usually by PLN.</p>
-    <div style="position:relative;height:200px;margin-top:6px"><canvas id="costChart" role="img" aria-label="Hybrid pathway cost breakdown bar chart"></canvas></div>
+    <h2 id="facCost">Cost breakdown — hybrid pathway</h2>
+    <p class="sub" id="facPayer">On-site solar, batteries and their O&amp;M are usually paid by the park owner; grid connection and bulk transmission usually by PLN.</p>
+    <div style="position:relative;height:200px;margin-top:6px"><canvas id="costChart" role="img" aria-label="Cost breakdown bar chart"></canvas></div>
   </div>
 
   <h2 class="sechead" data-i18n="fac_sec_site">Site details</h2>
@@ -131,6 +131,8 @@
 <script src="assets/js/parks.js"></script>
 <script src="assets/js/site-details.js"></script>
 <script src="assets/js/data.js"></script>
+<script src="assets/js/results.js"></script>
+<script src="assets/js/substations.js"></script>
 <script src="assets/js/i18n.js"></script>
 <script src="assets/js/facility.js"></script>
 <script>window.initLang();</script>

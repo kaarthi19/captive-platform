@@ -1,0 +1,6 @@
+island,scenario,case,status,gap,commit,finished,hours,cost,co2Grid,co2Park,reShare,parkUnservedElec,parkUnservedHeat,gridGen,gridTx,gridStor,gridVar,gridStart,parkGen,parkStor,parkVar,parkStart,imports,nseGrid,nseParkElec,nseParkHeat
+sulawesi,base,reference,OPTIMAL,0.0039,4c2fd6d,2026-11-01,1.7,8.48,12.85,45.82,0.213,0.072,0.058,288.2,34.1,5.3,282.5,4.5,536.9,0.0,1684.1,0.0,0.0,4.7,1676.6,3963.3
+sulawesi,grid,reference,OPTIMAL,0.0032,4c2fd6d,2026-11-01,1.2,3.564,13.7,45.82,0.291,0.0,0.005,347.9,63.8,64.9,344.2,7.7,536.9,0.0,1684.1,0.0,175.2,0.4,1.6,337.7
+sulawesi,captive,reference,OPTIMAL,0.0095,4c2fd6d,2026-11-01,0.6,3.427,12.97,45.02,0.205,0.0,0.002,282.0,34.4,6.5,286.5,5.2,885.3,96.0,1654.9,0.0,0.0,2.4,78.1,95.3
+sulawesi,gridcaptive,reference,OPTIMAL,0.0054,4c2fd6d,2026-11-01,1.6,3.097,13.24,48.11,0.248,0.0,0.0,278.6,50.8,19.9,292.0,3.2,536.9,79.8,1768.2,0.0,53.1,0.9,0.8,13.4
+sulawesi,highimportprice,reference,OPTIMAL,0.0029,4c2fd6d,2026-11-01,1.5,3.1,12.97,47.86,0.246,0.0,0.0,288.8,50.2,3.1,284.9,3.3,561.9,79.9,1759.3,0.0,54.3,0.5,0.3,13.3
