@@ -45,8 +45,7 @@
     return (!q || [d.name, d.owner, d.prov, d.regency].join(' ').toLowerCase().indexOf(q) >= 0) &&
            (fInd === 'all' || d.sector === fInd) &&
            (reg === 'all' || d.region === reg) &&
-           (st === 'all' || (st === 'op' && d.op > 0) || (st === 'pipe' && d.con + d.plan > 0) ||
-            (st === 'model' && d.model.length > 0));
+           (st === 'all' || (st === 'op' && d.op > 0) || (st === 'pipe' && d.con + d.plan > 0));
   }
   function applyFilter() {
     svg.selectAll('.mk')
@@ -64,7 +63,6 @@
     op: function (d) { return d.op; },
     pipe: function (d) { return d.con + d.plan; },
     owner: function (d) { return d.owner.toLowerCase(); },
-    model: function (d) { return d.model.length; },
     total: window.siteMW
   };
   function renderTable() {
@@ -82,8 +80,7 @@
         '<td>' + esc(d.prov) + '</td>' +
         '<td style="text-align:right;font-weight:600">' + (d.op ? d.op.toLocaleString() : '—') + '</td>' +
         '<td style="text-align:right">' + (d.con + d.plan ? (d.con + d.plan).toLocaleString() : '—') + '</td>' +
-        '<td>' + esc(d.owner) + ' <span class="mut">(' + esc(d.ownerCountry) + ')</span></td>' +
-        '<td>' + t(d.model.length ? 'yes' : 'no') + '</td></tr>';
+        '<td>' + esc(d.owner) + ' <span class="mut">(' + esc(d.ownerCountry) + ')</span></td></tr>';
     }).join('');
     document.querySelectorAll('table.sortable th[data-sort]').forEach(function (th) {
       th.classList.toggle('asc', th.dataset.sort === sortKey && sortDir > 0);
@@ -92,7 +89,7 @@
   }
   document.querySelectorAll('table.sortable th[data-sort]').forEach(function (th) {
     th.addEventListener('click', function () {
-      var k = th.dataset.sort, numeric = k === 'op' || k === 'pipe' || k === 'model';
+      var k = th.dataset.sort, numeric = k === 'op' || k === 'pipe';
       sortDir = k === sortKey ? -sortDir : (numeric ? -1 : 1);
       sortKey = k;
       renderTable();

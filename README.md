@@ -12,9 +12,8 @@ from the [Earthwise Institute](https://earthwise.institute) Indonesian Power Sum
 Pathway costs, the electricity mix, the cost breakdown, the coal-price, tariff and capex sliders,
 and the corridors between provinces come from 2035 runs of [GARUDA](https://github.com/Power-Lab/garuda)
 (Grid And Renewable Utilization & Deployment Analysis), the lab's co-optimized generation &
-transmission expansion model (Julia/JuMP), for the 51 sites that are GARUDA nodes
-(`scripts/build_results.py`). The other sites show illustrative figures, and transition
-readiness on the home map is still a placeholder. Nearest PLN substations come from
+transmission expansion model (Julia/JuMP), for all 86 sites (`scripts/build_results.py`).
+Nearest PLN substations come from
 OpenStreetMap and PLN's planned connections from RUPTL 2025–2034 (`scripts/build_substations.py`).
 
 ## Pages
@@ -77,8 +76,10 @@ python3 scripts/build_parks.py path/to/Earthwise-Institute_*_Indonesia-Captive-C
   --extended path/to/Earthwise-Institute_*_Captive-Coal-Extended-Dims_*.xlsx
 ```
 
-Needs `openpyxl`. By default it reads GARUDA's industrial-park nodes from a sibling checkout of
-`garuda` (`data_indonesia/captive/2030`; `--model-data` to point elsewhere).
+Needs `openpyxl`. `--model-data` points at the GARUDA inputs whose park nodes the sites are
+matched to: the current data use the 2035 new-park inputs (`data_indonesia/2035`, island folders
+only, not the `_coal70`/`_coal100` variants). The default is a sibling checkout of `garuda`
+(`data_indonesia/captive/2030`).
 
 - Units are grouped into one site per named industrial park / complex, plus one per standalone
   plant. Cancelled, shelved, retired, closed and status-unknown units are dropped.
@@ -99,17 +100,17 @@ Data credit: Earthwise Institute. *Indonesian Power Summary Database.* Earthwise
 ## Model results
 
 `assets/js/results.js` and the `data/garuda_2035_*.csv` tables come from GARUDA 2035 runs of
-[captive-indonesia-2025](https://github.com/Power-Lab/captive-indonesia-2025) (branch
-`fix/d1-d4-d11`), relaxed unit commitment, four scenarios (`base`, `grid`, `captive`,
-`gridcaptive`) on each of seven islands at three captive coal prices ($64.1, $70 and $100/t; $70 is
-the site's baseline). The run folders are on the lab's pwrlab server under
-`captive-indonesia-2025/results/*__relaxuc`. To rebuild:
+[captive-indonesia-2025](https://github.com/Power-Lab/captive-indonesia-2025), relaxed unit
+commitment, four scenarios (`base`, `grid`, `captive`, `gridcaptive`) on each of seven islands at
+three captive coal prices ($64.1, $70 and $100/t; $70 is the site's baseline). The inputs add park
+nodes for the 35 sites that were not yet in the model (branch `feat/new-park-nodes`, commit
+`bd35824`, which includes the two-way line-flow fix on `fix/d1-d4-d11`). The runs are on the lab's
+pwrlab server under `captive-runs/new_nodes/repo/results/*__relaxuc_newnodes`; Nusa Tenggara has
+no new nodes, so its runs are `captive-indonesia-2025/results/*nusa_tenggara*__relaxuc`, used
+under the same tag. To rebuild, with the runs and inputs copied into `runs/` and `inputs/`:
 
 ```bash
-rsync -a --include '*__relaxuc/' --include '*__relaxuc/**' --exclude '*' \
-  pwrlab:captive-indonesia-2025/results/ runs/
-python3 scripts/build_results.py runs --inputs path/to/captive-indonesia-2025/data_indonesia/2035 \
-  --anchor-tag relaxuc
+python3 scripts/build_results.py runs --inputs inputs --anchor-tag relaxuc_newnodes
 ```
 
 It checks that every run solved, prints each island's park costs and CO₂ against the model totals,
@@ -120,8 +121,9 @@ and writes:
 - `data/garuda_2035_corridors.csv`: each corridor's existing, used and added capacity
 - `data/garuda_2035_runs.csv` and `data/garuda_2035_sites.csv`: island runs and site rows
 
-Sites join to model nodes through `data/model_crosswalk.csv`. Sites with no node, or whose node
-serves no energy in the model, keep illustrative figures.
+Sites join to model nodes through `data/model_crosswalk.csv`. A few co-located sites share one
+node (listed in `data/crosswalk_overrides.csv`); each shows the node's combined result, and the
+facility page says so.
 
 ## Grid connections
 
