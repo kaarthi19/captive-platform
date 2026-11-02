@@ -97,7 +97,8 @@
     document.getElementById('facSources').innerHTML = t('fac_srcs') + ' ' + fac.ew.length + ' Earthwise ' + t('records') +
       (det.sources.length ? ' · GEM Wiki: ' + det.sources.map(function (u, i) {
         return '<a href="' + esc(u) + '" target="_blank" rel="noopener">' + (i + 1) + '</a>';
-      }).join(', ') : '');
+      }).join(', ') : '') +
+      (SUB ? ' · <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>' : '');
   }
   /* nearest PLN substation and PLN's own plan for the site (scripts/build_substations.py) */
   var SUB = window.SUBSTATIONS && window.SUBSTATIONS.sites[fac.id];
