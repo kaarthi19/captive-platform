@@ -487,7 +487,27 @@ def main():
     with open(os.path.join(ROOT, 'assets', 'js', 'results.js'), 'w', encoding='utf-8') as f:
         f.write(js)
 
-    for name, data in (('runs', run_rows), ('sites', site_rows)):
+    # What the facility and region pages show, as flat tables: each site's pathway at each coal price,
+    # and each corridor's existing capacity, use and upgrade.
+    path_rows, corr_rows = [], []
+    for sid, s in sorted(sites.items()):
+        for scen, path in s.get('path', {}).items():
+            for x in path.get('anchors', []):
+                r = {'site_id': sid, 'island': s['island'], 'scenario': scen, 'coal_usd_t': x['t'],
+                     'lcoe_usd_mwh': x.get('lcoe'), 'cost_usd_yr': x.get('cost'), 'demand_mwh_yr': x.get('mwh'),
+                     'served_share': x.get('served'), 'co2_t_yr': x.get('co2'), 'coal_t_yr': x.get('coal'),
+                     'import_mwh_yr': x.get('imp'), 're_mwh_yr': x.get('re')}
+                r.update({'mix_' + k: v for k, v in sorted((x.get('mix') or {}).items())})
+                path_rows.append(r)
+    for isl, cs in lines.items():
+        for c in cs:
+            r = {'island': isl, 'province_a': c['a'], 'province_b': c['b'], 'existing_mw': round(c['mw'])}
+            for scen in CORRIDOR_SCENARIOS:
+                r['used_mw_' + scen] = round(c.get('used', {}).get(scen, 0)) if c.get('used') else None
+                r['upgrade_mw_' + scen] = round(c.get('add', {}).get(scen, 0)) if c.get('used') else None
+            corr_rows.append(r)
+
+    for name, data in (('runs', run_rows), ('sites', site_rows), ('pathways', path_rows), ('corridors', corr_rows)):
         fields = []
         for r in data:
             fields += [k for k in r if k not in fields]

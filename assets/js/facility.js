@@ -25,7 +25,7 @@
   var showAllUnits = false;
   function renderProfile() {
     document.getElementById('facName').textContent = fac.name;
-    document.title = fac.short + ' · Captive Power Platform';
+    document.title = fac.short + ' · CITRA';
     document.getElementById('facMeta').textContent = [fac.prov, fac.regency, window.sectorName(fac.sector),
       t(fac.kind === 'park' ? 'kind_park' : 'kind_plant')].filter(Boolean).join(' · ');
     document.getElementById('facStats').innerHTML = [

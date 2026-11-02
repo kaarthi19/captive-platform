@@ -34,7 +34,7 @@
 
   function render() {
     document.getElementById('ownName').textContent = fac.name;
-    document.title = fac.short + ' · ' + t('own_kick') + ' · Captive Power Platform';
+    document.title = fac.short + ' · ' + t('own_kick') + ' · CITRA';
     document.getElementById('backFac').href = 'facility.html?id=' + encodeURIComponent(fac.id);
     document.getElementById('ownMeta').textContent = [fac.prov, window.sectorName(fac.sector),
       t(fac.kind === 'park' ? 'kind_park' : 'kind_plant')].join(' · ');

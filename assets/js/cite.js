@@ -4,13 +4,13 @@
    the URL is wherever the site is served from, so it follows the site if it moves. */
 (function () {
   var AUTHOR = 'Power Transformation Lab, University of California San Diego';
-  var TITLE = 'Indonesia Captive Power Decarbonization Platform';
+  var TITLE = 'CITRA: Captive Industry Transition Roadmap Atlas';
   var version = (window.GARUDA && window.GARUDA.built) || new Date(document.lastModified).toISOString().slice(0, 10);
   var year = version.slice(0, 4);
   var url = location.origin + location.pathname.replace(/[^/]*$/, '');
   var esc = window.esc;
   var apa = AUTHOR + '. (' + year + '). ' + TITLE + ' (Version ' + version + ') [Data set]. ' + url;
-  var bib = ['@misc{ptl_captive_platform_' + version.replace(/-/g, '') + ',',
+  var bib = ['@misc{ptl_citra_' + version.replace(/-/g, '') + ',',
     '  author       = {{' + AUTHOR + '}},',
     '  title        = {' + TITLE + '},',
     '  year         = {' + year + '},',
