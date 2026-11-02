@@ -5,8 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Methodology · Captive Power Platform</title>
 <link rel="icon" type="image/svg+xml" href="assets/img/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/styles.css">
 <style>
+  .cite { white-space: pre-wrap; overflow-wrap: anywhere; background: #f6f8f8; border: 1px solid var(--line); border-radius: 6px; padding: 12px 14px; margin: 10px 0; font: inherit; font-size: 13.5px; line-height: 1.55; }
+  .cite.bib { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 12px; }
   .toc { display:flex; flex-wrap:wrap; gap:8px; margin:16px 0 28px; }
   .toc a { font-size:12.5px; color:var(--mut); border:1px solid var(--line); border-radius:20px; padding:5px 12px; }
   .toc a:hover { background:var(--soft); color:var(--ink); text-decoration:none; }
@@ -70,6 +75,8 @@
     <a href="#re" data-i18n="m_re">Renewable resource assessment</a>
     <a href="#assume" data-i18n="m_assume">Assumptions &amp; sensitivities</a>
     <a href="#ready" data-i18n="m_ready">Transition readiness</a>
+    <a href="#cite" data-i18n="m_cite">Cite this platform</a>
+    <a href="#licence" data-i18n="m_lic">Licence</a>
   </div>
 
   <section class="mblock" id="obj">
@@ -97,7 +104,7 @@
         <div class="cof-lane ind">
           <div class="cof-lh" data-i18n="fl_ind">Industry track</div>
           <ol class="cof-steps">
-            <li><span class="cof-sh" data-i18n="fl_in">Inputs</span><span data-i18n="fl_i1">Captive power database (Sunrise Project)</span></li>
+            <li><span class="cof-sh" data-i18n="fl_in">Inputs</span><span data-i18n="fl_i1">Captive power database (Earthwise Institute)</span></li>
             <li><span class="cof-sh" data-i18n="fl_res">Resource assessment</span><span data-i18n="fl_i2">Captive renewable site ID (ERA5 + land-use)</span></li>
             <li><span class="cof-sh" data-i18n="fl_con">Technical constraints</span><span data-i18n="fl_i3">Electricity &amp; heat demand balance, min/max power, ramp</span></li>
           </ol>
@@ -140,10 +147,11 @@
     <h2 data-i18n="m_data">Data sources</h2>
     <div data-i18n-html="m_data_b">
     <ul>
-      <li><b>Power sector:</b> official documents from PLN, the Ministry of Energy &amp; Mineral Resources (MEMR) and the JETP Secretariat. Current/planned generators, transmission and load projections from <b>PLN RUPTL 2021–2030</b>; fuel costs and new-plant projects from the <b>JETP CIPP</b>; demand profile based on the Malaysia Grid System Operator 2023 load profile; supplemented with OpenStreetMap.</li>
-      <li><b>Industrial facilities:</b> generator data from the <b>Sunrise Project</b> International Indonesian captive power database; synthetic load profiles built per commodity from process literature, with production scaled on historical trends (3–5% growth).</li>
+      <li><b>Power sector:</b> official documents from PLN, the Ministry of Energy &amp; Mineral Resources (MEMR) and the JETP Secretariat. Current/planned generators, transmission and load projections from the <a href="https://www.pln.co.id/hubungan-investor-id/informasi-perusahaan-id/ruptl-id-1" target="_blank" rel="noopener">Rencana Usaha Penyediaan Tenaga Listrik (RUPTL) 2021–2030</a> prepared by Perusahaan Listrik Negara (PLN); fuel costs and new-plant projects from the Just Energy Transition Partnership (JETP) <a href="https://jetp-id.org/cipp" target="_blank" rel="noopener">Comprehensive Investment and Policy Plan (CIPP)</a>; demand profile based on the 2023 system load of <a href="https://www.gso.org.my" target="_blank" rel="noopener">Grid System Operator (GSO) Malaysia</a>; supplemented with <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>.</li>
+      <li><b>Industrial facilities:</b> captive generator data from the <a href="https://earthwise.institute" target="_blank" rel="noopener">Earthwise Institute</a> <i>Indonesian Power Summary Database</i>; synthetic load profiles built per commodity from process literature, with production scaled on historical trends (3–5% growth).</li>
       <li><b>Coal generators</b> are categorized as grid, captive, or mine-mouth captive, each with its own coal-price estimate.</li>
-      <li><b>Sites on this platform:</b> the map and facility profiles (names, locations, sectors, owners and captive coal units by status) come from the <b>Earthwise Institute Indonesian Power Summary Database</b> (Captive Coal Database, v2.0, content as of 31 Dec 2025). Units that are cancelled, shelved, retired or closed are excluded. Each site is linked to GARUDA's industrial-park nodes; sites added since the last model run are marked as not yet modeled. Citation: Earthwise Institute. <i>Indonesian Power Summary Database.</i> Earthwise Institute, 2026.</li>
+      <li><b>Sites on this platform:</b> the map and facility profiles (names, locations, sectors, owners and captive coal units by status) come from the <a href="https://earthwise.institute" target="_blank" rel="noopener">Earthwise Institute</a> <i>Indonesian Power Summary Database</i> (Captive Coal Database, v2.0, content as of 31 Dec 2025). Units that are cancelled, shelved, retired or closed are excluded. Each site is linked to GARUDA's industrial-park nodes; sites added since the last model run are marked as not yet modeled. Citation: Earthwise Institute. <i>Indonesian Power Summary Database.</i> Earthwise Institute, 2026.</li>
+      <li><b>Grid connection:</b> PLN substations of 150 kV and above come from <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> (© OpenStreetMap contributors, ODbL). PLN's planned supply to named industrial customers comes from <a href="https://www.pln.co.id/hubungan-investor-id/informasi-perusahaan-id/ruptl-id-1" target="_blank" rel="noopener">RUPTL 2025–2034</a> (Appendix E), and the connection cost uses RUPTL's average of about US$0.5 million per km of new lines and substations.</li>
     </ul>
     </div>
   </section>
@@ -153,9 +161,9 @@
     <div data-i18n-html="m_re_b">
     <p>Grid renewable potential uses MEMR's assessment based on the National Energy Plan (RUEN). For captive renewables, candidate sites are assessed within a <b>10 km buffer</b> of each industrial facility:</p>
     <ul>
-      <li><b>Solar &amp; wind:</b> capacity factors from ERA5 reanalysis data (geodata package).</li>
-      <li><b>Geothermal:</b> Global Heat Flow Database (IHFC), ordinary-kriging interpolation on a 500 m grid, retaining areas with heat flow ≥ 80 mW/m².</li>
-      <li><b>Land-use exclusions:</b> forest and residential areas from the Ministry of Environment &amp; Forestry (KLHK); slope constraints from USGS EarthExplorer.</li>
+      <li><b>Solar &amp; wind:</b> capacity factors from <a href="https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels" target="_blank" rel="noopener">ECMWF Reanalysis v5 (ERA5)</a> data (geodata package).</li>
+      <li><b>Geothermal:</b> <a href="https://ihfc-iugg.org/products/global-heat-flow-database" target="_blank" rel="noopener">Global Heat Flow Database</a> of the International Heat Flow Commission (IHFC), ordinary-kriging interpolation on a 500 m grid, retaining areas with heat flow ≥ 80 mW/m².</li>
+      <li><b>Land-use exclusions:</b> forest and residential areas from the Ministry of Environment &amp; Forestry (KLHK); slope constraints from <a href="https://earthexplorer.usgs.gov" target="_blank" rel="noopener">USGS EarthExplorer</a>.</li>
     </ul>
     </div>
   </section>
@@ -186,17 +194,38 @@
     </div>
   </section>
 
-  <p class="sub" style="margin-top:24px" data-i18n-html="m_foot_b">Full detail, figures and the technical appendix are in the
-    <a href="https://zenodo.org/records/17345968">November 2025 report</a>; model code is published on GitHub.</p>
+  <section class="mblock" id="cite">
+    <h2 data-i18n="m_cite">Cite this platform</h2>
+    <p data-i18n="m_cite_p">If you use the platform's results or data, please cite it as:</p>
+    <div style="display:flex;gap:6px" role="tablist">
+      <button class="chip on" id="citeApa" role="tab" aria-selected="true">APA</button>
+      <button class="chip" id="citeBib" role="tab" aria-selected="false">BibTeX</button>
+    </div>
+    <div class="cite" id="citeText"></div>
+    <button class="btn ghost" id="citeCopy"><span data-i18n="m_cite_copy">Copy citation</span></button>
+  </section>
+
+  <section class="mblock" id="licence">
+    <h2 data-i18n="m_lic">Licence</h2>
+    <div data-i18n-html="m_lic_b">
+    <p>The platform's results, figures and data files are available under the <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons Attribution 4.0 International License (CC BY 4.0)</a>, unless otherwise noted. You may copy, redistribute and adapt them for any purpose, including commercial use, as long as you credit the Power Transformation Lab and the platform, using the citation above.</p>
+    <p>Third-party data keep their own terms. PLN substation locations are © OpenStreetMap contributors and available under the <a href="https://opendatacommons.org/licenses/odbl/" target="_blank" rel="noopener">Open Database License (ODbL)</a>. Site, ownership and financing records come from the <a href="https://earthwise.institute" target="_blank" rel="noopener">Earthwise Institute</a> and should be credited to it.</p>
+    <p>The data are provided as is, without any warranty of accuracy or completeness; check them before relying on them for decisions.</p>
+    </div>
+  </section>
+
+  <p class="sub" style="margin-top:24px" data-i18n-html="m_foot_b">Full detail, figures and the technical appendix are in the report <a href="https://zenodo.org/records/17345968" target="_blank" rel="noopener"><i>Advancing Low-Carbon Industry Transition: Decarbonizing Industrial Captive Generation in Indonesia</i></a> (November 2025); the model code is on <a href="https://github.com/Power-Lab/captive-indonesia-2025" target="_blank" rel="noopener">GitHub</a>.</p>
 </main>
 
 <footer class="site"><div class="wrap">
-  <span data-i18n="foot_rights">© 2026 Power Transformation Lab · UC San Diego · CC-BY open data</span>
+  <span data-i18n-html="foot_rights">© 2026 Power Transformation Lab · UC San Diego · <a href="methodology.html#licence">CC BY 4.0</a></span>
   <span><a href="index.html" data-i18n="nav_explore">Explore map</a></span>
 </div></footer>
 
 <script src="assets/js/data.js"></script>
+<script src="assets/js/results.js"></script>
 <script src="assets/js/i18n.js"></script>
+<script src="assets/js/cite.js"></script>
 <script>window.initLang();</script>
 </body>
 </html>
