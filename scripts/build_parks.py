@@ -408,7 +408,8 @@ def read_overrides(path):
         return {}
     out = {}
     for r in csv.DictReader(open(path, encoding='utf-8')):
-        out[(r['island'], int(r['ip']))] = (r['site_id'], r['note'])
+        # several rows for one node: the node is shared by co-located sites
+        out.setdefault((r['island'], int(r['ip'])), []).append((r['site_id'], r['note']))
     return out
 
 
@@ -419,22 +420,23 @@ def crosswalk(nodes, sites, overrides):
         best = min(sites, key=lambda s: km(n['coords'], (s['lat'], s['lng'])))
         dist = km(n['coords'], (best['lat'], best['lng']))
         if (island, ip) in overrides:
-            sid, note = overrides[(island, ip)]
-            method = 'override'
-            if sid and sid not in by_id:
-                raise SystemExit('crosswalk override %s:%d points at unknown site %r' % (island, ip, sid))
+            matches, method = overrides[(island, ip)], 'override'
+            for sid, _ in matches:
+                if sid and sid not in by_id:
+                    raise SystemExit('crosswalk override %s:%d points at unknown site %r' % (island, ip, sid))
         elif dist <= AUTO_MATCH_KM:
-            sid, note, method = best['id'], '', 'nearest'
+            matches, method = [(best['id'], '')], 'nearest'
         else:
-            sid, note, method = '', 'no site within %d km' % AUTO_MATCH_KM, 'unmatched'
-        rows.append({
-            'island': island, 'ip': ip, 'model_province': n['province'],
-            'model_park': ';'.join(sorted(n['park'])), 'model_plants': ';'.join(sorted(n['plants'])),
-            'model_mw': round(n['mw']), 'site_id': sid, 'method': method,
-            'nearest_site': best['id'], 'nearest_km': round(dist, 1), 'note': note,
-        })
-        if sid:
-            by_id[sid].setdefault('model', []).append('%s:%d' % (island, ip))
+            matches, method = [('', 'no site within %d km' % AUTO_MATCH_KM)], 'unmatched'
+        for sid, note in matches:
+            rows.append({
+                'island': island, 'ip': ip, 'model_province': n['province'],
+                'model_park': ';'.join(sorted(n['park'])), 'model_plants': ';'.join(sorted(n['plants'])),
+                'model_mw': round(n['mw']), 'site_id': sid, 'method': method,
+                'nearest_site': best['id'], 'nearest_km': round(dist, 1), 'note': note,
+            })
+            if sid:
+                by_id[sid].setdefault('model', []).append('%s:%d' % (island, ip))
     for s in sites:
         s.setdefault('model', [])
     return rows

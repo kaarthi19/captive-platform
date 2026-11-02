@@ -93,7 +93,6 @@ window.siteCardHtml = function (d) {
       '<div class="metarow"><span>' + t('pop_owner') + '</span><b>' + esc(d.owner) + ' (' + esc(d.ownerCountry) + ')</b></div>' +
       '<div class="metarow"><span>' + t('pop_units') + '</span><b>' + d.units + (d.firstYear ? ' · ' + t('pop_since') + ' ' + d.firstYear : '') + '</b></div>' +
     '</div>' +
-    '<div style="font-size:11px;color:#6b6a78;margin-top:9px">' + t(d.model.length ? 'pop_modeled' : 'pop_unmodeled') + '</div>' +
     '<a class="btn block" style="margin-top:11px" href="facility.html?id=' + q + '">' + t('pop_view') + ' →</a>' +
     '<div class="poplinks"><a href="ownership.html?id=' + q + '">' + t('k_owndetail') + '</a>' +
     '<a href="financing.html?id=' + q + '">' + t('k_findetail') + '</a></div>';

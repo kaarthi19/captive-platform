@@ -32,9 +32,6 @@
       [mw(fac.op), t('pop_op')], [mw(fac.con), t('pop_con')], [mw(fac.plan), t('pop_plan')],
       [esc(fac.owner), t('pop_owner') + ' · ' + esc(fac.ownerCountry)]
     ].map(function (s) { return '<div class="stat"><b>' + s[0] + '</b><small>' + s[1] + '</small></div>'; }).join('');
-    document.getElementById('facModel').textContent = fac.model.length
-      ? t('fac_modeled') + ' (' + fac.model.length + ' ' + t('fac_nodes') + ': ' + fac.model.join(', ') + ').'
-      : t('fac_unmodeled');
     if (!det) return;
 
     /* key facts */
@@ -385,7 +382,13 @@
     var illus = document.getElementById('facIllus');
     illus.style.display = wired ? 'none' : '';
     illus.textContent = t('fac_illus');
-    document.getElementById('facPathp').textContent = t(wired ? 'fac_pathp_res' : 'fac_pathp');
+    /* co-located sites that share a model node show that node's combined result */
+    var shared = wired && site.shared ? site.shared.map(function (id) {
+      var f = window.FAC.find(function (x) { return x.id === id; });
+      return f ? f.short : id;
+    }).join(', ') : '';
+    document.getElementById('facPathp').textContent = t(wired ? 'fac_pathp_res' : 'fac_pathp') +
+      (shared ? t('path_shared').replace('{site}', shared) : '');
     document.getElementById('facMix').textContent = t(wired ? 'fac_mix_res' : 'fac_mix');
     document.getElementById('facCost').textContent = t(wired ? 'fac_cost_res' : 'fac_cost');
     document.getElementById('facPayer').textContent = t(wired ? 'fac_payer_res' : 'fac_payer');

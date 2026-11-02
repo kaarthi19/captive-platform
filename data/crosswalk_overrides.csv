@@ -12,3 +12,42 @@ papua,2,,"Tangguh LNG (West Papua) captive plant is not in Earthwise"
 sulawesi,11,,"Jeneponto PLTU is not in Earthwise as captive coal"
 sulawesi,15,pt-prima-alam-gemilang,"27 MW sugar plant, Southeast Sulawesi; model coordinates are 32 km off"
 sumatera,3,,"54 MW palm-oil plant: tagged North Sumatra with Riau coordinates; no matching Earthwise plant"
+sumatera,8,rempang-eco-city,node added for this site in the 2035 new-park inputs (Nov 2026)
+sumatera,20,batamindo-industrial-park,node added for this site in the 2035 new-park inputs (Nov 2026)
+sumatera,6,bnip,shares this node with galang-batang-sez
+sumatera,6,galang-batang-sez,"Galang Batang SEZ's new Nanshan phases (1,650 MW) were added to the BNIP node; node shared with bnip"
+sumatera,21,sinar-mas-oki-paper-mill,node added for this site in the 2035 new-park inputs (Nov 2026)
+sumatera,22,tanjung-sauh-sez,node added for this site in the 2035 new-park inputs (Nov 2026)
+sumatera,23,kim,node added for this site in the 2035 new-park inputs (Nov 2026)
+sumatera,24,pt-musim-mas,node added for this site in the 2035 new-park inputs (Nov 2026)
+sumatera,25,pt-pulau-sambu-usaha-guntung,node added for this site in the 2035 new-park inputs (Nov 2026)
+sumatera,26,pt-riau-sakti-united-plantation,node added for this site in the 2035 new-park inputs (Nov 2026)
+jawa_bali,22,kitb,node added for this site in the 2035 new-park inputs (Nov 2026)
+jawa_bali,23,pt-indah-kiat-pulp-paper-karawang-ikk,node added for this site in the 2035 new-park inputs (Nov 2026)
+jawa_bali,24,cikarang-babelan,node added for this site in the 2035 new-park inputs (Nov 2026)
+jawa_bali,25,ptkp,node added for this site in the 2035 new-park inputs (Nov 2026)
+jawa_bali,26,merak,node added for this site in the 2035 new-park inputs (Nov 2026)
+jawa_bali,14,indo-bharat-rayon,node added for this site in the 2035 new-park inputs (Nov 2026)
+jawa_bali,20,pt-rayon-utama-makmur,node added for this site in the 2035 new-park inputs (Nov 2026)
+jawa_bali,17,south-pasific-viscose-power-plant-2,shares this node with south-pasific-viscose-power-plant-1
+jawa_bali,17,south-pasific-viscose-power-plant-1,PP1 (20 MW) added to the South Pacific Viscose node; node shared with south-pasific-viscose-power-plant-2
+jawa_bali,27,mcie,node added for this site in the 2035 new-park inputs (Nov 2026)
+kalimantan,8,phoenix-tarakan-chip-mill,node added for this site in the 2035 new-park inputs (Nov 2026)
+kalimantan,9,pt-laman-mining-alumina,node added for this site in the 2035 new-park inputs (Nov 2026)
+kalimantan,10,pt-kalimantan-alumina-nusantara-kan,node added for this site in the 2035 new-park inputs (Nov 2026)
+kalimantan,11,tanjung-bara,node added for this site in the 2035 new-park inputs (Nov 2026)
+kalimantan,12,tabalong-wisesa,node added for this site in the 2035 new-park inputs (Nov 2026)
+kalimantan,6,kpcm,node added for this site in the 2035 new-park inputs (Nov 2026)
+kalimantan,13,tayan-cga,node added for this site in the 2035 new-park inputs (Nov 2026)
+kalimantan,14,pt-smart-tbk,node added for this site in the 2035 new-park inputs (Nov 2026)
+sulawesi,16,ipip,node added for this site in the 2035 new-park inputs (Nov 2026)
+sulawesi,17,pt-conch-barru-cement-indonesia,node added for this site in the 2035 new-park inputs (Nov 2026)
+sulawesi,18,pt-conch-north-sulawesi-cement,node added for this site in the 2035 new-park inputs (Nov 2026)
+sulawesi,19,pt-corii-smelter-captive,node added for this site in the 2035 new-park inputs (Nov 2026)
+north_maluku,5,fht,node added for this site in the 2035 new-park inputs (Nov 2026)
+north_maluku,6,gebe-island-smelter,node added for this site in the 2035 new-park inputs (Nov 2026)
+papua,3,pt-conch-west-papua-cement,node added for this site in the 2035 new-park inputs (Nov 2026)
+sumatera,1,andalas-cement,shares this node with solusi-bangun-andalas-lhoknga
+sumatera,1,solusi-bangun-andalas-lhoknga,Same plant as Andalas Cement (0.04 km); node shared with andalas-cement
+sumatera,11,sari-dumai-sejati,shares this node with sari-dumai-oleo
+sumatera,11,sari-dumai-oleo,Its 2 MW unit is already in the Sari Dumai node; node shared with sari-dumai-sejati

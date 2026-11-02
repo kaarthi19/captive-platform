@@ -5,3 +5,7 @@ EWPROJINDCC131,Location Accuracy,Approximate,
 EWPROJINDCC132,Latitude,-2.730952,"Same as EWPROJINDCC131"
 EWPROJINDCC132,Longitude,122.030621,
 EWPROJINDCC132,Location Accuracy,Approximate,
+EWPROJINDCC190,Latitude,-6.935,"Hongshi Silikon (KITB) is in KIT Batang, Desa Ketanggan, Gringsing, Batang, Central Java (RUPTL); Earthwise places it in West Java. Approximate point (+-5 km), user decision 2026-11-02"
+EWPROJINDCC190,Longitude,109.960,
+EWPROJINDCC190,"Province (Admin 1, English)",Central Java,
+EWPROJINDCC190,Location Accuracy,Approximate,
