@@ -36,39 +36,29 @@ window.placeholderResults = function (f) {
 
 window.FAC = window.PARKS;
 
-/* Regions for the region page: platform region key, display names, and the province names used
-   by the Indonesia basemap (datamaps topology; Kalimantan Utara is still part of Kalimantan Timur). */
+/* Charts use the site's typeface (styles.css body). */
+if (window.Chart) Chart.defaults.font.family = '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
+
+/* Regions for the region page: platform region key, display names, the GARUDA island(s) it covers,
+   and the province names used by the Indonesia basemap (datamaps topology; Kalimantan Utara is
+   still part of Kalimantan Timur). */
 window.REGIONS = [
-  { key: 'Sulawesi', en: 'Sulawesi', id: 'Sulawesi', zh: '苏拉威西',
+  { key: 'Sulawesi', en: 'Sulawesi', id: 'Sulawesi', zh: '苏拉威西', garuda: ['sulawesi'],
     provinces: ['Sulawesi Utara', 'Gorontalo', 'Sulawesi Tengah', 'Sulawesi Barat', 'Sulawesi Selatan', 'Sulawesi Tenggara'] },
-  { key: 'Maluku', en: 'North Maluku', id: 'Maluku Utara', zh: '北马鲁古', provinces: ['Maluku Utara', 'Maluku'] },
-  { key: 'Kalimantan', en: 'Kalimantan', id: 'Kalimantan', zh: '加里曼丹',
+  { key: 'Maluku', en: 'North Maluku', id: 'Maluku Utara', zh: '北马鲁古', garuda: ['north_maluku', 'maluku'], provinces: ['Maluku Utara', 'Maluku'] },
+  { key: 'Kalimantan', en: 'Kalimantan', id: 'Kalimantan', zh: '加里曼丹', garuda: ['kalimantan'],
     provinces: ['Kalimantan Barat', 'Kalimantan Tengah', 'Kalimantan Selatan', 'Kalimantan Timur'] },
-  { key: 'Sumatra', en: 'Sumatra', id: 'Sumatra', zh: '苏门答腊',
+  { key: 'Sumatra', en: 'Sumatra', id: 'Sumatra', zh: '苏门答腊', garuda: ['sumatera'],
     provinces: ['Aceh', 'Sumatera Utara', 'Sumatera Barat', 'Riau', 'Kepulauan Riau', 'Jambi', 'Bengkulu',
                 'Sumatera Selatan', 'Bangka-Belitung', 'Lampung'] },
-  { key: 'Java', en: 'Java and Bali', id: 'Jawa dan Bali', zh: '爪哇和巴厘',
+  { key: 'Java', en: 'Java and Bali', id: 'Jawa dan Bali', zh: '爪哇和巴厘', garuda: ['jawa_bali'],
     provinces: ['Banten', 'Jakarta Raya', 'Jawa Barat', 'Jawa Tengah', 'Yogyakarta', 'Jawa Timur', 'Bali'] },
-  { key: 'Nusa Tenggara', en: 'Nusa Tenggara', id: 'Nusa Tenggara', zh: '努沙登加拉', provinces: ['Nusa Tenggara Barat', 'Nusa Tenggara Timur'] },
-  { key: 'Papua', en: 'Papua', id: 'Papua', zh: '巴布亚', provinces: ['Irian Jaya Barat', 'Papua'] }
+  { key: 'Nusa Tenggara', en: 'Nusa Tenggara', id: 'Nusa Tenggara', zh: '努沙登加拉', garuda: ['nusa_tenggara'], provinces: ['Nusa Tenggara Barat', 'Nusa Tenggara Timur'] },
+  { key: 'Papua', en: 'Papua', id: 'Papua', zh: '巴布亚', garuda: ['papua'], provinces: ['Irian Jaya Barat', 'Papua'] }
 ];
 window.regionName = function (r) { return r[window.CP_LANG] || r.en; };
-
-/* Grid hubs and proposed/existing transmission corridors for the Sulawesi region view
-   (illustrative until GARUDA's transmission results are loaded). */
-window.HUBS = [
-  { id:'palu',      name:'Palu',      lng:119.87, lat:-0.90 },
-  { id:'gorontalo', name:'Gorontalo', lng:123.06, lat:0.54 },
-  { id:'kendari',   name:'Kendari',   lng:122.51, lat:-3.97 },
-  { id:'makassar',  name:'Makassar',  lng:119.43, lat:-5.14 }
-];
-window.CORRIDORS = [
-  { from:'imip',                       hub:'palu',     mw:1400, cost:0.8, kv:275, status:'proposed' },
-  { from:'sei',                        hub:'palu',     mw:500,  cost:0.4, kv:150, status:'proposed' },
-  { from:'vdnip',                      hub:'kendari',  mw:900,  cost:0.5, kv:150, status:'proposed' },
-  { from:'pomalaa-nickel',             hub:'kendari',  mw:300,  cost:0.2, kv:70,  status:'existing' },
-  { from:'pcc',                        hub:'makassar', mw:150,  cost:0.1, kv:150, status:'proposed' }
-];
+/* Provinces GARUDA models that the basemap lacks, as [lng, lat] of their main grid centre. */
+window.PROVINCE_POINTS = { 'Kalimantan Utara': [117.37, 2.84] };
 
 window.esc = function (v) {
   return String(v == null ? '' : v).replace(/[&<>"]/g, function (c) {

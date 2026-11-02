@@ -380,7 +380,10 @@
 
   /* notes that change with whether this site's pathways come from GARUDA */
   function sourceNotes() {
-    document.getElementById('facIllus').textContent = t(wired ? 'fac_illus_res' : 'fac_illus');
+    /* the illustrative-figures warning shows only where the pathways are not from GARUDA */
+    var illus = document.getElementById('facIllus');
+    illus.style.display = wired ? 'none' : '';
+    illus.textContent = t('fac_illus');
     document.getElementById('facPathp').textContent = t(wired ? 'fac_pathp_res' : 'fac_pathp');
     document.getElementById('facMix').textContent = t(wired ? 'fac_mix_res' : 'fac_mix');
     document.getElementById('facCost').textContent = t(wired ? 'fac_cost_res' : 'fac_cost');

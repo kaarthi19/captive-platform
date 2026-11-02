@@ -3,7 +3,7 @@
 Reads the sites in data/parks.csv and an OpenStreetMap extract of Indonesian substations, and
 writes:
 
-  assets/js/substations.js     window.SUBSTATIONS for the facility page
+  assets/js/substations.js     window.SUBSTATIONS for the facility and region pages
   data/site_substations.csv    the same as a flat table
   data/osm_pln_substations.csv the PLN substations used (150 kV and above), for reproducibility
 
@@ -202,7 +202,9 @@ def main():
           '   RUPTL average); ruptl = PLN\'s planned supply from RUPTL 2025-2034 Appendix E where it\n'
           '   names the site. */\n'
           'window.SUBSTATIONS = %s;\n') % (MIN_KV, COST_PER_KM, json.dumps(
-              {'built': date.today().isoformat(), 'costPerKm': COST_PER_KM, 'sites': out},
+              {'built': date.today().isoformat(), 'costPerKm': COST_PER_KM, 'sites': out,
+               # every substation used, as [lat, lng, kV, name], for the region map
+               'all': [[x['lat'], x['lng'], x['kv'], x['name']] for x in subs]},
               ensure_ascii=False, separators=(',', ':')))
     open(os.path.join(ROOT, 'assets', 'js', 'substations.js'), 'w', encoding='utf-8').write(js)
     with open(os.path.join(ROOT, 'data', 'site_substations.csv'), 'w', newline='', encoding='utf-8') as f:

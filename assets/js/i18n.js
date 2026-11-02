@@ -2,7 +2,6 @@
    data-i18n="key" swaps an element's text, data-i18n-html its markup (long passages with links or
    emphasis; the page's own HTML is the English), data-i18n-ph its placeholder. Missing keys fall
    back to English. Choice persists in localStorage. */
-
 window.I18N = {
   en: {
     nav_explore:'Explore map', nav_region:'Regions', nav_method:'Methodology', nav_about:'About', nav_contact:'Contact',
@@ -25,7 +24,7 @@ window.I18N = {
     fl_core: "Least-cost generation & transmission expansion, co-optimized for grid + industry",
     brand_sub:'Indonesia · Power Transformation Lab',
     foot_rights:'© 2026 Power Transformation Lab · UC San Diego · CC-BY open data',
-    foot_req:'Request analysis', foot_work:'Workshops',
+    foot_req:'Request analysis',
 
     /* home */
     hero_kick:'Open-access · multilingual · facility-level',
@@ -76,7 +75,6 @@ window.I18N = {
     fac_source:'Unit-level data from the Earthwise Institute Indonesian Power Summary Database (2026).',
     th_start:'Since',
     fac_illus:'Pathway, cost and energy-mix figures below are illustrative. GARUDA results for each site are not loaded yet.',
-    fac_illus_res: "Pathway costs, energy mix, cost breakdown and sliders for this site come from preliminary GARUDA 2035 runs (no CO₂ cap, simplified unit commitment that lets parks retire part of their coal fleet).",
     fac_mix_res: "2035 electricity supply by pathway",
     mix_note_res: "Share of the park’s electricity demand. GARUDA supplies process heat from coal in every pathway.",
     fac_cost_res: "Cost per MWh by pathway, 2035",
@@ -146,15 +144,31 @@ window.I18N = {
 
     /* region */
     reg_kick:'Regional aggregation',
+    tg_subs: "Substations",
+    tg_corr: "Corridors",
+    rs3: "sites within 25 km of a PLN substation",
+    rs4: "rough cost to connect every site to its nearest substation",
+    reg_map: "Grid map",
+    reg_mapp: "Captive sites, PLN substations and the corridors between provinces in GARUDA",
+    reg_leg_sub: "PLN substation, 150 kV and above",
+    reg_leg_link: "Site to its nearest substation",
+    reg_leg_corr: "Corridor between provinces",
+    reg_leg_up: "Corridor GARUDA upgrades",
+    reg_click: "Hover over a site for its details; click to keep the card open. Corridor thickness ≈ existing transfer capacity.",
+    reg_tx: "Corridors between provinces",
+    th_exist: "Existing (MW)",
+    th_up: "Upgrade in GARUDA",
+    up_mw: "+{mw} MW ({path})",
+    up_grid: "grid connection",
+    up_gridcaptive: "hybrid",
+    up_no: "Not needed",
     reg_sub:'System-wide implications and transmission upgrades if captive parks connect to PLN’s grid',
-    rs1:'captive coal operating in region', rs2:'captive coal sites', rs3:'connectable if lines built', rs4:'transmission capex',
-    reg_map:'Transmission map', reg_mapp:'Parks, grid hubs and the corridors that would connect them',
-    reg_toggle:'Show proposed upgrades', reg_toggle_on:'Proposed upgrades shown', reg_cap:'Operating capacity by site', reg_leg_site:'Captive site (blue = nickel, grey = other)',
-    reg_leg_hub:'PLN grid hub', reg_leg_prop:'Proposed corridor (illustrative)', reg_leg_exist:'Existing line',
-    reg_click:'Hover over a site for its details; click to keep the card open. Line thickness ≈ transfer capacity.',
-    reg_tx_none:'Grid hubs and transmission corridors for this region will come from GARUDA results. Only Sulawesi has illustrative corridors so far.',
-    reg_tx_none_short:'Pending GARUDA transmission results.', reg_top:'Largest {n} of {m} operating sites',
-    reg_tx:'Transmission upgrades needed', th_corr:'Corridor',
+    rs1:'captive coal operating in region', rs2:'captive coal sites', 
+    reg_cap:'Operating capacity by site', reg_leg_site:'Captive site (blue = nickel, grey = other)',
+    
+    
+    reg_top:'Largest {n} of {m} operating sites',
+    th_corr:'Corridor',
 
     /* about */
     ab_kick:'About', ab_lab_h:'The Power Transformation Lab',
@@ -171,19 +185,16 @@ window.I18N = {
     ab_data:'Data & methodology',
     ab_data_p:"Results come from GARUDA (Grid And Renewable Utilization & Deployment Analysis), the lab's generation and transmission capacity-expansion model, which co-optimizes industrial-facility and grid investments using PLN, MEMR and JETP planning data. Site, ownership and financing data come from the Earthwise Institute Indonesian Power Summary Database.",
     ab_method:'Read the full methodology', ab_report:'2025 technical report', ab_zenodo:'Report and data on Zenodo',
-    ab_cta:'Want facility-specific analysis or a workshop?', ab_cta_link:'Contact the team',
+    ab_cta:'Want facility-specific analysis?', ab_cta_link:'Contact the team',
     ab_part:'Partners & stakeholders',
     ab_partp:'Engaged through workshops and bilateral outreach in Jakarta, Bandung & Sulawesi',
 
     /* contact */
     ct_kick:'Contact', ct_h:'Request analysis or get in touch',
-    ct_p:'Park owners, PLN, provincial governments, financiers and researchers can ask the team for deeper analysis, a workshop, or help using the platform.',
+    ct_p:'Park owners, PLN, provincial governments, financiers and researchers can ask the team for deeper analysis or help using the platform.',
     ct_req_h:'Request facility analysis',
     ct_req_p:'Facility-specific GARUDA runs: decarbonization pathways, grid-connection and transmission options, and costs by component for a park or plant you care about.',
     ct_req_btn:'Request analysis',
-    ct_ws_h:'Workshops and briefings',
-    ct_ws_p:'A walkthrough of the platform and its results for your organization, or a workshop on captive power transition options.',
-    ct_ws_btn:'Ask about a workshop',
     ct_data_h:'Data questions and corrections',
     ct_data_p:"Spotted a wrong location, owner or capacity? Tell us which site and what's wrong. Site data comes from the Earthwise Institute database, and we pass corrections on.",
     ct_data_btn:'Report a data issue',
@@ -223,8 +234,7 @@ window.I18N = {
     m_foot_b: "Rincian lengkap, gambar, dan lampiran teknis tersedia dalam\n    <a href=\"https://zenodo.org/records/17345968\">laporan November 2025</a>; kode model dipublikasikan di GitHub.",
     brand_sub:'Indonesia · Power Transformation Lab',
     foot_rights:'© 2026 Power Transformation Lab · UC San Diego · data terbuka CC-BY',
-    foot_req:'Minta analisis', foot_work:'Lokakarya',
-
+    foot_req:'Minta analisis',
     hero_kick:'Akses terbuka · multibahasa · tingkat fasilitas',
     hero_h1:'Jalur dekarbonisasi untuk armada batu bara captive Indonesia',
     hero_p:'Klik lokasi batu bara captive mana pun — kawasan industri atau pembangkit mandiri — untuk melihat bauran energinya, alternatif energi bersih, opsi koneksi jaringan, dan biaya transisinya. Dibangun di atas model ekspansi pembangkitan & transmisi.',
@@ -251,7 +261,6 @@ window.I18N = {
     pop_units:'Unit batu bara', pop_since:'sejak',
     pop_modeled:'Termasuk dalam model GARUDA.', pop_unmodeled:'Belum termasuk dalam model GARUDA.',
     pop_view:'Lihat analisis lengkap',
-
     back_map:'Kembali ke peta', fac_kick:'Analisis fasilitas',
     fac_path:'Perbandingan jalur', fac_pathp:'Biaya listrik terlevelisasi pada asumsi saat ini',
     fac_mix:'Bauran energi saat ini', fac_sens:'Sensitivitas harga batu bara & tarif jaringan',
@@ -272,7 +281,6 @@ window.I18N = {
     fac_source:'Data tingkat unit dari Earthwise Institute Indonesian Power Summary Database (2026).',
     th_start:'Sejak',
     fac_illus:'Angka jalur, biaya, dan bauran energi di bawah ini bersifat ilustratif. Hasil GARUDA per lokasi belum dimuat.',
-    fac_illus_res: "Biaya jalur, bauran energi, rincian biaya, dan slider untuk lokasi ini berasal dari hasil awal GARUDA 2035 (tanpa batas CO₂, komitmen unit yang disederhanakan sehingga kawasan dapat memensiunkan sebagian armada batu baranya).",
     fac_mix_res: "Pasokan listrik 2035 per jalur",
     mix_note_res: "Porsi dari kebutuhan listrik kawasan. GARUDA memasok panas proses dari batu bara di semua jalur.",
     fac_cost_res: "Biaya per MWh per jalur, 2035",
@@ -339,18 +347,32 @@ window.I18N = {
     fin_src:'Sumber: Earthwise Institute, Indonesian Captive Coal Relevant Project Financing Database (2026).',
     st_Operating:'Beroperasi', st_Construction:'Konstruksi', st_PreConstruction:'Pra-konstruksi', st_Announced:'Diumumkan',
     st_Cancelled:'Dibatalkan', st_Shelved:'Ditunda', st_Retired:'Dipensiunkan', st_Closed:'Ditutup', st_NA:'Tidak diketahui',
-
     reg_kick:'Agregasi wilayah',
+    tg_subs: "Gardu induk",
+    tg_corr: "Koridor",
+    rs3: "lokasi dalam 25 km dari gardu induk PLN",
+    rs4: "perkiraan biaya menghubungkan setiap lokasi ke gardu induk terdekat",
+    reg_map: "Peta jaringan",
+    reg_mapp: "Lokasi captive, gardu induk PLN, dan koridor antarprovinsi dalam GARUDA",
+    reg_leg_sub: "Gardu induk PLN, 150 kV ke atas",
+    reg_leg_link: "Lokasi ke gardu induk terdekat",
+    reg_leg_corr: "Koridor antarprovinsi",
+    reg_leg_up: "Koridor yang ditingkatkan GARUDA",
+    reg_click: "Arahkan kursor ke lokasi untuk melihat rinciannya; klik agar kartu tetap terbuka. Ketebalan koridor ≈ kapasitas transfer yang ada.",
+    reg_tx: "Koridor antarprovinsi",
+    th_exist: "Yang ada (MW)",
+    th_up: "Peningkatan dalam GARUDA",
+    up_mw: "+{mw} MW ({path})",
+    up_grid: "koneksi jaringan",
+    up_gridcaptive: "hibrida",
+    up_no: "Tidak perlu",
     reg_sub:'Implikasi sistem dan peningkatan transmisi jika kawasan captive terhubung ke jaringan PLN',
-    rs1:'batu bara captive beroperasi di wilayah', rs2:'lokasi batu bara captive', rs3:'dapat terhubung bila jalur dibangun', rs4:'capex transmisi',
-    reg_map:'Peta transmisi', reg_mapp:'Kawasan, simpul jaringan, dan koridor penghubungnya',
-    reg_toggle:'Tampilkan peningkatan yang diusulkan', reg_toggle_on:'Peningkatan yang diusulkan ditampilkan', reg_cap:'Kapasitas operasi per lokasi', reg_leg_site:'Lokasi captive (biru = nikel, abu-abu = lainnya)',
-    reg_leg_hub:'Gardu induk PLN', reg_leg_prop:'Koridor yang diusulkan (ilustratif)', reg_leg_exist:'Jalur yang ada',
-    reg_click:'Arahkan kursor ke lokasi untuk melihat rinciannya; klik agar kartu tetap terbuka. Ketebalan garis ≈ kapasitas transfer.',
-    reg_tx_none:'Gardu induk dan koridor transmisi untuk wilayah ini akan berasal dari hasil GARUDA. Sejauh ini hanya Sulawesi yang memiliki koridor ilustratif.',
-    reg_tx_none_short:'Menunggu hasil transmisi GARUDA.', reg_top:'{n} lokasi beroperasi terbesar dari {m}',
-    reg_tx:'Peningkatan transmisi yang dibutuhkan', th_corr:'Koridor',
-
+    rs1:'batu bara captive beroperasi di wilayah', rs2:'lokasi batu bara captive', 
+    reg_cap:'Kapasitas operasi per lokasi', reg_leg_site:'Lokasi captive (biru = nikel, abu-abu = lainnya)',
+    
+    
+    reg_top:'{n} lokasi beroperasi terbesar dari {m}',
+    th_corr:'Koridor',
     ab_kick:'Tentang', ab_lab_h:'Power Transformation Lab',
     ab_lab_p:'Power Transformation Lab di UC San Diego mempelajari kebutuhan teknis dan kelembagaan untuk menerapkan energi rendah karbon dalam skala besar. Bekerja di berbagai wilayah bersama mitra akademik, pemerintah, masyarakat sipil, dan industri, lab ini menghasilkan riset, model terbuka, dan data untuk tantangan iklim dan lingkungan.',
     ab_p:'Platform ini adalah alat pendukung keputusan akses terbuka dari lab tersebut, menerjemahkan studi transisi sektoral menjadi panduan siap-investasi tingkat fasilitas bagi pemilik kawasan, PLN, pemerintah provinsi, dan pemodal.',
@@ -365,18 +387,14 @@ window.I18N = {
     ab_data:'Data & metodologi',
     ab_data_p:'Hasil berasal dari GARUDA (Grid And Renewable Utilization & Deployment Analysis), model ekspansi kapasitas pembangkitan dan transmisi milik lab yang meng-ko-optimisasi investasi fasilitas industri dan jaringan dengan data perencanaan PLN, KESDM, dan JETP. Data lokasi, kepemilikan, dan pembiayaan berasal dari Earthwise Institute Indonesian Power Summary Database.',
     ab_method:'Baca metodologi lengkap', ab_report:'Laporan teknis 2025', ab_zenodo:'Laporan dan data di Zenodo',
-    ab_cta:'Butuh analisis khusus fasilitas atau lokakarya?', ab_cta_link:'Hubungi tim',
+    ab_cta:'Butuh analisis khusus fasilitas?', ab_cta_link:'Hubungi tim',
     ab_part:'Mitra & pemangku kepentingan',
     ab_partp:'Terlibat melalui lokakarya dan pertemuan bilateral di Jakarta, Bandung & Sulawesi',
-
     ct_kick:'Kontak', ct_h:'Minta analisis atau hubungi kami',
-    ct_p:'Pemilik kawasan, PLN, pemerintah provinsi, pemodal, dan peneliti dapat meminta analisis lebih mendalam, lokakarya, atau bantuan menggunakan platform kepada tim.',
+    ct_p:'Pemilik kawasan, PLN, pemerintah provinsi, pemodal, dan peneliti dapat meminta analisis lebih mendalam atau bantuan menggunakan platform kepada tim.',
     ct_req_h:'Minta analisis fasilitas',
     ct_req_p:'Simulasi GARUDA khusus fasilitas: jalur dekarbonisasi, opsi koneksi jaringan dan transmisi, serta biaya per komponen untuk kawasan atau pembangkit yang Anda minati.',
     ct_req_btn:'Minta analisis',
-    ct_ws_h:'Lokakarya dan pemaparan',
-    ct_ws_p:'Pemaparan platform dan hasilnya untuk organisasi Anda, atau lokakarya tentang opsi transisi listrik captive.',
-    ct_ws_btn:'Tanya soal lokakarya',
     ct_data_h:'Pertanyaan dan koreksi data',
     ct_data_p:'Menemukan lokasi, pemilik, atau kapasitas yang keliru? Beri tahu kami lokasi mana dan apa yang salah. Data lokasi berasal dari basis data Earthwise Institute, dan kami meneruskan koreksinya.',
     ct_data_btn:'Laporkan masalah data',
@@ -401,7 +419,6 @@ window.I18N = {
     brand_sub: "印度尼西亚 · Power Transformation Lab",
     foot_rights: "© 2026 Power Transformation Lab · 加州大学圣地亚哥分校 · CC-BY 开放数据",
     foot_req: "申请分析",
-    foot_work: "研讨会",
     hero_h1: "印度尼西亚自备燃煤电厂的脱碳路径",
     hero_p: "点击任一自备燃煤电厂站点（工业园区或独立工厂），即可查看其能源结构、清洁能源替代方案、并网选项，以及转型所需的成本。分析基于发电与输电协同优化的扩展模型。",
     hero_cta: "查看设施证据",
@@ -549,20 +566,36 @@ window.I18N = {
     st_Closed: "已关闭",
     st_NA: "未知",
     reg_kick: "区域汇总",
+    tg_subs: "变电站",
+    tg_corr: "输电走廊",
+    rs3: "距 PLN 变电站 25 公里以内的站点",
+    rs4: "将每个站点接入最近变电站的大致成本",
+    reg_map: "电网地图",
+    reg_mapp: "自备电厂站点、PLN 变电站及 GARUDA 中的省际输电走廊",
+    reg_leg_sub: "PLN 变电站（150 千伏及以上）",
+    reg_leg_link: "站点至最近变电站",
+    reg_leg_corr: "省际输电走廊",
+    reg_leg_up: "GARUDA 升级的走廊",
+    reg_click: "将鼠标悬停在站点上可查看详情；点击可固定卡片。走廊粗细 ≈ 现有输电容量。",
+    reg_tx: "省际输电走廊",
+    th_exist: "现有（MW）",
+    th_up: "GARUDA 中的升级",
+    up_mw: "+{mw} MW（{path}）",
+    up_grid: "电网接入",
+    up_gridcaptive: "混合",
+    up_no: "无需升级",
     reg_sub: "若自备工业园区接入 PLN 电网，对整个系统的影响及所需的输电升级",
     rs1: "区域内自备煤电在运装机",
     rs2: "个自备燃煤电厂站点",
-    rs3: "建成线路后可并网的容量",
-    rs4: "输电资本支出",
-    reg_map: "输电地图",
-    reg_mapp: "工业园区、电网枢纽及连接二者的输电走廊",
-    reg_toggle: "显示拟建升级",
-    reg_toggle_on: "已显示拟建升级",
+    
+    
+    
+    
+    
     reg_cap: "各站点在运装机",
     reg_leg_site: "自备电厂站点（蓝色 = 镍，灰色 = 其他）",
-    reg_leg_hub: "PLN 电网枢纽",
-    reg_leg_exist: "现有线路",
-    reg_tx: "所需输电升级",
+    
+    
     th_corr: "输电走廊",
     ab_kick: "关于",
     ab_data: "数据与方法",
@@ -581,7 +614,6 @@ window.I18N = {
     mix_note: "目前煤电占 {c}% · {e} tCO₂/MWh",
     fac_sec_site: "站点详情",
     fac_illus: "以下路径、成本和能源结构数据仅为示意。各站点的 GARUDA 结果尚未载入。",
-    fac_illus_res: "该站点的路径成本、能源结构、成本构成和滑块来自 GARUDA 2035 初步运行结果（无 CO₂ 上限，采用简化机组组合，允许园区退役部分燃煤机组）。",
     fac_mix_res: "2035 年各路径的电力供应",
     mix_note_res: "占园区电力需求的比例。在所有路径中，GARUDA 的工艺热均由煤炭供应。",
     fac_cost_res: "2035 年各路径每兆瓦时成本",
@@ -655,10 +687,9 @@ window.I18N = {
     lt_dfi: "开发金融机构",
     fin_none: "Earthwise 融资数据库中没有该站点的已披露贷款。",
     fin_src: "来源：Earthwise Institute，Indonesian Captive Coal Relevant Project Financing Database（2026）。",
-    reg_leg_prop: "拟建输电走廊（示意）",
-    reg_click: "将鼠标悬停在站点上可查看详情；点击可固定卡片。线条粗细 ≈ 输电容量。",
-    reg_tx_none: "该地区的电网枢纽和输电走廊将来自 GARUDA 结果。目前只有苏拉威西有示意性的输电走廊。",
-    reg_tx_none_short: "等待 GARUDA 输电结果。",
+    
+    
+    
     reg_top: "显示 {m} 个在运站点中最大的 {n} 个",
     ab_lab_h: "电力转型实验室（Power Transformation Lab）",
     ab_lab_p: "加州大学圣地亚哥分校的电力转型实验室研究大规模部署低碳能源所需的工程与制度条件。实验室在多个国家和地区与学术界、政府、民间社会和产业界伙伴合作，围绕气候与环境挑战开展研究，并发布开放模型和数据。",
@@ -679,16 +710,13 @@ window.I18N = {
     ab_method: "阅读完整方法说明",
     ab_report: "2025 年技术报告",
     ab_zenodo: "Zenodo 上的报告与数据",
-    ab_cta: "需要针对设施的分析或研讨会？",
+    ab_cta: "需要针对设施的分析？",
     ab_cta_link: "联系团队",
     ct_kick: "联系我们",
     ct_h: "申请分析或与我们联系",
-    ct_p: "园区业主、PLN、省级政府、金融机构和研究人员都可以请团队开展更深入的分析、举办研讨会，或协助使用本平台。",
+    ct_p: "园区业主、PLN、省级政府、金融机构和研究人员都可以请团队开展更深入的分析或协助使用本平台。",
     ct_req_h: "申请设施分析",
     ct_req_p: "针对具体设施的 GARUDA 模拟：为您关注的园区或电厂提供脱碳路径、并网与输电方案，以及按组成部分划分的成本。",
-    ct_ws_h: "研讨会与简报",
-    ct_ws_p: "为贵机构讲解本平台及其结果，或举办关于自备电厂转型方案的研讨会。",
-    ct_ws_btn: "咨询研讨会",
     ct_data_h: "数据问题与更正",
     ct_data_p: "发现位置、所有者或装机容量有误？请告诉我们是哪个站点以及哪里有误。站点数据来自 Earthwise Institute 数据库，我们会将更正转告对方。",
     ct_data_btn: "报告数据问题",
@@ -726,7 +754,6 @@ window.I18N = {
     m_foot_b: "完整细节、图表和技术附录见 <a href=\"https://zenodo.org/records/17345968\">2025 年 11 月报告</a>；模型代码已在 GitHub 上公开。"
   }
 };
-
 window.LANG_TAGS = { en: 'en', id: 'id', zh: 'zh-Hans' };
 
 /* Look up a string for the current language, falling back to English. */
@@ -734,7 +761,6 @@ window.tr = function (k) {
   var d = window.I18N[window.CP_LANG] || window.I18N.en;
   return d[k] != null ? d[k] : window.I18N.en[k];
 };
-
 window.applyLang = function (lang) {
   if (!window.I18N[lang]) lang = 'en';
   var d = window.I18N[lang], en = window.I18N.en;
@@ -762,7 +788,6 @@ window.applyLang = function (lang) {
   window.CP_LANG = lang;
   if (typeof window.onLangChange === 'function') window.onLangChange(lang);
 };
-
 window.initLang = function () {
   var saved = 'en';
   try { saved = localStorage.getItem('cp-lang') || 'en'; } catch (e) {}

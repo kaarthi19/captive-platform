@@ -36,6 +36,21 @@ SCENARIOS = ['base', 'grid', 'captive', 'gridcaptive', 'highimportprice']
 CASES = ['reference', 'clean']
 ISLANDS = {'sulawesi': 'Sulawesi', 'north_maluku': 'Maluku', 'kalimantan': 'Kalimantan', 'sumatera': 'Sumatra',
            'jawa_bali': 'Java', 'nusa_tenggara': 'Nusa Tenggara', 'papua': 'Papua'}
+# GARUDA province (zones.csv) -> basemap province name, for the region page's corridors.
+# Single-zone islands (Maluku, North Maluku, Nusa Tenggara, Papua) have no corridors.
+PROVINCES = {
+    'north_sulawesi': 'Sulawesi Utara', 'gorontalo': 'Gorontalo', 'central_sulawesi': 'Sulawesi Tengah',
+    'south_sulawesi': 'Sulawesi Selatan', 'southeast_sulawesi': 'Sulawesi Tenggara', 'west_sulawesi': 'Sulawesi Barat',
+    'jakarta': 'Jakarta Raya', 'banten': 'Banten', 'west_jawa': 'Jawa Barat', 'central_jawa': 'Jawa Tengah',
+    'yogyakarta': 'Yogyakarta', 'east_jawa': 'Jawa Timur', 'bali': 'Bali',
+    'west_kalimantan': 'Kalimantan Barat', 'central_kalimantan': 'Kalimantan Tengah', 'south_kalimantan': 'Kalimantan Selatan',
+    'east_kalimantan': 'Kalimantan Timur', 'north_kalimantan': 'Kalimantan Utara',
+    'aceh': 'Aceh', 'north_sumatera': 'Sumatera Utara', 'west_sumatera': 'Sumatera Barat', 'riau': 'Riau', 'jambi': 'Jambi',
+    'bengkulu': 'Bengkulu', 'south_sumatera': 'Sumatera Selatan', 'bangka_belitung': 'Bangka-Belitung', 'lampung': 'Lampung'}
+# Misspelt province names in GARUDA's line names.
+PROVINCE_ALIASES = {'bankga_belitung': 'bangka_belitung'}
+# Pathways whose corridors the region page shows.
+CORRIDOR_SCENARIOS = ['grid', 'gridcaptive']
 TECH = {'coal_captive': 'coal', 'solar': 'solar', 'wind': 'wind', 'geothermal': 'geo', 'battery': 'bat'}
 # The gap at the gate can print as 0.0100000x; allow for float noise.
 GATE_SLACK = 1e-6
@@ -269,6 +284,41 @@ def site_view(parks):
     }
 
 
+def corridors(isl_inputs, folders):
+    """Province-to-province corridors: GARUDA's lines summed per province pair.
+
+    Existing capacity is the lines' Line_Max_Flow_MW, leaving out the *_new lines: they carry a
+    500 MW placeholder that the model treats as existing, so here they count as new build. Each
+    pathway's corridor capacity is the sum of the lines' Total_Transfer_Capacity, which with free
+    retirement of unused capacity comes to about the peak flow; capacity above the existing lines
+    is the upgrade the pathway needs. folders maps scenario -> result folder."""
+    # Provinces come from the line name (<from>_to_<to>_<n|new>): in Jawa-Bali, network.csv's zone
+    # columns and zones.csv number the provinces differently, and the names match the network.
+    pair, out = {}, {}
+    for r in rows(os.path.join(isl_inputs, 'network.csv')):
+        ends = re.sub(r'_(\d+|new)$', '', r['path_name']).split('_to_')
+        ends = sorted(PROVINCES.get(PROVINCE_ALIASES.get(e, e), e) for e in ends)
+        if len(ends) != 2:
+            continue
+        c = out.setdefault(tuple(ends), {'a': ends[0], 'b': ends[1], 'mw': 0.0, 'used': {}, 'add': {}})
+        pair[r['path_name']] = c
+        if not r['path_name'].endswith('_new'):
+            c['mw'] += num(r['Line_Max_Flow_MW'])
+    for scen, folder in folders.items():
+        f = os.path.join(folder, 'transmission_results.csv')
+        if not os.path.exists(f):
+            continue
+        for r in rows(f):
+            c = pair.get(r['Path'])
+            if c:
+                c['used'][scen] = c['used'].get(scen, 0.0) + num(r['Total_Transfer_Capacity'])
+    for c in out.values():
+        c['mw'] = round(c['mw'])
+        c['add'] = {k: round(max(0.0, v - c['mw'])) for k, v in c['used'].items() if v - c['mw'] >= 1}
+        c['used'] = {k: round(v) for k, v in c['used'].items()}
+    return sorted(out.values(), key=lambda c: -c['mw'])
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('results')
@@ -394,13 +444,30 @@ def main():
         if runs:
             islands[isl] = {'region': region, 'runs': runs, 'missing': missing, 'prices': prices}
 
+    # Corridors between provinces for every island with more than one zone: existing capacity from
+    # the inputs, and what each pathway needs from its run at the baseline coal price (the slider's
+    # start) once that run is in.
+    lines = {}
+    for isl in ISLANDS:
+        if not os.path.exists(os.path.join(a.inputs, isl, 'network.csv')):
+            continue
+        tag = '__' + a.anchor_tag if a.anchor_tag else ''
+        base = '%s_%s' % (isl, BASELINE_VARIANT) if tag and os.path.isdir(os.path.join(a.inputs, '%s_%s' % (isl, BASELINE_VARIANT))) else isl
+        cor = corridors(os.path.join(a.inputs, isl), {
+            scen: os.path.join(a.results, '%s_%s_%s_reference%s' % (scen, base, a.year, tag)) for scen in CORRIDOR_SCENARIOS})
+        if cor:
+            lines[isl] = cor
+            for c in cor:
+                print('  %s corridor %s - %s: existing %d MW, used %s, upgrade %s'
+                      % (isl, c['a'], c['b'], c['mw'], c['used'] or '(no run yet)', c['add'] or 'none'))
+
     js = ('/* GENERATED by scripts/build_results.py from GARUDA %s results. Do not edit by hand.\n'
           '   Only runs within a %.0f%% MIP gap are included; "missing" lists the rest (pending or gap).\n'
           '   Costs are US$ bn/yr (costParts US$ m/yr), CO2 Mt/yr. Site elec values are shares of the\n'
           '   park electricity demand met by each source; cap and new are MW. */\n'
           'window.GARUDA = %s;\n') % (a.year, 100 * a.gate, json.dumps(
               {'year': int(a.year), 'built': date.today().isoformat(), 'gate': a.gate,
-               'scenarios': SCENARIOS, 'islands': islands, 'sites': sites}, ensure_ascii=False, indent=1))
+               'scenarios': SCENARIOS, 'islands': islands, 'corridors': lines, 'sites': sites}, ensure_ascii=False, indent=1))
     with open(os.path.join(ROOT, 'assets', 'js', 'results.js'), 'w', encoding='utf-8') as f:
         f.write(js)
 
